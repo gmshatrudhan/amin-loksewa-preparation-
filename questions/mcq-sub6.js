@@ -12,8 +12,11 @@
  * IMPORTANT: do NOT rename the unit titles in square brackets — the app finds
  * questions by matching them exactly.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "Compass Survey Introduction" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["Compass Survey Introduction"] = window.EXTRA["Compass Survey Introduction"] || {};
 window.EXTRA["Compass Survey Introduction"].mcq = [
       {q:"In the Whole Circle Bearing system, bearings are measured:", o:["From 0 to 90 degrees in each quadrant", "Clockwise from north from 0 to 360 degrees", "Anticlockwise from south", "From east only"], a:1, e:"In the WCB system every bearing is measured clockwise from magnetic north, from 0 to 360 degrees. The quadrantal system measures from 0 to 90 degrees from north or south."},
@@ -23,6 +26,9 @@ window.EXTRA["Compass Survey Introduction"].mcq = [
       {q:"The whole circle bearing 210 degrees expressed as a reduced bearing is:", o:["N30E", "S30W", "S30E", "N30W"], a:1, e:"For a WCB between 180 and 270 degrees, RB = WCB - 180, in the south west quadrant. So RB = 210 - 180 = 30, that is S30W."}
     ];
 
+// ── ✏️ EDIT HERE - Unit: "Traverse and Triangulation" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["Traverse and Triangulation"] = window.EXTRA["Traverse and Triangulation"] || {};
 window.EXTRA["Traverse and Triangulation"].mcq = [
       {q:"A traverse which starts and ends at the same point is called a:", o:["Open traverse", "Closed traverse", "Link traverse", "Free traverse"], a:1, e:"A closed traverse returns to its starting point or ends at a point of known coordinates, so a check on the accuracy of the work is possible. An open traverse provides no such check."},
@@ -32,6 +38,9 @@ window.EXTRA["Traverse and Triangulation"].mcq = [
       {q:"Triangulation is based on the measurement of:", o:["Only distances", "Angles, with a small number of measured base lines", "Only levels", "Only bearings"], a:1, e:"In triangulation a network of connected triangles is formed; the angles are measured precisely and only a few base lines are measured, the remaining sides being computed by the sine rule."}
     ];
 
+// ── ✏️ EDIT HERE - Unit: "GNSS" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["GNSS"] = window.EXTRA["GNSS"] || {};
 window.EXTRA["GNSS"].mcq = [
       {q:"GNSS stands for:", o:["Global Navigation Satellite System", "General Network Survey System", "Geodetic National Survey Standard", "Ground Navigation Support System"], a:0, e:"GNSS is the general term for satellite navigation systems that give global coverage, including GPS (USA), GLONASS (Russia), Galileo (Europe) and BeiDou (China)."},
@@ -41,6 +50,9 @@ window.EXTRA["GNSS"].mcq = [
       {q:"Which of the following is NOT a source of error in GNSS observation?", o:["Ionospheric delay", "Multipath", "Chain sag", "Satellite clock error"], a:2, e:"Chain sag is an error in tape or chain measurement, not in GNSS. GNSS errors include ionospheric and tropospheric delay, multipath, satellite and receiver clock errors, orbital errors and poor satellite geometry."}
     ];
 
+// ── ✏️ EDIT HERE - Unit: "Levelling" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["Levelling"] = window.EXTRA["Levelling"] || {};
 window.EXTRA["Levelling"].mcq = [
       {q:"Levelling is the process of determining:", o:["Horizontal distances", "Relative heights or elevations of points", "Horizontal angles", "Areas of parcels"], a:1, e:"Levelling determines the difference in elevation between points, or their heights above a datum such as mean sea level."},

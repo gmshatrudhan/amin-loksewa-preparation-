@@ -11,8 +11,11 @@
  * IMPORTANT: do NOT rename the unit titles in square brackets — the app finds
  * questions by matching them exactly.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "Legislation (Acts, Rules, Directives, Circulars, SoP)" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["Legislation (Acts, Rules, Directives, Circulars, SoP)"] = window.EXTRA["Legislation (Acts, Rules, Directives, Circulars, SoP)"] || {};
 window.EXTRA["Legislation (Acts, Rules, Directives, Circulars, SoP)"].mcq = [
       {q:"In Nepal, the survey and measurement of land is primarily governed by:", o:["Survey and Measurement Act, 2019 BS", "Land Act, 2021 BS", "Civil Service Act, 2049 BS", "Local Government Operation Act, 2074 BS"], a:0, e:"The Survey and Measurement Act, 2019 BS (Naap Jaanch Ain) is the principal law providing the legal basis for cadastral survey and land measurement in Nepal."},
@@ -22,6 +25,9 @@ window.EXTRA["Legislation (Acts, Rules, Directives, Circulars, SoP)"].mcq = [
       {q:"Rules or Regulations are framed:", o:["By the legislature independently", "Under the authority delegated by an Act", "By any office at will", "By the Supreme Court"], a:1, e:"Rules are subordinate legislation framed by the executive under powers expressly delegated by the parent Act. They must remain within the limits set by that Act."}
     ];
 
+// ── ✏️ EDIT HERE - Unit: "Cadastral Survey" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["Cadastral Survey"] = window.EXTRA["Cadastral Survey"] || {};
 window.EXTRA["Cadastral Survey"].mcq = [
       {q:"The main purpose of a cadastral survey is to:", o:["Design roads", "Fix parcel boundaries and prepare ownership records", "Study rainfall", "Locate minerals"], a:1, e:"A cadastral survey fixes the boundaries of individual land parcels and prepares the maps and records that support ownership certificates, registration, taxation and legal purposes."},
@@ -31,6 +37,9 @@ window.EXTRA["Cadastral Survey"].mcq = [
       {q:"A cadastral map differs from a topographic map mainly because it shows:", o:["Contours", "Land parcel boundaries and ownership units", "Rainfall", "Soil type"], a:1, e:"A cadastral map emphasises legal parcel boundaries, kitta numbers and areas, whereas a topographic map emphasises natural and man made physical features and relief."}
     ];
 
+// ── ✏️ EDIT HERE - Unit: "Land Records" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["Land Records"] = window.EXTRA["Land Records"] || {};
 window.EXTRA["Land Records"].mcq = [
       {q:"In Nepal, the legal certificate showing ownership of a land parcel is commonly called:", o:["Kitta Napi", "Lal Purja", "Namsari", "Faraad"], a:1, e:"Lal Purja is the land ownership certificate issued by the Land Revenue Office. Kitta Napi means parcel measurement, Namsari means transfer of ownership and Faraad means updating of records."},

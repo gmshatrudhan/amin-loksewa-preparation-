@@ -8,8 +8,11 @@
  *   q = question,  marks = full marks,  hint = model answer / hints.
  * IMPORTANT: do NOT rename the unit titles in square brackets.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "Legislation (Acts, Rules, Directives, Circulars, SoP)" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Legislation (Acts, Rules, Directives, Circulars, SoP)"] = window.EXTRA["Legislation (Acts, Rules, Directives, Circulars, SoP)"] || {};
 window.EXTRA["Legislation (Acts, Rules, Directives, Circulars, SoP)"].sub = [
       {q:"Explain the hierarchy of legislation: Act, Rule, Directive, Circular and SoP.", marks:10, hint:"Act: primary legislation passed by the federal parliament or provincial assembly; it is the source of authority. Rule or Regulation: subordinate legislation framed by government under powers delegated by the Act; it provides operational detail and is legally binding. Directive (Nirdeshika): issued by a ministry or department to guide implementation of an Act or Rule. Circular (Paripatra): an administrative communication clarifying or instructing on a particular point. SoP: a detailed step by step working procedure. A lower instrument must always conform to the higher one; if there is conflict, the higher prevails."},
@@ -17,6 +20,9 @@ window.EXTRA["Legislation (Acts, Rules, Directives, Circulars, SoP)"].sub = [
       {q:"Why are circulars important in land administration? Explain briefly.", marks:5, hint:"Circulars give uniform interpretation of legal provisions to all offices, communicate day to day administrative instructions, clarify doubts arising in implementation, and inform staff of changes in procedure, fees or formats. They ensure that land administration is carried out consistently throughout the country without waiting for an amendment of the Act or Rules."}
     ];
 
+// ── ✏️ EDIT HERE - Unit: "Cadastral Survey" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Cadastral Survey"] = window.EXTRA["Cadastral Survey"] || {};
 window.EXTRA["Cadastral Survey"].sub = [
       {q:"Explain the objectives and importance of cadastral survey.", marks:10, hint:"Objectives: to determine and demarcate the boundary of every land parcel; to measure the area of each parcel; to give each parcel a unique kitta number; to prepare cadastral maps and field books; and to provide the basis for the land ownership certificate. Importance: it gives legal security of ownership, provides the basis for land revenue and taxation, reduces boundary disputes and litigation, supports land use planning, acquisition and compensation, and enables a reliable land information system."},
@@ -24,6 +30,9 @@ window.EXTRA["Cadastral Survey"].sub = [
       {q:"What is a kitta number? Explain its use in land records.", marks:5, hint:"A kitta number is the unique serial number assigned to each individual land parcel within a cadastral map sheet. It links the graphical record (the map) with the textual record (the field book and land register) and with the ownership certificate. It is used in registration, transfer, mutation, taxation, mortgage and in any legal reference to that parcel."}
     ];
 
+// ── ✏️ EDIT HERE - Unit: "Land Records" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Land Records"] = window.EXTRA["Land Records"] || {};
 window.EXTRA["Land Records"].sub = [
       {q:"Explain the importance of accurate land records in land administration.", marks:10, hint:"Accurate land records give legal security of tenure and protect the owner against encroachment and fraud. They provide a reliable basis for the assessment and collection of land revenue. They reduce boundary disputes and consequent litigation. They enable land to be used as collateral for credit, thereby supporting investment. They support planning, acquisition, compensation, and infrastructure development, and they are essential for a modern land information system and for good governance in the land sector."},

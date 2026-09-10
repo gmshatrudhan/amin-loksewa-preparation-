@@ -13,8 +13,11 @@
  * IMPORTANT: do NOT rename the unit titles in square brackets — the app finds
  * questions by matching them exactly.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "Introduction of Surveying" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["Introduction of Surveying"] = window.EXTRA["Introduction of Surveying"] || {};
 window.EXTRA["Introduction of Surveying"].mcq = [
       {q:"What is the fundamental principle of surveying?", o:["Work from part to whole", "Work from whole to part", "Work randomly", "Work from south to north"], a:1, e:"Working from whole to part: a control framework of high precision is established first, then details are filled in. This localises errors and prevents their accumulation over the survey area."},
@@ -24,6 +27,9 @@ window.EXTRA["Introduction of Surveying"].mcq = [
       {q:"Errors that follow the laws of probability and are equally likely to be positive or negative are called:", o:["Mistakes", "Systematic errors", "Accidental or random errors", "Gross errors"], a:2, e:"Accidental (random) errors remain after mistakes and systematic errors are removed. They obey the laws of probability and are adjusted by the method of least squares."}
     ];
 
+// ── ✏️ EDIT HERE - Unit: "Chain Survey" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["Chain Survey"] = window.EXTRA["Chain Survey"] || {};
 window.EXTRA["Chain Survey"].mcq = [
       {q:"The length of a metric chain commonly used in surveying is:", o:["10 m", "20 m", "50 m", "100 m"], a:1, e:"The 20 m metric chain (100 links, each 0.2 m) is the one most commonly used. A 30 m chain with 150 links is also available."},
@@ -33,6 +39,9 @@ window.EXTRA["Chain Survey"].mcq = [
       {q:"A check line in chain surveying is used to:", o:["Increase the area", "Verify the accuracy of the plotted triangle", "Mark the boundary", "Measure elevation"], a:1, e:"A check line (proof line) is measured in the field and also scaled off the plotted plan. If the two agree, the framework has been correctly measured and plotted."}
     ];
 
+// ── ✏️ EDIT HERE - Unit: "Plane Table Survey" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["Plane Table Survey"] = window.EXTRA["Plane Table Survey"] || {};
 window.EXTRA["Plane Table Survey"].mcq = [
       {q:"In plane table surveying, orienting the table means:", o:["Levelling the table", "Setting the table so that plotted lines are parallel to the corresponding ground lines", "Centring the table", "Focusing the alidade"], a:1, e:"Orientation places the table in the same directional position it occupied at previous stations, so that all plotted rays are parallel to the corresponding ground directions. It is done by trough compass or by back sighting."},
@@ -42,6 +51,9 @@ window.EXTRA["Plane Table Survey"].mcq = [
       {q:"A major disadvantage of plane table surveying is that:", o:["It is fast", "Field notes are not recorded separately", "It needs no computation", "Errors are seen in the field"], a:1, e:"Since plotting is done directly in the field, no separate record of measurements is kept. If the plan is later found to be in error or a different scale is needed, the whole survey must be repeated."}
     ];
 
+// ── ✏️ EDIT HERE - Unit: "Tachometric Survey" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["Tachometric Survey"] = window.EXTRA["Tachometric Survey"] || {};
 window.EXTRA["Tachometric Survey"].mcq = [
       {q:"In tacheometry, the multiplying constant of an ordinary tacheometer is usually:", o:["10", "50", "100", "200"], a:2, e:"For a theodolite fitted with a stadia diaphragm, the multiplying constant f/i is normally 100. The additive constant is about 0.1 to 0.3 m for external focusing and nearly zero for internal focusing telescopes."},
@@ -51,6 +63,9 @@ window.EXTRA["Tachometric Survey"].mcq = [
       {q:"Tacheometric surveying is most suitable for:", o:["Flat land with easy chaining", "Rough, steep or broken country", "Underground work", "Very high precision geodetic work"], a:1, e:"Tacheometry is preferred where direct chaining is difficult or inaccurate, such as steep slopes, broken ground, water bodies and rough country."}
     ];
 
+// ── ✏️ EDIT HERE - Unit: "Mapping" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["Mapping"] = window.EXTRA["Mapping"] || {};
 window.EXTRA["Mapping"].mcq = [
       {q:"If the scale of a map is 1 cm = 100 m, its representative fraction is:", o:["1:100", "1:1,000", "1:10,000", "1:100,000"], a:2, e:"100 m = 10,000 cm, so RF = 1 cm / 10,000 cm = 1/10,000, written 1:10,000."},

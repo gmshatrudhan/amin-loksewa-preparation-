@@ -10,8 +10,11 @@
  *   q = question,  marks = full marks,  hint = model answer / hints.
  * IMPORTANT: do NOT rename the unit titles in square brackets.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "Introduction of Surveying" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Introduction of Surveying"] = window.EXTRA["Introduction of Surveying"] || {};
 window.EXTRA["Introduction of Surveying"].sub = [
       {q:"Define surveying and state its primary objectives.", marks:5, hint:"Surveying is the art and science of determining the relative positions of points on, above or below the surface of the earth by means of direct or indirect measurement of distance, direction and elevation. Objectives: to prepare plans and maps, to determine areas and volumes, to set out works on the ground, and to establish boundaries and control points."},
@@ -19,6 +22,9 @@ window.EXTRA["Introduction of Surveying"].sub = [
       {q:"State the fundamental principles of surveying and explain their importance.", marks:5, hint:"First principle — always work from the whole to the part: establish a system of control points with high precision, then fix details with respect to them, so errors do not accumulate. Second principle — a point must be fixed by at least two independent measurements, so that a check is available and errors can be detected."}
     ];
 
+// ── ✏️ EDIT HERE - Unit: "Chain Survey" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Chain Survey"] = window.EXTRA["Chain Survey"] || {};
 window.EXTRA["Chain Survey"].sub = [
       {q:"Describe the procedure of chain surveying in the field.", marks:10, hint:"1. Reconnaissance — walk over the area and study the ground. 2. Prepare an index sketch showing stations. 3. Mark and reference the main stations with pegs. 4. Select well-conditioned triangles for the framework. 5. Measure the base line accurately. 6. Chain the survey lines, recording chainages and taking offsets to details in the field book. 7. Measure check lines and tie lines for verification. 8. Plot the framework to scale, add details, and finally ink and finish the plan."},
@@ -26,6 +32,9 @@ window.EXTRA["Chain Survey"].sub = [
       {q:"List the errors in chain surveying and explain how they are corrected.", marks:5, hint:"Personal errors: wrong reading, wrong booking, careless holding — avoided by care and checking. Instrumental errors: chain too long or too short, bent links — corrected by the formula, true length = measured length x (wrong length / true length). Natural errors: temperature variation, sag, slope, pull — corrected by applying corrections for temperature, sag, slope and standardisation."}
     ];
 
+// ── ✏️ EDIT HERE - Unit: "Plane Table Survey" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Plane Table Survey"] = window.EXTRA["Plane Table Survey"] || {};
 window.EXTRA["Plane Table Survey"].sub = [
       {q:"Explain the methods of plane table surveying.", marks:10, hint:"Radiation — the table is set at one station and rays are drawn to all visible objects, distances measured and plotted to scale; suitable for small areas visible from one point. Intersection — two stations are plotted and rays drawn from both, the intersection fixing the object; used when distances cannot be measured. Traversing — the table is moved from station to station, forming a traverse; used for long narrow strips. Resection — the position of the table itself is located from already plotted points; includes the two point and three point problems."},
@@ -33,6 +42,9 @@ window.EXTRA["Plane Table Survey"].sub = [
       {q:"Explain the two point problem in plane tabling.", marks:5, hint:"The two point problem consists of locating the position of the plane table station on the plan by observing two well defined points whose positions have already been plotted. An auxiliary station is chosen, rays are drawn from both known points, the table is oriented by back ray from the auxiliary station, and the intersection of the resulting rays fixes the required station."}
     ];
 
+// ── ✏️ EDIT HERE - Unit: "Tachometric Survey" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Tachometric Survey"] = window.EXTRA["Tachometric Survey"] || {};
 window.EXTRA["Tachometric Survey"].sub = [
       {q:"Explain the principle of stadia tacheometry and derive the distance formula.", marks:10, hint:"The stadia principle states that the ratio of the staff intercept to the horizontal distance is constant for a given instrument. With f the focal length, i the stadia interval and d the distance from the object glass to the trunnion axis, the distance from the instrument to the staff is D = (f/i).s + (f + d), usually written D = K.s + C where K = f/i is the multiplying constant (normally 100) and C = f + d is the additive constant. A neat ray diagram of the object glass, stadia hairs and staff should be drawn."},
@@ -40,6 +52,9 @@ window.EXTRA["Tachometric Survey"].sub = [
       {q:"Differentiate between the fixed hair method and the movable hair method.", marks:5, hint:"Fixed hair (stadia) method: the stadia hairs are at a fixed interval, the staff intercept varies with distance, an ordinary levelling staff is used, and it is the method commonly employed. Movable hair (subtense) method: the staff intercept is kept constant by using targets at a fixed distance apart, the stadia interval is varied and read on a micrometer; it is more accurate but slower and needs a special instrument."}
     ];
 
+// ── ✏️ EDIT HERE - Unit: "Mapping" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Mapping"] = window.EXTRA["Mapping"] || {};
 window.EXTRA["Mapping"].sub = [
       {q:"Define the scale of a map and explain the types of scale used in mapping.", marks:10, hint:"The scale of a map is the fixed ratio between a distance on the map and the corresponding distance on the ground. Types: (i) Numerical or engineer's scale, stated as 1 cm = 100 m. (ii) Representative fraction (RF), a dimensionless ratio such as 1:10,000, independent of the units used. (iii) Graphical or plain scale, a line drawn on the map divided into units; it remains correct even if the map is enlarged or reduced. Choice of scale depends on the purpose, the size of the area and the detail required."},

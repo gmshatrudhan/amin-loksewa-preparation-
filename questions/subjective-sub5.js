@@ -10,8 +10,11 @@
  *   q = question,  marks = full marks,  hint = model answer / hints.
  * IMPORTANT: do NOT rename the unit titles in square brackets.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "Mathematics (General)" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Mathematics (General)"] = window.EXTRA["Mathematics (General)"] || {};
 window.EXTRA["Mathematics (General)"].sub = [
       {q:"A land of area 1 bigha is sold at Rs 40 lakh per bigha. Find the price of 12 kattha.", marks:5, hint:"1 bigha = 20 kattha. Price of 1 kattha = 40,00,000 / 20 = Rs 2,00,000. Price of 12 kattha = 12 x 2,00,000 = Rs 24,00,000, that is Rs 24 lakh."},
@@ -19,6 +22,9 @@ window.EXTRA["Mathematics (General)"].sub = [
       {q:"Find the compound interest on Rs 20,000 at 10 percent per annum for 2 years.", marks:5, hint:"A = P(1 + r/100)^n = 20000 x (1 + 10/100)^2 = 20000 x 1.21 = Rs 24,200. CI = A - P = 24,200 - 20,000 = Rs 4,200."}
     ];
 
+// ── ✏️ EDIT HERE - Unit: "Mathematics (Algebra & Geometry)" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Mathematics (Algebra & Geometry)"] = window.EXTRA["Mathematics (Algebra & Geometry)"] || {};
 window.EXTRA["Mathematics (Algebra & Geometry)"].sub = [
       {q:"Solve the simultaneous equations 3x + 2y = 16 and x - y = 2.", marks:5, hint:"From the second equation, x = y + 2. Substituting in the first: 3(y + 2) + 2y = 16, so 3y + 6 + 2y = 16, giving 5y = 10 and y = 2. Then x = 2 + 2 = 4. Therefore x = 4 and y = 2."},
@@ -26,6 +32,9 @@ window.EXTRA["Mathematics (Algebra & Geometry)"].sub = [
       {q:"Find the area of a triangle whose sides are 13 m, 14 m and 15 m.", marks:5, hint:"Using Heron's formula: s = (a + b + c)/2 = (13 + 14 + 15)/2 = 21 m. Area = sqrt(s(s-a)(s-b)(s-c)) = sqrt(21 x 8 x 7 x 6) = sqrt(7056) = 84 sq m."}
     ];
 
+// ── ✏️ EDIT HERE - Unit: "Mathematics (Trigonometry)" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Mathematics (Trigonometry)"] = window.EXTRA["Mathematics (Trigonometry)"] || {};
 window.EXTRA["Mathematics (Trigonometry)"].sub = [
       {q:"Define the six trigonometric ratios with reference to a right angled triangle.", marks:5, hint:"For an acute angle theta in a right angled triangle: sin theta = perpendicular / hypotenuse; cos theta = base / hypotenuse; tan theta = perpendicular / base; cosec theta = hypotenuse / perpendicular; sec theta = hypotenuse / base; cot theta = base / perpendicular. A neat labelled figure showing the perpendicular, base and hypotenuse is required."},
@@ -33,6 +42,9 @@ window.EXTRA["Mathematics (Trigonometry)"].sub = [
       {q:"Prove that (1 - cos squared theta) / sin squared theta = 1 and state its use in surveying.", marks:10, hint:"We know that sin squared theta + cos squared theta = 1, therefore 1 - cos squared theta = sin squared theta. Substituting, (1 - cos squared theta)/ sin squared theta = sin squared theta / sin squared theta = 1. Hence proved. Use in surveying: trigonometric identities are used to reduce slope distances to horizontal, to compute heights and distances in trigonometric levelling, to calculate latitudes and departures in traverse computation, and to determine the difference in elevation from vertical angles."}
     ];
 
+// ── ✏️ EDIT HERE - Unit: "Mathematics (Surveying)" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Mathematics (Surveying)"] = window.EXTRA["Mathematics (Surveying)"] || {};
 window.EXTRA["Mathematics (Surveying)"].sub = [
       {q:"Convert 3 ropani 2 aana into square metres.", marks:5, hint:"1 ropani = 508.72 sq m and 1 aana = 508.72 / 16 = 31.795 sq m. So 3 ropani = 3 x 508.72 = 1,526.16 sq m and 2 aana = 2 x 31.795 = 63.59 sq m. Total = 1,526.16 + 63.59 = 1,589.75 sq m approximately."},
@@ -40,6 +52,9 @@ window.EXTRA["Mathematics (Surveying)"].sub = [
       {q:"Compute the area of a plot by the coordinate method given the coordinates of the four corners.", marks:5, hint:"List the coordinates of the corners in order around the figure and repeat the first point at the end. Area = one half of the absolute value of the sum of (x of i multiplied by y of i plus one) minus the sum of (y of i multiplied by x of i plus one). For a plot with corners (0,0), (40,0), (40,25) and (0,25) the calculation gives area = 1,000 sq m."}
     ];
 
+// ── ✏️ EDIT HERE - Unit: "Instruments & Its Maintenance" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Instruments & Its Maintenance"] = window.EXTRA["Instruments & Its Maintenance"] || {};
 window.EXTRA["Instruments & Its Maintenance"].sub = [
       {q:"List the common surveying instruments and state the use of each.", marks:10, hint:"Chain and tape: measurement of linear distances. Ranging rod and arrow: marking stations and counting chain lengths. Cross staff and optical square: setting out right angles for offsets. Prismatic compass: measurement of magnetic bearings. Plane table with alidade: field plotting of details. Dumpy or auto level with levelling staff: determination of relative elevations. Theodolite: precise measurement of horizontal and vertical angles. Tacheometer: indirect measurement of distance and elevation. Total station: combined angle, distance and coordinate measurement. GNSS receiver: determination of absolute position by satellite."},
