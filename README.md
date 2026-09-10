@@ -13,6 +13,7 @@ Single-page website split into easy-to-edit files. Works by just opening `index.
 | `js/content.js` | **Site texts**: name, phone, email, address, notices, FAQs, team, home slides, legal pages | Update any text / notice / member |
 | `questions/mcq-sub1.js` … `mcq-sub6.js` | **MCQ questions**, one file per subject | Add / fix objective questions |
 | `questions/subjective-sub1.js` … `subjective-sub6.js` | **Written questions**, one file per subject | Add / fix subjective questions |
+| `study/sub1-unit1.js` … `study/sub6-unit4.js` | **Study material**, one file per unit (all 27) | Write real notes per unit |
 | `images/` | `profile.jpg` (contact/owner photo), `team-*.jpg` (team members) | Replace photos (keep the same file names!) |
 | `manifest.json` | Phone "add to home screen" info | Rarely |
 
@@ -34,6 +35,14 @@ Open e.g. `questions/mcq-sub1.js`. Each question looks like this:
   questions by matching the title exactly.
 
 Subjective files use `{q:"...", marks:10, hint:"...model answer / hints..."}`.
+
+## 📖 How to edit study material
+
+Open e.g. `study/sub1-unit1.js`. It has three parts: `"outcomes"` (what the student will
+learn), `"content"` (study sections, each with `"h"` = heading and `"p"` = paragraph) and
+`"keypoints"` (quick-revision bullets). Just edit the text between quotes; copy a
+`{"h": "...", "p": "..."}` block to add a section (keep commas between blocks).
+⚠️ Do **NOT** rename the unit title in square brackets (`window.STUDY["..."]`).
 
 ## 🖼️ How to change photos
 
