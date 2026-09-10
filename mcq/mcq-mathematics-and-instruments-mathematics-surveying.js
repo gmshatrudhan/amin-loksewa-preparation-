@@ -1,0 +1,24 @@
+/* ================= MCQ QUESTIONS - Mathematics and Instruments - Unit 4: Mathematics (Surveying) =================
+ * One unit per file: the app loads ONLY this unit's 3 files (mcq + subjective
+ * + study) when you open the unit - see js/data-manifest.js.
+ *
+ * HOW TO ADD A QUESTION: copy one {q, o, a, e} block, paste it after the last
+ * one (with a comma between blocks), and edit the text.
+ *   q = question,  o = 4 options,  a = correct option NUMBER (0, 1, 2 or 3),
+ *   e = explanation shown after answering.
+ * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
+ * questions by matching it exactly.
+ */
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+
+// ── ✏️ EDIT HERE - Unit: "Mathematics (Surveying)" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
+window.EXTRA["Mathematics (Surveying)"] = window.EXTRA["Mathematics (Surveying)"] || {};
+window.EXTRA["Mathematics (Surveying)"].mcq = [
+      {q:"1 ropani is equal to:", o:["508.72 sq m", "338.62 sq m", "6,772.63 sq m", "1,000 sq m"], a:0, e:"1 ropani = 16 aana = 508.72 sq m. It is used mainly in the hill region and the Kathmandu Valley."},
+      {q:"1 bigha is equal to how many kattha?", o:["16", "20", "25", "32"], a:1, e:"1 bigha = 20 kattha, and 1 kattha = 20 dhur. 1 bigha is approximately 6,772.63 sq m and is used in the Terai region."},
+      {q:"1 ropani is divided into how many aana?", o:["10", "12", "16", "20"], a:2, e:"1 ropani = 16 aana, 1 aana = 4 paisa, and 1 paisa = 4 daam."},
+      {q:"The area of a rectangular plot 40 m by 25 m is:", o:["800 sq m", "900 sq m", "1,000 sq m", "1,200 sq m"], a:2, e:"Area = length x breadth = 40 x 25 = 1,000 sq m."},
+      {q:"The method of computing the area of an irregular figure by dividing it into an even number of equal strips is:", o:["Trapezoidal rule", "Simpson's rule", "Heron's formula", "Bowditch rule"], a:1, e:"Simpson's rule requires an even number of equal intervals (an odd number of ordinates) and assumes the boundary between successive ordinates is a parabolic arc, giving greater accuracy than the trapezoidal rule."}
+    ];
