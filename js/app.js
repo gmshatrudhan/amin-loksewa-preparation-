@@ -1,8 +1,18 @@
+/* ====================================================================
+   AMIN WEBSITE - MAIN PROGRAM (js/app.js)
+   What it does: builds every page, runs the quiz, login, search, slider.
+   HOW TO USE THE COMMENTS: lines starting with ✏️ EDIT HERE = safe for you to change.
+   Lines starting with ⚠️ DO NOT CHANGE = program logic, leave alone.
+   Beginner rule: you normally edit ONLY the SUBJECTS list (search: const SUBJECTS)
+   plus the few settings this file points you to. All other text lives in js/content.js.
+   ==================================================================== */
 /* ================= APP (design + logic). Question files + content.js load before this. ================= */
+// NOTE: the two banners below are outdated leftovers - questions now live in questions/*.js
 /* Inline question bank (ships with the page; no extra download). */
 /* ==== FULL QUESTION BANK: 5 MCQ + 3 written per unit, all with explanations ==== */
 
 
+// NOTE: the banner below is outdated - real counts are 5+5+5+3+5+4 = 27 units.
 /* ---- 6 SUBJECTS × 5 UNITS ---- */
 
 
@@ -20,6 +30,9 @@
 /* ---- SYLLABUS TRACKS: Federal + 7 Provinces ---- */
 
 
+// Build the unit objects for ONE subject from its list of unit titles.
+// Merges your study/*.js notes over the built-in default texts (the "ov.* || [...]" lines).
+// ⚠️ DO NOT CHANGE this function - edit unit TITLES in SUBJECTS below instead.
 function mkUnits(subject, names){
   return names.map((n,i)=>{
     const ov=(window.STUDY&&window.STUDY[n])||{};
@@ -52,53 +65,59 @@ function mkUnits(subject, names){
   }});
 }
 
+// ✏️ EDIT HERE - ALL SUBJECTS + UNIT TITLES (your most-edited code in this file!) //
+// Each subject = one { id, name, icon, color, desc, units } block. Rules:
+//   ✅ SAFE: rename name:"...", icon:"..." (any emoji), color:"#..." (any color), desc:"..." text.
+//   ✅ SAFE: reorder subjects (move whole blocks) or unit titles (move lines inside mkUnits([...])).
+//   ⚠️ NEVER change id:"subN" - links + saved progress use it. Adding/removing needs 7 steps (see manual §5.4).
+//   ⚠️ DANGER: every unit title MUST match 4 files exactly: here + questions/mcq + questions/subjective + study file.
 const SUBJECTS = [
-  { id:"sub1", name:"General Awareness", icon:"🌏", color:"#0E3A5F",
+  { id:"sub1", name:"General Awareness", icon:"🌏", color:"#0E3A5F",  // ✏️ rename name/icon/color/desc - ⚠️ NEVER change id
     desc:"नेपालको भूगोल, इतिहास, अर्थतन्त्र, विज्ञान, संविधान र समसामयिक विषयहरू।",
-    units: mkUnits("General Awareness",[
+    units: mkUnits("General Awareness",[  // ✏️ unit titles below - EACH must match its question+study files exactly!
       "नेपालको भूगोल तथा प्राकृतिक स्रोत",
       "नेपालको इतिहास, संस्कृति तथा समाज",
       "नेपालको अर्थतन्त्र तथा विकास",
       "विज्ञान, प्रविधि तथा वातावरण",
       "संविधान, अन्तर्राष्ट्रिय सम्बन्ध तथा समसामयिक विषय"]) },
 
-  { id:"sub2", name:"Public Management", icon:"🏛", color:"#0E7C6B",
+  { id:"sub2", name:"Public Management", icon:"🏛", color:"#0E7C6B",  // ✏️ rename name/icon/color/desc - ⚠️ NEVER change id
     desc:"कार्यालय व्यवस्थापन, निजामती सेवा, बजेट र लेखा, सुशासन तथा नेतृत्व।",
-    units: mkUnits("Public Management",[
+    units: mkUnits("Public Management",[  // ✏️ unit titles below - EACH must match its question+study files exactly!
       "कार्यालय व्यवस्थापन तथा कार्यविधि",
       "निजामती सेवा तथा सरकारी प्रशासन",
       "सरकारी बजेट, लेखा तथा लेखापरीक्षण",
       "सार्वजनिक सेवा तथा सुशासन",
       "व्यवस्थापन, नेतृत्व तथा नागरिक मूल्य"]) },
 
-  { id:"sub3", name:"Surveying Methodology and Mapping", icon:"📐", color:"#A8861A",
+  { id:"sub3", name:"Surveying Methodology and Mapping", icon:"📐", color:"#A8861A",  // ✏️ rename name/icon/color/desc - ⚠️ NEVER change id
     desc:"Introduction of surveying, chain survey, plane table, tachometric survey and mapping.",
-    units: mkUnits("Surveying Methodology and Mapping",[
+    units: mkUnits("Surveying Methodology and Mapping",[  // ✏️ unit titles below - EACH must match its question+study files exactly!
       "Introduction of Surveying",
       "Chain Survey",
       "Plane Table Survey",
       "Tachometric Survey",
       "Mapping"]) },
 
-  { id:"sub4", name:"Land Administration, Cadastral Survey and Land Records", icon:"⚖", color:"#3F3D8A",
+  { id:"sub4", name:"Land Administration, Cadastral Survey and Land Records", icon:"⚖", color:"#3F3D8A",  // ✏️ rename name/icon/color/desc - ⚠️ NEVER change id
     desc:"Acts, rules, directives and circulars with cadastral survey and land record management.",
-    units: mkUnits("Land Administration, Cadastral Survey and Land Records",[
+    units: mkUnits("Land Administration, Cadastral Survey and Land Records",[  // ✏️ unit titles below - EACH must match its question+study files exactly!
       "Legislation (Acts, Rules, Directives, Circulars, SoP)",
       "Cadastral Survey",
       "Land Records"]) },
 
-  { id:"sub5", name:"Mathematics and Instruments", icon:"🧮", color:"#8A2A4A",
+  { id:"sub5", name:"Mathematics and Instruments", icon:"🧮", color:"#8A2A4A",  // ✏️ rename name/icon/color/desc - ⚠️ NEVER change id
     desc:"General mathematics, algebra, geometry, trigonometry, surveying maths and instruments.",
-    units: mkUnits("Mathematics and Instruments",[
+    units: mkUnits("Mathematics and Instruments",[  // ✏️ unit titles below - EACH must match its question+study files exactly!
       "Mathematics (General)",
       "Mathematics (Algebra & Geometry)",
       "Mathematics (Trigonometry)",
       "Mathematics (Surveying)",
       "Instruments & Its Maintenance"]) },
 
-  { id:"sub6", name:"Control Survey", icon:"🧭", color:"#17527F",
+  { id:"sub6", name:"Control Survey", icon:"🧭", color:"#17527F",  // ✏️ rename name/icon/color/desc - ⚠️ NEVER change id
     desc:"Compass survey, traverse and triangulation, GNSS and levelling.",
-    units: mkUnits("Control Survey",[
+    units: mkUnits("Control Survey",[  // ✏️ unit titles below - EACH must match its question+study files exactly!
       "Compass Survey Introduction",
       "Traverse and Triangulation",
       "GNSS",
@@ -119,13 +138,20 @@ const SUBJECTS = [
 /* ============================================================
    APP — hash-router SPA (works on GitHub Pages, no server)
    ============================================================ */
+// Shortcut: $(...) finds one element on the page. ⚠️ DO NOT CHANGE.
 const $ = s => document.querySelector(s);
+// Makes text safe to show (< > & quotes become harmless). ⚠️ DO NOT CHANGE (security).
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+// Formats a date like 2026-09-05 as "05 Sept 2026". ⚠️ DO NOT CHANGE.
 const fdate = d => new Date(d).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
 
 /* ---------------- STORE (localStorage) ---------------- */
+// BROWSER STORAGE ("database" living in each visitor's own phone/computer).
+// Holds: users, login session, progress (p2), test results (r2), saved questions (b2).
+// Also upgrades very old saved data (key "edupath") once, automatically.
+// ⚠️ DO NOT CHANGE anything in this block.
 const DB = {
-  k:'amin',
+  k:'amin',  // ⚠️ storage key - NEVER rename (users would lose accounts/progress).
   /* Local record (remembered data). Migrates the legacy 'edupath' key and any
      legacy global progress/results/bookmarks slices into per-user slices once. */
   raw(){
@@ -170,6 +196,7 @@ const DB = {
 
 
 /* ---------------- PASSWORD HASHING (SHA-256 via WebCrypto, with fallback) ---------------- */
+// Locks passwords with SHA-256 scrambling (never stored readable). ⚠️ DO NOT CHANGE.
 async function sha(s){
   try{
     if(window.crypto&&crypto.subtle){
@@ -183,13 +210,17 @@ async function sha(s){
   h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);
   return 'f'+(h2>>>0).toString(16).padStart(8,'0')+(h1>>>0).toString(16).padStart(8,'0');
 }
+// Checks if a password is already scrambled. ⚠️ DO NOT CHANGE.
 const isSha = s => /^[0-9a-f]{64}$/.test(s||'');
 /* readable recovery code for the forgot-password flow */
+// Creates recovery codes like AB12-CD34 for password reset. ⚠️ DO NOT CHANGE.
 function rid(){ const c='ABCDEFGHJKMNPQRSTUVWXYZ23456789'; let s=''; const a=new Uint32Array(8);
   try{ crypto.getRandomValues(a); }catch(e){ for(let i=0;i<8;i++) a[i]=(Math.random()*4294967296)|0; }
   for(let i=0;i<8;i++) s+=c[a[i]%c.length]; return s.slice(0,4)+'-'+s.slice(4); }
 
 /* ---------------- BOOKMARKS (saved questions) ---------------- */
+// SAVED (bookmarked) questions manager. Keeps max 500 per user (see .slice(0,500) inside).
+// ⚠️ DO NOT CHANGE.
 const BM = {
   all(){ const d=DB.get(); return (d.b2&&d.b2[d.session||'guest'])||[] },
   save(list){ const d=DB.raw(); d.b2[DB.skey()]=(list||[]).slice(0,500); DB.set(d) },
@@ -210,7 +241,10 @@ const BM = {
 };
 
 /* ---------------- SEARCH ---------------- */
+// Search memory cache (built once, reused). ⚠️ DO NOT CHANGE.
 let SEARCH_IX=null;
+// Collects EVERYTHING searchable: subjects, units, notes, MCQs, written Qs, syllabus, notices, FAQs.
+// ✏️ EDIT HERE to REMOVE a type from search: delete one whole ix.push(...) line below.
 function searchIndex(){
   if(SEARCH_IX) return SEARCH_IX;
   const ix=[];
@@ -229,7 +263,11 @@ function searchIndex(){
   FAQS.forEach((f,i)=>ix.push({t:'FAQ', title:f.q, sub:'Frequently asked', url:'#/faq', sname:'', body:f.a}));
   SEARCH_IX=ix; return ix;
 }
+// Scores and ranks search results (title match = +3 points, best first, top 40 shown).
+// ✏️ EDIT HERE: minimum letters `q.length<2` (change in 3 places: here, hl() and pSearch!)
+// ✏️ EDIT HERE: max results `.slice(0,40)` at the end of this function.
 function searchRun(term){
+// ✏️ EDIT HERE: search needs 2+ letters (place 1 of 3 - also hl() and pSearch!).
   const q=(term||'').trim().toLowerCase(); if(q.length<2) return [];
   const words=q.split(/\s+/);
   return searchIndex().map(it=>{
@@ -242,9 +280,12 @@ function searchRun(term){
     }
     if(it.t==='Unit'||it.t==='Subject') sc+=2;
     return {it,sc};
+// ✏️ EDIT HERE: show max 40 search results - change 40.
   }).filter(Boolean).sort((a,b)=>b.sc-a.sc).slice(0,40).map(x=>x.it);
 }
+// Paints matched words yellow (<mark>). ✏️ Minimum-letters twin `q.length<2` lives here too.
 function hl(text,term){
+// ✏️ Minimum-letters twin (place 2 of 3) - keep same as searchRun.
   const raw=String(text||''); const q=(term||'').trim(); if(q.length<2) return esc(raw);
   try{
     const rx=new RegExp(q.split(/\s+/).map(w=>w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|'),'ig');
@@ -253,6 +294,7 @@ function hl(text,term){
     return out+esc(raw.slice(last));
   }catch(e){ return esc(raw) }
 }
+// SEARCH page layout. ✏️ EDIT HERE: search-box placeholder + hint texts. ⚠️ Not the logic.
 function pSearch(term){
   const q=term||'';
   const res=searchRun(q);
@@ -267,7 +309,9 @@ function pSearch(term){
     <div id="sres">${searchHTML(res,q,groups)}</div>
   </div></section>`;
 }
+// Draws grouped results. ✏️ EDIT HERE: "No results" + hint wording only.
 function searchHTML(res,q,groups){
+// ✏️ Minimum-letters twin (place 3 of 3) - keep same as searchRun.
   if(q.trim().length<2) return '<p class="shint">Start typing to search across '+searchIndex().length+' items — subjects, units, study notes, MCQs, written questions, syllabus and notices.</p>';
   if(!res.length) return '<div class="card"><p>No results for <b>'+esc(q)+'</b>. Try a different word.</p></div>';
   return '<p class="shint">'+res.length+' result'+(res.length>1?'s':'')+' for <b>'+esc(q)+'</b></p>'+
@@ -276,6 +320,7 @@ function searchHTML(res,q,groups){
         <span class="stag">${r.t}</span>
         <span class="sbody"><b>${hl(r.title,q)}</b><i>${hl(r.sub,q)}</i></span></a>`).join('')}</div>`).join('');
 }
+// Updates results live while typing + updates the URL. ⚠️ DO NOT CHANGE.
 function searchLive(v){
   const box=document.getElementById('sres'); if(!box) return;
   const res=searchRun(v), groups={};
@@ -285,6 +330,7 @@ function searchLive(v){
 }
 
 /* ---------------- SAVED QUESTIONS PAGE ---------------- */
+// SAVED QUESTIONS page. ✏️ EDIT HERE: empty-state text + "Clear all" button text.
 function pSaved(){
   const list=BM.all();
   return head('Saved Questions','Bookmarked questions to revise before the exam')+
@@ -306,9 +352,12 @@ function pSaved(){
 }
 
 /* ---------------- CONTACT FORM ---------------- */
+// CONTACT FORM sender. Uses SITE.formEndpoint (content.js) if set, else opens visitor's email app.
+// ✏️ EDIT HERE: success / error MESSAGES only. ⚠️ Never touch the fetch() sending logic.
 async function sendMsg(e){
   e.preventDefault();
   const f=e.target, btn=document.getElementById('cbtn'), box=document.getElementById('cmsg');
+// ✏️ Reads your Formspree endpoint from content.js (empty = email-app fallback).
   const ep=(SITE.formEndpoint||'').trim();
   const data=Object.fromEntries(new FormData(f).entries());
 
@@ -330,10 +379,12 @@ async function sendMsg(e){
   return false;
 }
 
+// FOOTER newsletter form: saves the email on that device (key "amin-nl"). ⚠️ DO NOT CHANGE.
 function doSubscribe(e){
   e.preventDefault();
   const inp=document.getElementById('nl-email'); const em=((inp&&inp.value)||'').trim().toLowerCase();
   if(!em) return false;
+// Newsletter emails on this device. ⚠️ DO NOT CHANGE.
   try{ const k='amin-nl'; const l=JSON.parse(localStorage.getItem(k)||'[]'); if(!l.includes(em)){ l.push(em); localStorage.setItem(k,JSON.stringify(l)); } }catch(err){}
   const ok=document.getElementById('nl-ok'); if(ok) ok.hidden=false;
   try{ e.target.reset(); }catch(err){}
@@ -341,12 +392,19 @@ function doSubscribe(e){
 }
 
 /* ---------------- SHELL ---------------- */
+// Draws one social-media icon link from SOCIAL data. ⚠️ DO NOT CHANGE.
 function socialSVG(s){ return `<a href="${s.url}" title="${s.name}" aria-label="${s.name}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="${s.icon}"/></svg></a>` }
 
+// HEADER + FOOTER builder - runs on EVERY page. Big but mostly text - read before editing!
+// ✏️ EDIT HERE: nav labels (Home/Notice/...), Tests + About dropdown links,
+//   footer headings, Quick Links, footer description paragraph, "CREATED BY ..." line.
+// ⚠️ "tel:+977..." call-links are HARDCODED here (footer Contact column) - update if phone changes.
+// ⚠️ DO NOT rename the ids: topbar / header / nav / footer. Syllabus+Subjects menus build themselves.
 function shell(){
   const u = DB.user();
   const syl = SYLLABUS.map(s=>`<a href="#/syllabus/${s.id}">${s.emoji||''} ${esc(s.label||s.title)} <small>(${esc(s.year||'2082')})</small></a>`).join('');
   const sub = SUBJECTS.map(s=>`<a href="#/subject/${s.id}">${esc(s.name)} <small>(${s.units.length} units)</small></a>`).join('');
+// ✏️ EDIT HERE: ticker shows first 3 notices - change 3 to show more/fewer.
   const tick = NOTICES.slice(0,3).map(n=>`<b>&#9679;</b>${esc(n.title)}`).join(' &nbsp;&nbsp; ');
 
   $('#topbar').innerHTML = `<div class="wrap">
@@ -401,6 +459,7 @@ function shell(){
     <div class="fmade"><b>CREATED BY SHATRUDHAN SAH</b></div>
   </div>`;
 }
+// Opens/closes one nav dropdown. ⚠️ DO NOT CHANGE.
 function menu(k,e){
   e.preventDefault(); e.stopPropagation();
   const it=document.querySelector('.item[data-m="'+k+'"]');
@@ -409,30 +468,43 @@ function menu(k,e){
   if(!wasOpen) it.classList.add('open');
   document.querySelectorAll('nav.main .mbtn').forEach(b=>b.setAttribute('aria-expanded',b.closest('.item').classList.contains('open')));
 }
+// Closes all nav dropdowns. ⚠️ DO NOT CHANGE.
 function closeMenus(){ document.querySelectorAll('nav.main .item').forEach(x=>x.classList.remove('open'));
   document.querySelectorAll('nav.main .mbtn').forEach(b=>b.setAttribute('aria-expanded','false')); }
+// Hamburger button: opens/closes the mobile menu. ⚠️ DO NOT CHANGE.
 function toggleNav(){
   const n=document.getElementById('nav'); n.classList.toggle('open');
   document.body.classList.toggle('navopen',n.classList.contains('open'));
   const bg=document.querySelector('.burger'); if(bg) bg.setAttribute('aria-expanded',n.classList.contains('open'));
   if(!n.classList.contains('open')) closeMenus();
 }
+// Logs out and goes home. ⚠️ DO NOT CHANGE.
 function logout(){ DB.clearSession(); nav('#/'); }
+// Go to a page (hash). ⚠️ DO NOT CHANGE.
 function nav(h){ if(location.hash===h){ router(); }else{ location.hash=h; } }
+// Redraws the current page keeping scroll position. ⚠️ DO NOT CHANGE.
 function rerender(){ const y=window.scrollY||0; router(); window.scrollTo(0,y); }
 
 /* ---------------- HELPERS ---------------- */
+// Navy page-header banner (breadcrumb + big title) shared by all inner pages. ⚠️ Style it via .pghead in CSS, not here.
 const head = (t,s,c,ico) => `<div class="pghead"><div class="wrap">
   <div class="crumb"><a href="#/">Home</a> / ${c||esc(t)}</div>
   <h1>${ico?ico+' ':''}${esc(t)}</h1>${s?`<p>${esc(s)}</p>`:''}</div></div>`;
+// "Login required" guard: guests get sent to the login page. ⚠️ DO NOT CHANGE.
 function need(){ if(!DB.user()){ location.hash='#/auth?t=login'; return true } return false }
+// Reads this user's completed-units list. ⚠️ DO NOT CHANGE.
 function prog(){ const d=DB.get(); return (d.p2&&d.p2[d.session||'guest'])||{} }
+// Marks one unit complete ("Mark as Complete" button). ⚠️ DO NOT CHANGE.
 function markDone(sid,un){ const d=DB.raw(); const k=DB.skey(); d.p2[k]=d.p2[k]||{}; d.p2[k][sid+'-'+un]=true; DB.set(d); }
+// Subject progress % for the progress bars. ⚠️ DO NOT CHANGE.
 function subjPct(sid){ const p=prog(), sb=SUBJECTS.find(x=>x.id===sid), t=sb?sb.units.length:0; if(!t) return 0; let n=0; for(let i=1;i<=t;i++) if(p[sid+'-'+i]) n++; return Math.round(n/t*100) }
+// AUTO COUNTS: TOT_UNITS (27) and TOT_TESTS (54) computed from SUBJECTS.
+// ⚠️ DO NOT CHANGE - they update themselves when you add/remove subjects/units.
 const TOT_UNITS = SUBJECTS.reduce((a,s)=>a+s.units.length,0);
 const TOT_TESTS = TOT_UNITS*2;
 
 /* smooth-scroll to a section on the current page (used by the stats bar) */
+// Smooth-scroll used by the home stats cards. ⚠️ DO NOT CHANGE.
 function jumpTo(e,id){
   if(e&&e.preventDefault) e.preventDefault();
   const el=document.getElementById(id);
@@ -441,6 +513,9 @@ function jumpTo(e,id){
 }
 
 /* ---------------- PAGES ---------------- */
+// HOME page: slider + stats + syllabus grid + subjects + notices + signup banner.
+// ✏️ EDIT HERE: section headings, CTA texts, "View All Notices". Slide TEXT lives in content.js SLIDES.
+// ✏️ EDIT HERE: home notice count = NOTICES.slice(0,4) inside this function. All other numbers are automatic.
 function pHome(){
   const slides = SLIDES.map(x=>`<div class="slide" style="--g1:${x.g1};--g2:${x.g2}">
       <div class="sbg"></div><div class="sov"></div>
@@ -486,7 +561,10 @@ function pHome(){
     <a class="btn accent" href="#/auth?t=signup">Create free account</a></div></section>`;
 }
 
+// Draws ONE notice card (used on home + notice board).
+// ✏️ EDIT HERE inside: gold "New" badge days (< 30) and preview length (body.slice(0,120)).
 function noticeCard(n){
+// ✏️ EDIT HERE: gold "New" badge for notices younger than 30 days - change 30.
   const isNew = (Date.now()-new Date(n.date))/86400000 < 30;
   return `<a class="card" href="#/notice/${n.id}">
     <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
@@ -495,6 +573,7 @@ function noticeCard(n){
     <h3>${esc(n.title)}</h3><p>${esc(n.body.slice(0,120))}…</p></a>`;
 }
 
+// SYLLABUS track-cards page (built automatically from SYLLABUS). ✏️ Heading texts only.
 function pSyllabusList(){
   return head('Syllabus','Federal and all seven provincial Amin Loksewa syllabus')+
   `<section><div class="wrap"><div class="grid g4 tight">${SYLLABUS.map(s=>`<a class="card syl" href="#/syllabus/${s.id}">
@@ -502,6 +581,7 @@ function pSyllabusList(){
     <span class="mini">View or download &rarr;</span></a>`).join('')}</div></div></section>`;
 }
 
+// ONE syllabus detail page. ✏️ EDIT HERE: "Exam Pattern" line + "Reference Books" list inside. Track data lives in content.js.
 function pSyllabus(id){
   const s = SYLLABUS.find(x=>x.id===id); if(!s) return p404();
   const rows = SUBJECTS.map((sb,i)=>{ const n=sb.units.length; return `<tr><td>${i+1}</td><td>${esc(sb.name)}</td><td>${n}</td><td>${n*5}</td><td>${n*3}</td></tr>`; }).join('');
@@ -522,6 +602,7 @@ function pSyllabus(id){
     </div></div></div></div></section>`;
 }
 
+// SUBJECTS grid page (automatic). ✏️ Heading texts only.
 function pSubjects(){
   return head('Subjects',`Six subjects, ${TOT_UNITS} units — study material and two tests per unit`)+
   `<section><div class="wrap"><div class="grid g3">${SUBJECTS.map(s=>`<a class="card" href="#/subject/${s.id}">
@@ -530,6 +611,7 @@ function pSubjects(){
     <div style="margin-top:8px;font-size:.8rem;color:var(--muted)">${s.units.length} Units &middot; ${subjPct(s.id)}% complete</div></a>`).join('')}</div></div></section>`;
 }
 
+// ONE subject: progress + unit rows with Study/Test buttons. ✏️ Button/label texts only.
 function pSubject(id){
   const s = SUBJECTS.find(x=>x.id===id); if(!s) return p404();
   const p = prog();
@@ -549,6 +631,7 @@ function pSubject(id){
     </div></div></div></section>`;
 }
 
+// UNIT shell: sidebar + Study/Test tabs + Previous/Next buttons. ✏️ Tab/button labels only. ⚠️ Links build themselves.
 function pUnit(sid,un,tab){
   const s = SUBJECTS.find(x=>x.id===sid); if(!s) return p404();
   const u = s.units[un-1]; if(!u) return p404();
@@ -567,6 +650,8 @@ function pUnit(sid,un,tab){
     </div></div></div></section>`;
 }
 
+// STUDY-NOTES layout: outcomes, sections, key points, Mark-done / Go-to-Test / Print buttons.
+// ✏️ EDIT HERE: headings + button TEXTS. The NOTE TEXT ITSELF lives in study/*.js files.
 function unitStudy(s,u,done){
   return `<div class="card prose">
     <h3>Learning Outcomes</h3><ul>${u.outcomes.map(o=>`<li>${esc(o)}</li>`).join('')}</ul>
@@ -579,10 +664,14 @@ function unitStudy(s,u,done){
 }
 
 /* ================= QUIZ ENGINE (one question at a time) ================= */
+// QUIZ memory: deck, answers, flags, timer, mode... reset on every test. ⚠️ DO NOT CHANGE.
 const QZ = { sid:null, un:null, deck:[], i:0, ans:[], flag:[], mode:'practice',
              sec:0, used:0, tid:null, run:false, done:false, revealAll:false,
              retry:false, srcIdx:[] };
 
+// TEST page: MCQ start screen (mode cards + options + Start button) + written test below.
+// ✏️ EDIT HERE: mode names/descriptions, shuffle checkbox defaults ("checked"),
+//   default minutes Math.max(5,...), allowed min="1" max="180", button + instruction texts.
 function quizStart(sid,un){
   const s=SUBJECTS.find(x=>x.id===sid), u=s.units[un-1];
   QZ.sid=sid; QZ.un=un;
@@ -619,6 +708,7 @@ function quizStart(sid,un){
    </div>`;
 }
 
+// Practice/Exam mode toggle. ⚠️ DO NOT CHANGE.
 function qzMode(m){
   QZ.mode=m;
   document.getElementById('m_practice').classList.toggle('on',m==='practice');
@@ -626,8 +716,10 @@ function qzMode(m){
   document.getElementById('m_practice').setAttribute('aria-pressed',m==='practice');
   document.getElementById('m_exam').setAttribute('aria-pressed',m==='exam');
 }
+// Shuffles questions/options fairly. ⚠️ DO NOT CHANGE.
 function qzShuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];} return a; }
 
+// START button: builds the question deck, applies shuffles, starts the clock. ⚠️ DO NOT CHANGE (180-min cap inside).
 function qzBegin(){
   const s=SUBJECTS.find(x=>x.id===QZ.sid), u=s.units[QZ.un-1];
   const shQ=document.getElementById('qsh').checked, shO=document.getElementById('osh').checked;
@@ -642,11 +734,13 @@ function qzBegin(){
   QZ.i=0; QZ.ans=new Array(QZ.deck.length).fill(null); QZ.flag=new Array(QZ.deck.length).fill(false);
   QZ.done=false; QZ.revealAll=false; QZ.used=0; QZ.byTime=false;
   const qminEl=document.getElementById('qmin');
+// Hard cap: 1-180 min (fallback 10). ⚠️ Quiz default minutes are set on the start screen (see quizStart).
   QZ.sec=Math.min(180,Math.max(1,parseInt(qminEl&&qminEl.value)||10))*60;
   qzRender(); qzTimerStart();
 }
 
 /* retry only the questions answered wrongly (and optionally skipped) */
+// "Retry wrong" buttons: re-quiz only missed (+ optionally skipped) questions. ⚠️ DO NOT CHANGE.
 function qzRetryWrong(incSkipped){
   const pick=[];
   QZ.deck.forEach((q,i)=>{
@@ -661,13 +755,16 @@ function qzRetryWrong(incSkipped){
   QZ.retry=true;
   QZ.i=0; QZ.ans=new Array(QZ.deck.length).fill(null); QZ.flag=new Array(QZ.deck.length).fill(false);
   QZ.done=false; QZ.revealAll=false; QZ.used=0; QZ.byTime=false;
+// Retry-wrong timer: 1 min/question, min 3 min. ⚠️ DO NOT CHANGE.
   QZ.sec=Math.max(3,QZ.deck.length)*60;
   qzRender(); qzTimerStart();
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
+// Formats seconds as MM:SS. ⚠️ DO NOT CHANGE.
 function qzTime(t){ t=Math.max(0,t|0); const m=Math.floor(t/60), sec=t%60;
   return String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0'); }
+// Runs the countdown; auto-submits at zero. ⚠️ DO NOT CHANGE.
 function qzTimerStart(){
   if(QZ.done) return;
   clearInterval(QZ.tid); QZ.run=true;
@@ -677,19 +774,25 @@ function qzTimerStart(){
   },1000);
   qzClock();
 }
+// Pauses the countdown. ⚠️ DO NOT CHANGE.
 function qzTimerPause(){ clearInterval(QZ.tid); QZ.run=false; qzClock(); }
+// Pause/Start button. ⚠️ DO NOT CHANGE.
 function qzToggle(){ if(QZ.done) return; QZ.run?qzTimerPause():qzTimerStart(); const b=document.getElementById('qzpause'); if(b) b.textContent=QZ.run?'Pause':'Start'; }
+// Paints the clock. ✏️ EDIT HERE: orange at <=300s (5 min), red at <=60s (1 min) - see the toggles below.
 function qzClock(){
   const c=document.getElementById('qzclock'); if(!c) return;
   c.textContent=qzTime(QZ.sec);
+// ✏️ Clock orange at <=300s (5 min), red at <=60s (1 min) - change numbers to taste.
   c.classList.toggle('warn',QZ.sec<=300&&QZ.sec>60);
   c.classList.toggle('danger',QZ.sec<=60);
   const m=document.getElementById('qzmeta');
   if(m) m.textContent=(QZ.done?'Review':QZ.mode==='exam'?'Exam paper':'Practice')+' · '+(QZ.run?'running':'paused')+' · used '+qzTime(QZ.used);
 }
 
+// Decides when answers show (practice = instantly; exam = after submit). ⚠️ DO NOT CHANGE.
 function qzRevealed(i){ return QZ.done || QZ.revealAll || (QZ.mode==='practice' && QZ.ans[i]!==null); }
 
+// Draws the quiz screen frame (clock bar + jump grid + card). ⚠️ DO NOT CHANGE.
 function qzRender(){
   const root=document.getElementById('quizRoot'); if(!root) return;
   root.innerHTML=`
@@ -709,6 +812,7 @@ function qzRender(){
   qzGrid(); qzCard(); qzClock(); qzProg();
 }
 
+// "Jump to question" number buttons + colors. ⚠️ DO NOT CHANGE.
 function qzGrid(){
   const g=document.getElementById('qzgrid'); if(!g) return;
   g.innerHTML=QZ.deck.map((q,i)=>{
@@ -719,6 +823,7 @@ function qzGrid(){
     return `<button class="${c}" onclick="qzGo(${i})">${i+1}</button>`;
   }).join('');
 }
+// Progress bar + "n of t answered" + live practice score. ⚠️ DO NOT CHANGE.
 function qzProg(){
   const n=QZ.ans.filter(a=>a!==null).length, t=QZ.deck.length;
   const f=document.getElementById('qzfill'); if(f) f.style.width=(n/t*100)+'%';
@@ -728,6 +833,7 @@ function qzProg(){
   else if(l) l.textContent='';
 }
 
+// ONE question card: options (green/red), explanation, Prev/Next/Flag/Save. ✏️ Button + keyboard-hint TEXTS only.
 function qzCard(){
   const c=document.getElementById('qzcard'); if(!c) return;
   const q=QZ.deck[QZ.i], rev=qzRevealed(QZ.i), chosen=QZ.ans[QZ.i];
@@ -763,22 +869,30 @@ function qzCard(){
     <p class="kbd"><kbd>A</kbd>&ndash;<kbd>${String.fromCharCode(64+q.o.length)}</kbd> answer &middot; <kbd>&larr;</kbd> <kbd>&rarr;</kbd> move &middot; <kbd>F</kbd> flag</p>`;
 }
 
+// Tapping an answer (practice locks after one tap). ⚠️ DO NOT CHANGE.
 function qzPick(j){
   if(QZ.done) return;
   if(QZ.mode==='practice' && QZ.ans[QZ.i]!==null) return;
   QZ.ans[QZ.i]=j; qzCard(); qzGrid(); qzProg();
 }
+// Jumps to question i. ⚠️ DO NOT CHANGE.
 function qzGo(i){ if(i<0||i>=QZ.deck.length) return; QZ.i=i; qzCard(); qzGrid(); const qc=document.getElementById('qzcard'); if(qc) window.scrollTo({top:qc.offsetTop-90,behavior:'smooth'}); }
+// Star/flag toggle. ⚠️ DO NOT CHANGE.
 function qzFlag(){ QZ.flag[QZ.i]=!QZ.flag[QZ.i]; qzCard(); qzGrid(); }
+// Maps retry questions back to originals (for saving). ⚠️ DO NOT CHANGE.
 function qzSrc(i){ return QZ.retry ? QZ.srcIdx[i] : i; }
+// "Is this question saved?" check. ⚠️ DO NOT CHANGE.
 function qzSaved(){ return BM.has(QZ.sid,QZ.un,qzSrc(QZ.i)); }
+// Save-for-revision toggle. ⚠️ DO NOT CHANGE.
 function qzSave(){ BM.toggle(QZ.sid,QZ.un,qzSrc(QZ.i),QZ.deck[QZ.i]); qzCard(); }
+// SUBMIT button + "unanswered?" confirmation. ✏️ Confirm WORDING only.
 function qzConfirm(){
   if(QZ.done){ qzResult(); return; }
   const left=QZ.ans.filter(a=>a===null).length;
   if(left&&!confirm(left+' question(s) unanswered. Submit anyway?')) return;
   qzFinish(false);
 }
+// Scores the paper + saves to history (keeps last 50 - see slice(0,50)). ⚠️ DO NOT CHANGE.
 function qzFinish(byTime){
   clearInterval(QZ.tid); QZ.run=false; QZ.done=true; QZ.revealAll=true;
   const s=SUBJECTS.find(x=>x.id===QZ.sid), u=s.units[QZ.un-1];
@@ -789,16 +903,20 @@ function qzFinish(byTime){
   const d=DB.raw(); const rk=DB.skey(); d.r2[rk]=d.r2[rk]||[];
   d.r2[rk].unshift({subject:s.name,unit:u.title,score:sc,total:QZ.deck.length,attempted:att,pct,
     mode:QZ.mode,time:QZ.used,date:new Date().toISOString()});
+// ✏️ EDIT HERE: keeps each user's last 50 results - change 50 to keep more/fewer.
   d.r2[rk]=d.r2[rk].slice(0,50); DB.set(d);
   QZ.byTime=byTime; qzResult();
 }
 
+// RESULT page: PASS/FAIL ring, correct/wrong/skipped/time, retry buttons, answer review.
+// ✏️ EDIT HERE: PASS mark `pass=pct>=40` on the next lines (+ twin `r.pct>=40` in Test History - change BOTH!).
 function qzResult(stay){
   const sy=stay?window.scrollY:0;
   const root=document.getElementById('quizRoot');
   const tot=QZ.deck.length, att=QZ.ans.filter(a=>a!==null).length;
   const sc=QZ.deck.reduce((a,q,i)=>a+(QZ.ans[i]===q.a?1:0),0);
   const wrong=att-sc, skip=tot-att;
+// ✏️ EDIT HERE: PASS mark is 40% - change 40. ALSO change the twin `r.pct>=40` in Test History!
   const pct=tot?Math.round(sc/tot*100):0, pass=pct>=40;
   root.innerHTML=`
    <div class="card results">
@@ -836,6 +954,7 @@ function qzResult(stay){
   if(stay) window.scrollTo(0,sy); else window.scrollTo({top:0,behavior:'smooth'});
 }
 
+// QUIZ keyboard: A-E answer, Left/Right move, F flag. ⚠️ DO NOT CHANGE.
 document.addEventListener('keydown',e=>{
   if(!document.getElementById('qzcard')||QZ.done) return;
   const k=e.key.toUpperCase();
@@ -845,6 +964,7 @@ document.addEventListener('keydown',e=>{
   else if(k==='F') qzFlag();
 });
 
+// TESTS hub: every unit's "Open Tests" link (automatic). ✏️ Heading texts only.
 function pTests(){
   return head('Tests',TOT_TESTS+' tests — one Subject Test and one Objective Test for each of the '+TOT_UNITS+' units')+
   `<section><div class="wrap"><div class="grid g2">${SUBJECTS.map(s=>`<div class="card">
@@ -854,6 +974,7 @@ function pTests(){
       <a class="btn accent sm" href="#/unit/${s.id}/${u.no}/test">Open Tests</a></div>`).join('')}</div>`).join('')}</div></div></section>`;
 }
 
+// NOTICE BOARD + filter buttons. ✏️ Filters MUST stay All/Exam/Result/Admission/Event (must match content.js cats!).
 function pNotices(cat){
   const list = (cat&&cat!=='All') ? NOTICES.filter(n=>n.cat===cat) : NOTICES;
   const cats=['All','Exam','Result','Admission','Event'];
@@ -863,6 +984,7 @@ function pNotices(cat){
     <div class="grid g2">${list.map(noticeCard).join('')||'<p>No notices.</p>'}</div></div></section>`;
 }
 
+// ONE notice + share links + print. ✏️ Contact line + button texts only. Notice TEXT lives in content.js NOTICES.
 function pNotice(id){
   const n=NOTICES.find(x=>x.id==id); if(!n) return p404();
   return head(n.title, fdate(n.date)+' · '+n.cat, `<a href="#/notice">Notice</a> / ${esc(n.title)}`)+
@@ -876,6 +998,7 @@ function pNotice(id){
   </div></div></section>`;
 }
 
+// ABOUT page. ✏️ EDIT HERE: paragraphs + "What We Offer" list. Team PEOPLE live in content.js TEAM.
 function pAbout(){
   return head('About Us','Who we are and what we offer')+
   `<section><div class="wrap">
@@ -907,6 +1030,9 @@ function pAbout(){
   </div></section>`;
 }
 
+// CONTACT page: owner card + address/phone/email + social + message form.
+// ✏️ EDIT HERE: owner name/role, headings, form labels. Photo = SITE.profileImage (content.js).
+// ⚠️ "tel:+977..." call-link is HARDCODED here - update it if the phone number changes.
 function pContact(){
   const ib = '<span style="display:inline-grid;place-items:center;width:30px;height:30px;border-radius:8px;background:var(--amber);color:var(--accent-d);font-size:.95rem;margin-right:9px;vertical-align:middle">';
   return head('Get in Touch','We would be glad to hear from you')+
@@ -946,12 +1072,14 @@ function pContact(){
   </div></section>`;
 }
 
+// FAQ accordion (built automatically from FAQS). ✏️ Heading only.
 function pFaq(){
   return head('FAQ','Frequently asked questions')+
   `<section><div class="wrap" style="max-width:800px">${FAQS.map(f=>`<details class="acc"><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join('')}</div></section>`;
 }
 
 /* ---------------- AUTH ---------------- */
+// LOGIN/SIGNUP tabs + forms. ✏️ EDIT HERE: headings, labels, buttons, swap-links. Password rule minlength="6" (3 places incl. forgot form).
 function pAuth(tab){
   const on = tab==='signup' ? 'signup' : 'login';
   return head('Log in / Sign up','One place to access your account')+
@@ -984,6 +1112,7 @@ function pAuth(tab){
       </form>`}
   </div></div></section>`;
 }
+// Checks email+password, sets session (remember-me or temporary). ✏️ Error MESSAGE only.
 async function doLogin(e){
   e.preventDefault();
   const id=$('#li').value.trim().toLowerCase(), pw=$('#lp').value;
@@ -993,6 +1122,7 @@ async function doLogin(e){
   if(!isSha(u.pass)&&u.pass!==hp){ u.pass=hp; DB.set(d); }
   const rm=document.getElementById('rm'); DB.setSession(u.email, !rm||rm.checked); nav('#/dashboard');
 }
+// Creates the account (+ recovery code), rejects duplicates + mismatched passwords. ✏️ Error MESSAGES only.
 async function doReg(e){
   e.preventDefault();
   const em=$('#re').value.trim().toLowerCase();
@@ -1002,6 +1132,7 @@ async function doReg(e){
   d.users.push({name:$('#rn').value.trim(),email:em,mobile:'',course:'',pass:await sha($('#rp').value),code:rid()});
   DB.set(d); DB.setSession(em,true); nav('#/dashboard');
 }
+// FORGOT-PASSWORD form. ✏️ Labels/buttons only.
 function pForgot(){
   return head('Forgot Password','Reset using your registered email')+
   `<section><div class="wrap"><form class="form" onsubmit="doForgot(event)">
@@ -1011,6 +1142,7 @@ function pForgot(){
     <label for="fp">New Password</label><input id="fp" type="password" minlength="6" autocomplete="new-password" required>
     <button class="btn block" style="margin-top:14px">Reset Password</button></form></div></section>`;
 }
+// Verifies recovery code, sets the new password. ✏️ MESSAGES only.
 async function doForgot(e){
   e.preventDefault(); const d=DB.get();
   const u=d.users.find(x=>x.email===$('#fe').value.trim().toLowerCase());
@@ -1024,6 +1156,9 @@ async function doForgot(e){
 }
 
 /* ---------------- DASHBOARD ---------------- */
+// DASHBOARD: overview + progress + history + profile (login required).
+// ✏️ EDIT HERE: headings, labels, empty texts, "Continue Learning" subjects (SUBJECTS.slice(0,3) inside).
+// ⚠️ PASS/FAIL twin `r.pct>=40` in history MUST match the quiz PASS mark (change both together!).
 function pDash(view){
   if(need()) return '';
   const u=DB.user(), d=DB.get();
@@ -1077,6 +1212,7 @@ function pDash(view){
   return head('Dashboard','Your learning at a glance')+
     `<section><div class="wrap"><div class="split">${nav}<div>${body}</div></div></div></section>`;
 }
+// Saves profile fields (+ new password if typed). ✏️ "Profile saved." message only.
 async function saveProfile(e){
   e.preventDefault(); const d=DB.get(); const u=d.users.find(x=>x.email===d.session);
   if(!u) return;
@@ -1085,6 +1221,7 @@ async function saveProfile(e){
   if($('#pp').value) u.pass=await sha($('#pp').value);
   DB.set(d); $('#m').innerHTML='<div class="msg ok">Profile saved.</div>'; shell();
 }
+// Deletes account + all its data after confirmation. ✏️ Confirm WORDING only.
 function delAcc(){
   if(!confirm('Delete your account and all progress?')) return;
   const d=DB.raw(); const em=DB.get().session;
@@ -1096,6 +1233,7 @@ function delAcc(){
   nav('#/');
 }
 
+// PRIVACY/TERMS/COPYRIGHT/DISCLAIMER renderer. TEXT lives in content.js LEGAL. ✏️ Cross-link labels only.
 function pLegal(key){
   const L = (typeof LEGAL!=='undefined' && LEGAL[key]) ? LEGAL[key] : null;
   if(!L) return p404();
@@ -1109,13 +1247,17 @@ function pLegal(key){
       <a href="#/contact" style="color:var(--primary)">Contact</a></p>
   </div></section>`;
 }
+// "Page Not Found" page. ✏️ Texts only.
 function p404(){ return head('Page Not Found')+`<section><div class="wrap" style="text-align:center">
   <p style="margin-bottom:16px">The page you are looking for does not exist.</p><a class="btn" href="#/">Back to Home</a></div></section>` }
 
 
 /* ---------------- THEME (light / dark) ---------------- */
+// Browser key remembering light/dark choice. ⚠️ DO NOT CHANGE.
 const THEME_KEY='amin-theme';
+// Reads saved theme. ⚠️ DO NOT CHANGE.
 function themeGet(){ try{ return localStorage.getItem(THEME_KEY) }catch(e){ return null } }
+// Applies light/dark (+ phone browser bar color). ⚠️ DO NOT CHANGE (colors live in CSS).
 function themeApply(t){
   document.documentElement.setAttribute('data-theme', t);
   const m=document.querySelector('meta[name="theme-color"]');
@@ -1125,6 +1267,7 @@ function themeApply(t){
     b.setAttribute('title', t==='dark'?'Light mode':'Dark mode');
   });
 }
+// Sun/moon button: flips theme + saves choice. ⚠️ DO NOT CHANGE.
 function themeToggle(){
   const cur=document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';
   const next=cur==='dark'?'light':'dark';
@@ -1133,6 +1276,7 @@ function themeToggle(){
   try{ localStorage.setItem(THEME_KEY,next) }catch(e){}
   themeApply(next);
 }
+// Header sun/moon button picture (two SVGs, CSS shows one). ⚠️ DO NOT CHANGE.
 function themeBtn(){
   return `<button class="tgl theme" onclick="themeToggle()" aria-label="Toggle theme">
     <svg class="i-sun" viewBox="0 0 24 24"><path d="M12 17a5 5 0 100-10 5 5 0 000 10zm0 2.5a1 1 0 011 1V22a1 1 0 11-2 0v-1.5a1 1 0 011-1zm0-19a1 1 0 011 1V3a1 1 0 11-2 0V1.5a1 1 0 011-1zM20.5 11H22a1 1 0 110 2h-1.5a1 1 0 110-2zM2 11h1.5a1 1 0 110 2H2a1 1 0 110-2zm15.8-6.3a1 1 0 011.4 1.4l-1 1a1 1 0 11-1.5-1.4zM4.8 17.8a1 1 0 011.4 1.4l-1 1a1 1 0 11-1.4-1.4zm14.4 1.4a1 1 0 01-1.4 1.4l-1-1a1 1 0 011.4-1.4zM6.2 4.7a1 1 0 01-1.4 1.5l-1-1a1 1 0 011.4-1.4z"/></svg>
@@ -1141,7 +1285,9 @@ function themeBtn(){
 }
 
 /* ---------------- BACK TO TOP ---------------- */
+// Back-to-top smooth scroll. ⚠️ DO NOT CHANGE.
 function toTop(){ window.scrollTo({top:0,behavior:'smooth'}); }
+// Shows the back-to-top button after scrolling. ✏️ EDIT HERE: appear-after `y>320` (pixels) below.
 function initTop(){
   const b=document.getElementById('toTop'); if(!b) return;
   const upd=()=>{
@@ -1156,6 +1302,8 @@ function initTop(){
 }
 
 /* ---------------- ROUTER ---------------- */
+// PAGE ROUTER: reads the #... address and draws the matching page. Stops quiz clock + slider on move.
+// ✏️ New pages/routes need coding help - see the route map above switch(p[0]) below. ⚠️ Do not reorder cases carelessly.
 function router(){
   clearInterval(QZ.tid); QZ.run=false; /* stop any running quiz clock when navigating */
   clearInterval(timer);                 /* stop the hero slider when leaving home */
@@ -1167,6 +1315,10 @@ function router(){
   shell();
 
   let html;
+// ---- ROUTE MAP (address -> page function). 23 routes: ----
+// #/ =home #/syllabus #/subjects #/subject/<id> #/unit/<sid>/<no>/study|test #/tests
+// #/notice #/notice/<id> #/about #/contact #/faq #/search #/saved #/auth #/login #/register
+// #/forgot #/dashboard(+/progress|/history|/profile) #/privacy #/terms #/copyright #/disclaimer, else 404.
   switch(p[0]){
     case undefined: html=pHome(); break;
     case 'syllabus': html = p[1]?pSyllabus(p[1]):pSyllabusList(); break;
@@ -1202,7 +1354,9 @@ function router(){
 }
 
 /* ---------------- SLIDER ---------------- */
+// Slider memory: current slide (idx) + auto-play clock (timer). ⚠️ DO NOT CHANGE.
 let idx=0, timer=null;
+// Shows slide number i + lights its dot. ⚠️ DO NOT CHANGE.
 function goTo(i){
   idx=(i+SLIDES.length)%SLIDES.length;
   const el=document.getElementById('slides'); if(!el) return;
@@ -1210,8 +1364,11 @@ function goTo(i){
   el.querySelectorAll('.slide').forEach((d,j)=>d.classList.toggle('act',j===idx));
   document.querySelectorAll('#dots button').forEach((d,j)=>d.classList.toggle('on',j===idx));
 }
+// Arrow buttons: move n slides + restart auto-play. ⚠️ DO NOT CHANGE.
 function go(n){ goTo(idx+n); restart(); }
+// (Re)starts auto-play. ✏️ EDIT HERE: `5000` = slide changes every 5 seconds (milliseconds).
 function restart(){ clearInterval(timer); timer=setInterval(()=>goTo(idx+1),5000) }
+// Starts the slider: first slide + auto-play + hover-pause + mobile swipe + arrow keys. ⚠️ DO NOT CHANGE.
 function initSlider(){
   idx=0; goTo(0); restart();
   const s=document.getElementById('slider'); if(!s) return;
@@ -1232,17 +1389,21 @@ function initSlider(){
   document.onkeydown=e=>{ if(!document.getElementById('slides')) return; if(e.key==='ArrowLeft')go(-1); if(e.key==='ArrowRight')go(1); };
 }
 
+// Closes menus/dropdowns on outside-tap. ⚠️ DO NOT CHANGE.
 document.addEventListener('click',e=>{
   if(!e.target.closest('#uwrap')) document.getElementById('uwrap')?.classList.remove('open');
   if(!e.target.closest('nav.main .item')) closeMenus();
   const nv=document.getElementById('nav');
   if(nv&&nv.classList.contains('open')&&!e.target.closest('header')) toggleNav();
 });
+// Escape key closes mobile menu / dropdowns. ⚠️ DO NOT CHANGE.
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){ const nv=document.getElementById('nav'); if(nv&&nv.classList.contains('open')) toggleNav(); else closeMenus(); }
 });
+// Any #... address change redraws the page. ⚠️ DO NOT CHANGE.
 window.addEventListener('hashchange',router);
 
+// STARTUP: apply saved theme, watch phone dark-mode, back-to-top button, draw first page. ⚠️ DO NOT CHANGE.
 /* boot */
 themeApply(document.documentElement.getAttribute('data-theme')||'light');
 if(window.matchMedia){
@@ -1252,6 +1413,7 @@ if(window.matchMedia){
 }
 initTop();
 router();
+// Auto-focuses the search box on the search page. ⚠️ DO NOT CHANGE.
 window.addEventListener('hashchange',()=>{
   if(location.hash.indexOf('#/search')===0){ const i=document.getElementById('sq'); if(i&&!i.value) i.focus(); }
 });
