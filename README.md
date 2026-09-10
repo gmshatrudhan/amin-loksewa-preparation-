@@ -1,3 +1,7 @@
+> 💬 **Commented edition:** every code file in this copy has beginner-friendly
+> comments marked ✏️ EDIT HERE / ⚠️ DO NOT CHANGE. The code itself is
+> identical to the original - only comments were added.
+>
 # Amin Loksewa Preparation — Website Files
 
 Single-page website split into easy-to-edit files. Works by just opening `index.html`
