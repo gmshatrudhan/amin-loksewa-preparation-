@@ -21,19 +21,21 @@
 
 
 function mkUnits(subject, names){
-  return names.map((n,i)=>({
+  return names.map((n,i)=>{
+    const ov=(window.STUDY&&window.STUDY[n])||{};
+    return {
     no:i+1, title:n,
-    outcomes:[
+    outcomes:ov.outcomes||[
       "Understand the key ideas of "+n+".",
       "Apply the concepts to Loksewa exam questions.",
       "Revise quickly using the key points below."
     ],
-    content:[
+    content:ov.content||[
       {h:"Introduction", p:"This unit covers "+n+" as prescribed in the "+subject+" section of the Amin syllabus."},
       {h:"Main Discussion", p:"Study the definitions, classifications, formulas and procedures. Practise past questions and note the exact terminology used in the syllabus."},
       {h:"Summary", p:"Revise the key points, then attempt both the written Subject Test and the objective MCQ Test for this unit."}
     ],
-    keypoints:[
+    keypoints:ov.keypoints||[
       n+" is part of the "+subject+" paper.",
       "Focus on definitions, procedures and formulas.",
       "Attempt both tests after studying."
@@ -47,7 +49,7 @@ function mkUnits(subject, names){
       const b = window.EXTRA && window.EXTRA[n];
       return (b && b.mcq) ? b.mcq : [];
     }
-  }));
+  }});
 }
 
 const SUBJECTS = [
