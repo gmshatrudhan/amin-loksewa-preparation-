@@ -15,9 +15,10 @@ Single-page website split into easy-to-edit files. Works by just opening `index.
 | `css/style.css` | All design & colours (`:root` variables at top) | Change colours, fonts, sizes |
 | `js/app.js` | App logic (menus, quiz, login, pages) | Change how things work |
 | `js/content.js` | **Site texts**: name, phone, email, address, notices, FAQs, team, home slides, legal pages | Update any text / notice / member |
-| `questions/mcq-sub1.js` … `mcq-sub6.js` | **MCQ questions**, one file per subject | Add / fix objective questions |
-| `questions/subjective-sub1.js` … `subjective-sub6.js` | **Written questions**, one file per subject | Add / fix subjective questions |
-| `study/sub1-unit1.js` … `study/sub6-unit4.js` | **Study material**, one file per unit (all 27) | Write real notes per unit |
+| `mcq/mcq-<subject>-<unit>.js` (27 files) | **MCQ questions**, one file per unit | Add / fix objective questions |
+| `js/data-manifest.js` | **Map**: every unit → its 3 files (auto-generated, do not hand-edit) | Never — rerun `migrate_units.py` after adding units |
+| `subjective/subjective-<subject>-<unit>.js` (27 files) | **Written questions**, one file per unit | Add / fix subjective questions |
+| `study/study-<subject>-<unit>.js` (27 files) | **Study material**, one file per unit | Write real notes per unit |
 | `images/` | `profile.jpg` (contact/owner photo), `team-*.jpg` (team members) | Replace photos (keep the same file names!) |
 | `manifest.json` | Phone "add to home screen" info | Rarely |
 
@@ -26,7 +27,7 @@ sub4 Land Administration, Cadastral Survey and Land Records · sub5 Mathematics 
 
 ## ✏️ How to edit questions (MCQ)
 
-Open e.g. `questions/mcq-sub1.js`. Each question looks like this:
+Open the unit's file, e.g. `mcq/mcq-surveying-methodology-and-mapping-chain-survey.js`. Each question looks like this:
 
 ```js
 {q:"Nepal's longest river?", o:["Koshi", "Gandaki", "Karnali", "Bagmati"], a:2, e:"Karnali (~507 km) is the longest."},
@@ -42,7 +43,7 @@ Subjective files use `{q:"...", marks:10, hint:"...model answer / hints..."}`.
 
 ## 📖 How to edit study material
 
-Open e.g. `study/sub1-unit1.js`. It has three parts: `"outcomes"` (what the student will
+Open the unit's file, e.g. `study/study-surveying-methodology-and-mapping-chain-survey.js`. It has three parts: `"outcomes"` (what the student will
 learn), `"content"` (study sections, each with `"h"` = heading and `"p"` = paragraph) and
 `"keypoints"` (quick-revision bullets). Just edit the text between quotes; copy a
 `{"h": "...", "p": "..."}` block to add a section (keep commas between blocks).
@@ -81,6 +82,7 @@ To update the site later, just upload/commit the changed files again.
 
 ## 💡 Notes
 
-- Keep file names and folder structure exactly as they are — `index.html` refers to them by path.
+- Keep file names and folder structure exactly as they are — `js/data-manifest.js` refers to them by path.
+- Each unit page loads ONLY its own 3 files (fast); the search page loads all 81 once.
 - You can preview offline: just double-click `index.html` (works without internet, except the map/social links).
 - Login accounts & progress are stored in each visitor's own browser (localStorage demo auth).

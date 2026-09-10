@@ -115,57 +115,8 @@ if(t==='dark')document.head.insertAdjacentHTML('beforeend','<style>body{backgrou
 </button>
 <!-- ⚠️ ORDER MATTERS! content.js FIRST (site texts) ... -->
   <script src="js/content.js"></script>
-<!-- ... then the 12 QUESTION files (MCQ + written per subject) ... -->
-  <script src="questions/mcq-sub1.js"></script>
-  <script src="questions/subjective-sub1.js"></script>
-<!-- Subject 2 questions (MCQ + written) ⬇ -->
-  <script src="questions/mcq-sub2.js"></script>
-  <script src="questions/subjective-sub2.js"></script>
-<!-- Subject 3 questions (MCQ + written) ⬇ -->
-  <script src="questions/mcq-sub3.js"></script>
-  <script src="questions/subjective-sub3.js"></script>
-<!-- Subject 4 questions (MCQ + written) ⬇ -->
-  <script src="questions/mcq-sub4.js"></script>
-  <script src="questions/subjective-sub4.js"></script>
-<!-- Subject 5 questions (MCQ + written) ⬇ -->
-  <script src="questions/mcq-sub5.js"></script>
-  <script src="questions/subjective-sub5.js"></script>
-<!-- Subject 6 questions (MCQ + written) ⬇ -->
-  <script src="questions/mcq-sub6.js"></script>
-  <script src="questions/subjective-sub6.js"></script>
-<!-- ... then the 27 STUDY files (notes per unit) ... -->
-  <script src="study/sub1-unit1.js"></script>
-  <script src="study/sub1-unit2.js"></script>
-  <script src="study/sub1-unit3.js"></script>
-  <script src="study/sub1-unit4.js"></script>
-  <script src="study/sub1-unit5.js"></script>
-<!-- Subject 2 study notes ⬇ -->
-  <script src="study/sub2-unit1.js"></script>
-  <script src="study/sub2-unit2.js"></script>
-  <script src="study/sub2-unit3.js"></script>
-  <script src="study/sub2-unit4.js"></script>
-  <script src="study/sub2-unit5.js"></script>
-<!-- Subject 3 study notes ⬇ -->
-  <script src="study/sub3-unit1.js"></script>
-  <script src="study/sub3-unit2.js"></script>
-  <script src="study/sub3-unit3.js"></script>
-  <script src="study/sub3-unit4.js"></script>
-  <script src="study/sub3-unit5.js"></script>
-<!-- Subject 4 study notes ⬇ -->
-  <script src="study/sub4-unit1.js"></script>
-  <script src="study/sub4-unit2.js"></script>
-  <script src="study/sub4-unit3.js"></script>
-<!-- Subject 5 study notes ⬇ -->
-  <script src="study/sub5-unit1.js"></script>
-  <script src="study/sub5-unit2.js"></script>
-  <script src="study/sub5-unit3.js"></script>
-  <script src="study/sub5-unit4.js"></script>
-  <script src="study/sub5-unit5.js"></script>
-<!-- Subject 6 study notes ⬇ -->
-  <script src="study/sub6-unit1.js"></script>
-  <script src="study/sub6-unit2.js"></script>
-  <script src="study/sub6-unit3.js"></script>
-  <script src="study/sub6-unit4.js"></script>
+<!-- ... then the DATA MANIFEST (map of the 81 per-unit files; each page lazy-loads only its own) ... -->
+  <script src="js/data-manifest.js"></script>
 <!-- ... and app.js LAST (it needs everything above). ⚠️ NEVER move app.js up! -->
   <script src="js/app.js"></script>
 </body>
