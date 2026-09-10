@@ -7,7 +7,7 @@
    plus the few settings this file points you to. All other text lives in js/content.js.
    ==================================================================== */
 /* ================= APP (design + logic). Question files + content.js load before this. ================= */
-// NOTE: the two banners below are outdated leftovers - questions now live in questions/*.js
+// NOTE: the two banners below are outdated leftovers - questions now live in mcq/*.js + subjective/*.js
 /* Inline question bank (ships with the page; no extra download). */
 /* ==== FULL QUESTION BANK: 5 MCQ + 3 written per unit, all with explanations ==== */
 
@@ -31,29 +31,38 @@
 
 
 // Build the unit objects for ONE subject from its list of unit titles.
-// Merges your study/*.js notes over the built-in default texts (the "ov.* || [...]" lines).
+// Study notes + questions resolve LIVE from the per-unit files (the get ...() lines below).
 // ⚠️ DO NOT CHANGE this function - edit unit TITLES in SUBJECTS below instead.
 function mkUnits(subject, names){
-  return names.map((n,i)=>{
-    const ov=(window.STUDY&&window.STUDY[n])||{};
-    return {
+  return names.map((n,i)=>({
     no:i+1, title:n,
-    outcomes:ov.outcomes||[
-      "Understand the key ideas of "+n+".",
-      "Apply the concepts to Loksewa exam questions.",
-      "Revise quickly using the key points below."
-    ],
-    content:ov.content||[
-      {h:"Introduction", p:"This unit covers "+n+" as prescribed in the "+subject+" section of the Amin syllabus."},
-      {h:"Main Discussion", p:"Study the definitions, classifications, formulas and procedures. Practise past questions and note the exact terminology used in the syllabus."},
-      {h:"Summary", p:"Revise the key points, then attempt both the written Subject Test and the objective MCQ Test for this unit."}
-    ],
-    keypoints:ov.keypoints||[
-      n+" is part of the "+subject+" paper.",
-      "Focus on definitions, procedures and formulas.",
-      "Attempt both tests after studying."
-    ],
-    /* questions resolve from the inline bank (window.EXTRA) by unit title */
+    /* study notes resolve LIVE from window.STUDY (lazy-loaded per unit file);
+       the built-in defaults below show only if that unit's study file is missing */
+    get outcomes(){
+      const ov=(window.STUDY&&window.STUDY[n])||{};
+      return ov.outcomes||[
+        "Understand the key ideas of "+n+".",
+        "Apply the concepts to Loksewa exam questions.",
+        "Revise quickly using the key points below."
+      ];
+    },
+    get content(){
+      const ov=(window.STUDY&&window.STUDY[n])||{};
+      return ov.content||[
+        {h:"Introduction", p:"This unit covers "+n+" as prescribed in the "+subject+" section of the Amin syllabus."},
+        {h:"Main Discussion", p:"Study the definitions, classifications, formulas and procedures. Practise past questions and note the exact terminology used in the syllabus."},
+        {h:"Summary", p:"Revise the key points, then attempt both the written Subject Test and the objective MCQ Test for this unit."}
+      ];
+    },
+    get keypoints(){
+      const ov=(window.STUDY&&window.STUDY[n])||{};
+      return ov.keypoints||[
+        n+" is part of the "+subject+" paper.",
+        "Focus on definitions, procedures and formulas.",
+        "Attempt both tests after studying."
+      ];
+    },
+    /* questions resolve LIVE from window.EXTRA (lazy-loaded per unit file) by unit title */
     get subjective(){
       const b = window.EXTRA && window.EXTRA[n];
       return (b && b.sub) ? b.sub : [];
@@ -62,7 +71,7 @@ function mkUnits(subject, names){
       const b = window.EXTRA && window.EXTRA[n];
       return (b && b.mcq) ? b.mcq : [];
     }
-  }});
+  }));
 }
 
 // ✏️ EDIT HERE - ALL SUBJECTS + UNIT TITLES (your most-edited code in this file!) //
@@ -70,7 +79,8 @@ function mkUnits(subject, names){
 //   ✅ SAFE: rename name:"...", icon:"..." (any emoji), color:"#..." (any color), desc:"..." text.
 //   ✅ SAFE: reorder subjects (move whole blocks) or unit titles (move lines inside mkUnits([...])).
 //   ⚠️ NEVER change id:"subN" - links + saved progress use it. Adding/removing needs 7 steps (see manual §5.4).
-//   ⚠️ DANGER: every unit title MUST match 4 files exactly: here + questions/mcq + questions/subjective + study file.
+//   ⚠️ DANGER: every unit title MUST match its 3 per-unit files exactly: the mcq- + subjective- + study- files
+//   named after subject+unit (full map: js/data-manifest.js). Rename a title = rename in all 4 places.
 const SUBJECTS = [
   { id:"sub1", name:"General Awareness", icon:"🌏", color:"#0E3A5F",  // ✏️ rename name/icon/color/desc - ⚠️ NEVER change id
     desc:"नेपालको भूगोल, इतिहास, अर्थतन्त्र, विज्ञान, संविधान र समसामयिक विषयहरू।",
@@ -239,6 +249,65 @@ const BM = {
   remove(id){ BM.save(BM.all().filter(b=>b.id!==id)) },
   clear(){ BM.save([]) }
 };
+
+// Loads ONLY the data files each page needs: unit page = its 3 files, subject = its files, search = all (once).
+// ⚠️ DO NOT CHANGE the loading logic. The unit-to-file MAP is js/data-manifest.js (auto-generated).
+/* ---------------- LAZY DATA LOADER ----------------
+   Unit data lives in 81 per-unit files (see js/data-manifest.js: unit -> its
+   mcq + subjective + study files). Each page loads ONLY what it needs:
+     unit page    -> that unit's 3 files          (needUnit)
+     subject page -> that subject's files         (needSubject, for unit descriptions)
+     search page  -> ALL files once               (needAll, to index every question)
+     other pages  -> ZERO data files (fast!)
+   Files load in parallel; every file registers exactly one unit key, so order
+   never matters. A file that fails (offline?) resolves null and pages degrade
+   gracefully (empty test shows a friendly retry box - see qzBegin). */
+const DATA_LOADED = new Set();   /* finished files (never load twice) */
+const DATA_LOADING = {};         /* src -> in-flight Promise (dedupes parallel asks) */
+function loadScript(src){
+  if(DATA_LOADED.has(src)) return Promise.resolve(src);
+  if(DATA_LOADING[src]) return DATA_LOADING[src];
+  const pr = new Promise(resolve=>{
+    const el=document.createElement('script');
+    el.src=src; el.async=true;
+    el.onload=()=>{ DATA_LOADED.add(src); delete DATA_LOADING[src]; resolve(src); };
+    el.onerror=()=>{ delete DATA_LOADING[src]; resolve(null); };
+    document.head.appendChild(el);
+  });
+  DATA_LOADING[src]=pr; return pr;
+}
+function unitFiles(sid,un){
+  const d=window.DATA_FILES, s=d&&d[sid], e=s&&s[String(un)];
+  return e?[e.mcq,e.sub,e.study]:[];
+}
+async function needUnit(sid,un){
+  const files=unitFiles(sid,un).filter(f=>!DATA_LOADED.has(f));
+  if(!files.length) return true;
+  const r=await Promise.all(files.map(loadScript));
+  SEARCH_IX=null; /* new data arrived: cached search index must rebuild */
+  return r.every(Boolean);
+}
+async function needSubject(sid){
+  const d=window.DATA_FILES, s=d&&d[sid]; if(!s) return true;
+  const files=[];
+  Object.keys(s).sort((a,b)=>a-b).forEach(k=>{ files.push(s[k].mcq,s[k].sub,s[k].study); });
+  const missing=files.filter(f=>!DATA_LOADED.has(f));
+  if(!missing.length) return true;
+  const r=await Promise.all(missing.map(loadScript));
+  SEARCH_IX=null;
+  return r.every(Boolean);
+}
+async function needAll(){
+  const d=window.DATA_FILES||{}, files=[];
+  Object.keys(d).sort().forEach(sid=>{
+    Object.keys(d[sid]).sort((a,b)=>a-b).forEach(k=>{ const e=d[sid][k]; files.push(e.mcq,e.sub,e.study); });
+  });
+  const missing=files.filter(f=>!DATA_LOADED.has(f));
+  if(!missing.length) return true;
+  const r=await Promise.all(missing.map(loadScript));
+  SEARCH_IX=null;
+  return r.every(Boolean);
+}
 
 /* ---------------- SEARCH ---------------- */
 // Search memory cache (built once, reused). ⚠️ DO NOT CHANGE.
@@ -724,6 +793,12 @@ function qzBegin(){
   const s=SUBJECTS.find(x=>x.id===QZ.sid), u=s.units[QZ.un-1];
   const shQ=document.getElementById('qsh').checked, shO=document.getElementById('osh').checked;
   let list=u.objective.map((q,i)=>({...q, topic:u.title, _i:i}));
+  if(!list.length){ /* questions missing (unit file failed to load?) - explain, never crash */
+    document.getElementById('quizRoot').innerHTML=`<div class="card"><h3>Questions could not be loaded</h3>
+      <p style="color:var(--muted)">Check your connection and try again.</p>
+      <button class="btn" style="margin-top:12px" onclick="rerender()">Try again</button></div>`;
+    return;
+  }
   if(shQ) list=qzShuffle(list);
   QZ.deck=list.map(q=>{
     if(!shO) return {...q, o:q.o.slice()};
@@ -1302,9 +1377,11 @@ function initTop(){
 }
 
 /* ---------------- ROUTER ---------------- */
-// PAGE ROUTER: reads the #... address and draws the matching page. Stops quiz clock + slider on move.
+let NAV_SEQ=0; /* navigation token: a stale async load never paints over a newer page */
+// PAGE ROUTER: reads the #... address, lazy-loads that page's unit files, then draws the page. Stops quiz clock + slider on move.
 // ✏️ New pages/routes need coding help - see the route map above switch(p[0]) below. ⚠️ Do not reorder cases carelessly.
-function router(){
+async function router(){
+  const my=++NAV_SEQ;
   clearInterval(QZ.tid); QZ.run=false; /* stop any running quiz clock when navigating */
   clearInterval(timer);                 /* stop the hero slider when leaving home */
   document.onkeydown=null;              /* release the slider arrow-key handler */
@@ -1312,6 +1389,14 @@ function router(){
   const qi=raw.indexOf('?'); const path=qi<0?raw:raw.slice(0,qi); const qs=qi<0?'':raw.slice(qi+1);
   const q=new URLSearchParams(qs||'');
   const p=path.split('/').filter(Boolean);
+  /* lazy data: fetch ONLY this page's unit files before rendering (the old page
+     stays visible meanwhile, so there is no flash). Unknown ids = no-op. */
+  try{
+    if(p[0]==='unit'&&p[1]) await needUnit(p[1],+p[2]);
+    else if(p[0]==='subject'&&p[1]) await needSubject(p[1]);
+    else if(p[0]==='search') await needAll();
+  }catch(e){/* fail soft: pages render with whatever data is already present */}
+  if(my!==NAV_SEQ) return; /* user already navigated onward - drop this render */
   shell();
 
   let html;
