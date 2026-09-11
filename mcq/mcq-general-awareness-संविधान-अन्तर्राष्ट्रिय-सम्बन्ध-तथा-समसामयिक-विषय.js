@@ -9,8 +9,11 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "संविधान, अन्तर्राष्ट्रिय सम्बन्ध तथा समसामयिक विषय" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["संविधान, अन्तर्राष्ट्रिय सम्बन्ध तथा समसामयिक विषय"] = window.EXTRA["संविधान, अन्तर्राष्ट्रिय सम्बन्ध तथा समसामयिक विषय"] || {};
 window.EXTRA["संविधान, अन्तर्राष्ट्रिय सम्बन्ध तथा समसामयिक विषय"].mcq = [
       {q:"नेपालको वर्तमान संविधान कहिले जारी भयो?", o:["२०७२ असोज ३", "२०६५ जेठ १५", "२०७० वैशाख १", "२०७४ मंसिर २०"], a:0, e:"दोस्रो संविधानसभाले २०७२ साल असोज ३ गते (२० सेप्टेम्बर २०१५) नेपालको संविधान जारी गरेको हो। यो नेपालको सातौँ संविधान हो।"},

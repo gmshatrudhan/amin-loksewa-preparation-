@@ -9,8 +9,11 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "नेपालको इतिहास, संस्कृति तथा समाज" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["नेपालको इतिहास, संस्कृति तथा समाज"] = window.EXTRA["नेपालको इतिहास, संस्कृति तथा समाज"] || {};
 window.EXTRA["नेपालको इतिहास, संस्कृति तथा समाज"].mcq = [
       {q:"आधुनिक नेपालको एकीकरण कसले गरे?", o:["राम शाह", "पृथ्वीनारायण शाह", "जंगबहादुर राणा", "अंशुवर्मा"], a:1, e:"गोरखाका राजा पृथ्वीनारायण शाहले सन् १७४४ (वि.सं. १८०१) मा एकीकरण अभियान सुरु गरी सन् १७६८ मा काठमाडौँ कब्जा गरे र आधुनिक नेपालको जग बसाले।"},

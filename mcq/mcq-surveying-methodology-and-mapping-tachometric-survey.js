@@ -9,8 +9,11 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "Tachometric Survey" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["Tachometric Survey"] = window.EXTRA["Tachometric Survey"] || {};
 window.EXTRA["Tachometric Survey"].mcq = [
       {q:"In tacheometry, the multiplying constant of an ordinary tacheometer is usually:", o:["50", "100", "200", "10"], a:1, e:"For a theodolite fitted with a stadia diaphragm, the multiplying constant f/i is normally 100. The additive constant is about 0.1 to 0.3 m for external focusing and nearly zero for internal focusing telescopes."},

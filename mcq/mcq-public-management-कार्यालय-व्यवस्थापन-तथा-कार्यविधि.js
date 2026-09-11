@@ -9,8 +9,11 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "कार्यालय व्यवस्थापन तथा कार्यविधि" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["कार्यालय व्यवस्थापन तथा कार्यविधि"] = window.EXTRA["कार्यालय व्यवस्थापन तथा कार्यविधि"] || {};
 window.EXTRA["कार्यालय व्यवस्थापन तथा कार्यविधि"].mcq = [
       {q:"कार्यालयका कागजातलाई व्यवस्थित रूपमा राख्ने र सुरक्षित गर्ने कार्यलाई के भनिन्छ?", o:["बजेट", "फाइलिङ", "मस्यौदा", "लेखापरीक्षण"], a:1, e:"फाइलिङ भनेको अभिलेख र कागजातलाई व्यवस्थित रूपमा वर्गीकरण गरी सुरक्षित राख्ने कार्य हो, जसले गर्दा आवश्यक परेको बेला जुनसुकै कागज तुरुन्त फेला पार्न सकियोस्।"},

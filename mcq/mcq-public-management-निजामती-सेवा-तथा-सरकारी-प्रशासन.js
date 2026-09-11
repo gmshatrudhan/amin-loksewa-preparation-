@@ -9,8 +9,11 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "निजामती सेवा तथा सरकारी प्रशासन" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["निजामती सेवा तथा सरकारी प्रशासन"] = window.EXTRA["निजामती सेवा तथा सरकारी प्रशासन"] || {};
 window.EXTRA["निजामती सेवा तथा सरकारी प्रशासन"].mcq = [
       {q:"नेपालको निजामती सेवा ऐन कहिले जारी भयो?", o:["२०६४ साल", "२०७४ साल", "२०४९ साल", "२०५३ साल"], a:2, e:"निजामती सेवा ऐन, २०४९ र निजामती सेवा नियमावली, २०५० ले नेपाली निजामती कर्मचारीको भर्ना, सेवाका सर्त, आचरण र अनुशासनसम्बन्धी व्यवस्था गर्दछन्।"},

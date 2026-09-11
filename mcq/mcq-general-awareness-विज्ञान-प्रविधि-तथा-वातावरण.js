@@ -9,8 +9,11 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "विज्ञान, प्रविधि तथा वातावरण" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["विज्ञान, प्रविधि तथा वातावरण"] = window.EXTRA["विज्ञान, प्रविधि तथा वातावरण"] || {};
 window.EXTRA["विज्ञान, प्रविधि तथा वातावरण"].mcq = [
       {q:"हरितगृह प्रभावको प्रमुख कारक ग्यास कुन हो?", o:["हाइड्रोजन", "अक्सिजन", "नाइट्रोजन", "कार्बनडाइअक्साइड"], a:3, e:"मानवीय क्रियाकलापबाट उत्पन्न हुने प्रमुख हरितगृह ग्यास कार्बनडाइअक्साइड हो। अन्य हरितगृह ग्यासमा मिथेन, नाइट्रस अक्साइड, जलवाष्प र क्लोरोफ्लोरोकार्बन पर्दछन्।"},

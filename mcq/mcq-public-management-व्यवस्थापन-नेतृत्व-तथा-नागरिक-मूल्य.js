@@ -9,8 +9,11 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "व्यवस्थापन, नेतृत्व तथा नागरिक मूल्य" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["व्यवस्थापन, नेतृत्व तथा नागरिक मूल्य"] = window.EXTRA["व्यवस्थापन, नेतृत्व तथा नागरिक मूल्य"] || {};
 window.EXTRA["व्यवस्थापन, नेतृत्व तथा नागरिक मूल्य"].mcq = [
       {q:"निम्नमध्ये कुन व्यवस्थापनको कार्य हो?", o:["खरिद मात्र", "योजना निर्माण", "उपभोग", "विज्ञापन मात्र"], a:1, e:"व्यवस्थापनका आधारभूत कार्य योजना निर्माण, सङ्गठन, कर्मचारी व्यवस्थापन, निर्देशन र नियन्त्रण हुन्। योजना निर्माण पहिलो र सबैभन्दा आधारभूत कार्य हो।"},

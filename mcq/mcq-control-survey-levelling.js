@@ -9,8 +9,11 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "Levelling" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["Levelling"] = window.EXTRA["Levelling"] || {};
 window.EXTRA["Levelling"].mcq = [
       {q:"Levelling is the process of determining:", o:["Areas of parcels", "Horizontal distances", "Relative heights or elevations of points", "Horizontal angles"], a:2, e:"Levelling determines the difference in elevation between points, or their heights above a datum such as mean sea level."},

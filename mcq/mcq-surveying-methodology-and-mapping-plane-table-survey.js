@@ -9,8 +9,11 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "Plane Table Survey" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["Plane Table Survey"] = window.EXTRA["Plane Table Survey"] || {};
 window.EXTRA["Plane Table Survey"].mcq = [
       {q:"In plane table surveying, orienting the table means:", o:["Setting the table so that plotted lines are parallel to the corresponding ground lines", "Centring the table", "Focusing the alidade", "Levelling the table"], a:0, e:"Orientation places the table in the same directional position it occupied at previous stations, so that all plotted rays are parallel to the corresponding ground directions. It is done by trough compass or by back sighting."},

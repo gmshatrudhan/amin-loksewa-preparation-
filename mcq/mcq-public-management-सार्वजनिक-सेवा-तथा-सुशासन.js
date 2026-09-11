@@ -9,8 +9,11 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "सार्वजनिक सेवा तथा सुशासन" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["सार्वजनिक सेवा तथा सुशासन"] = window.EXTRA["सार्वजनिक सेवा तथा सुशासन"] || {};
 window.EXTRA["सार्वजनिक सेवा तथा सुशासन"].mcq = [
       {q:"नेपालको सुशासन (व्यवस्थापन तथा सञ्चालन) ऐन कहिले जारी भयो?", o:["२०६४ साल", "२०७० साल", "२०७४ साल", "२०५५ साल"], a:0, e:"सुशासन (व्यवस्थापन तथा सञ्चालन) ऐन, २०६४ ले नेपालमा जवाफदेही, पारदर्शी, सहभागितामूलक र नागरिकमैत्री सार्वजनिक प्रशासनको व्यवस्था गरेको छ।"},

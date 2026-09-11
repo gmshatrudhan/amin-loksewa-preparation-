@@ -9,8 +9,11 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "Land Records" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["Land Records"] = window.EXTRA["Land Records"] || {};
 window.EXTRA["Land Records"].mcq = [
       {q:"In Nepal, the legal certificate showing ownership of a land parcel is commonly called:", o:["Kitta Napi", "Lal Purja", "Namsari", "Faraad"], a:1, e:"Lal Purja is the land ownership certificate issued by the Land Revenue Office. Kitta Napi means parcel measurement, Namsari means transfer of ownership and Faraad means updating of records."},

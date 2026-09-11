@@ -9,8 +9,11 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "Cadastral Survey" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["Cadastral Survey"] = window.EXTRA["Cadastral Survey"] || {};
 window.EXTRA["Cadastral Survey"].mcq = [
       {q:"The main purpose of a cadastral survey is to:", o:["Fix parcel boundaries and prepare ownership records", "Study rainfall", "Locate minerals", "Design roads"], a:0, e:"A cadastral survey fixes the boundaries of individual land parcels and prepares the maps and records that support ownership certificates, registration, taxation and legal purposes."},

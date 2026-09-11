@@ -9,8 +9,11 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "Legislation (Acts, Rules, Directives, Circulars, SoP)" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["Legislation (Acts, Rules, Directives, Circulars, SoP)"] = window.EXTRA["Legislation (Acts, Rules, Directives, Circulars, SoP)"] || {};
 window.EXTRA["Legislation (Acts, Rules, Directives, Circulars, SoP)"].mcq = [
       {q:"In Nepal, the survey and measurement of land is primarily governed by:", o:["Land Act, 2021 BS", "Civil Service Act, 2049 BS", "Local Government Operation Act, 2074 BS", "Survey and Measurement Act, 2019 BS"], a:3, e:"The Survey and Measurement Act, 2019 BS (Naap Jaanch Ain) is the principal law providing the legal basis for cadastral survey and land measurement in Nepal."},

@@ -9,8 +9,11 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "नेपालको भूगोल तथा प्राकृतिक स्रोत" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["नेपालको भूगोल तथा प्राकृतिक स्रोत"] = window.EXTRA["नेपालको भूगोल तथा प्राकृतिक स्रोत"] || {};
 window.EXTRA["नेपालको भूगोल तथा प्राकृतिक स्रोत"].mcq = [
       {q:"नेपालमा अवस्थित विश्वको सबैभन्दा अग्लो हिमाल कुन हो?", o:["सगरमाथा", "ल्होत्से", "मकालु", "कञ्चनजङ्घा"], a:0, e:"सगरमाथा (माउन्ट एभरेस्ट) ८,८४८.८६ मिटर अग्लो विश्वकै सर्वोच्च शिखर हो। यो कोशी प्रदेशको सोलुखुम्बु जिल्लामा पर्दछ। सन् २०२० मा नेपाल र चीनले संयुक्त रूपमा यसको नयाँ उचाइ घोषणा गरेका थिए।"},
