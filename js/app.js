@@ -9,7 +9,7 @@
 /* ================= APP (design + logic). Question files + content.js load before this. ================= */
 // NOTE: the two banners below are outdated leftovers - questions now live in mcq/*.js + subjective/*.js
 /* Inline question bank (ships with the page; no extra download). */
-/* ==== FULL QUESTION BANK: 5 MCQ + 3 written per unit, all with explanations ==== */
+/* ==== FULL QUESTION BANK: 13 MCQ + 5 written per unit, all with explanations ==== */
 
 
 // NOTE: the banner below is outdated - real counts are 5+5+5+3+5+4 = 27 units.
