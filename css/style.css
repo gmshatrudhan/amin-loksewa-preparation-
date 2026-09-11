@@ -1,9 +1,3 @@
-/* ====================================================================
-   DESIGN FILE (css/style.css) - ✏️ EDIT COLORS/FONTS/SIZES HERE!
-   EASY: change VALUES inside :root (lines below) - the whole site recolors.
-   CAREFUL: layout rules below :root - only touch the ones marked ✏️ EDIT HERE.
-   Numbers with px/rem = sizes - bigger number = bigger. #RRGGBB = colors.
-   ==================================================================== */
 /* ================= MAIN STYLESHEET — colours live in :root below ================= */
 /* =====================================================================
    AMIN LOKSEWA PREPARATION — DESIGN SYSTEM
@@ -12,39 +6,31 @@
    ===================================================================== */
 
 /* ============ 1. THEME TOKENS ============ */
-/* ✏️ EDIT HERE - LIGHT-THEME COLORS + FONT + CORNERS. Change VALUES only (e.g. #144A78 -> #0A5C36).
-   There is a DARK twin of each color below (search: data-theme="dark") - change BOTH twins! */
 :root{
-/* Brand colors: --primary (navy) + --accent (gold) recolor buttons, headings, links, badges. */
   /* brand — deep navy + gold */
   --primary:#144A78; --primary-d:#0E3760; --primary-l:#1C5D96;
   --accent:#C9A227;  --accent-d:#7D620F;  --accent-t:#2B2100;
   --teal:#0D7D6E;
 
-/* Surface colors: page/card/input/progress-track backgrounds. */
   /* surfaces */
   --bg:#F4F6FA; --card:#FFFFFF; --card-2:#F8FAFD;
   --soft:#EDF2F9; --amber:#FBF3DC;
   --field:#F9FBFE; --track:#E8EDF5; --skip:#EDF1F6;
   --primary-soft:#EAF2FA; --zebra:rgba(20,74,120,.028);
 
-/* Text + border colors. */
   /* text */
   --text:#17233A; --muted:#54657F; --line:#E3E9F2; --line-strong:#CBD6E5;
 
-/* ✏️ --ok green = correct/PASS, --bad red = wrong/FAIL, --warn orange = timer warning. Quiz colors! */
   /* status */
   --ok:#0C7A5B; --bad:#B3261E; --warn:#A16207;
   --okbg:#E4F5EE; --badbg:#FCECEB;
 
-/* Header bar, ticker bar, hero navy, footer colors. */
   /* chrome */
   --head:#FFFFFF; --topbar:#0B1F38; --topbar-t:#C7D5EC;
   --brand:#144A78; --brand-d:#0D3050; --brand-l:#1C5D96;
   --footer-deep:#081426;
   --on-primary:#FFFFFF;
 
-/* ✏️ --radius (card corner roundness - one change rounds EVERYTHING) + shadows. */
   /* effects */
   --radius:16px;
   --shadow:0 1px 2px rgba(16,42,77,.05),0 8px 24px -6px rgba(16,42,77,.08);
@@ -55,10 +41,8 @@
   --card-hover-bd:rgba(20,74,120,.28);
   --sb:#C9D4E4;
 
-/* ✏️ FONT family (system fonts = fast, no downloads). Put your font FIRST to use it. */
   --font:"Segoe UI Variable Text","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",Arial,"Noto Sans","Noto Sans Devanagari",sans-serif;
 }
-/* ⚠️ DARK-THEME twins: every color above repeated for dark mode. Change values ONLY, keep names. */
 html[data-theme="dark"]{
   --primary:#66ABDF; --primary-d:#9AC9EE; --primary-l:#4C90C8;
   --accent:#E7C463;  --accent-d:#F3D98E;  --accent-t:#231B03;
@@ -91,7 +75,6 @@ html[data-theme="dark"]{
 }
 
 /* ============ 2. BASE ============ */
-/* Smooth page scrolling. ⚠️ DO NOT CHANGE. */
 html{transition:none;scrollbar-color:var(--sb) transparent;scroll-behavior:smooth}
 body,header,.topbar,.card,.drop,.udrop,.side,.form,input,select,textarea,
 table,.acc,.mode,.qbtn,.opts .opt,.wq,.atabs,nav.main,.rin,.filters button{
@@ -108,12 +91,10 @@ img{max-width:100%}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--sb);border-radius:8px;border:3px solid var(--bg)}
 ::-webkit-scrollbar-thumb:hover{filter:brightness(.85)}
-/* ✏️ PAGE WIDTH (1180px) + side margins (22px). Tighter phones? lower 22px. ⚠️ Keep margin:0 auto. */
 .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
 .vh{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
 /* ---- buttons ---- */
-/* ALL buttons (+ .accent gold, .ghost outline, .sm small, .block full-width). ✏️ Padding/font-weight safe. */
 .btn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;font:inherit;font-weight:650;
   padding:11px 22px;border-radius:12px;white-space:nowrap;position:relative;
   background:linear-gradient(135deg,var(--primary-l) 0%,var(--primary) 55%,var(--primary-d) 100%);
@@ -141,7 +122,6 @@ img{max-width:100%}
 .ticker{flex:1;overflow:hidden;white-space:nowrap;position:relative;max-width:640px;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
           mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-/* ✏️ Ticker scroll SPEED: 28s (bigger = slower). ⚠️ Keep the animation name "tick". */
 .ticker span{display:inline-block;padding-left:0;animation:tick 28s linear infinite}
 .ticker b{color:var(--accent);margin-right:8px;font-weight:800;letter-spacing:.5px}
 @keyframes tick{to{transform:translateX(-50%)}}
@@ -212,9 +192,7 @@ nav.main a.lnk:hover,nav.main a.lnk.on{background:var(--soft);color:var(--primar
 
 /* ============ 6. HERO SLIDER ============ */
 .hero{width:100%;background:var(--brand-d)}
-/* ✏️ SLIDER HEIGHT on desktop: 340px. Mobile heights live in the 760px block below. ⚠️ Keep overflow:hidden. */
 .slider{position:relative;overflow:hidden;width:100%;height:340px;touch-action:pan-y}
-/* ✏️ SLIDE ANIMATION speed: .65s (smaller = snappier). ⚠️ Keep "transform" + display:flex. */
 .slides{display:flex;height:100%;transition:transform .65s cubic-bezier(.65,0,.35,1);will-change:transform}
 .slide{position:relative;min-width:100%;height:100%;overflow:hidden}
 .sbg{position:absolute;inset:0;
@@ -239,7 +217,6 @@ nav.main a.lnk:hover,nav.main a.lnk.on{background:var(--soft);color:var(--primar
 .sbtn{display:flex;gap:10px;flex-wrap:wrap}
 .btn.ghost.wht{color:#fff;border-color:rgba(255,255,255,.65)}
 .btn.ghost.wht:hover{background:#fff;color:var(--brand-d);border-color:#fff;box-shadow:0 12px 28px -10px rgba(0,0,0,.5)}
-/* Slider ARROW buttons (round, glassy). ✏️ Size 44px / sides 16px. Hidden on phones (see 760px block). */
 .sarr{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;
   background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);color:#fff;font-size:1.35rem;
   cursor:pointer;z-index:4;display:grid;place-items:center;
@@ -247,7 +224,6 @@ nav.main a.lnk:hover,nav.main a.lnk.on{background:var(--soft);color:var(--primar
   transition:background-color .2s ease,color .2s ease,border-color .2s ease,transform .2s ease}
 .sarr:hover{background:var(--accent);color:#2B2100;border-color:var(--accent);transform:translateY(-50%) scale(1.06)}
 .sarr.l{left:16px}.sarr.r{right:16px}
-/* Slider DOTS (auto-made from slides). ✏️ bottom:16px moves them up/down. Active dot = gold pill. */
 .dots{position:absolute;left:0;right:0;bottom:16px;display:flex;gap:7px;justify-content:center;z-index:4}
 .dots button{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.42);cursor:pointer;border:0;padding:0;
   transition:all .3s ease}
@@ -262,9 +238,7 @@ section{padding:58px 0}
   background:linear-gradient(90deg,var(--accent),#EACF79)}
 .shead p{color:var(--muted);margin-top:10px;font-size:.98rem}
 .grid{display:grid;gap:20px}
-/* Card GRIDS: g2=2 cols, g3=3, g4=4 on desktop -> 1 col on phones. ⚠️ DO NOT CHANGE (responsive depends on it). */
 .g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
-/* Content CARDS (bg, border, corners, padding, hover lift). ✏️ padding:24px safe to adjust. */
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;
   box-shadow:var(--shadow);transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background-color .28s ease}
 .card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:var(--card-hover-bd)}
@@ -299,7 +273,6 @@ section{padding:58px 0}
 .badge.bad{background:var(--badbg);color:var(--bad)}
 
 /* ============ 8. PAGES ============ */
-/* Navy inner-PAGE HEADER banner (breadcrumb + title). ✏️ Gradient colors safe. */
 .pghead{position:relative;background:linear-gradient(120deg,var(--brand-d) 0%,var(--brand) 62%,var(--brand-l) 135%);
   color:#fff;padding:46px 0 44px;overflow:hidden}
 .pghead::before{content:"";position:absolute;inset:0;pointer-events:none;
@@ -311,7 +284,6 @@ section{padding:58px 0}
 .pghead p{color:#C9D8EF;margin-top:6px;font-size:.98rem}
 .crumb{font-size:.82rem;color:#B9CBEA;margin-bottom:10px}
 .crumb a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
-/* Sidebar layout (250px menu + content). Stacks on tablets. ⚠️ DO NOT CHANGE. */
 .split{display:grid;grid-template-columns:250px 1fr;gap:26px;align-items:start}
 .split>*{min-width:0}
 .side{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;
@@ -384,7 +356,6 @@ tbody tr{transition:background-color .15s ease}
 tbody tr:hover{background:var(--soft)}
 
 /* ============ 9. FOOTER ============ */
-/* Footer navy gradient. ✏️ Colors safe. Columns collapse on phones automatically. */
 footer{position:relative;background:linear-gradient(180deg,var(--brand-d) 0%,var(--footer-deep) 100%);
   color:#AFC1DC;padding:52px 0 0;margin-top:48px}
 footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;
@@ -412,14 +383,12 @@ footer a:hover{color:var(--accent);transform:translateX(3px)}
 .fmade b{color:var(--accent);font-weight:800}
 
 /* ============ 10. RESPONSIVE ============ */
-/* ✏️ TABLET rules (<=960px): 2-col grids, sidebar stacks, slider 330px. */
 @media(max-width:960px){
   .slider{height:330px}
   .sin h2{font-size:1.75rem}
   .g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}
   .split{grid-template-columns:1fr}.side{position:static}
 }
-/* ✏️ MAIN PHONE rules (<=760px): hamburger menu, 1-col grids, slider 370px, arrows hidden (swipe!). */
 @media(max-width:760px){
   .grid.tight{grid-template-columns:repeat(2,1fr)}
   .card.syl h3{font-size:.9rem}
@@ -468,7 +437,6 @@ footer a:hover{color:var(--accent);transform:translateX(3px)}
   background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow)}
 .qtl{display:flex;flex-direction:column;gap:2px;align-items:flex-start}
 .clock{font-size:1.9rem;font-weight:800;color:var(--primary);font-variant-numeric:tabular-nums;line-height:1;letter-spacing:.01em}
-/* ✏️ QUIZ TIMER colors: orange warning + red danger (thresholds live in app.js qzClock). */
 .clock.warn{color:var(--warn)}.clock.danger{color:var(--bad)}
 .qtime{font-size:.74rem;color:var(--muted);margin-top:2px}
 .qtb{display:flex;gap:7px;justify-content:flex-end;flex-wrap:wrap}
@@ -515,10 +483,8 @@ footer a:hover{color:var(--accent);transform:translateX(3px)}
 .opts .key{flex:none;width:26px;height:26px;border-radius:8px;border:1.5px solid var(--line);
   display:grid;place-items:center;font-weight:800;font-size:.78rem;color:var(--muted);
   background:var(--field);transition:all .16s ease}
-/* ✏️ CORRECT-answer green (selected + right). Uses --ok / --okbg. */
 .opts .opt.sel,.opts .opt.right{border-color:var(--ok);background:var(--okbg)}
 .opts .opt.sel .key,.opts .opt.right .key{background:var(--ok);border-color:var(--ok);color:#fff}
-/* ✏️ WRONG-answer red. Uses --bad / --badbg. */
 .opts .opt.wrong{border-color:var(--bad);background:var(--badbg)}
 .opts .opt.wrong .key{background:var(--bad);border-color:var(--bad);color:#fff}
 .explain{margin-top:16px;border-left:3px solid var(--accent);background:var(--amber);
@@ -553,7 +519,6 @@ kbd{border:1px solid var(--line);border-bottom-width:2.5px;border-radius:5px;pad
 .ritem p{font-size:.86rem;color:var(--muted);margin:3px 0}
 .ritem .ex{margin-top:8px;font-size:.83rem;color:var(--text);opacity:.85;line-height:1.65}
 
-/* ✏️ PHONE rules part 2 (quiz + written-question tweaks). Breakpoint twins: keep both 760px values equal! */
 @media(max-width:760px){
   .qstart .modes{grid-template-columns:1fr}
   .qtop{position:static;grid-template-columns:1fr}
@@ -691,14 +656,12 @@ html.tswap *{transition:background-color .3s ease,color .3s ease,border-color .3
 @media(max-width:760px){.totop{right:14px;bottom:14px;width:44px;height:44px}.totop svg{width:20px;height:20px}}
 
 /* ============ 19. PRINT & MOTION ============ */
-/* ⚠️ PRINT rules: hide nav/buttons for clean printouts. DO NOT REMOVE. */
 @media print{
   .topbar,header,footer,.btn,.sarr,.dots,.totop,.tgl{display:none!important}
   .wqa{display:block!important}
   body{background:#fff}
   section{padding:18px 0}
 }
-/* ⚠️ ACCESSIBILITY: calms animation for sensitive users. DO NOT REMOVE. */
 @media (prefers-reduced-motion:reduce){
   .totop,.tgl svg{transition:opacity .2s}
   .totop svg{animation:none}
