@@ -7,11 +7,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "सार्वजनिक सेवा तथा सुशासन" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["सार्वजनिक सेवा तथा सुशासन"] = window.EXTRA["सार्वजनिक सेवा तथा सुशासन"] || {};
 window.EXTRA["सार्वजनिक सेवा तथा सुशासन"].sub = [
       {q:"सुशासन भनेको के हो? यसका प्रमुख विशेषताहरू व्याख्या गर्नुहोस्।", marks:10, hint:"पारदर्शी, जवाफदेही, सहभागितामूलक, समावेशी र कानुनी शासनअनुरूप राज्यशक्तिको प्रयोग गरी कुशल सेवा प्रवाह तथा जनकल्याण प्रवर्धन गर्नुलाई सुशासन भनिन्छ। विशेषताहरू: निर्णय प्रक्रियामा नागरिकको सहभागिता; निष्पक्ष रूपमा लागू हुने कानुनी शासन; सूचना सहज उपलब्ध हुने पारदर्शिता; उचित समयभित्र सबै सरोकारवालालाई सेवा दिने उत्तरदायित्व; फरक स्वार्थबीच सहमति खोज्ने प्रवृत्ति; कुनै समूह नछुट्ने समता र समावेशिता; स्रोतको प्रभावकारी र कुशल प्रयोग; तथा सार्वजनिक पदाधिकारीको जनता र संस्थाप्रतिको जवाफदेहिता। नेपालमा सुशासन ऐन २०६४, सूचनाको हक ऐन २०६४, नागरिक बडापत्र, सामाजिक परीक्षण र सार्वजनिक सुनुवाइमार्फत यी कार्यान्वयन गरिन्छन्।"},

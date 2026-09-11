@@ -7,11 +7,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "GNSS" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["GNSS"] = window.EXTRA["GNSS"] || {};
 window.EXTRA["GNSS"].sub = [
       {q:"Explain the working principle of GNSS positioning.", marks:10, hint:"Each satellite continuously transmits a signal containing its precise position and the exact time of transmission. The receiver notes the time of reception and computes the travel time, which multiplied by the velocity of light gives the range, called a pseudorange because it contains the receiver clock error. With observations to at least four satellites, four equations in four unknowns (X, Y, Z and the clock error) can be solved by trilateration, giving the three dimensional position of the receiver. Accuracy is improved by differential techniques such as DGPS and RTK, which apply corrections from a base station of known coordinates, and by carrier phase observation and post processing."},

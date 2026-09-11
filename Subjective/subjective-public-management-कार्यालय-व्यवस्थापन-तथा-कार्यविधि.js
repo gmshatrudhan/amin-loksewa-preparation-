@@ -7,11 +7,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "कार्यालय व्यवस्थापन तथा कार्यविधि" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["कार्यालय व्यवस्थापन तथा कार्यविधि"] = window.EXTRA["कार्यालय व्यवस्थापन तथा कार्यविधि"] || {};
 window.EXTRA["कार्यालय व्यवस्थापन तथा कार्यविधि"].sub = [
       {q:"कार्यालय व्यवस्थापन भनेको के हो? यसका कार्यहरू व्याख्या गर्नुहोस्।", marks:10, hint:"सङ्गठनको उद्देश्य कुशलतापूर्वक प्राप्त गर्न कार्यालयका क्रियाकलापको योजना निर्माण, सङ्गठन, कर्मचारी व्यवस्थापन, निर्देशन, समन्वय र नियन्त्रण गर्ने प्रक्रियालाई कार्यालय व्यवस्थापन भनिन्छ। कार्यहरू: काम र कार्यविधिको योजना बनाउनु; कार्यालयको बनोट, उपकरण र कार्यविभाजन मिलाउनु; कर्मचारी भर्ना, तालिम र पदस्थापन गर्नु; कर्मचारीलाई निर्देशन र सुपरिवेक्षण गर्नु; विभिन्न शाखाबीच समन्वय गर्नु; मापदण्डसँग तुलना गरी कार्यसम्पादन नियन्त्रण गर्नु; दर्ता, चलानी, फाइलिङ र संरक्षणसहितको अभिलेख व्यवस्थापन गर्नु; कार्यालय भित्र र बाहिर सञ्चार गर्नु; तथा कार्यालयको आर्थिक स्रोत, मसलन्द र सम्पत्तिको व्यवस्थापन गर्नु।"},

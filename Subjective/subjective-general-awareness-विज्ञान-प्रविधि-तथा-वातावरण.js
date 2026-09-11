@@ -7,11 +7,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "विज्ञान, प्रविधि तथा वातावरण" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["विज्ञान, प्रविधि तथा वातावरण"] = window.EXTRA["विज्ञान, प्रविधि तथा वातावरण"] || {};
 window.EXTRA["विज्ञान, प्रविधि तथा वातावरण"].sub = [
       {q:"वातावरणीय प्रदूषण भनेको के हो? यसका प्रकार र नियन्त्रणका उपाय व्याख्या गर्नुहोस्।", marks:10, hint:"जीवजन्तु र प्राकृतिक प्रणालीलाई हानि पुग्ने मात्रामा वातावरणमा हानिकारक पदार्थ वा ऊर्जा थपिनुलाई वातावरणीय प्रदूषण भनिन्छ। प्रकार: सवारीको धुवाँ, उद्योग, इँटाभट्टा र फोहोर जलाउनुबाट हुने वायु प्रदूषण; ढल, औद्योगिक फोहोर, विषादी र ठोस फोहोरबाट हुने जल प्रदूषण; रासायनिक मल, विषादी र प्लास्टिकबाट हुने भूमि वा माटो प्रदूषण; सवारी, मेसिन र लाउडस्पिकरबाट हुने ध्वनि प्रदूषण। नियन्त्रणका उपाय: वातावरणीय कानुन र मापदण्डको कडाइका साथ कार्यान्वयन, आयोजनाअघि वातावरणीय प्रभाव मूल्याङ्कन, सार्वजनिक यातायात र विद्युतीय सवारीको प्रवर्धन, ढल र औद्योगिक फोहोरको प्रशोधन, नवीकरणीय ऊर्जाको प्रयोग, न्यूनीकरण–पुनःप्रयोग–पुनःचक्रीय प्रयोगको अवधारणा, वृक्षारोपण तथा जनचेतना र शिक्षा।"},

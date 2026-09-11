@@ -7,11 +7,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "Levelling" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Levelling"] = window.EXTRA["Levelling"] || {};
 window.EXTRA["Levelling"].sub = [
       {q:"Define the following terms: bench mark, reduced level, back sight, fore sight and change point.", marks:10, hint:"Bench mark: a permanent point of known elevation above a datum, used as a reference for levelling. Reduced level: the height of a point above or below the assumed datum. Back sight: the first staff reading taken after setting up the instrument, on a point of known reduced level; it is added to the RL to give the height of instrument. Fore sight: the last staff reading taken before shifting the instrument, on a point whose RL is to be determined; it is subtracted from the height of instrument. Change point: a point on which both a fore sight and a back sight are taken, enabling the instrument to be moved forward."},

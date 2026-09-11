@@ -7,11 +7,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "निजामती सेवा तथा सरकारी प्रशासन" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["निजामती सेवा तथा सरकारी प्रशासन"] = window.EXTRA["निजामती सेवा तथा सरकारी प्रशासन"] || {};
 window.EXTRA["निजामती सेवा तथा सरकारी प्रशासन"].sub = [
       {q:"असल निजामती सेवाका विशेषताहरू व्याख्या गर्नुहोस्।", marks:10, hint:"राजनीतिक तटस्थता: जुनसुकै दलको सरकार भए पनि इमानदारीपूर्वक सेवा गर्नु। स्थायित्व: सरकार परिवर्तन हुँदा पनि प्रशासनमा निरन्तरता दिनु। योग्यता प्रणाली: लोक सेवा आयोगले सञ्चालन गर्ने खुला प्रतिस्पर्धाबाट प्रवेश। व्यावसायिकता र विशेषज्ञता: आफ्नो क्षेत्रमा तालिमप्राप्त र दक्ष कर्मचारी। निष्पक्षता: कुनै पक्षपात वा भेदभावबिना सबै नागरिकलाई समान व्यवहार। जवाफदेहिता: मन्त्री, संसद् र अन्ततः जनताप्रति उत्तरदायी। इमानदारी: भ्रष्टाचारमुक्त र नैतिक आचरण। पदसोपान र अनुशासन: स्पष्ट आदेश शृंखला र निर्धारित जिम्मेवारी। सेवामुखी दृष्टिकोण: छिटो, शिष्ट र नागरिककेन्द्रित सेवा प्रवाह। समावेशिता: महिला, दलित, आदिवासी जनजाति, मधेसी, थारू, मुस्लिम र अपाङ्गता भएका नागरिकको प्रतिनिधित्व।"},

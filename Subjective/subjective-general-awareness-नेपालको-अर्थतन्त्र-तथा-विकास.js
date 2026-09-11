@@ -7,11 +7,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "नेपालको अर्थतन्त्र तथा विकास" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["नेपालको अर्थतन्त्र तथा विकास"] = window.EXTRA["नेपालको अर्थतन्त्र तथा विकास"] || {};
 window.EXTRA["नेपालको अर्थतन्त्र तथा विकास"].sub = [
       {q:"नेपालको आर्थिक विकासका प्रमुख चुनौतीहरू व्याख्या गर्नुहोस्।", marks:10, hint:"भूपरिवेष्टित अवस्थिति र भारतको पारवहनमा निर्भरता, जसले व्यापार लागत बढाउँछ। कठिन पहाडी भूबनोटका कारण पूर्वाधार निर्माण महँगो हुनु। कमजोर औद्योगिक आधार र आयातमा अत्यधिक निर्भरताले ठूलो व्यापार घाटा। स्वदेशी उत्पादनभन्दा विप्रेषणमा निर्भरता। खण्डित जग्गा र मनसुनमा निर्भरताका कारण कृषि उत्पादकत्व न्यून। जनशक्ति बाहिरिएकाले दक्ष जनशक्तिको अभाव। राजनीतिक अस्थिरता र नीतिमा बारम्बार परिवर्तन। कमजोर कार्यान्वयन क्षमता र न्यून पुँजीगत खर्च। भूकम्प, बाढी र पहिरोप्रतिको उच्च जोखिम।"},

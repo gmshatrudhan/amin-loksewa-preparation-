@@ -7,11 +7,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "नेपालको इतिहास, संस्कृति तथा समाज" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["नेपालको इतिहास, संस्कृति तथा समाज"] = window.EXTRA["नेपालको इतिहास, संस्कृति तथा समाज"] || {};
 window.EXTRA["नेपालको इतिहास, संस्कृति तथा समाज"].sub = [
       {q:"नेपाल एकीकरणमा पृथ्वीनारायण शाहको योगदान व्याख्या गर्नुहोस्।", marks:10, hint:"सानो गोरखा राज्यका राजा पृथ्वीनारायण शाहले सन् १७४४ मा एकीकरण अभियान सुरु गरे। पहिले नुवाकोटमाथि आक्रमण गरी काठमाडौँ उपत्यकालाई आर्थिक नाकाबन्दी लगाए र सन् १७६९ सम्ममा कीर्तिपुर, काठमाडौँ, पाटन र भक्तपुर कब्जा गरे। उनले बाइसे–चौबिसे राज्यसहित धेरै साना रियासतलाई एउटै राष्ट्रमा एकीकृत गरे। उनले नेपाललाई 'दुई ढुङ्गाबीचको तरुल' भन्दै चीन र ब्रिटिस इन्डियासँग सन्तुलित परराष्ट्र नीति अपनाउन सुझाए। स्वदेशी उद्योगको प्रवर्धन, विदेशी सामानको निरुत्साहन तथा बलियो सेना र इमानदार प्रशासनमा जोड दिए। उनको दिव्य उपदेश नेपालको महत्त्वपूर्ण राजनीतिक दस्तावेज मानिन्छ।"},

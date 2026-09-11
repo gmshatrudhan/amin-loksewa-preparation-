@@ -7,11 +7,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "Mathematics (General)" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Mathematics (General)"] = window.EXTRA["Mathematics (General)"] || {};
 window.EXTRA["Mathematics (General)"].sub = [
       {q:"A land of area 1 bigha is sold at Rs 40 lakh per bigha. Find the price of 12 kattha.", marks:5, hint:"1 bigha = 20 kattha. Price of 1 kattha = 40,00,000 / 20 = Rs 2,00,000. Price of 12 kattha = 12 x 2,00,000 = Rs 24,00,000, that is Rs 24 lakh."},

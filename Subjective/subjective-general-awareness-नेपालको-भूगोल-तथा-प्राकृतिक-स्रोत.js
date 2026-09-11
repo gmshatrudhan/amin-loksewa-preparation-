@@ -7,11 +7,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "नेपालको भूगोल तथा प्राकृतिक स्रोत" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["नेपालको भूगोल तथा प्राकृतिक स्रोत"] = window.EXTRA["नेपालको भूगोल तथा प्राकृतिक स्रोत"] || {};
 window.EXTRA["नेपालको भूगोल तथा प्राकृतिक स्रोत"].sub = [
       {q:"नेपालका तीन भौगोलिक क्षेत्रको वर्णन गर्नुहोस्।", marks:10, hint:"हिमाली क्षेत्र: उत्तरमा करिब ४,८७७ मिटरभन्दा माथि रहेको, कुल क्षेत्रफलको करिब १५ प्रतिशत ओगटेको, चिसो हिमाली हावापानी, हिउँले ढाकिएको, पातलो बसोबास भएको र पर्यटन, पर्वतारोहण, जडीबुटी तथा पशुपालनमा आधारित अर्थतन्त्र भएको क्षेत्र। पहाडी क्षेत्र: बीचमा करिब ६१० देखि ४,८७७ मिटरसम्म, कुल क्षेत्रफलको करिब ६८ प्रतिशत, समशीतोष्ण हावापानी, महाभारत र चुरे शृंखला समेटिएको, तर्के खेती, फलफूल खेती तथा अधिकांश जिल्ला सदरमुकाम रहेको क्षेत्र। तराई क्षेत्र: दक्षिणमा करिब ६१० मिटरभन्दा तल, कुल क्षेत्रफलको करिब १७ प्रतिशत, गर्मी र आर्द्र उपोष्ण हावापानी, उर्वर कछारी माटो, घना बसोबास तथा खाद्यान्न उत्पादन, उद्योग र व्यापारको केन्द्र।"},

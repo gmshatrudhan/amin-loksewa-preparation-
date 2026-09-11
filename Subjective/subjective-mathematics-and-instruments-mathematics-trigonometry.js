@@ -7,11 +7,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "Mathematics (Trigonometry)" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Mathematics (Trigonometry)"] = window.EXTRA["Mathematics (Trigonometry)"] || {};
 window.EXTRA["Mathematics (Trigonometry)"].sub = [
       {q:"Define the six trigonometric ratios with reference to a right angled triangle.", marks:5, hint:"For an acute angle theta in a right angled triangle: sin theta = perpendicular / hypotenuse; cos theta = base / hypotenuse; tan theta = perpendicular / base; cosec theta = hypotenuse / perpendicular; sec theta = hypotenuse / base; cot theta = base / perpendicular. A neat labelled figure showing the perpendicular, base and hypotenuse is required."},

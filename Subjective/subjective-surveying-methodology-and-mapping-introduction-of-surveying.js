@@ -7,11 +7,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "Introduction of Surveying" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Introduction of Surveying"] = window.EXTRA["Introduction of Surveying"] || {};
 window.EXTRA["Introduction of Surveying"].sub = [
       {q:"Define surveying and state its primary objectives.", marks:5, hint:"Surveying is the art and science of determining the relative positions of points on, above or below the surface of the earth by means of direct or indirect measurement of distance, direction and elevation. Objectives: to prepare plans and maps, to determine areas and volumes, to set out works on the ground, and to establish boundaries and control points."},

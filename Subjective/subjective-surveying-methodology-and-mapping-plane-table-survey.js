@@ -7,11 +7,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "Plane Table Survey" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Plane Table Survey"] = window.EXTRA["Plane Table Survey"] || {};
 window.EXTRA["Plane Table Survey"].sub = [
       {q:"Explain the methods of plane table surveying.", marks:10, hint:"Radiation — the table is set at one station and rays are drawn to all visible objects, distances measured and plotted to scale; suitable for small areas visible from one point. Intersection — two stations are plotted and rays drawn from both, the intersection fixing the object; used when distances cannot be measured. Traversing — the table is moved from station to station, forming a traverse; used for long narrow strips. Resection — the position of the table itself is located from already plotted points; includes the two point and three point problems."},
