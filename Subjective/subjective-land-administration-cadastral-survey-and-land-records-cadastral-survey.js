@@ -7,8 +7,11 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "Cadastral Survey" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Cadastral Survey"] = window.EXTRA["Cadastral Survey"] || {};
 window.EXTRA["Cadastral Survey"].sub = [
       {q:"Explain the objectives and importance of cadastral survey.", marks:10, hint:"Objectives: to determine and demarcate the boundary of every land parcel; to measure the area of each parcel; to give each parcel a unique kitta number; to prepare cadastral maps and field books; and to provide the basis for the land ownership certificate. Importance: it gives legal security of ownership, provides the basis for land revenue and taxation, reduces boundary disputes and litigation, supports land use planning, acquisition and compensation, and enables a reliable land information system."},

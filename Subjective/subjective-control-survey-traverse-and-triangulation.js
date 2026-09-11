@@ -7,8 +7,11 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "Traverse and Triangulation" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Traverse and Triangulation"] = window.EXTRA["Traverse and Triangulation"] || {};
 window.EXTRA["Traverse and Triangulation"].sub = [
       {q:"Explain the field procedure of a closed traverse survey.", marks:10, hint:"1. Reconnaissance of the area and selection of traverse stations that are intervisible and on firm ground. 2. Marking and referencing the stations with pegs. 3. Measurement of the included or deflection angles at each station with a theodolite or total station, using both faces to eliminate instrumental error. 4. Measurement of the length of each traverse leg by tape, EDM or total station. 5. Observation of the bearing of at least one line to orient the traverse. 6. Angular check: the sum of interior angles must equal (2n - 4) x 90 degrees; the angular error is distributed equally. 7. Computation of latitudes and departures, determination of the closing error and its adjustment by the Bowditch or transit rule, and finally computation of coordinates and area."},

@@ -7,8 +7,11 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "Chain Survey" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Chain Survey"] = window.EXTRA["Chain Survey"] || {};
 window.EXTRA["Chain Survey"].sub = [
       {q:"Describe the procedure of chain surveying in the field.", marks:10, hint:"1. Reconnaissance — walk over the area and study the ground. 2. Prepare an index sketch showing stations. 3. Mark and reference the main stations with pegs. 4. Select well-conditioned triangles for the framework. 5. Measure the base line accurately. 6. Chain the survey lines, recording chainages and taking offsets to details in the field book. 7. Measure check lines and tie lines for verification. 8. Plot the framework to scale, add details, and finally ink and finish the plan."},

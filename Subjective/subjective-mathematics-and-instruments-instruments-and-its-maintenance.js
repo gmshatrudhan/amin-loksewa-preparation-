@@ -7,8 +7,11 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "Instruments & Its Maintenance" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Instruments & Its Maintenance"] = window.EXTRA["Instruments & Its Maintenance"] || {};
 window.EXTRA["Instruments & Its Maintenance"].sub = [
       {q:"List the common surveying instruments and state the use of each.", marks:10, hint:"Chain and tape: measurement of linear distances. Ranging rod and arrow: marking stations and counting chain lengths. Cross staff and optical square: setting out right angles for offsets. Prismatic compass: measurement of magnetic bearings. Plane table with alidade: field plotting of details. Dumpy or auto level with levelling staff: determination of relative elevations. Theodolite: precise measurement of horizontal and vertical angles. Tacheometer: indirect measurement of distance and elevation. Total station: combined angle, distance and coordinate measurement. GNSS receiver: determination of absolute position by satellite."},

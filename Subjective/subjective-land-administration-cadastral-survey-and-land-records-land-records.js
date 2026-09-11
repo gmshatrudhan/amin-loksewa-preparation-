@@ -7,8 +7,11 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};
+window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
 
+// ── ✏️ EDIT HERE - Unit: "Land Records" - add/edit/delete question lines below ──
+// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
+// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Land Records"] = window.EXTRA["Land Records"] || {};
 window.EXTRA["Land Records"].sub = [
       {q:"Explain the importance of accurate land records in land administration.", marks:10, hint:"Accurate land records give legal security of tenure and protect the owner against encroachment and fraud. They provide a reliable basis for the assessment and collection of land revenue. They reduce boundary disputes and consequent litigation. They enable land to be used as collateral for credit, thereby supporting investment. They support planning, acquisition, compensation, and infrastructure development, and they are essential for a modern land information system and for good governance in the land sector."},
