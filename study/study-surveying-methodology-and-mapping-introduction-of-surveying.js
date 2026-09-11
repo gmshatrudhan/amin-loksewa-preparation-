@@ -9,18 +9,13 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * this material by matching the title exactly.
  */
-window.STUDY = window.STUDY || {};  // ⚠️ DO NOT CHANGE this line (creates the shared notes box).
-// ── Unit: "Introduction of Surveying" ──
-// ⚠️ DO NOT CHANGE the title inside ["..."] below (must match app.js SUBJECTS exactly).
-// ✏️ EDIT HERE: change ONLY the text between "quotes" in the 3 lists below.
+window.STUDY = window.STUDY || {};
 window.STUDY["Introduction of Surveying"] = {
-// ✏️ List 1 - OUTCOMES: "what the student will learn" bullets. Edit text, or copy a line to add more.
   "outcomes": [
     "Understand the key ideas of Introduction of Surveying.",
     "Apply the concepts to Loksewa exam questions.",
     "Revise quickly using the key points below."
   ],
-// ✏️ List 2 - SECTIONS: each {h=heading, p=paragraph}. Copy a {...} block to add a section (commas between!).
   "content": [
     {
       "h": "Introduction",
@@ -35,7 +30,6 @@ window.STUDY["Introduction of Surveying"] = {
       "p": "Revise the key points, then attempt both the written Subject Test and the objective MCQ Test for this unit."
     }
   ],
-// ✏️ List 3 - KEY POINTS: quick-revision bullets shown in the gold box.
   "keypoints": [
     "Introduction of Surveying is part of the Surveying Methodology and Mapping paper.",
     "Focus on definitions, procedures and formulas.",
