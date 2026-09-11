@@ -20,5 +20,13 @@ window.EXTRA["Mathematics (General)"].mcq = [
       {q:"25 percent of 480 is:", o:["100", "110", "120", "130"], a:2, e:"25 percent of 480 = 480 x 25/100 = 120."},
       {q:"If the ratio of two numbers is 3:5 and their sum is 64, the smaller number is:", o:["21", "24", "27", "30"], a:1, e:"Let the numbers be 3x and 5x. Then 8x = 64, so x = 8. The smaller number is 3 x 8 = 24."},
       {q:"The simple interest on Rs 5,000 at 8 percent per annum for 2 years is:", o:["Rs 600", "Rs 700", "Rs 800", "Rs 900"], a:2, e:"SI = P x R x T / 100 = 5000 x 8 x 2 / 100 = Rs 800."},
-      {q:"A sum becomes Rs 24,200 in 2 years at 10 percent compound interest. The principal is:", o:["Rs 20,000", "Rs 21,000", "Rs 22,000", "Rs 23,000"], a:0, e:"A = P(1 + r/100)^n, so 24200 = P x (1.1)^2 = 1.21P. Therefore P = 24200 / 1.21 = Rs 20,000."}
+      {q:"A sum becomes Rs 24,200 in 2 years at 10 percent compound interest. The principal is:", o:["Rs 20,000", "Rs 21,000", "Rs 22,000", "Rs 23,000"], a:0, e:"A = P(1 + r/100)^n, so 24200 = P x (1.1)^2 = 1.21P. Therefore P = 24200 / 1.21 = Rs 20,000."},
+      {q:"The average of 12, 18, 24 and 30 is:", o:["21", "20", "22", "19"], a:0, e:"Average = (12+18+24+30)/4 = 84/4 = 21."},
+      {q:"The HCF of 24 and 36 is:", o:["6", "12", "18", "72"], a:1, e:"24 = 2³×3, 36 = 2²×3²; HCF = 2²×3 = 12."},
+      {q:"3/5 expressed as a percentage is:", o:["35%", "53%", "60%", "65%"], a:2, e:"(3/5)×100 = 60%."},
+      {q:"An article bought for Rs 800 is sold for Rs 920. The profit percent is:", o:["10%", "12%", "14%", "15%"], a:3, e:"Profit = 920−800 = 120; (120/800)×100 = 15%."},
+      {q:"The square root of 729 is:", o:["27", "23", "29", "37"], a:0, e:"27² = 729, so √729 = 27."},
+      {q:"If 5 pens cost Rs 125, the cost of 8 pens is:", o:["Rs 180", "Rs 200", "Rs 225", "Rs 250"], a:1, e:"One pen = 125/5 = Rs 25; 8 pens = 8×25 = Rs 200 (unitary method)."},
+      {q:"A book marked Rs 500 is sold at a 12% discount. The selling price is:", o:["Rs 420", "Rs 450", "Rs 440", "Rs 460"], a:2, e:"Discount = 12% of 500 = Rs 60; price = 500−60 = Rs 440."},
+      {q:"A tap fills a tank in 6 hours; another empties it in 8 hours. With both open, the tank fills in:", o:["7 hours", "14 hours", "2 hours", "24 hours"], a:3, e:"Net rate = 1/6 − 1/8 = 1/24 per hour, so 24 hours to fill."}
     ];
