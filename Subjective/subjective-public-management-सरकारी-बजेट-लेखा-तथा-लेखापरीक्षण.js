@@ -7,11 +7,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "सरकारी बजेट, लेखा तथा लेखापरीक्षण" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["सरकारी बजेट, लेखा तथा लेखापरीक्षण"] = window.EXTRA["सरकारी बजेट, लेखा तथा लेखापरीक्षण"] || {};
 window.EXTRA["सरकारी बजेट, लेखा तथा लेखापरीक्षण"].sub = [
       {q:"बजेट भनेको के हो? नेपालमा बजेट निर्माणको प्रक्रिया व्याख्या गर्नुहोस्।", marks:10, hint:"बजेट भनेको एक आर्थिक वर्षका लागि सरकारको अनुमानित आय र व्ययको वार्षिक वित्तीय विवरण हो। नेपालमा प्रक्रिया: राष्ट्रिय योजना आयोगले बजेट सीमा र मार्गदर्शन निर्धारण गर्दछ; विषयगत मन्त्रालयले सो सीमाभित्र रही कार्यक्रम र अनुमान तयार गर्दछन्; अर्थ मन्त्रालयले मन्त्रालयहरूसँग छलफल गरी अनुमान एकीकृत गर्दछ; संसद्मा पूर्व–बजेट छलफल हुन्छ; अर्थमन्त्रीले जेठ १५ गते सङ्घीय संसद्मा बजेट पेस गर्दछन्; संसद्ले विनियोजन विधेयक, आर्थिक विधेयक तथा आवश्यक परे राष्ट्रिय ऋण एवं ऋण तथा जमानत विधेयकमाथि छलफल गरी पारित गर्दछ; राष्ट्रपतिबाट प्रमाणीकरण हुन्छ; र १ श्रावणदेखि महालेखा नियन्त्रक कार्यालयमार्फत निकासा गरी कार्यान्वयन हुन्छ।"},

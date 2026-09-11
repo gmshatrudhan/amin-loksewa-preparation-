@@ -7,11 +7,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "Tachometric Survey" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Tachometric Survey"] = window.EXTRA["Tachometric Survey"] || {};
 window.EXTRA["Tachometric Survey"].sub = [
       {q:"Explain the principle of stadia tacheometry and derive the distance formula.", marks:10, hint:"The stadia principle states that the ratio of the staff intercept to the horizontal distance is constant for a given instrument. With f the focal length, i the stadia interval and d the distance from the object glass to the trunnion axis, the distance from the instrument to the staff is D = (f/i).s + (f + d), usually written D = K.s + C where K = f/i is the multiplying constant (normally 100) and C = f + d is the additive constant. A neat ray diagram of the object glass, stadia hairs and staff should be drawn."},

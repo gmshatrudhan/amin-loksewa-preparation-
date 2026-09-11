@@ -7,11 +7,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "Mathematics (Surveying)" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Mathematics (Surveying)"] = window.EXTRA["Mathematics (Surveying)"] || {};
 window.EXTRA["Mathematics (Surveying)"].sub = [
       {q:"Convert 3 ropani 2 aana into square metres.", marks:5, hint:"1 ropani = 508.72 sq m and 1 aana = 508.72 / 16 = 31.795 sq m. So 3 ropani = 3 x 508.72 = 1,526.16 sq m and 2 aana = 2 x 31.795 = 63.59 sq m. Total = 1,526.16 + 63.59 = 1,589.75 sq m approximately."},

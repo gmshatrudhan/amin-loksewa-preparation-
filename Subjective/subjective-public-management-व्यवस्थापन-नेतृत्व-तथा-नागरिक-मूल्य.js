@@ -7,11 +7,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "व्यवस्थापन, नेतृत्व तथा नागरिक मूल्य" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["व्यवस्थापन, नेतृत्व तथा नागरिक मूल्य"] = window.EXTRA["व्यवस्थापन, नेतृत्व तथा नागरिक मूल्य"] || {};
 window.EXTRA["व्यवस्थापन, नेतृत्व तथा नागरिक मूल्य"].sub = [
       {q:"व्यवस्थापनको परिभाषा दिँदै यसका कार्यहरू व्याख्या गर्नुहोस्।", marks:10, hint:"सङ्गठनको उद्देश्य कुशल र प्रभावकारी रूपमा प्राप्त गर्न मानवीय तथा भौतिक स्रोतको योजना निर्माण, सङ्गठन, कर्मचारी व्यवस्थापन, निर्देशन र नियन्त्रण गर्ने प्रक्रियालाई व्यवस्थापन भनिन्छ। कार्यहरू: योजना निर्माण, के, कसरी, कहिले र कसले गर्ने भनी पूर्वनिर्धारण गर्नु। सङ्गठन, स्रोत मिलाउनु र कामलाई स्पष्ट अधिकार एवं जिम्मेवारीसहित शाखामा विभाजन गर्नु। कर्मचारी व्यवस्थापन, जनशक्तिको भर्ना, छनोट, तालिम, पदस्थापन र मूल्याङ्कन गर्नु। निर्देशन, कर्मचारीलाई नेतृत्व, अभिप्रेरणा, सञ्चार र सुपरिवेक्षण गर्नु। नियन्त्रण, मापदण्ड तय गरी वास्तविक कार्यसम्पादन नापी तुलना गर्नु र सुधारात्मक कदम चाल्नु। समन्वय यी सबै कार्यमा व्याप्त रहन्छ र सङ्गठनलाई एकसूत्रमा बाँध्दछ।"},

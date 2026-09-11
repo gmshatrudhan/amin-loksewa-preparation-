@@ -7,11 +7,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "Compass Survey Introduction" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Compass Survey Introduction"] = window.EXTRA["Compass Survey Introduction"] || {};
 window.EXTRA["Compass Survey Introduction"].sub = [
       {q:"Define bearing and differentiate between the whole circle bearing and reduced bearing systems.", marks:10, hint:"A bearing is the horizontal angle which a survey line makes with a reference meridian. WCB system: measured clockwise from north from 0 to 360 degrees, used with the prismatic compass, only one letter free notation. Reduced or quadrantal bearing: measured from north or south, eastward or westward, from 0 to 90 degrees, used with the surveyor's compass, written as N30E or S45W. Conversion: for WCB 0 to 90, RB = WCB (NE); 90 to 180, RB = 180 - WCB (SE); 180 to 270, RB = WCB - 180 (SW); 270 to 360, RB = 360 - WCB (NW)."},

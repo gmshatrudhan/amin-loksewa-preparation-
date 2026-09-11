@@ -7,11 +7,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "Mapping" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE written Q: q=question, marks=number (no quotes), hint=model answer.
 window.EXTRA["Mapping"] = window.EXTRA["Mapping"] || {};
 window.EXTRA["Mapping"].sub = [
       {q:"Define the scale of a map and explain the types of scale used in mapping.", marks:10, hint:"The scale of a map is the fixed ratio between a distance on the map and the corresponding distance on the ground. Types: (i) Numerical or engineer's scale, stated as 1 cm = 100 m. (ii) Representative fraction (RF), a dimensionless ratio such as 1:10,000, independent of the units used. (iii) Graphical or plain scale, a line drawn on the map divided into units; it remains correct even if the map is enlarged or reduced. Choice of scale depends on the purpose, the size of the area and the detail required."},
