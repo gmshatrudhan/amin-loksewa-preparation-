@@ -1,23 +1,15 @@
-/* ================= APP (design + logic). Question files + content.js load before this. ================= */
-/* Inline question bank (ships with the page; no extra download). */
-/* ==== FULL QUESTION BANK: 13 MCQ + 5 written per unit, all with explanations ==== */
+/* ================= APP (design + logic). content.js + data-manifest.js load before this. ================= */
+/* Question bank: 81 per-unit files (mcq + subjective + study), lazy-loaded per page - see LAZY DATA LOADER. */
+/* ==== QUESTION BANK: 13 MCQ + 5 written per unit (351 + 135 total), all with explanations ==== */
 
 
-/* ---- 6 SUBJECTS × 5 UNITS ---- */
+/* ---- 6 SUBJECTS: sub1-sub3 x 5 units, sub4 x 3, sub5 x 5, sub6 x 4 (27 units) ---- */
 
 
 /* ============================================================
-   SITE DATA — edit this file to change all content
+   SUBJECTS + UNITS - unit titles below must match data-file keys exactly.
+   (Site texts live in js/content.js: name, phone, notices, FAQs, team, slides, legal.)
    ============================================================ */
-
-
-
-
-
-/* ---- HERO SLIDER SLIDES (5 feature slides) ---- */
-
-
-/* ---- SYLLABUS TRACKS: Federal + 7 Provinces ---- */
 
 
 function mkUnits(subject, names){
@@ -114,19 +106,9 @@ const SUBJECTS = [
       "Levelling"]) }
 ];
 
-/* ---- NOTICES ---- */
-
-
-
-
-
-
-/* ---- LEGAL PAGES (Privacy, Terms, Disclaimer) ---- */
-
-
 
 /* ============================================================
-   APP — hash-router SPA (works on GitHub Pages, no server)
+   APP — clean-URL + hash hybrid SPA (works on GitHub Pages, no server)
    ============================================================ */
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -235,7 +217,8 @@ function loadScript(src){
   if(DATA_LOADING[src]) return DATA_LOADING[src];
   const pr = new Promise(resolve=>{
     const el=document.createElement('script');
-    el.src=src; el.async=true;
+    /* root-absolute so lazy data loads from clean URLs too (/subject/x, /unit/...) */
+    el.src=/^https?:|^\/\//.test(src)?src:(src[0]==='/'?src:'/'+src); el.async=true;
     el.onload=()=>{ DATA_LOADED.add(src); delete DATA_LOADING[src]; resolve(src); };
     el.onerror=()=>{ delete DATA_LOADING[src]; resolve(null); };
     document.head.appendChild(el);
@@ -281,18 +264,18 @@ function searchIndex(){
   if(SEARCH_IX) return SEARCH_IX;
   const ix=[];
   SUBJECTS.forEach(s=>{
-    ix.push({t:'Subject', title:s.name, sub:s.desc||'', url:'#/subject/'+s.id, sname:s.name});
-    s.units.forEach(u=>{
-      ix.push({t:'Unit', title:u.title, sub:s.name+' · Unit '+u.no, url:'#/unit/'+s.id+'/'+u.no+'/study', sname:s.name,
+    ix.push({t:'Subject', title:s.name, sub:s.desc||'', url:'/subject/'+s.id, sname:s.name});
+    s.units.forEach(u=>{ try{
+      ix.push({t:'Unit', title:u.title, sub:s.name+' · Unit '+u.no, url:'/unit/'+s.id+'/'+u.no+'/study', sname:s.name,
                body:(u.outcomes||[]).join(' ')+' '+(u.keypoints||[]).join(' ')+' '+
                     (Array.isArray(u.content)?u.content.map(c=>(c.h||'')+' '+(c.p||'')).join(' '):'')});
-      u.objective.forEach((q,i)=>ix.push({t:'MCQ', title:q.q, sub:u.title, url:'#/unit/'+s.id+'/'+u.no+'/test', sname:s.name, body:q.o.join(' ')+' '+(q.e||'')}));
-      u.subjective.forEach(q=>ix.push({t:'Written', title:q.q, sub:u.title+' · '+q.marks+' marks', url:'#/unit/'+s.id+'/'+u.no+'/test', sname:s.name, body:q.hint||''}));
-    });
+      u.objective.forEach((q,i)=>ix.push({t:'MCQ', title:q.q, sub:u.title, url:'/#/unit/'+s.id+'/'+u.no+'/test', sname:s.name, body:q.o.join(' ')+' '+(q.e||'')}));
+      u.subjective.forEach(q=>ix.push({t:'Written', title:q.q, sub:u.title+' · '+q.marks+' marks', url:'/#/unit/'+s.id+'/'+u.no+'/test', sname:s.name, body:q.hint||''}));
+    }catch(e){/* skip a malformed unit: one bad file must not kill search */} });
   });
-  SYLLABUS.forEach(x=>ix.push({t:'Syllabus', title:(x.label||x.title)+' Syllabus ('+(x.year||'2082')+')', sub:x.desc||'', url:'#/syllabus/'+x.id, sname:''}));
-  NOTICES.forEach(n=>ix.push({t:'Notice', title:n.title, sub:n.date+' · '+n.cat, url:'#/notice/'+n.id, sname:''}));
-  FAQS.forEach((f,i)=>ix.push({t:'FAQ', title:f.q, sub:'Frequently asked', url:'#/faq', sname:'', body:f.a}));
+  SYLLABUS.forEach(x=>ix.push({t:'Syllabus', title:(x.label||x.title)+' Syllabus ('+(x.year||'2082')+')', sub:x.desc||'', url:'/syllabus/'+x.id, sname:''}));
+  NOTICES.forEach(n=>ix.push({t:'Notice', title:n.title, sub:n.date+' · '+n.cat, url:'/notice/'+n.id, sname:''}));
+  FAQS.forEach((f,i)=>ix.push({t:'FAQ', title:f.q, sub:'Frequently asked', url:'/faq', sname:'', body:f.a}));
   SEARCH_IX=ix; return ix;
 }
 function searchRun(term){
@@ -347,7 +330,7 @@ function searchLive(v){
   const res=searchRun(v), groups={};
   res.forEach(r=>{ (groups[r.t]=groups[r.t]||[]).push(r) });
   box.innerHTML=searchHTML(res,v,groups);
-  if(location.hash.indexOf('#/search')===0) history.replaceState(null,'','#/search?q='+encodeURIComponent(v));
+  if(location.hash.indexOf('#/search')===0) history.replaceState(null,'','/#/search?q='+encodeURIComponent(v));
 }
 
 /* ---------------- SAVED QUESTIONS PAGE ---------------- */
@@ -357,7 +340,7 @@ function pSaved(){
   `<section><div class="wrap">
     ${!list.length?`<div class="card"><p>You have not saved any question yet.</p>
       <p style="color:var(--muted);font-size:.9rem;margin-top:6px">While taking any MCQ test, tap the <b>Save</b> icon on a question to keep it here for revision.</p>
-      <a class="btn" style="margin-top:14px" href="#/subjects">Browse Subjects</a></div>`
+      <a class="btn" style="margin-top:14px" href="/subjects">Browse Subjects</a></div>`
     : `<div class="sbar"><span>${list.length} saved question${list.length>1?'s':''}</span>
         <button class="btn ghost sm" onclick="if(confirm('Remove all saved questions?')){BM.clear();rerender()}">Clear all</button></div>
       ${list.map(b=>`<div class="card svq">
@@ -366,7 +349,7 @@ function pSaved(){
         <h4>${esc(b.q)}</h4>
         <ol class="svo">${(b.o||[]).map((o,i)=>`<li class="${i===b.a?'right':''}">${esc(o)}</li>`).join('')}</ol>
         ${b.e?`<p class="sve ex">${esc(b.e)}</p>`:''}
-        <a class="btn ghost sm" href="#/unit/${b.sid}/${b.un}/test">Go to this unit</a>
+        <a class="btn ghost sm" href="/#/unit/${b.sid}/${b.un}/test">Go to this unit</a>
       </div>`).join('')}`}
   </div></section>`;
 }
@@ -407,12 +390,14 @@ function doSubscribe(e){
 }
 
 /* ---------------- SHELL ---------------- */
-function socialSVG(s){ return `<a href="${s.url}" title="${s.name}" aria-label="${s.name}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="${s.icon}"/></svg></a>` }
+const LOGO_SVG='<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="3"/><path d="M24 7v34M7 24h34" stroke="currentColor" stroke-width="2" opacity=".55"/><path d="M24 12l6.5 17L24 25.5 17.5 29z" fill="currentColor"/><circle cx="24" cy="24" r="3.2" fill="#F5A524"/></svg>';
+const CARET='<b class="car"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></b>';
+function socialSVG(s,cls){ return `<a${cls?' class="'+cls+'"':''} href="${s.url}" title="${s.name}" aria-label="${s.name}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="${s.icon}"/></svg></a>` }
 
 function shell(){
   const u = DB.user();
-  const syl = SYLLABUS.map(s=>`<a href="#/syllabus/${s.id}">${s.emoji||''} ${esc(s.label||s.title)} <small>(${esc(s.year||'2082')})</small></a>`).join('');
-  const sub = SUBJECTS.map(s=>`<a href="#/subject/${s.id}">${esc(s.name)} <small>(${s.units.length} units)</small></a>`).join('');
+  const syl = SYLLABUS.map(s=>`<a href="/syllabus/${s.id}">${s.emoji||''} ${esc(s.label||s.title)} <small>(${esc(s.year||'2082')})</small></a>`).join('');
+  const sub = SUBJECTS.map(s=>`<a href="/subject/${s.id}">${esc(s.name)} <small>(${s.units.length} units)</small></a>`).join('');
   const tick = NOTICES.slice(0,3).map(n=>`<b>&#9679;</b>${esc(n.title)}`).join(' &nbsp;&nbsp; ');
 
   $('#topbar').innerHTML = `<div class="wrap">
@@ -421,49 +406,49 @@ function shell(){
   </div>`;
 
   $('#header').innerHTML = `<div class="wrap">
-    <a class="logo" href="#/"><span class="mk"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="3"/><path d="M24 7v34M7 24h34" stroke="currentColor" stroke-width="2" opacity=".55"/><path d="M24 12l6.5 17L24 25.5 17.5 29z" fill="currentColor"/><circle cx="24" cy="24" r="3.2" fill="#F5A524"/></svg></span><span class="tx"><b>${esc(SITE.name)}</b><i>${esc(SITE.tagline)}</i></span></a>
+    <a class="logo" href="/"><span class="mk">${LOGO_SVG}</span><span class="tx"><b>${esc(SITE.name)}</b><i>${esc(SITE.tagline)}</i></span></a>
     <button class="burger" onclick="toggleNav()" aria-label="Menu" aria-expanded="false" aria-controls="nav">&#9776;</button>
     <nav class="main" id="nav">
-      <div class="item"><a class="lnk" href="#/">Home</a></div>
-      <div class="item" data-m="syl"><button class="lnk mbtn" aria-haspopup="true" aria-expanded="false" onclick="menu('syl',event)">Syllabus <b class="car"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></b></button><div class="drop">${syl}</div></div>
-      <div class="item" data-m="sub"><button class="lnk mbtn" aria-haspopup="true" aria-expanded="false" onclick="menu('sub',event)">Subjects <b class="car"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></b></button><div class="drop">${sub}</div></div>
-      <div class="item" data-m="tst"><button class="lnk mbtn" aria-haspopup="true" aria-expanded="false" onclick="menu('tst',event)">Tests <b class="car"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></b></button><div class="drop">
-        <a href="#/tests">All Tests</a><a href="#/dashboard/history">My Results</a></div></div>
-      <div class="item"><a class="lnk" href="#/notice">Notice</a></div>
-      <div class="item" data-m="abt"><button class="lnk mbtn" aria-haspopup="true" aria-expanded="false" onclick="menu('abt',event)">About <b class="car"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></b></button><div class="drop">
-        <a href="#/about">About Us</a><a href="#/contact">Contact</a><a href="#/faq">FAQ</a></div></div>
+      <div class="item"><a class="lnk" href="/">Home</a></div>
+      <div class="item" data-m="syl"><button class="lnk mbtn" aria-haspopup="true" aria-expanded="false" onclick="menu('syl',event)">Syllabus ${CARET}</button><div class="drop">${syl}</div></div>
+      <div class="item" data-m="sub"><button class="lnk mbtn" aria-haspopup="true" aria-expanded="false" onclick="menu('sub',event)">Subjects ${CARET}</button><div class="drop">${sub}</div></div>
+      <div class="item" data-m="tst"><button class="lnk mbtn" aria-haspopup="true" aria-expanded="false" onclick="menu('tst',event)">Tests ${CARET}</button><div class="drop">
+        <a href="/#/tests">All Tests</a><a href="/#/dashboard/history">My Results</a></div></div>
+      <div class="item"><a class="lnk" href="/notice">Notice</a></div>
+      <div class="item" data-m="abt"><button class="lnk mbtn" aria-haspopup="true" aria-expanded="false" onclick="menu('abt',event)">About ${CARET}</button><div class="drop">
+        <a href="/about">About Us</a><a href="/contact">Contact</a><a href="/faq">FAQ</a></div></div>
     </nav>
     <div class="hact">
       <div class="icons">
-      <a class="tgl srchb" href="#/search" aria-label="Search" title="Search">
+      <a class="tgl srchb" href="/#/search" aria-label="Search" title="Search">
         <svg viewBox="0 0 24 24"><path d="M10 2a8 8 0 105.3 14l5.4 5.4 1.4-1.4-5.4-5.4A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/></svg>
       </a>
-      <a class="tgl srchb" href="#/saved" aria-label="Saved questions" title="Saved questions">
+      <a class="tgl srchb" href="/#/saved" aria-label="Saved questions" title="Saved questions">
         <svg viewBox="0 0 24 24"><path d="M6 2h12a1 1 0 011 1v18l-7-4-7 4V3a1 1 0 011-1z"/></svg>
       </a>${themeBtn()}</div>${ u ? `<div class="uwrap" id="uwrap">
         <button type="button" class="avatar" aria-haspopup="true" aria-expanded="false" onclick="var w=document.getElementById('uwrap');w.classList.toggle('open');this.setAttribute('aria-expanded',w.classList.contains('open'))">${esc((u.name||'U')[0].toUpperCase())}</button>
-        <div class="udrop"><a href="#/dashboard">Dashboard</a><a href="#/dashboard/progress">My Progress</a>
-        <a href="#/dashboard/history">Test History</a><a href="#/saved">Saved Questions</a><a href="#/dashboard/profile">Profile</a>
+        <div class="udrop"><a href="/#/dashboard">Dashboard</a><a href="/#/dashboard/progress">My Progress</a>
+        <a href="/#/dashboard/history">Test History</a><a href="/#/saved">Saved Questions</a><a href="/#/dashboard/profile">Profile</a>
         <a href="#" onclick="logout();return false">Logout</a></div></div>`
-      : `<a class="btn sm prof" href="#/auth" title="Log in or create an account">
+      : `<a class="btn sm prof" href="/#/auth" title="Log in or create an account">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-4.4 0-8 2.5-8 5.5V21h16v-1.5c0-3-3.6-5.5-8-5.5z"/></svg>
           <span>Profile</span></a>` }</div>
   </div>`;
 
   $('#footer').innerHTML = `<div class="wrap">
     <div class="grid g4">
-      <div><div class="logo"><span class="mk"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="3"/><path d="M24 7v34M7 24h34" stroke="currentColor" stroke-width="2" opacity=".55"/><path d="M24 12l6.5 17L24 25.5 17.5 29z" fill="currentColor"/><circle cx="24" cy="24" r="3.2" fill="#F5A524"/></svg></span><span class="tx"><b style="color:#fff">${esc(SITE.name)}</b><i style="color:#8ea0c4">${esc(SITE.tagline)}</i></span></div>
+      <div><div class="logo"><span class="mk">${LOGO_SVG}</span><span class="tx"><b style="color:#fff">${esc(SITE.name)}</b><i style="color:#8ea0c4">${esc(SITE.tagline)}</i></span></div>
         <p style="font-size:.87rem;margin-top:12px">Amin Loksewa Preparation provides notes, MCQs, syllabus, important questions, and exam-focused study materials to help you prepare effectively for the Amin Loksewa exam !!!</p>
         <div class="fsoc">${SOCIAL.map(s=>socialSVG(s)).join('')}</div></div>
-      <div><h4>Quick Links</h4><a href="#/">Home</a><a href="#/syllabus">Syllabus</a><a href="#/subjects">Subjects</a>
-        <a href="#/tests">Tests</a><a href="#/search">Search</a><a href="#/saved">Saved Questions</a><a href="#/notice">Notice</a><a href="#/about">About</a></div>
-      <div><h4>Subjects</h4>${SUBJECTS.map(s=>`<a href="#/subject/${s.id}">${esc(s.name)}</a>`).join('')}</div>
-      <div><h4>Contact</h4><a href="#/contact">${esc(SITE.address)}</a><a href="tel:+9779814041813">${esc(SITE.phone)}</a>
+      <div><h4>Quick Links</h4><a href="/">Home</a><a href="/syllabus">Syllabus</a><a href="/subjects">Subjects</a>
+        <a href="/#/tests">Tests</a><a href="/#/search">Search</a><a href="/#/saved">Saved Questions</a><a href="/notice">Notice</a><a href="/about">About</a></div>
+      <div><h4>Subjects</h4>${SUBJECTS.map(s=>`<a href="/subject/${s.id}">${esc(s.name)}</a>`).join('')}</div>
+      <div><h4>Contact</h4><a href="/contact">${esc(SITE.address)}</a><a href="tel:${SITE.phone.replace(/\s/g,'')}">${esc(SITE.phone)}</a>
         <a href="mailto:${SITE.email}">${esc(SITE.email)}</a>
         <form class="nl" onsubmit="return doSubscribe(event)"><input type="email" id="nl-email" name="nl-email" placeholder="Your email" aria-label="Your email" required><button class="btn accent sm">Go</button></form><p class="nl-ok" id="nl-ok" hidden>Thank you for subscribing!</p></div>
     </div>
-    <div class="fbot"><span><a href="#/copyright" class="cpy">${esc(SITE.copyright)}</a></span>
-      <span><a href="#/about">About</a><a href="#/contact">Contacts</a><a href="#/privacy">Privacy Policy</a><a href="#/terms">Terms &amp; Conditions</a><a href="#/disclaimer">Disclaimer</a></span></div>
+    <div class="fbot"><span><a href="/#/copyright" class="cpy">${esc(SITE.copyright)}</a></span>
+      <span><a href="/about">About</a><a href="/contact">Contacts</a><a href="/#/privacy">Privacy Policy</a><a href="/#/terms">Terms &amp; Conditions</a><a href="/#/disclaimer">Disclaimer</a></span></div>
     <div class="fmade"><b>CREATED BY SHATRUDHAN SAH</b></div>
   </div>`;
 }
@@ -483,15 +468,24 @@ function toggleNav(){
   const bg=document.querySelector('.burger'); if(bg) bg.setAttribute('aria-expanded',n.classList.contains('open'));
   if(!n.classList.contains('open')) closeMenus();
 }
-function logout(){ DB.clearSession(); nav('#/'); }
-function nav(h){ if(location.hash===h){ router(); }else{ location.hash=h; } }
+function logout(){ DB.clearSession(); nav('/'); }
+/* SPA navigation: pushState for clean paths AND root-hash app URLs (no reload).
+   goPage('/syllabus') -> clean public page; goPage('/#/tests') -> hash-only app page */
+function goPage(url){
+  if(url[0]==='#'){ if(location.hash===url){router();} else {location.hash=url;} return; }
+  if(location.pathname+location.search+location.hash===url){ router(); return; }
+  history.pushState(null,'',url); router();
+}
+function nav(h){ goPage(h); }
 function rerender(){ const y=window.scrollY||0; router(); window.scrollTo(0,y); }
 
 /* ---------------- HELPERS ---------------- */
 const head = (t,s,c,ico) => `<div class="pghead"><div class="wrap">
-  <div class="crumb"><a href="#/">Home</a> / ${c||esc(t)}</div>
+  <div class="crumb"><a href="/">Home</a> / ${c||esc(t)}</div>
   <h1>${ico?ico+' ':''}${esc(t)}</h1>${s?`<p>${esc(s)}</p>`:''}</div></div>`;
-function need(){ if(!DB.user()){ location.hash='#/auth?t=login'; return true } return false }
+/* Deferred: need() runs mid-render, so the redirect must land AFTER the current
+   render finishes (the old location.hash redirect was async for the same reason) */
+function need(){ if(!DB.user()){ setTimeout(()=>goPage('/#/auth?t=login'),0); return true } return false }
 function prog(){ const d=DB.get(); return (d.p2&&d.p2[d.session||'guest'])||{} }
 function markDone(sid,un){ const d=DB.raw(); const k=DB.skey(); d.p2[k]=d.p2[k]||{}; d.p2[k][sid+'-'+un]=true; DB.set(d); }
 function subjPct(sid){ const p=prog(), sb=SUBJECTS.find(x=>x.id===sid), t=sb?sb.units.length:0; if(!t) return 0; let n=0; for(let i=1;i<=t;i++) if(p[sid+'-'+i]) n++; return Math.round(n/t*100) }
@@ -507,6 +501,17 @@ function jumpTo(e,id){
 }
 
 /* ---------------- PAGES ---------------- */
+/* Subject card shared by home + subjects page (showTests adds the "N Tests" bit). One
+   subjPct() call per card - the value is reused for the bar and the label. */
+const subjectCard=(s,showTests)=>{ const pc=subjPct(s.id);
+  return `<a class="card" href="/subject/${s.id}">
+      <div class="ico" style="background:${s.color}">${s.icon}</div><h3>${esc(s.name)}</h3><p>${esc(s.desc)}</p>
+      <div class="bar"><i style="width:${pc}%"></i></div>
+      <div style="margin-top:8px;font-size:.8rem;color:var(--muted)">${s.units.length} Units &middot; ${showTests?s.units.length*2+' Tests &middot; ':''}${pc}% complete</div></a>`; };
+/* Syllabus card shared by home + syllabus list. */
+const sylCard=x=>`<a class="card syl" href="/syllabus/${x.id}">
+      <h3><span class="sylemo">${x.emoji||''}</span> ${esc(x.label||x.title)} Syllabus (${esc(x.year||'2082')})</h3>
+      <span class="mini">View or download &rarr;</span></a>`;
 function pHome(){
   const slides = SLIDES.map(x=>`<div class="slide" style="--g1:${x.g1};--g2:${x.g2}">
       <div class="sbg"></div><div class="sov"></div>
@@ -525,36 +530,37 @@ function pHome(){
       </div></div>
 
   <div class="stats"><div class="wrap"><div class="grid g4">
-    <a class="stat" href="#/syllabus" onclick="return jumpTo(event,'sec-syllabus')" title="Federal and all seven provincial Amin syllabus tracks"><b>${SYLLABUS.length}</b><span>Syllabus Tracks</span></a>
-    <a class="stat" href="#/subjects" onclick="return jumpTo(event,'sec-subjects')" title="Six subjects, ${TOT_UNITS} units — every unit has Study material and two tests"><b>${SUBJECTS.length}</b><span>Subjects</span></a>
-    <a class="stat" href="#/subject/sub1" title="Open the first subject to browse all units"><b>${TOT_UNITS}</b><span>Units</span></a>
-    <a class="stat" href="#/tests" title="Practice and exam mode tests"><b>${TOT_TESTS}</b><span>Tests</span></a>
+    <a class="stat" href="/syllabus" onclick="return jumpTo(event,'sec-syllabus')" title="Federal and all seven provincial Amin syllabus tracks"><b>${SYLLABUS.length}</b><span>Syllabus Tracks</span></a>
+    <a class="stat" href="/subjects" onclick="return jumpTo(event,'sec-subjects')" title="Six subjects, ${TOT_UNITS} units — every unit has Study material and two tests"><b>${SUBJECTS.length}</b><span>Subjects</span></a>
+    <a class="stat" href="/subject/sub1" title="Open the first subject to browse all units"><b>${TOT_UNITS}</b><span>Units</span></a>
+    <a class="stat" href="/#/tests" title="Practice and exam mode tests"><b>${TOT_TESTS}</b><span>Tests</span></a>
   </div></div></div>
 
   <section id="sec-syllabus"><div class="wrap"><div class="shead"><h2>Syllabus</h2><p>Federal and all seven provincial Amin syllabus tracks</p></div>
-    <div class="grid g4 tight">${SYLLABUS.map(x=>`<a class="card syl" href="#/syllabus/${x.id}">
-      <h3><span class="sylemo">${x.emoji||''}</span> ${esc(x.label||x.title)} Syllabus (${esc(x.year||'2082')})</h3>
-      <span class="mini">View or download &rarr;</span></a>`).join('')}</div></div></section>
+    <div class="grid g4 tight">${SYLLABUS.map(sylCard).join('')}</div></div></section>
 
   <section class="alt" id="sec-subjects"><div class="wrap"><div class="shead"><h2>Our Subjects</h2><p>Six subjects, ${TOT_UNITS} units — every unit has Study material and two tests.</p></div>
-    <div class="grid g3">${SUBJECTS.map(s=>`<a class="card" href="#/subject/${s.id}">
-      <div class="ico" style="background:${s.color}">${s.icon}</div><h3>${esc(s.name)}</h3><p>${esc(s.desc)}</p>
-      <div class="bar"><i style="width:${subjPct(s.id)}%"></i></div>
-      <div style="margin-top:8px;font-size:.8rem;color:var(--muted)">${s.units.length} Units &middot; ${s.units.length*2} Tests &middot; ${subjPct(s.id)}% complete</div></a>`).join('')}</div></div></section>
+    <div class="grid g3">${SUBJECTS.map(s=>subjectCard(s,true)).join('')}</div></div></section>
 
   <section><div class="wrap"><div class="shead"><h2>Latest Notices</h2><p>Exam, result, admission and event updates</p></div>
     <div class="grid g2">${NOTICES.slice(0,4).map(n=>noticeCard(n)).join('')}</div>
-    <div style="text-align:center;margin-top:22px"><a class="btn ghost" href="#/notice">View All Notices</a></div></div></section>
+    <div style="text-align:center;margin-top:22px"><a class="btn ghost" href="/notice">View All Notices</a></div></div></section>
+
+  <section class="cta">
+    <div class="wrap"><h2 style="font-size:1.8rem">Create your free account today</h2>
+    <p style=p></div>
+    <div class="grid g2">${NOTICES.slice(0,4).map(n=>noticeCard(n)).join('')}</div>
+    <div style="text-align:center;margin-top:22px"><a class="btn ghost" href="/notice">View All Notices</a></div></div></section>
 
   <section class="cta">
     <div class="wrap"><h2 style="font-size:1.8rem">Create your free account today</h2>
     <p style="color:#cbd7f2;margin:8px 0 18px">Save your progress, take tests and get your results instantly.</p>
-    <a class="btn accent" href="#/auth?t=signup">Create free account</a></div></section>`;
+    <a class="btn accent" href="/#/auth?t=signup">Create free account</a></div></section>`;
 }
 
 function noticeCard(n){
   const isNew = (Date.now()-new Date(n.date))/86400000 < 30;
-  return `<a class="card" href="#/notice/${n.id}">
+  return `<a class="card" href="/notice/${n.id}">
     <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
       <span class="badge">${esc(n.cat)}</span>${isNew?'<span class="badge new">New</span>':''}
       <span style="margin-left:auto;font-size:.8rem;color:var(--muted)">${fdate(n.date)}</span></div>
@@ -563,18 +569,16 @@ function noticeCard(n){
 
 function pSyllabusList(){
   return head('Syllabus','Federal and all seven provincial Amin Loksewa syllabus')+
-  `<section><div class="wrap"><div class="grid g4 tight">${SYLLABUS.map(s=>`<a class="card syl" href="#/syllabus/${s.id}">
-    <h3><span class="sylemo">${s.emoji||''}</span> ${esc(s.label||s.title)} Syllabus (${esc(s.year||'2082')})</h3>
-    <span class="mini">View or download &rarr;</span></a>`).join('')}</div></div></section>`;
+  `<section><div class="wrap"><div class="grid g4 tight">${SYLLABUS.map(sylCard).join('')}</div></div></section>`;
 }
 
 function pSyllabus(id){
   const s = SYLLABUS.find(x=>x.id===id); if(!s) return p404();
   const rows = SUBJECTS.map((sb,i)=>{ const n=sb.units.length; return `<tr><td>${i+1}</td><td>${esc(sb.name)}</td><td>${n}</td><td>${n*5}</td><td>${n*3}</td></tr>`; }).join('');
-  return head((s.label||s.title)+' Syllabus ('+(s.year||'2082')+')', s.desc, `<a href="#/syllabus">Syllabus</a> / ${esc(s.label||s.title)}`, s.emoji||'')+
+  return head((s.label||s.title)+' Syllabus ('+(s.year||'2082')+')', s.desc, `<a href="/syllabus">Syllabus</a> / ${esc(s.label||s.title)}`, s.emoji||'')+
   `<section><div class="wrap"><div class="split">
-    <div class="side"><a class="on" href="#/syllabus/${s.id}">This Syllabus</a>
-      ${SYLLABUS.filter(x=>x.id!==s.id).map(x=>`<a href="#/syllabus/${x.id}"><span>${x.emoji||''} ${esc(x.label||x.title)}</span></a>`).join('')}</div>
+    <div class="side"><a class="on" href="/syllabus/${s.id}">This Syllabus</a>
+      ${SYLLABUS.filter(x=>x.id!==s.id).map(x=>`<a href="/syllabus/${x.id}"><span>${x.emoji||''} ${esc(x.label||x.title)}</span></a>`).join('')}</div>
     <div><div class="card prose">
       <h3>Overview</h3><p>${esc(s.desc)}</p>
       <h3>Objectives</h3><ul>${s.objectives.map(o=>`<li>${esc(o)}</li>`).join('')}</ul>
@@ -583,35 +587,32 @@ function pSyllabus(id){
       <div class="note"><b>Exam Pattern:</b> Objective 20 marks &middot; Short answer 40 marks &middot; Long answer 40 marks. Pass mark 40%.</div>
       <h3>Reference Books</h3><ul><li>Prescribed textbook of each subject</li><li>Practice question bank</li><li>Past year question collection</li></ul>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">
-        <a class="btn" href="#/subjects">Start Studying</a>
+        <a class="btn" href="/subjects">Start Studying</a>
         <button class="btn ghost" onclick="window.print()">Print</button></div>
     </div></div></div></div></section>`;
 }
 
 function pSubjects(){
   return head('Subjects',`Six subjects, ${TOT_UNITS} units — study material and two tests per unit`)+
-  `<section><div class="wrap"><div class="grid g3">${SUBJECTS.map(s=>`<a class="card" href="#/subject/${s.id}">
-    <div class="ico" style="background:${s.color}">${s.icon}</div><h3>${esc(s.name)}</h3><p>${esc(s.desc)}</p>
-    <div class="bar"><i style="width:${subjPct(s.id)}%"></i></div>
-    <div style="margin-top:8px;font-size:.8rem;color:var(--muted)">${s.units.length} Units &middot; ${subjPct(s.id)}% complete</div></a>`).join('')}</div></div></section>`;
+  `<section><div class="wrap"><div class="grid g3">${SUBJECTS.map(s=>subjectCard(s,false)).join('')}</div></div></section>`;
 }
 
 function pSubject(id){
   const s = SUBJECTS.find(x=>x.id===id); if(!s) return p404();
-  const p = prog();
-  return head(s.name, s.desc, `<a href="#/subjects">Subjects</a> / ${esc(s.name)}`)+
+  const p = prog(), pc = subjPct(s.id);
+  return head(s.name, s.desc, `<a href="/subjects">Subjects</a> / ${esc(s.name)}`)+
   `<section><div class="wrap"><div class="split">
-    <div class="side">${SUBJECTS.map(x=>`<a href="#/subject/${x.id}" class="${x.id===s.id?'on':''}">${esc(x.name)}</a>`).join('')}</div>
+    <div class="side">${SUBJECTS.map(x=>`<a href="/subject/${x.id}" class="${x.id===s.id?'on':''}">${esc(x.name)}</a>`).join('')}</div>
     <div>
-      <div class="card" style="margin-bottom:16px"><b>Progress:</b> ${subjPct(s.id)}% completed
-        <div class="bar"><i style="width:${subjPct(s.id)}%"></i></div></div>
+      <div class="card" style="margin-bottom:16px"><b>Progress:</b> ${pc}% completed
+        <div class="bar"><i style="width:${pc}%"></i></div></div>
       ${s.units.map(u=>`<div class="card" style="margin-bottom:12px;display:flex;gap:14px;align-items:center;flex-wrap:wrap">
         <div style="flex:1;min-width:200px"><div class="badge">Unit ${u.no}</div>
           <h3 style="margin-top:6px">${esc(u.title)}</h3>
           <p>${esc(u.outcomes[0]||u.title)}</p></div>
         ${p[s.id+'-'+u.no]?'<span class="badge ok">Completed</span>':''}
-        <a class="btn sm" href="#/unit/${s.id}/${u.no}/study">Study</a>
-        <a class="btn accent sm" href="#/unit/${s.id}/${u.no}/test">Test</a></div>`).join('')}
+        <a class="btn sm" href="/unit/${s.id}/${u.no}/study">Study</a>
+        <a class="btn accent sm" href="/#/unit/${s.id}/${u.no}/test">Test</a></div>`).join('')}
     </div></div></div></section>`;
 }
 
@@ -620,16 +621,16 @@ function pUnit(sid,un,tab){
   const u = s.units[un-1]; if(!u) return p404();
   const done = prog()[sid+'-'+un];
   const body = tab==='test' ? '<div id="quizRoot"></div>' : unitStudy(s,u,done);
-  return head(`Unit ${u.no}: ${u.title}`, s.name, `<a href="#/subjects">Subjects</a> / <a href="#/subject/${s.id}">${esc(s.name)}</a> / Unit ${u.no}`)+
+  return head(`Unit ${u.no}: ${u.title}`, s.name, `<a href="/subjects">Subjects</a> / <a href="/subject/${s.id}">${esc(s.name)}</a> / Unit ${u.no}`)+
   `<section><div class="wrap"><div class="split">
-    <div class="side">${s.units.map(x=>`<a href="#/unit/${s.id}/${x.no}/study" class="${x.no==un?'on':''}">Unit ${x.no}. ${esc(x.title)}${prog()[s.id+'-'+x.no]?' ✓':''}</a>`).join('')}</div>
+    <div class="side">${s.units.map(x=>`<a href="/unit/${s.id}/${x.no}/study" class="${x.no==un?'on':''}">Unit ${x.no}. ${esc(x.title)}${prog()[s.id+'-'+x.no]?' ✓':''}</a>`).join('')}</div>
     <div><div class="tabs">
-      <button class="${tab!=='test'?'on':''}" onclick="location.hash='#/unit/${sid}/${un}/study'">Study</button>
-      <button class="${tab==='test'?'on':''}" onclick="location.hash='#/unit/${sid}/${un}/test'">Test</button></div>
+      <button class="${tab!=='test'?'on':''}" onclick="goPage('/unit/${sid}/${un}/study')">Study</button>
+      <button class="${tab==='test'?'on':''}" onclick="goPage('/#/unit/${sid}/${un}/test')">Test</button></div>
       ${body}
       <div style="display:flex;justify-content:space-between;margin-top:20px">
-        ${un>1?`<a class="btn ghost sm" href="#/unit/${sid}/${un-1}/study">&larr; Previous Unit</a>`:'<span></span>'}
-        ${un<s.units.length?`<a class="btn ghost sm" href="#/unit/${sid}/${+un+1}/study">Next Unit &rarr;</a>`:'<span></span>'}</div>
+        ${un>1?`<a class="btn ghost sm" href="/unit/${sid}/${un-1}/study">&larr; Previous Unit</a>`:'<span></span>'}
+        ${un<s.units.length?`<a class="btn ghost sm" href="/unit/${sid}/${+un+1}/study">Next Unit &rarr;</a>`:'<span></span>'}</div>
     </div></div></div></section>`;
 }
 
@@ -640,7 +641,7 @@ function unitStudy(s,u,done){
     <div class="note"><b>Key Points</b><ul style="margin-top:6px">${u.keypoints.map(k=>`<li>${esc(k)}</li>`).join('')}</ul></div>
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">
       <button class="btn ${done?'ghost':''}" onclick="markDone('${s.id}',${u.no});rerender()" ${done?'disabled':''}>${done?'✓ Completed':'Mark as Complete'}</button>
-      <a class="btn accent" href="#/unit/${s.id}/${u.no}/test">Go to Test</a>
+      <a class="btn accent" href="/#/unit/${s.id}/${u.no}/test">Go to Test</a>
       <button class="btn ghost" onclick="window.print()">Print Notes</button></div></div>`;
 }
 
@@ -672,7 +673,7 @@ function quizStart(sid,un){
      </div>
      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">
        <button class="btn accent" onclick="qzBegin()">Start Test</button>
-       <a class="btn ghost" href="#/unit/${sid}/${un}/study">Read Notes First</a></div>
+       <a class="btn ghost" href="/unit/${sid}/${un}/study">Read Notes First</a></div>
    </div>
    <div class="card" style="margin-top:16px">
      <h3 style="color:var(--primary)">Subject Test (Written) &mdash; ${u.subjective.reduce((x,y)=>x+y.marks,0)} marks</h3>
@@ -890,8 +891,8 @@ function qzResult(stay){
        ${(wrong+skip)&&skip?`<button class="btn" onclick="qzRetryWrong(true)">Retry wrong + skipped (${wrong+skip})</button>`:''}
        <button class="btn ghost" onclick="QZ.i=0;qzRender()">Review Answers</button>
        <button class="btn ghost" onclick="quizStart(QZ.sid,QZ.un)">Retake all</button>
-       <a class="btn ghost" href="#/dashboard/history">Test History</a>
-       <a class="btn ghost" href="#/unit/${QZ.sid}/${QZ.un}/study">Back to Notes</a>
+       <a class="btn ghost" href="/#/dashboard/history">Test History</a>
+       <a class="btn ghost" href="/unit/${QZ.sid}/${QZ.un}/study">Back to Notes</a>
      </div>
    </div>
    <div class="card" style="margin-top:16px"><h3 style="color:var(--primary);margin-bottom:10px">Answer Review</h3>
@@ -923,7 +924,7 @@ function pTests(){
     <div style="display:flex;gap:10px;align-items:center"><div class="ico" style="background:${s.color};margin:0;width:38px;height:38px;font-size:1.1rem">${s.icon}</div><h3>${esc(s.name)}</h3></div>
     ${s.units.map(u=>`<div style="display:flex;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);font-size:.9rem">
       <span style="flex:1">Unit ${u.no}. ${esc(u.title)}</span>
-      <a class="btn accent sm" href="#/unit/${s.id}/${u.no}/test">Open Tests</a></div>`).join('')}</div>`).join('')}</div></div></section>`;
+      <a class="btn accent sm" href="/#/unit/${s.id}/${u.no}/test">Open Tests</a></div>`).join('')}</div>`).join('')}</div></div></section>`;
 }
 
 function pNotices(cat){
@@ -931,18 +932,18 @@ function pNotices(cat){
   const cats=['All','Exam','Result','Admission','Event'];
   return head('Notice Board','Exam routines, results, admissions and events')+
   `<section><div class="wrap">
-    <div class="filters">${cats.map(c=>`<button class="${(cat||'All')===c?'on':''}" onclick="location.hash='#/notice?cat='+'${c}'">${c}</button>`).join('')}</div>
+    <div class="filters">${cats.map(c=>`<button class="${(cat||'All')===c?'on':''}" onclick="goPage('/notice?cat='+'${c}')">${c}</button>`).join('')}</div>
     <div class="grid g2">${list.map(noticeCard).join('')||'<p>No notices.</p>'}</div></div></section>`;
 }
 
 function pNotice(id){
   const n=NOTICES.find(x=>x.id==id); if(!n) return p404();
-  return head(n.title, fdate(n.date)+' · '+n.cat, `<a href="#/notice">Notice</a> / ${esc(n.title)}`)+
+  return head(n.title, fdate(n.date)+' · '+n.cat, `<a href="/notice">Notice</a> / ${esc(n.title)}`)+
   `<section><div class="wrap"><div class="card prose" style="max-width:820px;margin:0 auto">
     <span class="badge">${esc(n.cat)}</span><span style="margin-left:8px;color:var(--muted);font-size:.85rem">${fdate(n.date)}</span>
     <h3>${esc(n.title)}</h3><p>${esc(n.body)}</p>
     <p>For further information please contact the office at ${esc(SITE.phone)} or email ${esc(SITE.email)}.</p>
-    <div style="margin-top:16px"><a class="btn ghost" href="#/notice">&larr; All Notices</a>
+    <div style="margin-top:16px"><a class="btn ghost" href="/notice">&larr; All Notices</a>
     <button class="btn" onclick="window.print()">Print</button></div>
     <div style="margin-top:14px;font-size:.85rem;color:var(--muted)">Share: <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),'_blank','noopener');return false">Facebook</a> · <a href="#" onclick="window.open('https://twitter.com/intent/tweet?url='+encodeURIComponent(location.href),'_blank','noopener');return false">X</a> · <a href="#" onclick="window.open('https://wa.me/?text='+encodeURIComponent(location.href),'_blank','noopener');return false">WhatsApp</a></div>
   </div></div></section>`;
@@ -988,18 +989,18 @@ function pContact(){
       <div class="card prose" style="border-top:3px solid var(--accent)">
         <h3 style="display:flex;align-items:center;gap:8px;font-size:1.2rem">📩 Reach Us</h3>
         <div class="pcard" style="border-bottom:0;padding:6px 0 14px">
-          <div class="ppic"><img src="${SITE.profileImage||'images/team1.jpg'}" alt="Shatrudhan Sah"
-            loading="lazy" onerror="this.parentNode.classList.add('ini');this.remove()"><span>SS</span></div>
-          <div class="pname">Shatrudhan Sah</div>
-          <div class="prole">Owner &amp; Admin · Geomatics Engineering</div>
+          <div class="ppic"><img src="${SITE.profileImage||'/images/profile.jpg'}" alt="${esc(SITE.owner)}"
+            loading="lazy" onerror="this.parentNode.classList.add('ini');this.remove()"><span>${esc(SITE.ownerInit)}</span></div>
+          <div class="pname">${esc(SITE.owner)}</div>
+          <div class="prole">${esc(SITE.ownerRole)}</div>
         </div>
         <div style="display:flex;flex-direction:column;gap:11px">
           <p>${ib}📍</span><b>Address:</b> ${esc(SITE.address)}</p>
-          <p>${ib}📞</span><b>Phone:</b> <a href="tel:+9779814041813" style="color:var(--primary)">${esc(SITE.phone)}</a></p>
+          <p>${ib}📞</span><b>Phone:</b> <a href="tel:${SITE.phone.replace(/\s/g,'')}" style="color:var(--primary)">${esc(SITE.phone)}</a></p>
           <p>${ib}✉️</span><b>Email:</b> <a href="mailto:${SITE.email}" style="color:var(--primary)">${esc(SITE.email)}</a></p>
         </div>
         <h3 style="margin-top:18px">Follow Us</h3>
-        <div class="fsoc">${SOCIAL.map(s=>`<a class="fsoc--brand" href="${s.url}"><svg viewBox="0 0 24"><path d="${s.icon}"/></svg></a>`).join('')}</div>
+        <div class="fsoc">${SOCIAL.map(s=>socialSVG(s,'fsoc--brand')).join('')}</div>
       </div>
 
       <div class="card" style="border-top:3px solid var(--primary)">
@@ -1029,8 +1030,8 @@ function pAuth(tab){
   return head('Log in / Sign up','One place to access your account')+
   `<section><div class="wrap"><div class="form authbox">
     <div class="atabs">
-      <button class="${on==='login'?'on':''}" onclick="location.hash='#/auth?t=login'">Log in</button>
-      <button class="${on==='signup'?'on':''}" onclick="location.hash='#/auth?t=signup'">Sign up</button>
+      <button class="${on==='login'?'on':''}" onclick="goPage('/#/auth?t=login')">Log in</button>
+      <button class="${on==='signup'?'on':''}" onclick="goPage('/#/auth?t=signup')">Sign up</button>
     </div>
     <div id="m"></div>
     ${on==='login' ? `
@@ -1039,9 +1040,9 @@ function pAuth(tab){
         <label for="li">Email</label><input id="li" type="email" autocomplete="email" required>
         <label for="lp">Password</label><input id="lp" type="password" autocomplete="current-password" required>
         <div class="row"><label class="chk"><input type="checkbox" id="rm" checked> Remember me</label>
-          <a href="#/forgot" style="color:var(--primary)">Forgot password?</a></div>
+          <a href="/#/forgot" style="color:var(--primary)">Forgot password?</a></div>
         <button class="btn block">Log in</button>
-        <p class="swap">New here? <a href="#/auth?t=signup">Create a free account</a></p>
+        <p class="swap">New here? <a href="/#/auth?t=signup">Create a free account</a></p>
       </form>` : `
       <form onsubmit="doReg(event)">
         <h2>Create your account</h2><div class="sub">Free &mdash; save progress and get instant test results</div>
@@ -1050,9 +1051,9 @@ function pAuth(tab){
         <label for="rp">Password</label><input id="rp" type="password" minlength="6" autocomplete="new-password" required>
         <label for="rp2">Confirm Password</label><input id="rp2" type="password" minlength="6" autocomplete="new-password" required>
         <label class="chk" style="margin-top:14px"><input type="checkbox" required>
-          I agree to the <a href="#/terms" style="color:var(--primary)">Terms</a></label>
+          I agree to the <a href="/#/terms" style="color:var(--primary)">Terms</a></label>
         <button class="btn block" style="margin-top:14px">Sign up</button>
-        <p class="swap">Already have an account? <a href="#/auth?t=login">Log in</a></p>
+        <p class="swap">Already have an account? <a href="/#/auth?t=login">Log in</a></p>
       </form>`}
   </div></div></section>`;
 }
@@ -1063,7 +1064,7 @@ async function doLogin(e){
   const hp=await sha(pw);
   if(!u||!(u.pass===hp||(!isSha(u.pass)&&u.pass===pw))){ $('#m').innerHTML='<div class="msg err">Invalid email or password. Please try again.</div>'; return }
   if(!isSha(u.pass)&&u.pass!==hp){ u.pass=hp; DB.set(d); }
-  const rm=document.getElementById('rm'); DB.setSession(u.email, !rm||rm.checked); nav('#/dashboard');
+  const rm=document.getElementById('rm'); DB.setSession(u.email, !rm||rm.checked); nav('/#/dashboard');
 }
 async function doReg(e){
   e.preventDefault();
@@ -1072,7 +1073,7 @@ async function doReg(e){
   const d=DB.get();
   if(d.users.some(u=>u.email===em)){ $('#m').innerHTML='<div class="msg err">This email is already registered. Please log in instead.</div>'; return }
   d.users.push({name:$('#rn').value.trim(),email:em,mobile:'',course:'',pass:await sha($('#rp').value),code:rid()});
-  DB.set(d); DB.setSession(em,true); nav('#/dashboard');
+  DB.set(d); DB.setSession(em,true); nav('/#/dashboard');
 }
 function pForgot(){
   return head('Forgot Password','Reset using your registered email')+
@@ -1092,7 +1093,7 @@ async function doForgot(e){
   if(!u.code){ u.code=rid(); first=true; }
   else if(fc!==u.code){ $('#m').innerHTML='<div class="msg err">Incorrect recovery code. Find it on your Profile page while logged in.</div>'; return }
   u.pass=await sha($('#fp').value); DB.set(d);
-  $('#m').innerHTML='<div class="msg ok">Password updated. '+(first?('Your new recovery code is <b>'+u.code+'</b> — also saved on your Profile page. '):'')+'You can now <a href="#/auth?t=login">log in</a>.</div>';
+  $('#m').innerHTML='<div class="msg ok">Password updated. '+(first?('Your new recovery code is <b>'+u.code+'</b> — also saved on your Profile page. '):'')+'You can now <a href="/#/auth?t=login">log in</a>.</div>';
 }
 
 /* ---------------- DASHBOARD ---------------- */
@@ -1101,24 +1102,24 @@ function pDash(view){
   const u=DB.user(), d=DB.get();
   const myres=(d.r2&&d.r2[d.session||'guest'])||[];
   const nav=`<div class="side">
-    <a href="#/dashboard" class="${!view?'on':''}">Overview</a>
-    <a href="#/dashboard/progress" class="${view==='progress'?'on':''}">My Progress</a>
-    <a href="#/dashboard/history" class="${view==='history'?'on':''}">Test History</a>
-    <a href="#/dashboard/profile" class="${view==='profile'?'on':''}">Profile &amp; Settings</a>
+    <a href="/#/dashboard" class="${!view?'on':''}">Overview</a>
+    <a href="/#/dashboard/progress" class="${view==='progress'?'on':''}">My Progress</a>
+    <a href="/#/dashboard/history" class="${view==='history'?'on':''}">Test History</a>
+    <a href="/#/dashboard/profile" class="${view==='profile'?'on':''}">Profile &amp; Settings</a>
     <a href="#" onclick="logout();return false">Logout</a></div>`;
   let body;
   if(view==='progress'){
     body=`<div class="card"><h3>Subject Progress</h3>
-      ${SUBJECTS.map(s=>`<div style="margin:14px 0"><div style="display:flex;justify-content:space-between;font-size:.9rem">
-        <b>${esc(s.name)}</b><span>${subjPct(s.id)}%</span></div><div class="bar"><i style="width:${subjPct(s.id)}%"></i></div>
-        <div style="font-size:.8rem;color:var(--muted);margin-top:4px">${s.units.map(x=>(prog()[s.id+'-'+x.no]?'✓':'○')+' U'+x.no).join(' &nbsp; ')}</div></div>`).join('')}</div>`;
+      ${SUBJECTS.map(s=>{const pc=subjPct(s.id);return `<div style="margin:14px 0"><div style="display:flex;justify-content:space-between;font-size:.9rem">
+        <b>${esc(s.name)}</b><span>${pc}%</span></div><div class="bar"><i style="width:${pc}%"></i></div>
+        <div style="font-size:.8rem;color:var(--muted);margin-top:4px">${s.units.map(x=>(prog()[s.id+'-'+x.no]?'✓':'○')+' U'+x.no).join(' &nbsp; ')}</div></div>`}).join('')}</div>`;
   } else if(view==='history'){
     body=`<div class="card"><h3 style="margin-bottom:12px">Test History</h3>${ myres.length?
       `<table><thead><tr><th>Date</th><th>Subject</th><th>Unit</th><th>Score</th><th>Attempted</th><th>%</th><th>Mode</th><th>Result</th></tr></thead><tbody>
        ${myres.map(r=>`<tr><td>${fdate(r.date)}</td><td>${esc(r.subject)}</td><td>${esc(r.unit)}</td>
        <td>${r.score}/${r.attempted||r.total}</td><td>${r.attempted||r.total}/${r.total}</td><td>${r.pct}%</td><td style="text-transform:capitalize">${esc(r.mode||"—")}</td>
        <td><span class="badge ${r.pct>=40?'ok':'bad'}">${r.pct>=40?'Pass':'Fail'}</span></td></tr>`).join('')}
-       </tbody></table>`:'<p style="color:var(--muted)">No tests taken yet. <a href="#/tests" style="color:var(--primary)">Take your first test →</a></p>'}</div>`;
+       </tbody></table>`:'<p style="color:var(--muted)">No tests taken yet. <a href="/#/tests" style="color:var(--primary)">Take your first test →</a></p>'}</div>`;
   } else if(view==='profile'){
     body=`<div class="card" style="max-width:460px"><h3>Profile &amp; Settings</h3>
       <form onsubmit="saveProfile(event)"><div id="m"></div>
@@ -1141,10 +1142,10 @@ function pDash(view){
         <div class="card" style="text-align:center"><b style="font-size:1.9rem;color:var(--ok)">${avg}%</b><p>Average score</p></div></div>
       <div class="card"><h3>Continue Learning</h3>
         ${SUBJECTS.slice(0,3).map(s=>`<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)">
-          <span style="flex:1">${esc(s.name)} — ${subjPct(s.id)}%</span><a class="btn sm ghost" href="#/subject/${s.id}">Open</a></div>`).join('')}</div>
+          <span style="flex:1">${esc(s.name)} — ${subjPct(s.id)}%</span><a class="btn sm ghost" href="/subject/${s.id}">Open</a></div>`).join('')}</div>
       <div class="card" style="margin-top:16px"><h3>Notices For You</h3>
         ${NOTICES.slice(0,3).map(n=>`<div style="padding:8px 0;border-bottom:1px solid var(--line);font-size:.9rem">
-          <a href="#/notice/${n.id}"><b>${esc(n.title)}</b></a> <span style="color:var(--muted)">— ${fdate(n.date)}</span></div>`).join('')}</div>`;
+          <a href="/notice/${n.id}"><b>${esc(n.title)}</b></a> <span style="color:var(--muted)">— ${fdate(n.date)}</span></div>`).join('')}</div>`;
   }
   return head('Dashboard','Your learning at a glance')+
     `<section><div class="wrap"><div class="split">${nav}<div>${body}</div></div></div></section>`;
@@ -1165,7 +1166,7 @@ function delAcc(){
   d.session=null;
   try{ localStorage.setItem(DB.k,JSON.stringify(d)); }catch(e){}
   try{ sessionStorage.removeItem(DB.k+'-s'); }catch(e){}
-  nav('#/');
+  nav('/');
 }
 
 function pLegal(key){
@@ -1174,15 +1175,15 @@ function pLegal(key){
   return head(L.title)+`<section><div class="wrap">
     <div class="card prose legal" style="max-width:860px;margin:0 auto">${L.body}</div>
     <p style="text-align:center;margin-top:18px;font-size:.88rem">
-      <a href="#/privacy" style="color:var(--primary)">Privacy Policy</a> &nbsp;·&nbsp;
-      <a href="#/terms" style="color:var(--primary)">Terms &amp; Conditions</a> &nbsp;·&nbsp;
-      <a href="#/disclaimer" style="color:var(--primary)">Disclaimer</a> &nbsp;·&nbsp;
-      <a href="#/copyright" style="color:var(--primary)">Copyright</a> &nbsp;·&nbsp;
-      <a href="#/contact" style="color:var(--primary)">Contact</a></p>
+      <a href="/#/privacy" style="color:var(--primary)">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="/#/terms" style="color:var(--primary)">Terms &amp; Conditions</a> &nbsp;·&nbsp;
+      <a href="/#/disclaimer" style="color:var(--primary)">Disclaimer</a> &nbsp;·&nbsp;
+      <a href="/#/copyright" style="color:var(--primary)">Copyright</a> &nbsp;·&nbsp;
+      <a href="/contact" style="color:var(--primary)">Contact</a></p>
   </div></section>`;
 }
 function p404(){ return head('Page Not Found')+`<section><div class="wrap" style="text-align:center">
-  <p style="margin-bottom:16px">The page you are looking for does not exist.</p><a class="btn" href="#/">Back to Home</a></div></section>` }
+  <p style="margin-bottom:16px">The page you are looking for does not exist.</p><a class="btn" href="/">Back to Home</a></div></section>` }
 
 
 /* ---------------- THEME (light / dark) ---------------- */
@@ -1229,15 +1230,37 @@ function initTop(){
 
 /* ---------------- ROUTER ---------------- */
 let NAV_SEQ=0; /* navigation token: a stale async load never paints over a newer page */
+/* App-only pages stay on the hash (/#/...) so they are never indexed as
+   separate pages and never need server rewrites. Everything else is clean. */
+const HASH_ONLY={tests:1,search:1,saved:1,auth:1,login:1,register:1,forgot:1,dashboard:1,privacy:1,terms:1,copyright:1,disclaimer:1};
+function routeFromLocation(){
+  const h=location.hash;
+  if(h&&h.length>1&&h[1]==='/'){
+    const raw=h.slice(1), qi=raw.indexOf('?');
+    return {path:qi<0?raw:raw.slice(0,qi), qs:qi<0?'':raw.slice(qi+1), src:'hash'};
+  }
+  return {path:location.pathname, qs:location.search?location.search.slice(1):'', src:'path'};
+}
 async function router(){
   const my=++NAV_SEQ;
   clearInterval(QZ.tid); QZ.run=false; /* stop any running quiz clock when navigating */
   clearInterval(timer);                 /* stop the hero slider when leaving home */
   document.onkeydown=null;              /* release the slider arrow-key handler */
-  const raw=(location.hash||'#/').slice(1);
-  const qi=raw.indexOf('?'); const path=qi<0?raw:raw.slice(0,qi); const qs=qi<0?'':raw.slice(qi+1);
-  const q=new URLSearchParams(qs||'');
-  const p=path.split('/').filter(Boolean);
+  let loc=routeFromLocation();
+  let p=loc.path.split('/').filter(Boolean);
+  /* legacy public hash link (e.g. #/syllabus, old bookmarks) -> clean URL */
+  if(loc.src==='hash'&&!HASH_ONLY[p[0]]&&!(p[0]==='unit'&&p[3]==='test')){
+    const clean='/'+p.join('/')+(loc.qs?'?'+loc.qs:'');
+    history.replaceState(null,'',clean);
+    loc={path:clean,qs:loc.qs,src:'path'}; p=loc.path.split('/').filter(Boolean);
+  }
+  /* clean URL typed for a hash-only app page -> canonical /#/ form (same
+     document: 404.html and index.html are identical, so no reload is needed) */
+  if(loc.src==='path'&&(HASH_ONLY[p[0]]||(p[0]==='unit'&&p[3]==='test'))){
+    history.replaceState(null,'','/#/'+p.join('/')+(loc.qs?'?'+loc.qs:''));
+    loc=routeFromLocation(); p=loc.path.split('/').filter(Boolean);
+  }
+  const q=new URLSearchParams(loc.qs||'');
   /* lazy data: fetch ONLY this page's unit files before rendering (the old page
      stays visible meanwhile, so there is no flash). Unknown ids = no-op. */
   try{
@@ -1281,6 +1304,9 @@ async function router(){
   window.scrollTo(0,0);
   if(p[0]===undefined) initSlider();
   if(p[0]==='unit'&&p[3]==='test'){ clearInterval(QZ.tid); quizStart(p[1],+p[2]); }
+  /* keep the canonical URL in sync with the visible clean URL (SEO) */
+  const can=document.querySelector('link[rel="canonical"]');
+  if(can) can.href=location.origin+location.pathname+(location.search||'');
 }
 
 /* ---------------- SLIDER ---------------- */
@@ -1324,6 +1350,20 @@ document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){ const nv=document.getElementById('nav'); if(nv&&nv.classList.contains('open')) toggleNav(); else closeMenus(); }
 });
 window.addEventListener('hashchange',router);
+window.addEventListener('popstate',router); /* browser Back/Forward over clean URLs */
+/* SPA link interceptor: same-origin /... links navigate without a reload.
+   Skips # anchors, mailto/tel, new-tab and download links. */
+document.addEventListener('click',e=>{
+  if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey) return;
+  const a=e.target.closest&&e.target.closest('a[href]');
+  if(!a) return;
+  const href=a.getAttribute('href');
+  if(!href||href==='#'||href[0]!=='/'||a.target==='_blank'||a.hasAttribute('download')) return;
+  let url; try{ url=new URL(href,location.origin); }catch(_){ return; }
+  if(url.origin!==location.origin) return;
+  e.preventDefault();
+  goPage(url.pathname+url.search+url.hash);
+});
 
 /* boot */
 themeApply(document.documentElement.getAttribute('data-theme')||'light');

@@ -11,9 +11,12 @@ const SITE = {
   email: "gmshatrudhan@gmail.com",
   phone: "+977 9814041813",
   address: "Janakpur, Dhanusha, Nepal",
+  owner: "Shatrudhan Sah",
+  ownerRole: "Owner & Admin · Geomatics Engineering",
+  ownerInit: "SS",
   copyright: "© 2026 Amin Loksewa Preparation. All Rights Reserved.",
   /* PROFILE PHOTO shown in the Reach Us box — replace with your own picture */
-  profileImage: "images/profile.jpg",
+  profileImage: "/images/profile.jpg",
   /* CONTACT FORM — paste your free Formspree endpoint here to receive messages by email.
      Get one at https://formspree.io (free plan, no backend needed).
      Leave it empty and the form will open the visitor's email app instead. */
@@ -31,23 +34,23 @@ const SOCIAL = [
 const SLIDES = [
   { tag:"Author", title:"Shatrudhan Sah", sub:"Amin Loksewa Instructor",
     desc:"Prepared and maintained by Shatrudhan Sah \u2014 structured notes, model questions and exam guidance for Amin aspirants across Nepal.",
-    btn:"About the Author", href:"#/about", btn2:"Contact", href2:"#/contact",
+    btn:"About the Author", href:"/about", btn2:"Contact", href2:"/contact",
     g1:"#092741", g2:"#17527F", icon:"\u270D" },
   { tag:"Syllabus", title:"Federal and 7 Provinces", sub:"Official syllabus 2082",
     desc:"Follow the syllabus for the Federal Lok Sewa Aayog or any of the seven provincial Public Service Commissions, with marks distribution and exam pattern.",
-    btn:"View Syllabus", href:"#/syllabus", btn2:"Federal Syllabus", href2:"#/syllabus/federal",
+    btn:"View Syllabus", href:"/syllabus", btn2:"Federal Syllabus", href2:"/syllabus/federal",
     g1:"#5C4708", g2:"#A8861A", icon:"\u1F4CB" },
   { tag:"Subjects", title:"6 Subjects, 27 Units", sub:"Complete course coverage",
     desc:"General Awareness, Public Management, Surveying, Land Administration, Mathematics and Instruments, and Control Survey \u2014 with notes for every unit.",
-    btn:"Browse Subjects", href:"#/subjects", btn2:"View Units", href2:"#/subjects",
+    btn:"Browse Subjects", href:"/subjects", btn2:"View Units", href2:"/subjects",
     g1:"#0B4A42", g2:"#0E7C6B", icon:"\u1F4DA" },
   { tag:"Tests", title:"54 Practice Tests", sub:"Written and objective",
     desc:"Every unit has a written Subject Test and a timed Objective MCQ Test with instant scoring, correct answers and saved results in your dashboard.",
-    btn:"Start a Test", href:"#/tests", btn2:"My Results", href2:"#/dashboard/history",
+    btn:"Start a Test", href:"/#/tests", btn2:"My Results", href2:"/#/dashboard/history",
     g1:"#123047", g2:"#265E85", icon:"\u1F4DD" },
   { tag:"Notice", title:"Latest Notices", sub:"Vacancy, exam and results",
     desc:"Stay updated with vacancy announcements, examination routines, result publications and important notices from the Public Service Commission.",
-    btn:"Read Notices", href:"#/notice", btn2:"Create Account", href2:"#/register",
+    btn:"Read Notices", href:"/notice", btn2:"Create Account", href2:"/#/register",
     g1:"#4A1230", g2:"#8A2A4A", icon:"\u1F4E2" }
 ];
 
@@ -100,10 +103,10 @@ const TEAM = [
     loc:"Dhanusha, Nepal", img:SITE.profileImage,
     quote:"When a man learns to love, he must bear the risk of hatred.", by:"Obito Uchiha" },
   { n:"Sunil Sah", r:"Co-Founder", q:"Geomatics Engineering",
-    loc:"Dhanusha, Nepal", img:"images/team-sunil-sah.jpg",
+    loc:"Dhanusha, Nepal", img:"/images/team-sunil-sah.jpg",
     quote:"The expert in anything was once a beginner.", by:"Helen Hayes" },
   { n:"Rishikesh Sah", r:"Adviser", q:"Geomatics Engineering",
-    loc:"Dhanusha, Nepal", img:"images/team-rishikesh-sah.jpg",
+    loc:"Dhanusha, Nepal", img:"/images/team-rishikesh-sah.jpg",
     quote:"Education is the most powerful weapon which you can use to change the world.", by:"Nelson Mandela" }
 ];
 
