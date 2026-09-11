@@ -9,11 +9,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "Chain Survey" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["Chain Survey"] = window.EXTRA["Chain Survey"] || {};
 window.EXTRA["Chain Survey"].mcq = [
       {q:"The length of a metric chain commonly used in surveying is:", o:["50 m", "100 m", "10 m", "20 m"], a:3, e:"The 20 m metric chain (100 links, each 0.2 m) is the one most commonly used. A 30 m chain with 150 links is also available."},

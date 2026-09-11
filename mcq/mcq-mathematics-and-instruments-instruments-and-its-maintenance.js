@@ -9,11 +9,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "Instruments & Its Maintenance" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["Instruments & Its Maintenance"] = window.EXTRA["Instruments & Its Maintenance"] || {};
 window.EXTRA["Instruments & Its Maintenance"].mcq = [
       {q:"The temporary adjustment of a theodolite at a station consists of:", o:["The two peg test", "Cleaning the lenses", "Setting up, centring, levelling and focusing", "Only removing the collimation error"], a:2, e:"Temporary adjustments are made at every station: setting up the tripod, centring over the station mark, levelling the instrument and focusing the eyepiece and object glass to remove parallax. Permanent adjustments correct instrumental errors."},

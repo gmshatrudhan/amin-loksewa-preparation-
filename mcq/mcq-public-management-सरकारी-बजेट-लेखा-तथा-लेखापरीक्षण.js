@@ -9,11 +9,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "सरकारी बजेट, लेखा तथा लेखापरीक्षण" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["सरकारी बजेट, लेखा तथा लेखापरीक्षण"] = window.EXTRA["सरकारी बजेट, लेखा तथा लेखापरीक्षण"] || {};
 window.EXTRA["सरकारी बजेट, लेखा तथा लेखापरीक्षण"].mcq = [
       {q:"नेपालको सरकारी बजेट कसले तयार गर्दछ?", o:["महालेखा परीक्षकको कार्यालय", "राष्ट्रिय योजना आयोग", "नेपाल राष्ट्र बैंक", "अर्थ मन्त्रालय"], a:3, e:"अर्थ मन्त्रालयले राष्ट्रिय योजना आयोग र विषयगत मन्त्रालयसँगको परामर्शमा वार्षिक बजेट तयार गर्दछ र अर्थमन्त्रीले जेठ १५ गते सङ्घीय संसद्मा पेस गर्दछन्।"},

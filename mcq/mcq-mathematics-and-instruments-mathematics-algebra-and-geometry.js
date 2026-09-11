@@ -9,11 +9,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "Mathematics (Algebra & Geometry)" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["Mathematics (Algebra & Geometry)"] = window.EXTRA["Mathematics (Algebra & Geometry)"] || {};
 window.EXTRA["Mathematics (Algebra & Geometry)"].mcq = [
       {q:"If 2x + 5 = 17, then x is:", o:["7", "4", "5", "6"], a:3, e:"2x = 17 - 5 = 12, so x = 6."},

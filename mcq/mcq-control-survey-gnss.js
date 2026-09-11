@@ -9,11 +9,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "GNSS" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["GNSS"] = window.EXTRA["GNSS"] || {};
 window.EXTRA["GNSS"].mcq = [
       {q:"GNSS stands for:", o:["Ground Navigation Support System", "Global Navigation Satellite System", "General Network Survey System", "Geodetic National Survey Standard"], a:1, e:"GNSS is the general term for satellite navigation systems that give global coverage, including GPS (USA), GLONASS (Russia), Galileo (Europe) and BeiDou (China)."},

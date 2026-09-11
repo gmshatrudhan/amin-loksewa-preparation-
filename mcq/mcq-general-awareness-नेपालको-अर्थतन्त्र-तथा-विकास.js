@@ -9,11 +9,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "नेपालको अर्थतन्त्र तथा विकास" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["नेपालको अर्थतन्त्र तथा विकास"] = window.EXTRA["नेपालको अर्थतन्त्र तथा विकास"] || {};
 window.EXTRA["नेपालको अर्थतन्त्र तथा विकास"].mcq = [
       {q:"नेपालको कुल गार्हस्थ्य उत्पादनमा सबैभन्दा बढी योगदान कुन क्षेत्रको छ?", o:["कृषि", "उद्योग", "सेवा", "खानी"], a:2, e:"व्यापार, पर्यटन, यातायात, शिक्षा, स्वास्थ्य, बैंकिङ र सञ्चार समेटिने सेवा क्षेत्रको योगदान कुल गार्हस्थ्य उत्पादनमा सबैभन्दा बढी छ, त्यसपछि कृषि र अन्तमा उद्योग क्षेत्र पर्दछ।"},
