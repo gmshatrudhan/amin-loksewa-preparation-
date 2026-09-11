@@ -9,11 +9,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "Compass Survey Introduction" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["Compass Survey Introduction"] = window.EXTRA["Compass Survey Introduction"] || {};
 window.EXTRA["Compass Survey Introduction"].mcq = [
       {q:"In the Whole Circle Bearing system, bearings are measured:", o:["Anticlockwise from south", "From east only", "From 0 to 90 degrees in each quadrant", "Clockwise from north from 0 to 360 degrees"], a:3, e:"In the WCB system every bearing is measured clockwise from magnetic north, from 0 to 360 degrees. The quadrantal system measures from 0 to 90 degrees from north or south."},

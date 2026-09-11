@@ -9,11 +9,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "Introduction of Surveying" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["Introduction of Surveying"] = window.EXTRA["Introduction of Surveying"] || {};
 window.EXTRA["Introduction of Surveying"].mcq = [
       {q:"What is the fundamental principle of surveying?", o:["Work from south to north", "Work from part to whole", "Work from whole to part", "Work randomly"], a:2, e:"Working from whole to part: a control framework of high precision is established first, then details are filled in. This localises errors and prevents their accumulation over the survey area."},

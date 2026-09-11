@@ -9,11 +9,8 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  */
-window.EXTRA = window.EXTRA || {};  // ⚠️ DO NOT CHANGE this line (creates the shared question box).
+window.EXTRA = window.EXTRA || {};
 
-// ── ✏️ EDIT HERE - Unit: "Mathematics (General)" - add/edit/delete question lines below ──
-// ⚠️ DO NOT CHANGE the unit title inside ["..."] (must match app.js SUBJECTS exactly).
-// ✏️ One line = ONE MCQ: q=question, o=[4 options], a=correct option NUMBER (0=1st,1=2nd,2=3rd,3=4th!), e=explanation.
 window.EXTRA["Mathematics (General)"] = window.EXTRA["Mathematics (General)"] || {};
 window.EXTRA["Mathematics (General)"].mcq = [
       {q:"The area of a rectangular plot is 240 sq m and its length is 20 m. What is its perimeter?", o:["72 m", "60 m", "64 m", "68 m"], a:2, e:"Breadth = 240 / 20 = 12 m. Perimeter = 2 x (20 + 12) = 2 x 32 = 64 m."},
