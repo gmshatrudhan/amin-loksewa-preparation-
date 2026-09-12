@@ -792,3 +792,97 @@ mark{background:var(--accent);color:var(--accent-t);border-radius:4px;padding:0 
   color:var(--accent);opacity:.35;font-style:normal;line-height:1}
 .tq cite{display:block;margin-top:8px;font-style:normal;font-size:.76rem;font-weight:700;
   color:var(--primary);text-align:right}
+
+/* ============ 12. DASHBOARD (Overview / My Progress / Profile / Settings) ============
+   Minimal professional theme: deep navy + gold accents, rounded cards.
+   Uses only :root tokens, so light & dark themes both work automatically. */
+.muted{color:var(--muted)}
+.sm{font-size:.82rem}
+.hide{display:none!important}
+/* layout: sidebar + content */
+.dash{display:grid;grid-template-columns:225px 1fr;gap:22px;align-items:start}
+.dash-side{background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:10px;position:sticky;top:14px}
+.dash-side a{display:block;padding:11px 14px;border-radius:10px;font-weight:700;
+  font-size:.92rem;color:var(--text);border-left:3px solid transparent}
+.dash-side a:hover{background:var(--soft);color:var(--primary)}
+.dash-side a.on{background:var(--primary-soft);color:var(--primary);border-left-color:var(--primary)}
+/* overview hero + stat cards */
+.dash-hero{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.dash-hero h3{margin:0 0 4px}
+.dash-hero p{margin:0}
+.donut{width:104px;height:104px;flex:none}
+.donut-t{fill:var(--text);font-size:21px;font-weight:800}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0}
+.stat{text-align:center;padding:20px 10px}
+.stat b{display:block;font-size:1.8rem;color:var(--primary);line-height:1.1}
+.stat span{font-size:.82rem;color:var(--muted)}
+.dash-grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.dash .card h3{margin-top:0}
+/* subject rows + slim bars */
+.srow{display:flex;justify-content:space-between;align-items:baseline;font-size:.88rem;margin-top:12px}
+.srow b{color:var(--primary)}
+.bar.thin{height:6px;margin:6px 0 4px}
+/* score trend chart */
+.trend{display:flex;align-items:flex-end;gap:8px;height:150px;padding-top:22px}
+.tbar{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;min-width:0}
+.tbar span{font-size:.68rem;font-weight:800;color:var(--muted);margin-bottom:4px}
+.tbar i{display:block;width:70%;max-width:34px;border-radius:6px 6px 3px 3px}
+/* activity feed + continue rows */
+.act{display:flex;align-items:center;gap:12px;padding:10px 2px;border-bottom:1px solid var(--line);font-size:.9rem}
+.act:last-child{border-bottom:0}
+.act-i{font-size:1.15rem;flex:none}
+.act-t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.act-d{flex:none;font-size:.78rem;color:var(--muted)}
+.crow{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:10px 0;border-bottom:1px solid var(--line);font-size:.9rem}
+.crow:last-child{border-bottom:0}
+/* progress page */
+.sblock{margin:16px 0}
+.sblock:last-child{margin-bottom:0}
+.units{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;font-size:.8rem}
+.units a{padding:4px 10px;border-radius:999px;background:var(--soft);color:var(--muted)}
+.units a.done{background:var(--okbg);color:var(--ok);font-weight:700}
+.ms-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
+.ms{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;
+  padding:16px 8px;border-radius:14px;border:1px solid var(--line);font-size:.78rem}
+.ms-i{font-size:1.7rem;line-height:1}
+.ms.won{background:var(--amber);border-color:rgba(201,162,39,.4)}
+.ms.won b{color:var(--accent-d)}
+.ms.locked{opacity:.62}
+.ms.locked .ms-i{filter:grayscale(1)}
+.ms span{color:var(--muted)}
+/* profile page */
+.prof{max-width:520px;text-align:center}
+.avatar{width:72px;height:72px;margin:4px auto 10px;border-radius:50%;
+  background:var(--primary);color:#fff;font-size:1.5rem;font-weight:800;
+  display:flex;align-items:center;justify-content:center}
+.prof h3{margin:0}
+.prow{display:flex;justify-content:space-between;gap:10px;padding:10px 2px;
+  border-bottom:1px solid var(--line);font-size:.9rem;text-align:left}
+.prow span{color:var(--muted)}
+.prof form{text-align:left}
+/* settings page */
+.setrow{display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:13px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.setrow:last-child{border-bottom:0}
+.switch{position:relative;display:inline-block;width:46px;height:26px;flex:none}
+.switch input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
+.switch i{position:absolute;inset:0;background:var(--track);border:1px solid var(--line-strong);
+  border-radius:999px;transition:background .2s}
+.switch i::after{content:'';position:absolute;top:2px;left:2px;width:20px;height:20px;
+  border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:left .2s}
+.switch input:checked+i{background:var(--primary)}
+.switch input:checked+i::after{left:22px}
+.switch input:focus-visible+i{outline:2px solid var(--primary);outline-offset:2px}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap}
+/* dashboard on small screens: sidebar becomes a top tab row */
+@media(max-width:900px){
+  .dash{grid-template-columns:1fr}
+  .dash-side{position:static;display:flex;overflow-x:auto;gap:4px}
+  .dash-side a{white-space:nowrap;border-left:0;border-bottom:3px solid transparent}
+  .dash-side a.on{border-bottom-color:var(--primary)}
+  .stat-grid{grid-template-columns:repeat(2,1fr)}
+  .dash-grid2{grid-template-columns:1fr}
+  .ms-grid{grid-template-columns:repeat(2,1fr)}
+}
