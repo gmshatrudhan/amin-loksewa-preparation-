@@ -900,3 +900,41 @@ mark{background:var(--accent);color:var(--accent-t);border-radius:4px;padding:0 
   .trend{height:130px}
   .prof{padding:18px 14px}
 }
+
+/* ============ 13. UNIT TEST PRO (tabs, mode cards, written answers) ============
+   Professional restyle of the unit Study/Test page. Markup & questions untouched. */
+/* Study/Test: segmented pill control */
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--soft);
+  border:1px solid var(--line);border-radius:14px;padding:5px;margin-bottom:22px}
+.tabs button{padding:11px 10px;border:0;border-radius:10px;background:transparent;
+  font-weight:800;font-size:.92rem;color:var(--muted);margin:0}
+.tabs button:hover{color:var(--primary)}
+.tabs button.on{background:var(--primary);color:#fff;box-shadow:var(--shadow)}
+/* mode cards: radio-dot selectable look */
+.qstart .modes{gap:14px}
+.mode{position:relative;padding-left:46px}
+.mode::before{content:'';position:absolute;left:16px;top:18px;width:18px;height:18px;
+  border-radius:50%;border:2px solid var(--line-strong)}
+.mode.on::before{border-color:var(--primary)}
+.mode.on::after{content:'';position:absolute;left:21px;top:23px;width:8px;height:8px;
+  border-radius:50%;background:var(--primary)}
+/* start buttons: thumb-friendly */
+.qstart .btn.accent,.qstart a.btn.ghost{flex:1 1 160px;text-align:center;min-height:46px;
+  display:inline-flex;align-items:center;justify-content:center}
+/* written answers: refined type + clamp for long answers */
+.wq{padding:16px 18px;border-radius:14px}
+.wqt{font-size:.97rem}
+.wqa{font-size:.9rem;line-height:1.75}
+.wqa.show.clamp{max-height:230px;overflow:hidden;position:relative}
+.wqa.show.clamp:not(.open)::after{content:'';position:absolute;left:0;right:0;bottom:0;
+  height:64px;background:linear-gradient(transparent,var(--amber));pointer-events:none}
+.wqa.show.clamp.open{max-height:none}
+.wqamore{margin-top:8px}
+@media print{ .wqa.show.clamp{max-height:none} .wqa.show.clamp:not(.open)::after{display:none} }
+@media(max-width:520px){
+  .tabs button{padding:11px 6px;font-size:.88rem}
+  .mode{padding:14px 14px 14px 44px}
+  .wqh{gap:8px}
+  .wqt{order:2;flex-basis:100%}
+  .wqh .badge{order:1;margin-left:auto}
+}
