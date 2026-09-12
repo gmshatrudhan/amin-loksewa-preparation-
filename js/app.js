@@ -682,10 +682,23 @@ function quizStart(sid,un){
      ${u.subjective.map((q,i)=>`<div class="wq">
         <div class="wqh"><span class="wqn">Q${i+1}</span>
           <span class="wqt">${esc(q.q)}</span><span class="badge">${q.marks} marks</span></div>
-        <button class="btn ghost sm" onclick="this.nextElementSibling.classList.toggle('show');this.textContent=this.nextElementSibling.classList.contains('show')?'Hide model answer':'Show model answer'">Show model answer</button>
+        <button class="btn ghost sm" onclick="wqaToggle(this)">Show model answer</button>
         <div class="wqa"><b>Model answer:</b> ${esc(q.hint)}</div></div>`).join('')}
    </div>`;
   qzMode(PF.mode||'practice'); /* default mode from Dashboard > Settings */
+}
+
+/* Written-answer toggle + "Read more" clamp for long model answers. */
+function wqaToggle(btn){
+  const a=btn.nextElementSibling, open=a.classList.toggle('show');
+  btn.textContent=open?'Hide model answer':'Show model answer';
+  if(open&&!a.dataset.rm&&a.scrollHeight>320){
+    a.dataset.rm='1'; a.classList.add('clamp');
+    const m=document.createElement('button');
+    m.className='btn ghost sm wqamore'; m.textContent='Read more';
+    m.onclick=()=>{ const ex=a.classList.toggle('open'); m.textContent=ex?'Show less':'Read more'; };
+    a.after(m);
+  }
 }
 
 function qzMode(m){
