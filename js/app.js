@@ -653,6 +653,7 @@ const QZ = { sid:null, un:null, deck:[], i:0, ans:[], flag:[], mode:'practice',
 function quizStart(sid,un){
   const s=SUBJECTS.find(x=>x.id===sid), u=s.units[un-1];
   QZ.sid=sid; QZ.un=un;
+  const PF=prefsGet(); /* Dashboard > Settings defaults */
   const root=document.getElementById('quizRoot'); if(!root) return;
   root.innerHTML=`
    <div class="card qstart">
@@ -667,8 +668,8 @@ function quizStart(sid,un){
          <b>Exam mode</b><span>No feedback until you submit the whole paper, like the real examination.</span></button>
      </div>
      <div class="qopts">
-       <label class="chk"><input type="checkbox" id="qsh" checked> Shuffle questions</label>
-       <label class="chk"><input type="checkbox" id="osh"> Shuffle options</label>
+       <label class="chk"><input type="checkbox" id="qsh" ${PF.shQ?'checked':''}> Shuffle questions</label>
+       <label class="chk"><input type="checkbox" id="osh" ${PF.shO?'checked':''}> Shuffle options</label>
        <label class="chk">Time <input type="number" id="qmin" class="tmin" min="1" max="180" value="${Math.max(5,u.objective.length)}"> min</label>
      </div>
      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">
@@ -684,6 +685,7 @@ function quizStart(sid,un){
         <button class="btn ghost sm" onclick="this.nextElementSibling.classList.toggle('show');this.textContent=this.nextElementSibling.classList.contains('show')?'Hide model answer':'Show model answer'">Show model answer</button>
         <div class="wqa"><b>Model answer:</b> ${esc(q.hint)}</div></div>`).join('')}
    </div>`;
+  qzMode(PF.mode||'practice'); /* default mode from Dashboard > Settings */
 }
 
 function qzMode(m){
@@ -1096,60 +1098,176 @@ async function doForgot(e){
   $('#m').innerHTML='<div class="msg ok">Password updated. '+(first?('Your new recovery code is <b>'+u.code+'</b> — also saved on your Profile page. '):'')+'You can now <a href="/#/auth?t=login">log in</a>.</div>';
 }
 
+/* ---------------- DASHBOARD HELPERS (Overview / Progress / Profile / Settings) ----------------
+   EDITING GUIDE: dashboard texts live in pDash() below. Milestones = dashMilestones(),
+   activity feed = dashActivity(), charts = dashDonut() + dashTrend(). Everything is
+   computed from real local data (progress, test results, saved questions). */
+const PREF_KEY='amin-prefs';
+function prefsGet(){
+  let all={}; try{ all=JSON.parse(localStorage.getItem(PREF_KEY))||{}; }catch(e){}
+  const p=all[DB.skey()]||{};
+  return { shQ:p.shQ!==false, shO:p.shO===true, mode:p.mode==='exam'?'exam':'practice' };
+}
+function prefsSet(patch){
+  let all={}; try{ all=JSON.parse(localStorage.getItem(PREF_KEY))||{}; }catch(e){}
+  all[DB.skey()]=Object.assign({}, prefsGet(), patch);
+  try{ localStorage.setItem(PREF_KEY,JSON.stringify(all)); }catch(e){}
+  const m=document.getElementById('psaved');
+  if(m){ m.textContent='Saved ✓'; setTimeout(()=>{ if(m.isConnected) m.textContent=''; },1500); }
+}
+function dashStats(){
+  const d=DB.get(), me=d.session||'guest';
+  const done=Object.keys(prog()).length;
+  const res=(d.r2&&d.r2[me])||[];
+  const avg=res.length?Math.round(res.reduce((a,b)=>a+b.pct,0)/res.length):0;
+  const best=res.length?Math.max.apply(null,res.map(r=>r.pct)):0;
+  return { done, total:TOT_UNITS, pct:TOT_UNITS?Math.round(done/TOT_UNITS*100):0,
+           tests:res.length, avg, best, saved:BM.all().length, res };
+}
+function dashUnitUrl(subject,unit){
+  const s=SUBJECTS.find(x=>x.name===subject), u=s&&s.units.find(x=>x.title===unit);
+  return s&&u?`/#/unit/${s.id}/${u.no}/test`:'/#/tests';
+}
+function dashActivity(){
+  const d=DB.get(), me=d.session||'guest', acts=[];
+  ((d.r2&&d.r2[me])||[]).forEach(r=>{ if(!r.date) return;
+    acts.push({ date:r.date, icon:r.pct>=40?'✅':'📝',
+      text:`Test: ${r.subject} — ${r.unit} · ${r.score}/${r.total} (${r.pct}%)`,
+      url:dashUnitUrl(r.subject,r.unit) }); });
+  BM.all().forEach(b=>{ if(!b.date) return;
+    const q=(b.q||'').slice(0,80);
+    acts.push({ date:b.date, icon:'🔖', text:`Saved: ${q}${(b.q||'').length>80?'…':''}`,
+      url:`/unit/${b.sid}/${b.un}/study` }); });
+  acts.sort((a,b)=>(b.date>a.date?1:-1));
+  return acts.slice(0,8);
+}
+function dashMilestones(st){
+  const touched=SUBJECTS.filter(s=>subjPct(s.id)>0).length;
+  return [
+    {icon:'🌱', name:'First Step', hint:'Complete your first unit', won:st.done>=1},
+    {icon:'🧭', name:'Explorer', hint:'Study in all 6 subjects', won:touched>=6},
+    {icon:'📚', name:'Halfway Scholar', hint:'Complete 50% of units', won:st.pct>=50},
+    {icon:'🎓', name:'Course Complete', hint:'Complete all '+st.total+' units', won:st.pct>=100},
+    {icon:'🎯', name:'Sharp Shooter', hint:'Average score 60%+', won:st.tests>0&&st.avg>=60},
+    {icon:'🔥', name:'Consistent', hint:'Take 5 tests', won:st.tests>=5},
+    {icon:'💯', name:'Perfect Paper', hint:'Score 100% in any test', won:st.best>=100},
+    {icon:'🔖', name:'Collector', hint:'Save 10 questions', won:st.saved>=10},
+  ];
+}
+function dashDonut(pct){
+  const p=Math.min(100,Math.max(0,pct)), c=2*Math.PI*34, off=c*(1-p/100);
+  return `<svg class="donut" viewBox="0 0 90 90" role="img" aria-label="${p}% complete">
+    <circle cx="45" cy="45" r="34" fill="none" stroke="var(--track)" stroke-width="11"/>
+    <circle cx="45" cy="45" r="34" fill="none" stroke="var(--primary)" stroke-width="11"
+      stroke-linecap="round" stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"
+      transform="rotate(-90 45 45)"/>
+    <text x="45" y="51" text-anchor="middle" class="donut-t">${p}%</text></svg>`;
+}
+function dashTrend(res){
+  const last=res.slice(0,8).reverse();
+  if(!last.length) return '<p class="muted">No tests yet — your recent scores will appear here.</p>';
+  const bars=last.map(r=>{ const h=Math.max(6,Math.min(100,r.pct));
+    const col=r.pct>=60?'var(--ok)':r.pct>=40?'var(--accent-d)':'var(--bad)';
+    return `<div class="tbar" title="${esc(r.subject)} — ${r.pct}%"><span>${r.pct}</span><i style="height:${h}%;background:${col}"></i></div>`; }).join('');
+  return `<div class="trend">${bars}</div><p class="muted sm">Last ${last.length} test${last.length>1?'s':''} · latest on the right</p>`;
+}
+function clearMyData(){
+  if(!confirm('Clear your unit progress and test history? Saved questions and your account stay.')) return;
+  const d=DB.raw(), me=DB.skey();
+  delete d.p2[me]; delete d.r2[me]; DB.set(d); nav('/#/dashboard');
+}
+
 /* ---------------- DASHBOARD ---------------- */
 function pDash(view){
   if(need()) return '';
-  const u=DB.user(), d=DB.get();
-  const myres=(d.r2&&d.r2[d.session||'guest'])||[];
-  const nav=`<div class="side">
+  const u=DB.user(), st=dashStats();
+  const side=`<div class="dash-side">
     <a href="/#/dashboard" class="${!view?'on':''}">Overview</a>
     <a href="/#/dashboard/progress" class="${view==='progress'?'on':''}">My Progress</a>
-    <a href="/#/dashboard/history" class="${view==='history'?'on':''}">Test History</a>
-    <a href="/#/dashboard/profile" class="${view==='profile'?'on':''}">Profile &amp; Settings</a>
+    <a href="/#/dashboard/profile" class="${view==='profile'?'on':''}">Profile</a>
+    <a href="/#/dashboard/settings" class="${view==='settings'?'on':''}">Settings</a>
     <a href="#" onclick="logout();return false">Logout</a></div>`;
   let body;
   if(view==='progress'){
-    body=`<div class="card"><h3>Subject Progress</h3>
-      ${SUBJECTS.map(s=>{const pc=subjPct(s.id);return `<div style="margin:14px 0"><div style="display:flex;justify-content:space-between;font-size:.9rem">
-        <b>${esc(s.name)}</b><span>${pc}%</span></div><div class="bar"><i style="width:${pc}%"></i></div>
-        <div style="font-size:.8rem;color:var(--muted);margin-top:4px">${s.units.map(x=>(prog()[s.id+'-'+x.no]?'✓':'○')+' U'+x.no).join(' &nbsp; ')}</div></div>`}).join('')}</div>`;
+    const P=prog(), ms=dashMilestones(st), won=ms.filter(m=>m.won).length;
+    body=`<div class="card"><h3>Overall completion — ${st.pct}%</h3>
+      <div class="bar"><i style="width:${st.pct}%"></i></div>
+      <p class="muted sm">${st.done} of ${st.total} units completed · ${st.tests} tests taken · best score ${st.best}%</p></div>
+    <div class="card"><h3>Subject progress</h3>
+      ${SUBJECTS.map(s=>{const pc=subjPct(s.id);return `<div class="sblock"><div class="srow"><b>${esc(s.name)}</b><span>${pc}%</span></div><div class="bar"><i style="width:${pc}%"></i></div>
+        <div class="units">${s.units.map(x=>{const d=P[s.id+'-'+x.no];return `<a href="/unit/${s.id}/${x.no}/study" class="${d?'done':''}">${d?'✓':'○'} U${x.no}</a>`}).join('')}</div></div>`}).join('')}</div>
+    <div class="card"><h3>Milestones — ${won}/${ms.length} unlocked</h3>
+      <div class="ms-grid">${ms.map(m=>`<div class="ms ${m.won?'won':'locked'}"><span class="ms-i">${m.icon}</span><b>${m.name}</b><span>${m.hint}</span></div>`).join('')}</div></div>`;
+  } else if(view==='profile'){
+    const initials=(u.name.trim().split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase()||'👤');
+    body=`<div class="card prof">
+      <div class="avatar">${esc(initials)}</div>
+      <h3>${esc(u.name)}</h3>
+      <p class="muted">${esc(u.email)}</p>
+      <div class="prow"><span>Mobile</span><b>${esc(u.mobile||'—')}</b></div>
+      <div class="prow"><span>Syllabus track</span><b>${esc(u.course||'Not selected')}</b></div>
+      <div class="prow"><span>Recovery code</span><b>${esc(u.code||'—')}</b></div>
+      <button class="btn" style="margin-top:14px" onclick="var f=document.getElementById('pedit');f.classList.toggle('hide');this.textContent=f.classList.contains('hide')?'Edit Profile':'Close Editor'">Edit Profile</button>
+      <div id="pedit" class="hide" style="margin-top:16px"><form onsubmit="saveProfile(event)"><div id="m"></div>
+        <label for="pn">Full Name</label><input id="pn" value="${esc(u.name)}" autocomplete="name" required>
+        <label for="pe">Email</label><input id="pe" value="${esc(u.email)}" disabled>
+        <label for="pm">Mobile</label><input id="pm" value="${esc(u.mobile||'')}">
+        <label for="pc">Syllabus Track</label><select id="pc"><option value="">Not selected</option>${SYLLABUS.map(s=>`<option ${s.title===u.course?'selected':''}>${esc(s.title)}</option>`).join('')}</select>
+        <label for="pp">New Password (optional)</label><input id="pp" type="password" autocomplete="new-password">
+        <button class="btn block" style="margin-top:14px">Save Changes</button></form></div>
+      <button class="btn ghost block" style="margin-top:10px;border-color:var(--bad);color:var(--bad)" onclick="delAcc()">Delete Account</button></div>`;
+  } else if(view==='settings'){
+    const PF=prefsGet(), dark=document.documentElement.getAttribute('data-theme')==='dark';
+    body=`<div class="card"><h3>Appearance</h3>
+      <label class="setrow"><span><b>Dark mode</b><br><span class="muted sm">Easier on the eyes at night</span></span>
+        <span class="switch"><input type="checkbox" ${dark?'checked':''} onchange="themeToggle()" aria-label="Dark mode"><i></i></span></label></div>
+    <div class="card"><h3>Test preferences</h3>
+      <label class="setrow"><span><b>Shuffle questions</b><br><span class="muted sm">Default for every new test</span></span>
+        <span class="switch"><input type="checkbox" ${PF.shQ?'checked':''} onchange="prefsSet({shQ:this.checked})" aria-label="Shuffle questions by default"><i></i></span></label>
+      <label class="setrow"><span><b>Shuffle options</b><br><span class="muted sm">Default for every new test</span></span>
+        <span class="switch"><input type="checkbox" ${PF.shO?'checked':''} onchange="prefsSet({shO:this.checked})" aria-label="Shuffle options by default"><i></i></span></label>
+      <label class="setrow"><span><b>Default test mode</b><br><span class="muted sm">Practice reveals answers instantly</span></span>
+        <select id="pfmode" onchange="prefsSet({mode:this.value})" style="max-width:170px">
+          <option value="practice" ${PF.mode==='practice'?'selected':''}>Practice</option>
+          <option value="exam" ${PF.mode==='exam'?'selected':''}>Exam</option></select></label>
+      <p class="muted sm" id="psaved" aria-live="polite"></p></div>
+    <div class="card"><h3>Account</h3>
+      <div class="btnrow"><button class="btn ghost" onclick="logout()">Logout</button>
+        <button class="btn ghost" onclick="clearMyData()">Clear progress &amp; history</button>
+        <button class="btn ghost" style="border-color:var(--bad);color:var(--bad)" onclick="delAcc()">Delete account</button></div></div>`;
   } else if(view==='history'){
+    /* legacy view: kept working for old bookmarks (no sidebar link). */
+    const myres=st.res;
     body=`<div class="card"><h3 style="margin-bottom:12px">Test History</h3>${ myres.length?
       `<table><thead><tr><th>Date</th><th>Subject</th><th>Unit</th><th>Score</th><th>Attempted</th><th>%</th><th>Mode</th><th>Result</th></tr></thead><tbody>
        ${myres.map(r=>`<tr><td>${fdate(r.date)}</td><td>${esc(r.subject)}</td><td>${esc(r.unit)}</td>
        <td>${r.score}/${r.attempted||r.total}</td><td>${r.attempted||r.total}/${r.total}</td><td>${r.pct}%</td><td style="text-transform:capitalize">${esc(r.mode||"—")}</td>
        <td><span class="badge ${r.pct>=40?'ok':'bad'}">${r.pct>=40?'Pass':'Fail'}</span></td></tr>`).join('')}
-       </tbody></table>`:'<p style="color:var(--muted)">No tests taken yet. <a href="/#/tests" style="color:var(--primary)">Take your first test →</a></p>'}</div>`;
-  } else if(view==='profile'){
-    body=`<div class="card" style="max-width:460px"><h3>Profile &amp; Settings</h3>
-      <form onsubmit="saveProfile(event)"><div id="m"></div>
-      <label for="pn">Full Name</label><input id="pn" value="${esc(u.name)}" autocomplete="name" required>
-      <label for="pe">Email</label><input id="pe" value="${esc(u.email)}" disabled>
-      <label for="pm">Mobile</label><input id="pm" value="${esc(u.mobile||'')}">
-      <label for="pc">Syllabus Track</label><select id="pc"><option value="">Not selected</option>${SYLLABUS.map(s=>`<option ${s.title===u.course?'selected':''}>${esc(s.title)}</option>`).join('')}</select>
-      <label for="pp">New Password (optional)</label><input id="pp" type="password" autocomplete="new-password">
-      <label for="pcode">Recovery Code</label><input id="pcode" value="${esc(u.code||"—")}" disabled title="Needed to reset a forgotten password">
-      <button class="btn block" style="margin-top:14px">Save Changes</button></form>
-      <button class="btn ghost block" style="margin-top:10px;border-color:var(--bad);color:var(--bad)" onclick="delAcc()">Delete Account</button></div>`;
+       </tbody></table>`:'<p class="muted">No tests taken yet. <a href="/#/tests" style="color:var(--primary)">Take your first test →</a></p>'}</div>`;
   } else {
-    const done=Object.keys(prog()).length, avg=myres.length?Math.round(myres.reduce((a,b)=>a+b.pct,0)/myres.length):0;
-    body=`<div class="card card--brand" style="margin-bottom:16px">
+    const acts=dashActivity();
+    body=`<div class="card dash-hero"><div>
         <h3>Welcome back, ${esc(u.name)} 👋</h3>
-        <p>Syllabus track: ${esc(u.course||'Not selected')}</p></div>
-      <div class="grid g3" style="margin-bottom:16px">
-        <div class="card" style="text-align:center"><b style="font-size:1.9rem;color:var(--primary)">${done}/${TOT_UNITS}</b><p>Units completed</p></div>
-        <div class="card" style="text-align:center"><b style="font-size:1.9rem;color:var(--accent)">${myres.length}</b><p>Tests taken</p></div>
-        <div class="card" style="text-align:center"><b style="font-size:1.9rem;color:var(--ok)">${avg}%</b><p>Average score</p></div></div>
-      <div class="card"><h3>Continue Learning</h3>
-        ${SUBJECTS.slice(0,3).map(s=>`<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)">
-          <span style="flex:1">${esc(s.name)} — ${subjPct(s.id)}%</span><a class="btn sm ghost" href="/subject/${s.id}">Open</a></div>`).join('')}</div>
-      <div class="card" style="margin-top:16px"><h3>Notices For You</h3>
-        ${NOTICES.slice(0,3).map(n=>`<div style="padding:8px 0;border-bottom:1px solid var(--line);font-size:.9rem">
-          <a href="/notice/${n.id}"><b>${esc(n.title)}</b></a> <span style="color:var(--muted)">— ${fdate(n.date)}</span></div>`).join('')}</div>`;
+        <p class="muted">Syllabus track: ${esc(u.course||'Not selected')} · ${st.done} of ${st.total} units complete</p></div>
+      ${dashDonut(st.pct)}</div>
+    <div class="stat-grid">
+      <div class="card stat"><b>${st.done}/${st.total}</b><span>Units completed</span></div>
+      <div class="card stat"><b>${st.tests}</b><span>Tests taken</span></div>
+      <div class="card stat"><b>${st.avg}%</b><span>Average score</span></div>
+      <div class="card stat"><b>${st.saved}</b><span>Saved questions</span></div></div>
+    <div class="dash-grid2">
+      <div class="card"><h3>Subject completion</h3>
+        ${SUBJECTS.map(s=>{const pc=subjPct(s.id);return `<div class="srow"><span>${esc(s.name)}</span><b>${pc}%</b></div><div class="bar thin"><i style="width:${pc}%"></i></div>`}).join('')}</div>
+      <div class="card"><h3>Recent scores</h3>${dashTrend(st.res)}</div></div>
+    <div class="card"><h3>Recent activity</h3>
+      ${acts.length?acts.map(a=>`<a class="act" href="${a.url}"><span class="act-i">${a.icon}</span><span class="act-t">${esc(a.text)}</span><span class="act-d">${fdate(a.date)}</span></a>`).join(''):'<p class="muted">Nothing yet — study a unit or take a test to begin.</p>'}</div>
+    <div class="card"><h3>Continue learning</h3>
+      ${SUBJECTS.map(s=>`<div class="crow"><span>${esc(s.name)} — ${subjPct(s.id)}%</span><a class="btn sm ghost" href="/subject/${s.id}">Open</a></div>`).join('')}</div>`;
   }
   return head('Dashboard','Your learning at a glance')+
-    `<section><div class="wrap"><div class="split">${nav}<div>${body}</div></div></div></section>`;
+    `<section><div class="wrap"><div class="dash">${side}<div>${body}</div></div></div></section>`;
 }
+
 async function saveProfile(e){
   e.preventDefault(); const d=DB.get(); const u=d.users.find(x=>x.email===d.session);
   if(!u) return;
