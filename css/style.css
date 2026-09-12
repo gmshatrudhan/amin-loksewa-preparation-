@@ -854,12 +854,13 @@ mark{background:var(--accent);color:var(--accent-t);border-radius:4px;padding:0 
 .ms span{color:var(--muted)}
 /* profile page */
 .prof{max-width:520px;text-align:center}
-.avatar{width:72px;height:72px;margin:4px auto 10px;border-radius:50%;
-  background:var(--primary);color:#fff;font-size:1.5rem;font-weight:800;
+.avatar{width:56px;height:56px;margin:4px auto 10px;border-radius:50%;
+  background:var(--primary);color:#fff;font-size:1.2rem;font-weight:800;
   display:flex;align-items:center;justify-content:center}
 .prof h3{margin:0}
-.prow{display:flex;justify-content:space-between;gap:10px;padding:10px 2px;
-  border-bottom:1px solid var(--line);font-size:.9rem;text-align:left}
+.prow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;
+  margin-top:8px;background:var(--soft);border-radius:12px;font-size:.9rem;text-align:left}
+.prof>.btn{display:block;width:100%}
 .prow span{color:var(--muted)}
 .prof form{text-align:left}
 /* settings page */
@@ -885,4 +886,17 @@ mark{background:var(--accent);color:var(--accent-t);border-radius:4px;padding:0 
   .stat-grid{grid-template-columns:repeat(2,1fr)}
   .dash-grid2{grid-template-columns:1fr}
   .ms-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+/* small phones: un-cramp overview + profile */
+@media(max-width:520px){
+  .dash-hero{flex-direction:column;text-align:center;gap:6px}
+  .donut{width:88px;height:88px}
+  .stat-grid{gap:10px}
+  .stat{padding:14px 6px}
+  .stat b{font-size:1.45rem}
+  .act-d{display:none}
+  .act-t{white-space:normal}
+  .trend{height:130px}
+  .prof{padding:18px 14px}
 }
