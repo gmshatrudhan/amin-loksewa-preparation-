@@ -1157,8 +1157,8 @@ function dashMilestones(st){
 function dashDonut(pct){
   const p=Math.min(100,Math.max(0,pct)), c=2*Math.PI*34, off=c*(1-p/100);
   return `<svg class="donut" viewBox="0 0 90 90" role="img" aria-label="${p}% complete">
-    <circle cx="45" cy="45" r="34" fill="none" stroke="var(--track)" stroke-width="11"/>
-    <circle cx="45" cy="45" r="34" fill="none" stroke="var(--primary)" stroke-width="11"
+    <circle cx="45" cy="45" r="34" fill="none" style="stroke:var(--track)" stroke-width="11"/>
+    <circle cx="45" cy="45" r="34" fill="none" style="stroke:var(--primary)" stroke-width="11"
       stroke-linecap="round" stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"
       transform="rotate(-90 45 45)"/>
     <text x="45" y="51" text-anchor="middle" class="donut-t">${p}%</text></svg>`;
