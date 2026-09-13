@@ -608,6 +608,15 @@ function pHome(){
   <section class="alt" id="sec-subjects"><div class="wrap"><div class="shead"><h2>Our Subjects</h2><p>Six subjects, ${TOT_UNITS} units — every unit has Study material and two tests.</p></div>
     <div class="grid g3">${SUBJECTS.map(s=>subjectCard(s,true)).join('')}</div></div></section>
 
+  <section id="sec-tests"><div class="wrap"><div class="shead"><h2>Tests</h2><p>Unit tests, mock papers, past questions and your results</p></div>
+    <div class="grid g3">
+      <a class="card" href="/#/tests"><div class="ico" style="background:#0E3A5F">\u{1F4DD}</div><h3>All Tests</h3><p>Subject + Objective tests for every unit.</p></a>
+      <a class="card" href="/#/mock-mcq"><div class="ico" style="background:#0E7C6B">\u23F1\uFE0F</div><h3>Mock Test (MCQ)</h3><p>25 mixed questions, timed like the real exam.</p></a>
+      <a class="card" href="/#/mock-subjective"><div class="ico" style="background:#A8861A">\u2710\uFE0F</div><h3>Mock Test (Subjective)</h3><p>10 written questions with model answers.</p></a>
+      <a class="card" href="/#/past-questions"><div class="ico" style="background:#8A2A4A">\u{1F4DC}</div><h3>Past Questions</h3><p>Previous year papers, year by year.</p></a>
+      <a class="card" href="/#/dashboard/history"><div class="ico" style="background:#265E85">\u{1F3C6}</div><h3>Results</h3><p>Your scores and full test history.</p></a>
+    </div></div></section>
+
   <section><div class="wrap"><div class="shead"><h2>Latest Notices</h2><p>Exam, result, admission and event updates</p></div>
     <div class="grid g2">${NOTICES.slice(0,4).map(n=>noticeCard(n)).join('')}</div>
     <div style="text-align:center;margin-top:22px"><a class="btn ghost" href="/notice">View All Notices</a></div></div></section>
@@ -708,11 +717,11 @@ function unitStudy(s,u,done){
 /* ================= QUIZ ENGINE (one question at a time) ================= */
 const QZ = { sid:null, un:null, deck:[], i:0, ans:[], flag:[], mode:'practice',
              sec:0, used:0, tid:null, run:false, done:false, revealAll:false,
-             retry:false, srcIdx:[] };
+             retry:false, srcIdx:[], mock:null, srcSU:null };
 
 function quizStart(sid,un){
   const s=SUBJECTS.find(x=>x.id===sid), u=s.units[un-1];
-  QZ.sid=sid; QZ.un=un;
+  QZ.sid=sid; QZ.un=un; QZ.mock=null; QZ.srcSU=null;
   const PF=prefsGet(); /* Dashboard > Settings defaults */
   const root=document.getElementById('quizRoot'); if(!root) return;
   root.innerHTML=`
@@ -748,6 +757,57 @@ function quizStart(sid,un){
   qzMode(PF.mode||'practice'); /* default mode from Dashboard > Settings */
 }
 
+/* ================= MOCK TESTS (mixed papers from all units) ================= */
+function mockPool(){
+  const pool=[];
+  SUBJECTS.forEach(s=>{(s.units||[]).forEach(u=>{(u.objective||[]).forEach((q,i)=>{
+    if(q&&Array.isArray(q.o)&&q.o.length>1) pool.push({...q, topic:s.name+' \u00b7 Unit '+u.no, _i:i, _sid:s.id, _un:u.no});
+  });});});
+  return pool;
+}
+function mockSubjPool(){
+  const pool=[];
+  SUBJECTS.forEach(s=>{(s.units||[]).forEach(u=>{(u.subjective||[]).forEach((q,i)=>{
+    if(q&&q.q) pool.push({sid:s.id, un:u.no, qi:i, q:q.q, marks:q.marks||5, hint:q.hint||'', from:s.name+' \u00b7 Unit '+u.no});
+  });});});
+  return pool;
+}
+function mockStart(){
+  const PF=prefsGet();
+  const root=document.getElementById('quizRoot'); if(!root) return;
+  QZ.sid=null; QZ.un=null; QZ.srcSU=null;
+  const pool=qzShuffle(mockPool()).slice(0,25);
+  if(!pool.length){
+    root.innerHTML=`<div class="card"><h3>Questions could not be loaded</h3>
+      <p style="color:var(--muted)">Check your connection and try again.</p>
+      <button class="btn" style="margin-top:12px" onclick="rerender()">Try again</button></div>`;
+    return;
+  }
+  QZ.mock={title:'Mixed paper \u00b7 '+pool.length+' questions', questions:pool};
+  root.innerHTML=`
+   <div class="card qstart">
+     <span class="badge">Mock Test</span>
+     <h2 style="color:var(--primary);margin:8px 0 4px">Mixed MCQ Paper</h2>
+     <p style="color:var(--muted);font-size:.92rem">${pool.length} random questions from all subjects, timed like the real exam.
+        Your score is saved to Test History. Every visit gives a fresh paper.</p>
+     <div class="modes">
+       <button type="button" class="mode on" id="m_practice" aria-pressed="true" onclick="qzMode('practice')">
+         <b>Practice mode</b><span>Answer is revealed with an explanation immediately after each question.</span></button>
+       <button type="button" class="mode" id="m_exam" aria-pressed="false" onclick="qzMode('exam')">
+         <b>Exam mode</b><span>No feedback until you submit the whole paper, like the real examination.</span></button>
+     </div>
+     <div class="qopts">
+       <label class="chk"><input type="checkbox" id="qsh" ${PF.shQ?'checked':''}> Shuffle questions</label>
+       <label class="chk"><input type="checkbox" id="osh" ${PF.shO?'checked':''}> Shuffle options</label>
+       <label class="chk">Time <input type="number" id="qmin" class="tmin" min="1" max="180" value="${Math.max(5,pool.length)}"> min</label>
+     </div>
+     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">
+       <button class="btn accent" onclick="qzBegin()">Start Test</button>
+       <a class="btn ghost" href="/#/tests">All Tests</a></div>
+   </div>`;
+  qzMode(PF.mode||'practice');
+}
+
 /* Written-answer toggle + "Read more" clamp for long model answers. */
 function wqaToggle(btn,sid,un,qi){
   const a=btn.nextElementSibling, open=a.classList.toggle('show');
@@ -774,9 +834,9 @@ function qzMode(m){
 function qzShuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];} return a; }
 
 function qzBegin(){
-  const s=SUBJECTS.find(x=>x.id===QZ.sid), u=s.units[QZ.un-1];
+  const s=QZ.mock?null:SUBJECTS.find(x=>x.id===QZ.sid), u=QZ.mock?null:s.units[QZ.un-1];
   const shQ=document.getElementById('qsh').checked, shO=document.getElementById('osh').checked;
-  let list=u.objective.map((q,i)=>({...q, topic:u.title, _i:i}));
+  let list=QZ.mock?QZ.mock.questions.map(q=>({...q})):u.objective.map((q,i)=>({...q, topic:u.title, _i:i}));
   if(!list.length){ /* questions missing (unit file failed to load?) - explain, never crash */
     document.getElementById('quizRoot').innerHTML=`<div class="card"><h3>Questions could not be loaded</h3>
       <p style="color:var(--muted)">Check your connection and try again.</p>
@@ -790,6 +850,7 @@ function qzBegin(){
     return {...q, o:ord.map(i=>q.o[i]), a:ord.indexOf(q.a)};
   });
   QZ.srcIdx=QZ.deck.map(q=>q._i); QZ.retry=false;
+  QZ.srcSU=QZ.mock?QZ.deck.map(q=>({sid:q._sid,un:q._un})):null;
   QZ.i=0; QZ.ans=new Array(QZ.deck.length).fill(null); QZ.flag=new Array(QZ.deck.length).fill(false);
   QZ.done=false; QZ.revealAll=false; QZ.used=0; QZ.byTime=false;
   const qminEl=document.getElementById('qmin');
@@ -803,12 +864,13 @@ function qzRetryWrong(incSkipped){
   QZ.deck.forEach((q,i)=>{
     const wrong = QZ.ans[i]!==null && QZ.ans[i]!==q.a;
     const skipped = QZ.ans[i]===null;
-    if(wrong || (incSkipped && skipped)) pick.push({q, src:QZ.srcIdx[i]});
+    if(wrong || (incSkipped && skipped)) pick.push({q, src:QZ.srcIdx[i], su:QZ.srcSU?QZ.srcSU[i]:null});
   });
   if(!pick.length){ alert('Nothing to retry — you answered every question correctly.'); return; }
   clearInterval(QZ.tid);
   QZ.deck=pick.map(p=>({...p.q, o:p.q.o.slice()}));
   QZ.srcIdx=pick.map(p=>p.src);
+  QZ.srcSU=QZ.srcSU?pick.map(p=>p.su):null;
   QZ.retry=true;
   QZ.i=0; QZ.ans=new Array(QZ.deck.length).fill(null); QZ.flag=new Array(QZ.deck.length).fill(false);
   QZ.done=false; QZ.revealAll=false; QZ.used=0; QZ.byTime=false;
@@ -922,8 +984,10 @@ function qzPick(j){
 function qzGo(i){ if(i<0||i>=QZ.deck.length) return; QZ.i=i; qzCard(); qzGrid(); const qc=document.getElementById('qzcard'); if(qc) window.scrollTo({top:qc.offsetTop-90,behavior:'smooth'}); }
 function qzFlag(){ QZ.flag[QZ.i]=!QZ.flag[QZ.i]; qzCard(); qzGrid(); }
 function qzSrc(i){ return QZ.retry ? QZ.srcIdx[i] : i; }
-function qzSaved(){ return BM.has(QZ.sid,QZ.un,qzSrc(QZ.i)); }
-function qzSave(){ BM.toggle(QZ.sid,QZ.un,qzSrc(QZ.i),QZ.deck[QZ.i]); qzCard(); }
+function qzSrcSU(i){ return QZ.srcSU ? QZ.srcSU[i] : {sid:QZ.sid, un:QZ.un}; }
+function qzSrcQI(i){ return QZ.srcSU ? QZ.srcIdx[i] : qzSrc(i); }
+function qzSaved(){ const o=qzSrcSU(QZ.i); return BM.has(o.sid,o.un,qzSrcQI(QZ.i)); }
+function qzSave(){ const o=qzSrcSU(QZ.i); BM.toggle(o.sid,o.un,qzSrcQI(QZ.i),QZ.deck[QZ.i]); qzCard(); }
 function qzConfirm(){
   if(QZ.done){ qzResult(); return; }
   const left=QZ.ans.filter(a=>a===null).length;
@@ -932,13 +996,13 @@ function qzConfirm(){
 }
 function qzFinish(byTime){
   clearInterval(QZ.tid); QZ.run=false; QZ.done=true; QZ.revealAll=true;
-  const s=SUBJECTS.find(x=>x.id===QZ.sid), u=s.units[QZ.un-1];
+  const s=QZ.mock?null:SUBJECTS.find(x=>x.id===QZ.sid), u=QZ.mock?null:s.units[QZ.un-1];
   const tot=QZ.deck.length;
   const att=QZ.ans.filter(a=>a!==null).length;
   const sc=QZ.deck.reduce((a,q,i)=>a+(QZ.ans[i]===q.a?1:0),0);
   const pct=tot?Math.round(sc/tot*100):0;
   const d=DB.raw(); const rk=DB.skey(); d.r2[rk]=d.r2[rk]||[];
-  d.r2[rk].unshift({subject:s.name,unit:u.title,score:sc,total:QZ.deck.length,attempted:att,pct,
+  d.r2[rk].unshift({subject:QZ.mock?'Mock Test (MCQ)':s.name,unit:QZ.mock?QZ.mock.title:u.title,score:sc,total:QZ.deck.length,attempted:att,pct,
     mode:QZ.mode,time:QZ.used,date:new Date().toISOString()});
   d.r2[rk]=d.r2[rk].slice(0,50); DB.set(d);
   QZ.byTime=byTime; qzResult();
@@ -968,21 +1032,21 @@ function qzResult(stay){
        ${wrong?`<button class="btn accent" onclick="qzRetryWrong(false)">&#8635; Retry ${wrong} wrong</button>`:''}
        ${(wrong+skip)&&skip?`<button class="btn" onclick="qzRetryWrong(true)">Retry wrong + skipped (${wrong+skip})</button>`:''}
        <button class="btn ghost" onclick="QZ.i=0;qzRender()">Review Answers</button>
-       <button class="btn ghost" onclick="quizStart(QZ.sid,QZ.un)">Retake all</button>
+       ${QZ.mock?'<button class="btn ghost" onclick="mockStart()">&#8635; New paper</button>':'<button class="btn ghost" onclick="quizStart(QZ.sid,QZ.un)">Retake all</button>'}
        <a class="btn ghost" href="/#/dashboard/history">Test History</a>
-       <a class="btn ghost" href="/unit/${QZ.sid}/${QZ.un}/study">Back to Notes</a>
+       ${QZ.mock?'<a class="btn ghost" href="/#/mock-mcq">Back to Mock Tests</a>':`<a class="btn ghost" href="/unit/${QZ.sid}/${QZ.un}/study">Back to Notes</a>`}
      </div>
    </div>
    <div class="card" style="margin-top:16px"><h3 style="color:var(--primary);margin-bottom:10px">Answer Review</h3>
      <div class="review">${QZ.deck.map((q,i)=>{
-       const ok=QZ.ans[i]===q.a, na=QZ.ans[i]===null;
+       const ok=QZ.ans[i]===q.a, na=QZ.ans[i]===null, so=qzSrcSU(i);
        return `<div class="ritem ${na?'na':ok?'ok':'bad'}">
          <h4>Q${i+1}. ${esc(q.q)}</h4>
          <p><b>Your answer:</b> ${na?'<i>Not answered</i>':esc(q.o[QZ.ans[i]])}</p>
          ${ok?'':`<p><b>Correct:</b> ${esc(q.o[q.a])}</p>`}
          <p class="ex">${esc(q.e||'')}</p>
-         <button class="btn ghost sm rsav ${BM.has(QZ.sid,QZ.un,QZ.srcIdx[i])?'on':''}"
-           onclick="BM.toggle(QZ.sid,QZ.un,QZ.srcIdx[i],QZ.deck[${i}]);qzResult(true)">${BM.has(QZ.sid,QZ.un,QZ.srcIdx[i])?'\u2713 Saved':'\u2295 Save for revision'}</button></div>`;
+         <button class="btn ghost sm rsav ${BM.has(so.sid,so.un,QZ.srcIdx[i])?'on':''}"
+           onclick="BM.toggle(so.sid,so.un,QZ.srcIdx[i],QZ.deck[${i}]);qzResult(true)">${BM.has(so.sid,so.un,QZ.srcIdx[i])?'\u2713 Saved':'\u2295 Save for revision'}</button></div>`;
      }).join('')}</div></div>`;
   if(stay) window.scrollTo(0,sy); else window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -995,6 +1059,43 @@ document.addEventListener('keydown',e=>{
   else if(e.key==='ArrowRight') qzGo(QZ.i+1);
   else if(k==='F') qzFlag();
 });
+
+function pMockMcq(){
+  return head('Mock Test (MCQ)','25 random questions from all subjects \u2014 timed like the real exam')+
+  `<section><div class="wrap"><div id="quizRoot"></div></div></section>`;
+}
+
+function pMockSubj(){
+  const list=qzShuffle(mockSubjPool()).slice(0,10);
+  const tot=list.reduce((x,y)=>x+y.marks,0);
+  return head('Mock Test (Subjective)','10 written questions from all subjects \u2014 write first, then compare with model answers')+
+  `<section><div class="wrap">${list.length?`
+   <div class="card"><h3 style="color:var(--primary)">Written Paper &mdash; ${tot} marks</h3>
+     <p style="color:var(--muted);font-size:.9rem">Write each answer in your copy, then open the model answer to compare. Each visit gives a fresh set.</p>
+     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+       <button class="btn accent sm" onclick="rerender()">&#8635; New set</button>
+       <a class="btn ghost sm" href="/#/tests">All Tests</a></div></div>
+   <div class="card" style="margin-top:16px">${list.map((w,i)=>`<div class="wq">
+      <div class="wqh"><span class="wqn">Q${i+1}</span>
+        <span class="wqt">${esc(w.q)}</span><span class="badge">${w.marks} marks</span></div>
+      <div style="font-size:.8rem;color:var(--muted);margin:2px 0 8px">From: ${esc(w.from)}</div>
+      <button class="btn ghost sm" onclick="wqaToggle(this,'${w.sid}',${w.un},${w.qi})">Show model answer</button>
+      <div class="wqa"><b>Model answer:</b> ${esc(w.hint)}</div></div>`).join('')}</div>`
+  :`<div class="card"><h3>Questions could not be loaded</h3>
+     <p style="color:var(--muted)">Check your connection and try again.</p>
+     <button class="btn" style="margin-top:12px" onclick="rerender()">Try again</button></div>`}</div></section>`;
+}
+
+function pPast(){
+  return head('Past Questions','Previous year papers \u2014 year by year')+
+  `<section><div class="wrap"><div class="card" style="max-width:640px;margin:0 auto;text-align:center">
+    <div class="ico" style="background:#8A2A4A;margin:0 auto 12px">\u{1F4DC}</div>
+    <h3>Past papers are being added</h3>
+    <p style="color:var(--muted)">Previous year Amin papers are being collected and will appear here year by year. Meanwhile, practise with a mixed mock paper.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:16px">
+      <a class="btn accent" href="/#/mock-mcq">Try a Mock Test</a>
+      <a class="btn ghost" href="/#/tests">All Tests</a></div></div></div></section>`;
+}
 
 function pTests(){
   return head('Tests',TOT_TESTS+' tests — one Subject Test and one Objective Test for each of the '+TOT_UNITS+' units')+
@@ -1646,7 +1747,7 @@ function initTop(){
 let NAV_SEQ=0; /* navigation token: a stale async load never paints over a newer page */
 /* App-only pages stay on the hash (/#/...) so they are never indexed as
    separate pages and never need server rewrites. Everything else is clean. */
-const HASH_ONLY={tests:1,search:1,saved:1,auth:1,login:1,register:1,forgot:1,dashboard:1,privacy:1,terms:1,copyright:1,disclaimer:1};
+const HASH_ONLY={tests:1,search:1,saved:1,auth:1,login:1,register:1,forgot:1,dashboard:1,privacy:1,terms:1,copyright:1,disclaimer:1,'mock-mcq':1,'mock-subjective':1,'past-questions':1};
 function routeFromLocation(){
   const h=location.hash;
   if(h&&h.length>1&&h[1]==='/'){
@@ -1681,6 +1782,7 @@ async function router(){
     if(p[0]==='unit'&&p[1]) await needUnit(p[1],+p[2]);
     else if(p[0]==='subject'&&p[1]) await needSubject(p[1]);
     else if(p[0]==='search') await needAll();
+    else if(p[0]==='mock-mcq'||p[0]==='mock-subjective') await needAll();
   }catch(e){/* fail soft: pages render with whatever data is already present */}
   if(my!==NAV_SEQ) return; /* user already navigated onward - drop this render */
   shell();
@@ -1693,6 +1795,9 @@ async function router(){
     case 'subject':  html=pSubject(p[1]); break;
     case 'unit':     html=pUnit(p[1],+p[2],p[3]); break;
     case 'tests':    html=pTests(); break;
+    case 'mock-mcq': html=pMockMcq(); break;
+    case 'mock-subjective': html=pMockSubj(); break;
+    case 'past-questions': html=pPast(); break;
     case 'notice':   html = p[1]?pNotice(p[1]):pNotices(q.get('cat')); break;
     case 'about':    html=pAbout(); break;
     case 'contact':  html=pContact(); break;
@@ -1718,6 +1823,7 @@ async function router(){
   window.scrollTo(0,0);
   if(p[0]===undefined) initSlider();
   if(p[0]==='unit'&&p[3]==='test'){ clearInterval(QZ.tid); quizStart(p[1],+p[2]); }
+  if(p[0]==='mock-mcq'){ clearInterval(QZ.tid); mockStart(); }
   /* keep the canonical URL in sync with the visible clean URL (SEO) */
   const can=document.querySelector('link[rel="canonical"]');
   if(can) can.href=location.origin+location.pathname+(location.search||'');
