@@ -143,7 +143,7 @@ const DB = {
     try{ temp=sessionStorage.getItem(DB.k+'-s'); }catch(e){}
     if(temp) d.session=null; /* never persist a temporary session */
     try{ localStorage.setItem(DB.k, JSON.stringify(d)); }catch(e){}
-    if(temp) d.session=temp; },
+    if(temp) d.session=temp; try{ Cloud.queue(); }catch(e){} },
   setSession(email,remember){
     try{ sessionStorage.removeItem(DB.k+'-s'); }catch(e){}
     const d=DB.raw(); d.session=null;
@@ -365,12 +365,13 @@ async function sendMsg(e){
     location.href='mailto:'+SITE.email+'?subject='+encodeURIComponent(data.subject||'Website enquiry')+
       '&body='+encodeURIComponent(data.message+'\n\n-- \n'+data.name+'\n'+data.email);
     box.innerHTML='<div class="msg ok">Opening your email app to send the message to '+esc(SITE.email)+'.</div>';
+    try{ Cloud.contact(data); }catch(e){}
     return false;
   }
   btn.disabled=true; btn.textContent='Sending...'; box.innerHTML='';
   try{
     const r=await fetch(ep,{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f)});
-    if(r.ok){ f.reset(); box.innerHTML='<div class="msg ok">Thank you! Your message has been sent. We will reply to you soon.</div>'; }
+    if(r.ok){ try{ Cloud.contact(data); }catch(e){} f.reset(); box.innerHTML='<div class="msg ok">Thank you! Your message has been sent. We will reply to you soon.</div>'; }
     else{ throw new Error('bad response'); }
   }catch(err){
     box.innerHTML='<div class="msg err">Could not send right now. Please email us directly at <b>'+esc(SITE.email)+'</b> or call '+esc(SITE.phone)+'.</div>';
@@ -383,7 +384,7 @@ function doSubscribe(e){
   e.preventDefault();
   const inp=document.getElementById('nl-email'); const em=((inp&&inp.value)||'').trim().toLowerCase();
   if(!em) return false;
-  try{ const k='amin-nl'; const l=JSON.parse(localStorage.getItem(k)||'[]'); if(!l.includes(em)){ l.push(em); localStorage.setItem(k,JSON.stringify(l)); } }catch(err){}
+  try{ const k='amin-nl'; const l=JSON.parse(localStorage.getItem(k)||'[]'); if(!l.includes(em)){ l.push(em); localStorage.setItem(k,JSON.stringify(l)); } try{ Cloud.newsletter(em); }catch(err2){} }catch(err){}
   const ok=document.getElementById('nl-ok'); if(ok) ok.hidden=false;
   try{ e.target.reset(); }catch(err){}
   return false;
@@ -522,7 +523,7 @@ const SB={
       if(su&&su.user){
         SB.user=su.user; SB.ensureStub(su.user);
         const had=!!DB.get().session;
-        DB.setSession(su.user.email,true);
+        DB.setSession(su.user.email,true); try{ Cloud.pull(); }catch(e){}
         if(returning) history.replaceState(null,'',SB._recover?'/#/auth?t=recover':'/#/dashboard');
         if(!had||returning) router(); /* re-render once with logged-in state */
       }else if(returning){
@@ -552,6 +553,96 @@ const SB={
   setNewPassword(pw){ return SB.client.auth.updateUser({password:pw}); },
   async signOutUser(){ try{ await SB.client.auth.signOut(); }catch(e){} SB.user=null; }
 };
+/* ---------------- CLOUD SYNC (Supabase tables; localStorage stays as fast offline cache) ----------------
+   Push: every save queues a debounced upload (logged-in cloud users only; guests/local stay on-device).
+   Pull: once per login, cloud rows merge INTO local data (local is never deleted by a pull). */
+const Cloud = {
+  _t:null, _busy:false, _suspend:false, _pulled:null,
+  uid(){ return (SB.mode==='supabase'&&SB.user&&SB.user.id)||null },
+  cid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,9) },
+  queue(){ if(Cloud._suspend) return; try{ clearTimeout(Cloud._t); }catch(e){} Cloud._t=setTimeout(()=>{ Cloud.push(); },2500); },
+  async push(){
+    if(Cloud._busy||Cloud._suspend) return;
+    const uid=Cloud.uid(); if(!uid) return;
+    Cloud._busy=true;
+    try{
+      try{ await SB.ready; }catch(e){}
+      const c=SB.client; if(!c) return;
+      const d=DB.raw(), me=DB.skey(); if(!me||me==='guest') return;
+      const now=new Date().toISOString();
+      const u=(d.users||[]).find(x=>x.email===me)||{};
+      let touched=false;
+      (d.r2[me]||[]).forEach(r=>{ if(!r.cid){ r.cid=Cloud.cid(); touched=true; } });
+      const reqs=[];
+      reqs.push(c.from('profiles').upsert({user_id:uid,email:me,name:u.name||'',mobile:u.mobile||'',course:u.course||'',updated_at:now},{onConflict:'user_id'}));
+      const pk=Object.keys((d.p2&&d.p2[me])||{}).map(k=>({user_id:uid,unit_key:k,updated_at:now}));
+      if(pk.length) reqs.push(c.from('progress').upsert(pk,{onConflict:'user_id,unit_key'}));
+      const rr=(d.r2[me]||[]).map(r=>({user_id:uid,cid:r.cid,subject:r.subject||'',unit:r.unit||'',score:r.score||0,total:r.total||0,attempted:r.attempted||0,pct:r.pct||0,mode:r.mode||'',time:r.time||0,date:r.date||now}));
+      if(rr.length) reqs.push(c.from('test_results').upsert(rr,{onConflict:'user_id,cid'}));
+      const sr=(d.b2[me]||[]).map(b=>({user_id:uid,qid:b.id,sid:b.sid||'',un:b.un||0,qi:b.qi||0,subject:b.subject||'',unit:b.unit||'',payload:{q:b.q||'',o:b.o||[],a:b.a||0,e:b.e||''},date:b.date||now}));
+      if(sr.length) reqs.push(c.from('saved_questions').upsert(sr,{onConflict:'user_id,qid'}));
+      const wr=((d.v2&&d.v2[me])||[]).map(k=>({user_id:uid,wkey:k}));
+      if(wr.length) reqs.push(c.from('written_opened').upsert(wr,{onConflict:'user_id,wkey'}));
+      let pall={}; try{ pall=JSON.parse(localStorage.getItem(PREF_KEY))||{}; }catch(e){}
+      const p=pall[me];
+      if(p) reqs.push(c.from('prefs').upsert({user_id:uid,shq:!!p.shQ,sho:!!p.shO,mode:p.mode||'practice',updated_at:now},{onConflict:'user_id'}));
+      await Promise.all(reqs);
+      if(touched){ Cloud._suspend=true; try{ DB.set(d); }catch(e){} Cloud._suspend=false; }
+    }catch(e){ /* offline / tables not created yet: stays local, retries on next change */ }
+    Cloud._busy=false;
+  },
+  async pull(){
+    const uid=Cloud.uid(); if(!uid||Cloud._pulled===uid) return;
+    try{
+      try{ await SB.ready; }catch(e){}
+      const c=SB.client; if(!c) return;
+      const q=t=>c.from(t).select('*').eq('user_id',uid).limit(500);
+      const rs=await Promise.all([q('profiles'),q('progress'),q('test_results'),q('saved_questions'),q('written_opened'),q('prefs')]);
+      if(rs.some(r=>r.error)) return; /* tables missing? do nothing, retry next login */
+      Cloud._pulled=uid; Cloud._suspend=true;
+      const d=DB.raw(), me=DB.skey(); let changed=false;
+      const prow=(rs[0].data||[])[0];
+      if(prow){ const u=(d.users||[]).find(x=>x.email===me);
+        if(u){ if(!u.name&&prow.name){u.name=prow.name;changed=true;} if(!u.mobile&&prow.mobile){u.mobile=prow.mobile;changed=true;} if(!u.course&&prow.course){u.course=prow.course;changed=true;} } }
+      d.p2[me]=d.p2[me]||{};
+      (rs[1].data||[]).forEach(r=>{ if(r.unit_key&&!d.p2[me][r.unit_key]){ d.p2[me][r.unit_key]=true; changed=true; } });
+      d.r2[me]=d.r2[me]||[];
+      const have=new Set(d.r2[me].map(r=>r.cid));
+      (rs[2].data||[]).forEach(r=>{ if(r.cid&&!have.has(r.cid)){ d.r2[me].push({subject:r.subject||'',unit:r.unit||'',score:r.score||0,total:r.total||0,attempted:r.attempted||0,pct:r.pct||0,mode:r.mode||'',time:r.time||0,date:r.date||'',cid:r.cid}); changed=true; } });
+      d.r2[me].sort((a,b)=>String(b.date).localeCompare(String(a.date))); d.r2[me]=d.r2[me].slice(0,50);
+      d.b2[me]=d.b2[me]||[];
+      const ids=new Set(d.b2[me].map(b=>b.id));
+      (rs[3].data||[]).forEach(r=>{ if(r.qid&&!ids.has(r.qid)){ const p=r.payload||{}; d.b2[me].push({id:r.qid,sid:r.sid||'',un:r.un||0,qi:r.qi||0,subject:r.subject||'',unit:r.unit||'',q:p.q||'',o:p.o||[],a:p.a||0,e:p.e||'',date:r.date||''}); changed=true; } });
+      d.b2[me]=d.b2[me].slice(0,500);
+      d.v2=d.v2||{}; d.v2[me]=d.v2[me]||[];
+      (rs[4].data||[]).forEach(r=>{ if(r.wkey&&!d.v2[me].includes(r.wkey)){ d.v2[me].push(r.wkey); changed=true; } });
+      d.v2[me]=d.v2[me].slice(-500);
+      DB.set(d);
+      const pfrow=(rs[5].data||[])[0];
+      if(pfrow){ let all={}; try{ all=JSON.parse(localStorage.getItem(PREF_KEY))||{}; }catch(e){}
+        if(!all[me]){ all[me]={shQ:!!pfrow.shq,shO:!!pfrow.sho,mode:pfrow.mode||'practice'}; try{ localStorage.setItem(PREF_KEY,JSON.stringify(all)); }catch(e){} changed=true; } }
+      Cloud._suspend=false;
+      if(changed){ try{ rerender(); }catch(e){} }
+    }catch(e){ Cloud._suspend=false; }
+  },
+  async wipe(){
+    try{
+      const uid=Cloud.uid(), c=SB.client; if(!uid||!c) return;
+      await Promise.all(['profiles','progress','test_results','saved_questions','written_opened','prefs'].map(t=>c.from(t).delete().eq('user_id',uid)));
+    }catch(e){}
+  },
+  async newsletter(em){
+    try{ try{ await SB.ready; }catch(e){}
+      if(SB.client&&em) await SB.client.from('newsletter').upsert({email:em},{onConflict:'email'});
+    }catch(e){}
+  },
+  async contact(m){
+    try{ try{ await SB.ready; }catch(e){}
+      if(SB.client) await SB.client.from('contact_messages').insert({name:String((m&&m.name)||'').slice(0,120),email:String((m&&m.email)||'').slice(0,160),subject:String((m&&m.subject)||'').slice(0,200),message:String((m&&m.message)||'').slice(0,5000)});
+    }catch(e){}
+  }
+};
+
 function prog(){ const d=DB.get(); return (d.p2&&d.p2[d.session||'guest'])||{} }
 function markDone(sid,un){ const d=DB.raw(); const k=DB.skey(); d.p2[k]=d.p2[k]||{}; d.p2[k][sid+'-'+un]=true; DB.set(d); }
 function subjPct(sid){ const p=prog(), sb=SUBJECTS.find(x=>x.id===sid), t=sb?sb.units.length:0; if(!t) return 0; let n=0; for(let i=1;i<=t;i++) if(p[sid+'-'+i]) n++; return Math.round(n/t*100) }
@@ -741,17 +832,14 @@ const QZ = { sid:null, un:null, deck:[], i:0, ans:[], flag:[], mode:'practice',
              sec:0, used:0, tid:null, run:false, done:false, revealAll:false,
              retry:false, srcIdx:[], mock:null, srcSU:null };
 
-function quizStart(sid,un){
-  const s=SUBJECTS.find(x=>x.id===sid), u=s.units[un-1];
-  QZ.sid=sid; QZ.un=un; QZ.mock=null; QZ.srcSU=null;
-  const PF=prefsGet(); /* Dashboard > Settings defaults */
-  const root=document.getElementById('quizRoot'); if(!root) return;
-  root.innerHTML=`
+/* Shared quiz start panel: unit tests + mock tests render identical markup from here. */
+function qzStartPanel(o){
+  const PF=prefsGet(); /* shuffle/time defaults (Dashboard > Settings) */
+  return `
    <div class="card qstart">
-     <span class="badge">${esc(s.name)}</span>
-     <h2 style="color:var(--primary);margin:8px 0 4px">Unit ${u.no}: ${esc(u.title)}</h2>
-     <p style="color:var(--muted);font-size:.92rem">Objective test &mdash; ${u.objective.length} multiple choice questions.
-        Choose a mode and begin. You may submit after answering only a few questions.</p>
+     <span class="badge">${o.badge}</span>
+     <h2 style="color:var(--primary);margin:8px 0 4px">${o.title}</h2>
+     <p style="color:var(--muted);font-size:.92rem">${o.desc}</p>
      <div class="modes">
        <button type="button" class="mode on" id="m_practice" aria-pressed="true" onclick="qzMode('practice')">
          <b>Practice mode</b><span>Answer is revealed with an explanation immediately after each question.</span></button>
@@ -761,13 +849,21 @@ function quizStart(sid,un){
      <div class="qopts">
        <label class="chk"><input type="checkbox" id="qsh" ${PF.shQ?'checked':''}> Shuffle questions</label>
        <label class="chk"><input type="checkbox" id="osh" ${PF.shO?'checked':''}> Shuffle options</label>
-       <label class="chk">Time <input type="number" id="qmin" class="tmin" min="1" max="180" value="${Math.max(5,u.objective.length)}"> min</label>
+       <label class="chk">Time <input type="number" id="qmin" class="tmin" min="1" max="180" value="${o.mins}"> min</label>
      </div>
      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">
        <button class="btn accent" onclick="qzBegin()">Start Test</button>
-       <a class="btn ghost" href="/unit/${sid}/${un}/study">Read Notes First</a></div>
-   </div>
-   <div class="card" style="margin-top:16px">
+       <a class="btn ghost" href="${o.link}">${o.linkText}</a></div>
+   </div>`;
+}
+
+function quizStart(sid,un){
+  const s=SUBJECTS.find(x=>x.id===sid), u=s.units[un-1];
+  QZ.sid=sid; QZ.un=un; QZ.mock=null; QZ.srcSU=null;
+  const PF=prefsGet(); /* Dashboard > Settings defaults */
+  const root=document.getElementById('quizRoot'); if(!root) return;
+  root.innerHTML=qzStartPanel({badge:esc(s.name),title:`Unit ${u.no}: ${esc(u.title)}`,desc:`Objective test &mdash; ${u.objective.length} multiple choice questions.
+        Choose a mode and begin. You may submit after answering only a few questions.`,mins:Math.max(5,u.objective.length),link:`/unit/${sid}/${un}/study`,linkText:'Read Notes First'})+`   <div class="card" style="margin-top:16px">
      <h3 style="color:var(--primary)">Subject Test (Written) &mdash; ${u.subjective.reduce((x,y)=>x+y.marks,0)} marks</h3>
      <p style="color:var(--muted);font-size:.9rem;margin-bottom:12px">Write each answer in your copy, then open the model answer to compare.</p>
      ${u.subjective.map((q,i)=>`<div class="wq">
@@ -806,27 +902,8 @@ function mockStart(){
     return;
   }
   QZ.mock={title:'Mixed paper \u00b7 '+pool.length+' questions', questions:pool};
-  root.innerHTML=`
-   <div class="card qstart">
-     <span class="badge">Mock Test</span>
-     <h2 style="color:var(--primary);margin:8px 0 4px">Mixed MCQ Paper</h2>
-     <p style="color:var(--muted);font-size:.92rem">${pool.length} random questions from all subjects, timed like the real exam.
-        Your score is saved to Test History. Every visit gives a fresh paper.</p>
-     <div class="modes">
-       <button type="button" class="mode on" id="m_practice" aria-pressed="true" onclick="qzMode('practice')">
-         <b>Practice mode</b><span>Answer is revealed with an explanation immediately after each question.</span></button>
-       <button type="button" class="mode" id="m_exam" aria-pressed="false" onclick="qzMode('exam')">
-         <b>Exam mode</b><span>No feedback until you submit the whole paper, like the real examination.</span></button>
-     </div>
-     <div class="qopts">
-       <label class="chk"><input type="checkbox" id="qsh" ${PF.shQ?'checked':''}> Shuffle questions</label>
-       <label class="chk"><input type="checkbox" id="osh" ${PF.shO?'checked':''}> Shuffle options</label>
-       <label class="chk">Time <input type="number" id="qmin" class="tmin" min="1" max="180" value="${Math.max(5,pool.length)}"> min</label>
-     </div>
-     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">
-       <button class="btn accent" onclick="qzBegin()">Start Test</button>
-       <a class="btn ghost" href="/#/tests">All Tests</a></div>
-   </div>`;
+  root.innerHTML=qzStartPanel({badge:'Mock Test',title:'Mixed MCQ Paper',desc:`${pool.length} random questions from all subjects, timed like the real exam.
+        Your score is saved to Test History. Every visit gives a fresh paper.`,mins:Math.max(5,pool.length),link:'/#/tests',linkText:'All Tests'});
   qzMode(PF.mode||'practice');
 }
 
@@ -1025,7 +1102,7 @@ function qzFinish(byTime){
   const pct=tot?Math.round(sc/tot*100):0;
   const d=DB.raw(); const rk=DB.skey(); d.r2[rk]=d.r2[rk]||[];
   d.r2[rk].unshift({subject:QZ.mock?'Mock Test (MCQ)':s.name,unit:QZ.mock?QZ.mock.title:u.title,score:sc,total:QZ.deck.length,attempted:att,pct,
-    mode:QZ.mode,time:QZ.used,date:new Date().toISOString()});
+    mode:QZ.mode,time:QZ.used,date:new Date().toISOString(),cid:Cloud.cid()});
   d.r2[rk]=d.r2[rk].slice(0,50); DB.set(d);
   QZ.byTime=byTime; qzResult();
 }
@@ -1281,7 +1358,7 @@ async function doLogin(e){
       const {data,error}=await SB.signIn(id,pw);
       if(!error&&data&&data.session){
         SB.user=data.session.user; SB.ensureStub(SB.user);
-        DB.setSession(id,remember); nav('/#/dashboard'); return;
+        DB.setSession(id,remember); try{ Cloud.pull(); }catch(e){} nav('/#/dashboard'); return;
       }
       const msg=(error&&error.message)||'';
       if(/not confirmed/i.test(msg)){ say('<div class="msg err">Please verify your email first — open the verification link we sent, then log in.</div>'); return }
@@ -1309,7 +1386,7 @@ async function doReg(e){
       if(error){ say('<div class="msg err">'+esc(error.message)+'</div>'); return }
       SB.ensureStub({email:em,user_metadata:{full_name:nm}});
       if(data&&data.session){
-        SB.user=data.session.user; DB.setSession(em,true); nav('/#/dashboard');
+        SB.user=data.session.user; DB.setSession(em,true); try{ Cloud.pull(); }catch(e){} nav('/#/dashboard');
       }else{
         say('<div class="msg ok">Account created! Please check <b>'+esc(em)+'</b> (inbox + spam) and click the verification link, then log in.</div>');
       }
@@ -1388,7 +1465,7 @@ function prefsGet(){
 }
 function prefsSet(patch){
   let all={}; try{ all=JSON.parse(localStorage.getItem(PREF_KEY))||{}; }catch(e){}
-  all[DB.skey()]=Object.assign({}, prefsGet(), patch);
+  all[DB.skey()]=Object.assign({}, prefsGet(), patch); try{ Cloud.queue(); }catch(e){}
   try{ localStorage.setItem(PREF_KEY,JSON.stringify(all)); }catch(e){}
   const m=document.getElementById('psaved');
   if(m){ m.textContent='Saved ✓'; setTimeout(()=>{ if(m.isConnected) m.textContent=''; },1500); }
@@ -1473,7 +1550,7 @@ function dashLine(res,n){
   const W=560,H=200,P=36;
   const X=i=>P+i*(W-2*P)/(pts.length-1), Y=v=>H-P-(Math.min(100,Math.max(0,v))/100)*(H-2*P);
   let g='';
-  [0,25,50,75,100].forEach(v=>{ g+=`<line x1="${P}" y1="${Y(v)}" x2="${W-8}" y2="${Y(v)}" class="pz-grid"/>`+
+  [0,25,50,75,100].forEach(v=>{ g+=`<line x1="${P}" y1="${Y(v)}" x2="${W-8}" y2="${Y(v)}" class="pz-gline"/>`+
     `<text x="${P-7}" y="${Y(v)+4}" text-anchor="end" class="pz-ax">${v}</text>`; });
   const line=pts.map((r,i)=>X(i).toFixed(1)+','+Y(r.pct).toFixed(1)).join(' ');
   const avg=Math.round(pts.reduce((a,r)=>a+r.pct,0)/pts.length);
@@ -1696,6 +1773,7 @@ async function saveProfile(e){
 }
 function delAcc(){
   if(!confirm('Delete your account and all progress?')) return;
+  try{ Cloud.wipe(); }catch(e){}
   try{ SB.signOutUser(); }catch(e){}
   const d=DB.raw(); const em=DB.get().session;
   d.users=d.users.filter(x=>x.email!==em);
