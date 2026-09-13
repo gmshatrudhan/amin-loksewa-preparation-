@@ -10,7 +10,6 @@
   /* brand — deep navy + gold */
   --primary:#144A78; --primary-d:#0E3760; --primary-l:#1C5D96;
   --accent:#C9A227;  --accent-d:#7D620F;  --accent-t:#2B2100;
-  --teal:#0D7D6E;
 
   /* surfaces */
   --bg:#F4F6FA; --card:#FFFFFF; --card-2:#F8FAFD;
@@ -46,7 +45,6 @@
 html[data-theme="dark"]{
   --primary:#66ABDF; --primary-d:#9AC9EE; --primary-l:#4C90C8;
   --accent:#E7C463;  --accent-d:#F3D98E;  --accent-t:#231B03;
-  --teal:#33C3AB;
 
   --bg:#0C1422; --card:#141D2C; --card-2:#1A2435;
   --soft:#212E42; --amber:#2A2413;
@@ -304,12 +302,6 @@ section{padding:58px 0}
   color:var(--on-primary);border-color:transparent;font-weight:650;
   box-shadow:0 8px 18px -8px var(--btn-sh)}
 .sylnav a span{display:inline-flex;align-items:center;gap:7px}
-.tabs{display:flex;gap:6px;border-bottom:2px solid var(--line);margin-bottom:24px}
-.tabs button{background:none;border:0;padding:12px 20px;font:inherit;font-weight:700;cursor:pointer;
-  color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px;
-  transition:color .18s ease,border-color .18s ease}
-.tabs button:hover{color:var(--primary)}
-.tabs button.on{color:var(--primary);border-color:var(--accent)}
 .prose h3{color:var(--primary);margin:22px 0 10px;font-size:1.14rem;letter-spacing:-.01em;font-weight:700}
 .prose p{margin-bottom:12px;line-height:1.75}
 .prose a{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line-strong)}
@@ -595,11 +587,6 @@ html[data-theme="dark"] .wqn{color:var(--on-primary)}
 html[data-theme="dark"] .badge{background:var(--soft);color:var(--primary-d)}
 html[data-theme="dark"] .avatar{color:#231B03}
 /* branded fills (class-based theming hooks) */
-.card--brand{background:var(--primary);color:#fff}
-.card--brand h3{color:#fff}
-.card--brand p{color:#cbd7f2}
-html[data-theme="dark"] .card--brand{background:linear-gradient(135deg,var(--primary-l),var(--primary));color:var(--on-primary)}
-html[data-theme="dark"] .card--brand h3,html[data-theme="dark"] .card--brand p{color:var(--on-primary)}
 .fsoc a.fsoc--brand{background:var(--primary)}
 html[data-theme="dark"] .fsoc a.fsoc--brand svg{fill:var(--on-primary)}
 /* ---- Reach Us brand buttons (contact page only; footer/topbar untouched) ---- */
@@ -858,7 +845,7 @@ mark{background:var(--accent);color:var(--accent-t);border-radius:4px;padding:0 
 .pz-range button{border:1px solid var(--line-strong);background:var(--soft);color:var(--muted);border-radius:999px;padding:5px 14px;font-size:.78rem;cursor:pointer}
 .pz-range button.on{background:var(--primary);border-color:var(--primary);color:#fff;font-weight:700}
 .pz-line{width:100%;height:auto;display:block}
-.pz-grid{stroke:var(--line);stroke-width:1}
+.pz-gline{stroke:var(--line);stroke-width:1}
 .pz-ax{fill:var(--muted);font-size:11px}
 .pz-area{fill:var(--primary);opacity:.1}
 .pz-avg{stroke:var(--muted);stroke-width:1.4;stroke-dasharray:5 4}
@@ -900,7 +887,7 @@ mark{background:var(--accent);color:var(--accent-t);border-radius:4px;padding:0 
 .pz-swbox li span{display:block;color:var(--muted);font-size:.76rem;margin-top:1px}
 /* profile page */
 .prof{max-width:520px;text-align:center}
-.avatar{width:56px;height:56px;margin:4px auto 10px;border-radius:50%;
+.prof .avatar{width:56px;height:56px;margin:4px auto 10px;border-radius:50%;
   background:var(--primary);color:#fff;font-size:1.2rem;font-weight:800;
   display:flex;align-items:center;justify-content:center}
 .prof h3{margin:0}
@@ -956,7 +943,8 @@ mark{background:var(--accent);color:var(--accent-t);border-radius:4px;padding:0 
 .tabs{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--soft);
   border:1px solid var(--line);border-radius:14px;padding:5px;margin-bottom:22px}
 .tabs button{padding:11px 10px;border:0;border-radius:10px;background:transparent;
-  font-weight:800;font-size:.92rem;color:var(--muted);margin:0}
+  font-weight:800;font-size:.92rem;color:var(--muted);margin:0;font-family:inherit;cursor:pointer;
+  transition:color .18s ease,border-color .18s ease}
 .tabs button:hover{color:var(--primary)}
 .tabs button.on{background:var(--primary);color:#fff;box-shadow:var(--shadow)}
 /* mode cards: radio-dot selectable look */
