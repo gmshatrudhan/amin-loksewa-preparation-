@@ -1849,6 +1849,8 @@ async function router(){
   /* keep the canonical URL in sync with the visible clean URL (SEO) */
   const can=document.querySelector('link[rel="canonical"]');
   if(can) can.href=location.origin+location.pathname+(location.search||'');
+  /* Google Analytics: count a pageview on every SPA navigation (safe if blocked) */
+  if(typeof window.gtag==='function'){ try{ window.gtag('config','G-TQ47H34MXK',{page_path:location.pathname+(location.search||'')+(location.hash||'')}); }catch(e){} }
 }
 
 /* ---------------- SLIDER ---------------- */
