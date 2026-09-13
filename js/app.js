@@ -1,6 +1,6 @@
 /* ================= APP (design + logic). content.js + data-manifest.js load before this. ================= */
 /* Question bank: 81 per-unit files (mcq + subjective + study), lazy-loaded per page - see LAZY DATA LOADER. */
-/* ==== QUESTION BANK: 13 MCQ + 5 written per unit (351 + 135 total), all with explanations ==== */
+/* ==== QUESTION BANK: 451 MCQ + 135 written total, all with explanations ==== */
 
 
 /* ---- 6 SUBJECTS: sub1-sub3 x 5 units, sub4 x 3, sub5 x 5, sub6 x 4 (27 units) ---- */
@@ -468,7 +468,7 @@ function toggleNav(){
   const bg=document.querySelector('.burger'); if(bg) bg.setAttribute('aria-expanded',n.classList.contains('open'));
   if(!n.classList.contains('open')) closeMenus();
 }
-function logout(){ DB.clearSession(); nav('/'); }
+function logout(){ try{ SB.signOutUser(); }catch(e){} DB.clearSession(); nav('/'); }
 /* SPA navigation: pushState for clean paths AND root-hash app URLs (no reload).
    goPage('/syllabus') -> clean public page; goPage('/#/tests') -> hash-only app page */
 function goPage(url){
@@ -486,6 +486,72 @@ const head = (t,s,c,ico) => `<div class="pghead"><div class="wrap">
 /* Deferred: need() runs mid-render, so the redirect must land AFTER the current
    render finishes (the old location.hash redirect was async for the same reason) */
 function need(){ if(!DB.user()){ setTimeout(()=>goPage('/#/auth?t=login'),0); return true } return false }
+/* ================= SUPABASE AUTH (real cloud accounts) =================
+   ✏️ EDIT HERE ONLY: if you ever create a new Supabase project, paste its
+   URL + publishable key below. The publishable key is PUBLIC BY DESIGN
+   (safe in this file). NEVER paste a service_role / secret key here.
+   How it works:
+   - New signups + Google login use Supabase (real backend, works everywhere).
+   - Progress/bookmarks stay in this browser under the same email (unchanged).
+   - Old local accounts keep working exactly as before (automatic fallback).
+   - If Supabase or the CDN can't be reached, the site uses local mode. */
+const SB_URL='https://yygpmlziffpuznogysnc.supabase.co';
+const SB_KEY='sb_publishable_t6i1BYDN8MCl-ASAtGkNrg_DV2xNSQo';
+const SB_CDN='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+const SB={
+  mode:'local', client:null, user:null, _recover:false,
+  ready:(async()=>{
+    try{
+      const lib=await import(SB_CDN);
+      SB.client=lib.createClient(SB_URL,SB_KEY);
+      SB.mode='supabase';
+      const h=location.hash||'', qs=location.search||'';
+      const returning=/access_token=/.test(h)||/[?&]code=/.test(qs);
+      let su=null;
+      if(returning){
+        /* OAuth / recovery landing: tokens are in the URL; the client above
+           consumes them — poll briefly until the session appears. */
+        SB._recover=/type=recovery/.test(h);
+        for(let i=0;i<25&&!su;i++){
+          try{ const r=await SB.client.auth.getSession(); su=r.data&&r.data.session; }catch(e){}
+          if(!su) await new Promise(r=>setTimeout(r,200));
+        }
+      }else{
+        try{ const r=await SB.client.auth.getSession(); su=r.data&&r.data.session; }catch(e){}
+      }
+      if(su&&su.user){
+        SB.user=su.user; SB.ensureStub(su.user);
+        const had=!!DB.get().session;
+        DB.setSession(su.user.email,true);
+        if(returning) history.replaceState(null,'',SB._recover?'/#/auth?t=recover':'/#/dashboard');
+        if(!had||returning) router(); /* re-render once with logged-in state */
+      }else if(returning){
+        history.replaceState(null,'','/#/auth?t=login'); router();
+      }
+    }catch(e){ SB.mode='local'; }
+    return SB.mode;
+  })(),
+  /* test hook: inject a fake client (automated tests only, never used live) */
+  _testInject(mock){ SB.client=mock; SB.mode='supabase'; SB.ready=Promise.resolve('supabase'); },
+  provider(){ const u=SB.user; return (u&&u.app_metadata&&u.app_metadata.provider)||null; },
+  /* local mirror row so dashboard/profile/bookmarks work unchanged for cloud users */
+  ensureStub(u){
+    const d=DB.raw(), em=String((u&&u.email)||'').toLowerCase(); if(!em) return null;
+    let row=d.users.find(x=>x.email===em);
+    if(!row){
+      row={name:((u.user_metadata||{}).full_name)||em.split('@')[0],
+        email:em,mobile:'',course:'',pass:'sb$cloud',code:rid(),sb:1};
+      d.users.push(row); DB.set(d);
+    }else if(!row.sb){ row.sb=2; DB.set(d); } /* local account now also verified in cloud */
+    return row;
+  },
+  signIn(email,pw){ return SB.client.auth.signInWithPassword({email:email,password:pw}); },
+  signUp(email,pw,name){ return SB.client.auth.signUp({email:email,password:pw,options:{data:{full_name:name}}}); },
+  google(){ return SB.client.auth.signInWithOAuth({provider:'google',options:{redirectTo:location.origin+'/'}}); },
+  reset(email){ return SB.client.auth.resetPasswordForEmail(email,{redirectTo:location.origin+'/'}); },
+  setNewPassword(pw){ return SB.client.auth.updateUser({password:pw}); },
+  async signOutUser(){ try{ await SB.client.auth.signOut(); }catch(e){} SB.user=null; }
+};
 function prog(){ const d=DB.get(); return (d.p2&&d.p2[d.session||'guest'])||{} }
 function markDone(sid,un){ const d=DB.raw(); const k=DB.skey(); d.p2[k]=d.p2[k]||{}; d.p2[k][sid+'-'+un]=true; DB.set(d); }
 function subjPct(sid){ const p=prog(), sb=SUBJECTS.find(x=>x.id===sid), t=sb?sb.units.length:0; if(!t) return 0; let n=0; for(let i=1;i<=t;i++) if(p[sid+'-'+i]) n++; return Math.round(n/t*100) }
@@ -1041,7 +1107,10 @@ function pFaq(){
 
 /* ---------------- AUTH ---------------- */
 function pAuth(tab){
-  const on = tab==='signup' ? 'signup' : 'login';
+  const on = tab==='signup' ? 'signup' : tab==='recover' ? 'recover' : 'login';
+  const GLOGO=`<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.06 12.25c0-.85-.08-1.67-.22-2.45H12v4.63h6.2a5.3 5.3 0 0 1-2.3 3.48v2.9h3.72c2.18-2 3.44-4.96 3.44-8.56Z"/><path fill="#34A853" d="M12 24c3.11 0 5.72-1.03 7.62-2.79l-3.72-2.9c-1.03.69-2.35 1.1-3.9 1.1-3 0-5.54-2.03-6.45-4.75H1.71v2.98A11.5 11.5 0 0 0 12 24Z"/><path fill="#FBBC05" d="M5.55 14.66a6.9 6.9 0 0 1 0-4.42V7.27H1.71a11.51 11.51 0 0 0 0 10.36l3.84-2.97Z"/><path fill="#EA4335" d="M12 4.75c1.69 0 3.21.58 4.4 1.72l3.3-3.3C17.72 1.21 15.11 0 12 0 7.5 0 3.62 2.58 1.71 6.34l3.84 2.98C6.46 6.59 9 4.75 12 4.75Z"/></svg>`;
+  const GBTN=`<button type="button" class="btn block" style="background:#fff;color:#1f2937;border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;gap:10px" onclick="doGoogle(event)">${GLOGO} Continue with Google</button>
+    <p class="swap">or continue with email</p>`;
   return head('Log in / Sign up','One place to access your account')+
   `<section><div class="wrap"><div class="form authbox">
     <div class="atabs">
@@ -1050,6 +1119,7 @@ function pAuth(tab){
     </div>
     <div id="m"></div>
     ${on==='login' ? `
+      ${GBTN}
       <form onsubmit="doLogin(event)">
         <h2>Welcome back</h2><div class="sub">Log in to continue learning</div>
         <label for="li">Email</label><input id="li" type="email" autocomplete="email" required>
@@ -1058,7 +1128,8 @@ function pAuth(tab){
           <a href="/#/forgot" style="color:var(--primary)">Forgot password?</a></div>
         <button class="btn block">Log in</button>
         <p class="swap">New here? <a href="/#/auth?t=signup">Create a free account</a></p>
-      </form>` : `
+      </form>` : on==='signup' ? `
+      ${GBTN}
       <form onsubmit="doReg(event)">
         <h2>Create your account</h2><div class="sub">Free &mdash; save progress and get instant test results</div>
         <label for="rn">Full Name</label><input id="rn" autocomplete="name" required>
@@ -1069,46 +1140,120 @@ function pAuth(tab){
           I agree to the <a href="/#/terms" style="color:var(--primary)">Terms</a></label>
         <button class="btn block" style="margin-top:14px">Sign up</button>
         <p class="swap">Already have an account? <a href="/#/auth?t=login">Log in</a></p>
+      </form>` : `
+      <form onsubmit="doRecover(event)">
+        <h2>Set new password</h2><div class="sub">Opened from your reset email link</div>
+        <label for="np">New Password</label><input id="np" type="password" minlength="6" autocomplete="new-password" required>
+        <label for="np2">Confirm New Password</label><input id="np2" type="password" minlength="6" autocomplete="new-password" required>
+        <button class="btn block" style="margin-top:14px">Update Password</button>
       </form>`}
   </div></div></section>`;
 }
 async function doLogin(e){
   e.preventDefault();
   const id=$('#li').value.trim().toLowerCase(), pw=$('#lp').value;
+  const rm=document.getElementById('rm'), remember=!rm||rm.checked;
+  const say=html=>{ $('#m').innerHTML=html; };
+  /* 1) cloud login (when online) */
+  try{
+    await SB.ready;
+    if(SB.mode==='supabase'){
+      const {data,error}=await SB.signIn(id,pw);
+      if(!error&&data&&data.session){
+        SB.user=data.session.user; SB.ensureStub(SB.user);
+        DB.setSession(id,remember); nav('/#/dashboard'); return;
+      }
+      const msg=(error&&error.message)||'';
+      if(/not confirmed/i.test(msg)){ say('<div class="msg err">Please verify your email first — open the verification link we sent, then log in.</div>'); return }
+      if(!/invalid login|invalid grant/i.test(msg)){ say('<div class="msg err">'+esc(msg||'Login failed. Please try again.')+'</div>'); return }
+      /* invalid cloud credentials: fall through to local check (old account?) */
+    }
+  }catch(err){/* offline: fall through to local */}
+  /* 2) local login (old accounts + offline) */
   const d=DB.get(); const u=d.users.find(x=>x.email===id);
   const hp=await sha(pw);
-  if(!u||!(u.pass===hp||(!isSha(u.pass)&&u.pass===pw))){ $('#m').innerHTML='<div class="msg err">Invalid email or password. Please try again.</div>'; return }
+  if(!u||u.pass==='sb$cloud'||!(u.pass===hp||(!isSha(u.pass)&&u.pass===pw))){ say('<div class="msg err">Invalid email or password. Please try again.</div>'); return }
   if(!isSha(u.pass)&&u.pass!==hp){ u.pass=hp; DB.set(d); }
-  const rm=document.getElementById('rm'); DB.setSession(u.email, !rm||rm.checked); nav('/#/dashboard');
+  DB.setSession(u.email,remember); nav('/#/dashboard');
 }
 async function doReg(e){
   e.preventDefault();
-  const em=$('#re').value.trim().toLowerCase();
-  if($('#rp').value!==$('#rp2').value){ $('#m').innerHTML='<div class="msg err">Passwords do not match.</div>'; return }
+  const em=$('#re').value.trim().toLowerCase(), nm=$('#rn').value.trim();
+  const say=html=>{ $('#m').innerHTML=html; };
+  if($('#rp').value!==$('#rp2').value){ say('<div class="msg err">Passwords do not match.</div>'); return }
+  /* 1) cloud signup (when online) */
+  try{
+    await SB.ready;
+    if(SB.mode==='supabase'){
+      const {data,error}=await SB.signUp(em,$('#rp').value,nm);
+      if(error){ say('<div class="msg err">'+esc(error.message)+'</div>'); return }
+      SB.ensureStub({email:em,user_metadata:{full_name:nm}});
+      if(data&&data.session){
+        SB.user=data.session.user; DB.setSession(em,true); nav('/#/dashboard');
+      }else{
+        say('<div class="msg ok">Account created! Please check <b>'+esc(em)+'</b> (inbox + spam) and click the verification link, then log in.</div>');
+      }
+      return;
+    }
+  }catch(err){/* offline: local account below */}
+  /* 2) local fallback (offline) */
   const d=DB.get();
-  if(d.users.some(u=>u.email===em)){ $('#m').innerHTML='<div class="msg err">This email is already registered. Please log in instead.</div>'; return }
-  d.users.push({name:$('#rn').value.trim(),email:em,mobile:'',course:'',pass:await sha($('#rp').value),code:rid()});
+  if(d.users.some(u=>u.email===em)){ say('<div class="msg err">This email is already registered. Please log in instead.</div>'); return }
+  d.users.push({name:nm,email:em,mobile:'',course:'',pass:await sha($('#rp').value),code:rid()});
   DB.set(d); DB.setSession(em,true); nav('/#/dashboard');
+}
+async function doGoogle(e){
+  if(e) e.preventDefault();
+  $('#m').innerHTML='<div class="msg">Connecting to Google…</div>';
+  try{ await SB.ready; }catch(_){}
+  if(SB.mode!=='supabase'||!SB.client){ $('#m').innerHTML='<div class="msg err">Online login is unreachable right now. Please use email + password.</div>'; return }
+  const {error}=await SB.google();
+  if(error) $('#m').innerHTML='<div class="msg err">'+esc(error.message)+'</div>';
+  /* else the browser leaves for Google and returns to / (SB.ready handles it) */
 }
 function pForgot(){
   return head('Forgot Password','Reset using your registered email')+
   `<section><div class="wrap"><form class="form" onsubmit="doForgot(event)">
-    <h2>Reset password</h2><div class="sub">Enter your email, recovery code and a new password</div><div id="m"></div>
+    <h2>Reset password</h2><div class="sub">Local accounts: use your recovery code. Cloud accounts: leave code empty for an email link</div><div id="m"></div>
     <label for="fe">Registered Email</label><input id="fe" type="email" autocomplete="email" required>
-    <label for="fc">Recovery Code</label><input id="fc" placeholder="XXXX-XXXX" autocomplete="off" style="text-transform:uppercase">
+    <label for="fc">Recovery Code (local accounts only)</label><input id="fc" placeholder="XXXX-XXXX" autocomplete="off" style="text-transform:uppercase">
     <label for="fp">New Password</label><input id="fp" type="password" minlength="6" autocomplete="new-password" required>
     <button class="btn block" style="margin-top:14px">Reset Password</button></form></div></section>`;
 }
 async function doForgot(e){
-  e.preventDefault(); const d=DB.get();
-  const u=d.users.find(x=>x.email===$('#fe').value.trim().toLowerCase());
-  if(!u){ $('#m').innerHTML='<div class="msg err">No account found with that email.</div>'; return }
-  const fc=($('#fc').value||'').trim().toUpperCase();
-  let first=false;
-  if(!u.code){ u.code=rid(); first=true; }
-  else if(fc!==u.code){ $('#m').innerHTML='<div class="msg err">Incorrect recovery code. Find it on your Profile page while logged in.</div>'; return }
-  u.pass=await sha($('#fp').value); DB.set(d);
-  $('#m').innerHTML='<div class="msg ok">Password updated. '+(first?('Your new recovery code is <b>'+u.code+'</b> — also saved on your Profile page. '):'')+'You can now <a href="/#/auth?t=login">log in</a>.</div>';
+  e.preventDefault();
+  const em=$('#fe').value.trim().toLowerCase();
+  const say=html=>{ $('#m').innerHTML=html; };
+  const d=DB.get(); const u=d.users.find(x=>x.email===em);
+  /* local account + code path (unchanged) */
+  if(u&&u.pass!=='sb$cloud'){
+    const fc=($('#fc').value||'').trim().toUpperCase();
+    let first=false;
+    if(!u.code){ u.code=rid(); first=true; }
+    else if(fc!==u.code){ say('<div class="msg err">Incorrect recovery code. Find it on your Profile page while logged in.</div>'); return }
+    u.pass=await sha($('#fp').value); DB.set(d);
+    say('<div class="msg ok">Password updated. '+(first?('Your new recovery code is <b>'+u.code+'</b> — also saved on your Profile page. '):'')+'You can now <a href="/#/auth?t=login">log in</a>.</div>'); return;
+  }
+  /* cloud / unknown account: email a reset link (generic reply, no account probing) */
+  try{
+    await SB.ready;
+    if(SB.mode==='supabase'){ await SB.reset(em); }
+  }catch(_){}
+  say('<div class="msg ok">If a cloud account exists for <b>'+esc(em)+'</b>, a reset link is on its way. Check inbox + spam.</div>');
+}
+async function doRecover(e){
+  e.preventDefault();
+  const say=html=>{ $('#m').innerHTML=html; };
+  if($('#np').value!==$('#np2').value){ say('<div class="msg err">Passwords do not match.</div>'); return }
+  try{
+    await SB.ready;
+    if(SB.mode!=='supabase') throw 0;
+    const {data}=await SB.client.auth.getSession();
+    if(!data||!data.session){ say('<div class="msg err">This link is invalid or expired. Please request a new one from <a href="/#/forgot">Forgot password</a>.</div>'); return }
+    const {error}=await SB.setNewPassword($('#np').value);
+    if(error){ say('<div class="msg err">'+esc(error.message)+'</div>'); return }
+    say('<div class="msg ok">Password updated. You are logged in — <a href="/#/dashboard">open your Dashboard</a>.</div>');
+  }catch(_){ say('<div class="msg err">Something went wrong. Please open the reset link from your email again.</div>'); }
 }
 
 /* ---------------- DASHBOARD HELPERS (Overview / Progress / Profile / Settings) ----------------
@@ -1219,14 +1364,15 @@ function pDash(view){
       <p class="muted">${esc(u.email)}</p>
       <div class="prow"><span>Mobile</span><b>${esc(u.mobile||'—')}</b></div>
       <div class="prow"><span>Syllabus track</span><b>${esc(u.course||'Not selected')}</b></div>
-      <div class="prow"><span>Recovery code</span><b>${esc(u.code||'—')}</b></div>
+      <div class="prow"><span>Account</span><b>${u.sb?('Cloud ('+(SB.provider()==='google'?'Google':'Email')+')'):'Local (this device)'}</b></div>
+      ${u.sb===1?'':`<div class="prow"><span>Recovery code</span><b>${esc(u.code||'—')}</b></div>`}
       <button class="btn" style="margin-top:14px" onclick="var f=document.getElementById('pedit');f.classList.toggle('hide');this.textContent=f.classList.contains('hide')?'Edit Profile':'Close Editor'">Edit Profile</button>
       <div id="pedit" class="hide" style="margin-top:16px"><form onsubmit="saveProfile(event)"><div id="m"></div>
         <label for="pn">Full Name</label><input id="pn" value="${esc(u.name)}" autocomplete="name" required>
         <label for="pe">Email</label><input id="pe" value="${esc(u.email)}" disabled>
         <label for="pm">Mobile</label><input id="pm" value="${esc(u.mobile||'')}">
         <label for="pc">Syllabus Track</label><select id="pc"><option value="">Not selected</option>${SYLLABUS.map(s=>`<option ${s.title===u.course?'selected':''}>${esc(s.title)}</option>`).join('')}</select>
-        <label for="pp">New Password (optional)</label><input id="pp" type="password" autocomplete="new-password">
+        ${SB.user&&SB.provider()==='google'?'':`<label for="pp">New Password (optional)</label><input id="pp" type="password" autocomplete="new-password">`}
         <button class="btn block" style="margin-top:14px">Save Changes</button></form></div>
       <button class="btn ghost block" style="margin-top:10px;border-color:var(--bad);color:var(--bad)" onclick="delAcc()">Delete Account</button></div>`;
   } else if(view==='settings'){
@@ -1286,11 +1432,21 @@ async function saveProfile(e){
   if(!u) return;
   u.name=$('#pn').value; u.mobile=$('#pm').value; u.course=$('#pc').value;
   if(!u.code) u.code=rid();
-  if($('#pp').value) u.pass=await sha($('#pp').value);
+  const np=$('#pp')&&$('#pp').value;
+  if(np){
+    if(SB.user&&SB.provider()==='google'){ $('#m').innerHTML='<div class="msg err">Google accounts cannot set a password here. Use Google to log in.</div>'; return }
+    try{ await SB.ready; }catch(_){}
+    if(SB.mode==='supabase'&&SB.user){
+      const {error}=await SB.setNewPassword(np);
+      if(error){ $('#m').innerHTML='<div class="msg err">'+esc(error.message)+'</div>'; return }
+    }
+    u.pass=await sha(np);
+  }
   DB.set(d); $('#m').innerHTML='<div class="msg ok">Profile saved.</div>'; shell();
 }
 function delAcc(){
   if(!confirm('Delete your account and all progress?')) return;
+  try{ SB.signOutUser(); }catch(e){}
   const d=DB.raw(); const em=DB.get().session;
   d.users=d.users.filter(x=>x.email!==em);
   if(em){ delete d.p2[em]; delete d.r2[em]; delete d.b2[em]; }
