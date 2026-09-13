@@ -641,6 +641,28 @@ function pSyllabusList(){
   `<section><div class="wrap"><div class="grid g4 tight">${SYLLABUS.map(sylCard).join('')}</div></div></section>`;
 }
 
+/* Official-syllabus tables + nested lists (federal page). */
+function sylTable(head, rows, cap){
+  return `${cap?`<p style="font-weight:700;margin:14px 0 6px">${esc(cap)}</p>`:''}<table><thead><tr>${head.map(h=>`<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+}
+function sylItems(items){
+  return `<ul>${items.map(it=>typeof it==='string'?`<li>${esc(it)}</li>`:`<li>${esc(it.t)}${sylItems(it.c)}</li>`).join('')}</ul>`;
+}
+function pSyllabusOfficial(o){
+  let h=`<h3>परीक्षा योजना (Examination Scheme)</h3><p>${esc(o.intro)}</p>`;
+  h+=sylTable(o.phaseHead, o.phases);
+  h+=sylTable(o.paper1head, o.paper1rows, o.paper1cap);
+  h+=sylTable(o.interviewHead, o.interview, o.interviewCap);
+  h+=`<h3>द्रष्टव्य</h3><ol>${o.notes.map(n=>`<li>${esc(n)}</li>`).join('')}</ol>`;
+  o.blocks.forEach(b=>{
+    h+=`<h3>${esc(b.h)}</h3>${b.intro?`<p>${esc(b.intro)}</p>`:''}`;
+    (b.groups||[]).forEach(g=>{ h+=`<h4 style="color:var(--primary);margin:14px 0 6px">${esc(g.h)}</h4>`+sylItems(g.items); });
+    (b.tables||[]).forEach(t=>{ h+=sylTable(t.head, t.rows, t.cap); });
+  });
+  h+=`<div class="note"><b>पाठ्यक्रम लागू मिति :</b> ${esc(o.effective)}</div>`;
+  return h;
+}
+
 function pSyllabus(id){
   const s = SYLLABUS.find(x=>x.id===id); if(!s) return p404();
   const rows = SUBJECTS.map((sb,i)=>{ const n=sb.units.length; return `<tr><td>${i+1}</td><td>${esc(sb.name)}</td><td>${n}</td><td>${n*5}</td><td>${n*3}</td></tr>`; }).join('');
@@ -651,9 +673,10 @@ function pSyllabus(id){
     <div><div class="card prose">
       <h3>Overview</h3><p>${esc(s.desc)}</p>
       <h3>Objectives</h3><ul>${s.objectives.map(o=>`<li>${esc(o)}</li>`).join('')}</ul>
+      ${s.official?pSyllabusOfficial(s.official):''}
       <h3>Subject-wise Breakdown &amp; Question Counts</h3>
       <table><thead><tr><th>#</th><th>Subject</th><th>Units</th><th>Objective Qs</th><th>Written Qs</th></tr></thead><tbody>${rows}</tbody></table>
-      <div class="note"><b>Exam Pattern:</b> Objective 20 marks &middot; Short answer 40 marks &middot; Long answer 40 marks. Pass mark 40%.</div>
+      ${s.official?'':`<div class="note"><b>Exam Pattern:</b> Objective 20 marks &middot; Short answer 40 marks &middot; Long answer 40 marks. Pass mark 40%.</div>`}
       <h3>Reference Books</h3><ul><li>Prescribed textbook of each subject</li><li>Practice question bank</li><li>Past year question collection</li></ul>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">
         <a class="btn" href="/subjects">Start Studying</a>
