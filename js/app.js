@@ -748,16 +748,19 @@ function quizStart(sid,un){
      ${u.subjective.map((q,i)=>`<div class="wq">
         <div class="wqh"><span class="wqn">Q${i+1}</span>
           <span class="wqt">${esc(q.q)}</span><span class="badge">${q.marks} marks</span></div>
-        <button class="btn ghost sm" onclick="wqaToggle(this)">Show model answer</button>
+        <button class="btn ghost sm" onclick="wqaToggle(this,'${sid}',${un},${i})">Show model answer</button>
         <div class="wqa"><b>Model answer:</b> ${esc(q.hint)}</div></div>`).join('')}
    </div>`;
   qzMode(PF.mode||'practice'); /* default mode from Dashboard > Settings */
 }
 
 /* Written-answer toggle + "Read more" clamp for long model answers. */
-function wqaToggle(btn){
+function wqaToggle(btn,sid,un,qi){
   const a=btn.nextElementSibling, open=a.classList.toggle('show');
   btn.textContent=open?'Hide model answer':'Show model answer';
+  if(open&&sid!==undefined){ try{ const d=DB.raw(),me=DB.skey(); d.v2=d.v2||{};
+    const a=d.v2[me]=d.v2[me]||[], k=sid+'-'+un+'-'+qi;
+    if(!a.includes(k)){ a.push(k); d.v2[me]=a.slice(-500); DB.set(d); } }catch(e){} }
   if(open&&!a.dataset.rm&&a.scrollHeight>320){
     a.dataset.rm='1'; a.classList.add('clamp');
     const m=document.createElement('button');
@@ -1257,7 +1260,7 @@ async function doRecover(e){
 }
 
 /* ---------------- DASHBOARD HELPERS (Overview / Progress / Profile / Settings) ----------------
-   EDITING GUIDE: dashboard texts live in pDash() below. Milestones = dashMilestones(),
+   EDITING GUIDE: dashboard texts live in pDash() below. progress charts = pDashProgress() + dashLine/dashRadar/dashHeat,
    activity feed = dashActivity(), charts = dashDonut() + dashTrend(). Everything is
    computed from real local data (progress, test results, saved questions). */
 const PREF_KEY='amin-prefs';
@@ -1299,24 +1302,11 @@ function dashActivity(){
   acts.sort((a,b)=>(b.date>a.date?1:-1));
   return acts.slice(0,8);
 }
-function dashMilestones(st){
-  const touched=SUBJECTS.filter(s=>subjPct(s.id)>0).length;
-  return [
-    {icon:'🌱', name:'First Step', hint:'Complete your first unit', won:st.done>=1},
-    {icon:'🧭', name:'Explorer', hint:'Study in all 6 subjects', won:touched>=6},
-    {icon:'📚', name:'Halfway Scholar', hint:'Complete 50% of units', won:st.pct>=50},
-    {icon:'🎓', name:'Course Complete', hint:'Complete all '+st.total+' units', won:st.pct>=100},
-    {icon:'🎯', name:'Sharp Shooter', hint:'Average score 60%+', won:st.tests>0&&st.avg>=60},
-    {icon:'🔥', name:'Consistent', hint:'Take 5 tests', won:st.tests>=5},
-    {icon:'💯', name:'Perfect Paper', hint:'Score 100% in any test', won:st.best>=100},
-    {icon:'🔖', name:'Collector', hint:'Save 10 questions', won:st.saved>=10},
-  ];
-}
-function dashDonut(pct){
+function dashDonut(pct,color){
   const p=Math.min(100,Math.max(0,pct)), c=2*Math.PI*34, off=c*(1-p/100);
   return `<svg class="donut" viewBox="0 0 90 90" role="img" aria-label="${p}% complete">
     <circle cx="45" cy="45" r="34" fill="none" style="stroke:var(--track)" stroke-width="11"/>
-    <circle cx="45" cy="45" r="34" fill="none" style="stroke:var(--primary)" stroke-width="11"
+    <circle cx="45" cy="45" r="34" fill="none" style="stroke:${color||'var(--primary)'}" stroke-width="11"
       stroke-linecap="round" stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"
       transform="rotate(-90 45 45)"/>
     <text x="45" y="51" text-anchor="middle" class="donut-t">${p}%</text></svg>`;
@@ -1329,10 +1319,161 @@ function dashTrend(res){
     return `<div class="tbar" title="${esc(r.subject)} — ${r.pct}%"><span>${r.pct}</span><i style="height:${h}%;background:${col}"></i></div>`; }).join('');
   return `<div class="trend">${bars}</div><p class="muted sm">Last ${last.length} test${last.length>1?'s':''} · latest on the right</p>`;
 }
+/* ============ PROGRESS ANALYTICS (charts + question-type analysis) ============
+   All charts are hand-drawn SVG (zero dependencies, work offline) and read
+   real user data: unit completion (p2), test history (r2), reviewed
+   subjective answers (v2). Subjects with no data show "—" (never fake 0s). */
+let PZR_N=20; /* score-trend range: 10 / 20 / 50(All) */
+function pzRange(n){ PZR_N=n; rerender(); }
+/* unique subjective questions reviewed, per subject: {total, by:{sid:n}} */
+function subjReviewed(){
+  const d=DB.get(), me=d.session||'guest', a=(d.v2&&d.v2[me])||[], by={};
+  a.forEach(k=>{ const sid=String(k).split('-')[0]; by[sid]=(by[sid]||0)+1; });
+  return { total:a.length, by };
+}
+/* MCQ stats per subject name from test history */
+function mcqBySubj(res){
+  const m={};
+  (res||[]).forEach(r=>{
+    const e=m[r.subject]=m[r.subject]||{n:0,sum:0,best:0,att:0,sc:0,tot:0};
+    e.n++; e.sum+=r.pct; if(r.pct>e.best)e.best=r.pct;
+    e.att+=r.attempted||0; e.sc+=r.score||0; e.tot+=r.total||0;
+  });
+  Object.keys(m).forEach(k=>{ m[k].avg=Math.round(m[k].sum/m[k].n); });
+  return m;
+}
+/* completion + units done per subject id */
+function compBySid(){
+  const P=prog(), o={};
+  SUBJECTS.forEach(s=>{ let n=0; s.units.forEach(x=>{ if(P[s.id+'-'+x.no])n++; });
+    o[s.id]={done:n,total:s.units.length,pct:s.units.length?Math.round(n/s.units.length*100):0}; });
+  return o;
+}
+/* score-over-time line chart (SVG). pts = chronological [{pct,date,subject,unit}] */
+function dashLine(res,n){
+  const pts=(res||[]).slice(0,n).reverse();
+  if(pts.length<2) return '<p class="muted">Take at least 2 tests to unlock your score trend.</p>';
+  const W=560,H=200,P=36;
+  const X=i=>P+i*(W-2*P)/(pts.length-1), Y=v=>H-P-(Math.min(100,Math.max(0,v))/100)*(H-2*P);
+  let g='';
+  [0,25,50,75,100].forEach(v=>{ g+=`<line x1="${P}" y1="${Y(v)}" x2="${W-8}" y2="${Y(v)}" class="pz-grid"/>`+
+    `<text x="${P-7}" y="${Y(v)+4}" text-anchor="end" class="pz-ax">${v}</text>`; });
+  const line=pts.map((r,i)=>X(i).toFixed(1)+','+Y(r.pct).toFixed(1)).join(' ');
+  const avg=Math.round(pts.reduce((a,r)=>a+r.pct,0)/pts.length);
+  const dstr=dt=>{ try{ const d=new Date(dt); return (d.getMonth()+1)+'/'+d.getDate(); }catch(e){ return ''; } };
+  const xi=[0,Math.floor((pts.length-1)/2),pts.length-1].filter((v,i,a)=>a.indexOf(v)===i);
+  let xl=''; xi.forEach(i=>{ xl+=`<text x="${X(i)}" y="${H-10}" text-anchor="middle" class="pz-ax">${dstr(pts[i].date)}</text>`; });
+  let dots=''; pts.forEach((r,i)=>{
+    const c=r.pct>=60?'var(--ok)':r.pct>=40?'var(--accent-d)':'var(--bad)';
+    dots+=`<circle cx="${X(i)}" cy="${Y(r.pct)}" r="4.5" style="fill:${c}"><title>${esc(r.subject)} — ${esc(r.unit)} · ${r.score}/${r.total} (${r.pct}%) · ${dstr(r.date)}</title></circle>`; });
+  return `<svg class="pz-line" viewBox="0 0 ${W} ${H}" role="img" aria-label="Test scores over time, average ${avg} percent">${g}
+    <polygon points="${P},${H-P} ${line} ${W-8},${H-P}" class="pz-area"/>
+    <line x1="${P}" y1="${Y(avg)}" x2="${W-8}" y2="${Y(avg)}" class="pz-avg"/>
+    <text x="${P+5}" y="${Y(avg)-6}" text-anchor="start" class="pz-ax">avg ${avg}%</text>
+    <polyline points="${line}" class="pz-pline"/>${dots}${xl}</svg>`;
+}
+/* completion radar, one axis per subject (emoji labels + full-name tooltips) */
+function dashRadar(comp){
+  const cx=140, cy=132, R=92, N=SUBJECTS.length;
+  const pt=(i,v)=>{ const a=(-90+i*360/N)*Math.PI/180, r=R*v/100;
+    return [cx+r*Math.cos(a), cy+r*Math.sin(a)]; };
+  let rings='';
+  [25,50,75,100].forEach(v=>{ rings+=`<polygon points="${SUBJECTS.map((s,i)=>pt(i,v).map(n=>n.toFixed(1)).join(',')).join(' ')}" class="pz-ring"/>`; });
+  let spokes='';
+  SUBJECTS.forEach((s,i)=>{ const [x,y]=pt(i,100);
+    spokes+=`<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" class="pz-ring"/>`; });
+  const poly=SUBJECTS.map((s,i)=>pt(i,comp[s.id].pct).map(n=>n.toFixed(1)).join(',')).join(' ');
+  let dots='', labs='';
+  SUBJECTS.forEach((s,i)=>{ const [x,y]=pt(i,comp[s.id].pct), [lx,ly]=pt(i,100);
+    const ox=cx+(lx-cx)*1.24, oy=cy+(ly-cy)*1.24;
+    dots+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.6" class="pz-rdot"><title>${esc(s.name)}: ${comp[s.id].pct}% complete</title></circle>`;
+    labs+=`<text x="${ox.toFixed(1)}" y="${oy.toFixed(1)}" text-anchor="middle" class="pz-remoji"><title>${esc(s.name)}: ${comp[s.id].pct}%</title>${s.icon}</text>`; });
+  return `<svg class="pz-radar" viewBox="0 0 280 264" role="img" aria-label="Completion radar by subject">${rings}${spokes}
+    <polygon points="${poly}" class="pz-rpoly"/>${dots}${labs}</svg>`;
+}
+/* heat color: null -> none; else green/amber/red at intensity by value */
+function heatStyle(v){
+  if(v==null||isNaN(v)) return '';
+  const c=v>=60?'var(--ok)':v>=40?'var(--accent-d)':'var(--bad)';
+  return `background:color-mix(in srgb, ${c} ${Math.round(14+v*0.5)}%, transparent)`;
+}
+/* Subject x skill heatmap (each column scaled independently) */
+function dashHeat(comp,mcq,rev){
+  const mxSubj=Math.max(1,...Object.values(rev.by));
+  const rows=SUBJECTS.map(s=>{
+    const c=comp[s.id].pct, m=mcq[s.name], ma=m?m.avg:null;
+    const rn=rev.by[s.id]||0, rs=rev.total?Math.round(rn/mxSubj*100):null;
+    return `<tr><td><span class="pz-dot" style="background:${s.color}"></span>${esc(s.name)}</td>
+      <td style="${heatStyle(c)}">${c}%</td>
+      <td style="${heatStyle(ma)}">${ma==null?'—':ma+'%'}</td>
+      <td style="${heatStyle(rs)}">${rev.total?rn:'—'}</td></tr>`; }).join('');
+  return `<div class="pz-tscroll"><table class="pz-heat"><tr><th>Subject</th><th>Completion</th><th>MCQ avg</th><th>Subj. read</th></tr>${rows}</table></div>
+    <p class="muted sm">Cell color = performance band (green ≥60, amber 40–59, red &lt;40). “Subj. read” counts model answers you opened.</p>`;
+}
+/* Strong vs Weak subjects from all available signals */
+function dashStrongWeak(comp,mcq,rev){
+  const scored=SUBJECTS.map(s=>{
+    const parts=[], notes=[];
+    const c=comp[s.id]; parts.push(c.pct); notes.push(`${c.pct}% complete`);
+    const m=mcq[s.name];
+    if(m){ parts.push(m.avg); notes.push(`MCQ avg ${m.avg}%`); }
+    const rn=rev.by[s.id]||0;
+    if(rev.total){ parts.push(Math.round(rn/Math.max(1,...Object.values(rev.by))*100)); notes.push(`${rn} subj. read`); }
+    const has=c.pct>0||m||rn>0;
+    return { s, has, score:has?Math.round(parts.reduce((a,b)=>a+b,0)/parts.length):-1,
+      main:notes.sort((a,b)=>a<b?1:-1)[0]||'', detail:notes.join(' · ') }; });
+  const ranked=scored.filter(x=>x.has).sort((a,b)=>b.score-a.score);
+  if(!ranked.length) return '<p class="muted">Complete units or take tests to discover your strong and weak subjects.</p>';
+  const strong=ranked.slice(0,2), weak=ranked.slice(-2).reverse();
+  const li=x=>`<li><span class="pz-dot" style="background:${x.s.color}"></span><b>${esc(x.s.name)}</b><span>${esc(x.detail)}</span></li>`;
+  return `<div class="pz-sw"><div class="pz-swbox strong"><h4>💪 Strong subjects</h4><ul>${strong.map(li).join('')}</ul></div>
+    <div class="pz-swbox weak"><h4>🎯 Needs focus</h4><ul>${weak.map(li).join('')}</ul>
+    <p class="muted sm">Tip: revise a weak subject’s notes, then take its unit test to lift the score.</p></div></div>`;
+}
+/* per-subject cards (donut + key numbers, tap to open the subject) */
+function dashSubjCards(comp,mcq,rev){
+  return `<div class="pz-grid">${SUBJECTS.map(s=>{
+    const c=comp[s.id], m=mcq[s.name];
+    return `<a class="pz-subj" href="/subject/${s.id}"><div class="pz-shead"><span class="pz-sicon">${s.icon}</span>
+      <b>${esc(s.name)}</b></div>
+      <div class="pz-sbody">${dashDonut(c.pct,s.color)}
+      <div class="pz-sstats"><span>Units <b>${c.done}/${c.total}</b></span>
+      <span>Tests <b>${m?m.n:0}</b></span>
+      <span>MCQ avg <b>${m?m.avg+'%':'—'}</b></span>
+      <span>Subj. read <b>${rev.by[s.id]||0}</b></span></div></div></a>`; }).join('')}</div>`;
+}
+/* MCQ vs Subjective question-type summary */
+function dashQType(st,mcq,rev){
+  const tot=Object.values(mcq).reduce((a,m)=>({att:a.att+m.att,sc:a.sc+m.sc,tot:a.tot+m.tot}),{att:0,sc:0,tot:0});
+  const acc=tot.tot?Math.round(tot.sc/tot.tot*100):null;
+  const top=SUBJECTS.map(s=>({s,n:rev.by[s.id]||0})).filter(x=>x.n>0).sort((a,b)=>b.n-a.n).slice(0,3);
+  return `<div class="pz-qt"><div class="pz-qtbox"><h4>MCQ (test questions)</h4>
+    ${acc==null?'<p class="muted">No tests taken yet.</p>':`${dashDonut(acc,'var(--primary)')}
+    <p><b>${acc}%</b> overall accuracy · ${tot.sc}/${tot.tot} correct · ${st.tests} tests</p>`}</div>
+    <div class="pz-qtbox"><h4>Subjective (written)</h4>
+    ${rev.total?`<p class="pz-bignum">${rev.total}</p><p>model answers reviewed${top.length?': '+top.map(t=>`${t.s.icon} ${t.n}`).join(' · '):''}</p>
+    <p class="muted sm">Open any test page and tap “Show model answer” to review more.</p>`
+    :'<p class="muted">None reviewed yet — open any test page and tap “Show model answer”.</p>'}</div></div>`;
+}
+/* full My Progress body: charts + analysis (no bars) */
+function pDashProgress(st){
+  const comp=compBySid(), mcq=mcqBySubj(st.res), rev=subjReviewed();
+  const rng=[[10,'Last 10'],[20,'Last 20'],[50,'All']].map(([n,l])=>
+    `<button class="${PZR_N===n?'on':''}" onclick="pzRange(${n})">${l}</button>`).join('');
+  return `<div class="card"><h3>Overall completion</h3><div class="pz-hero">${dashDonut(st.pct)}
+    <div class="pz-chips"><span><b>${st.done}/${st.total}</b>units done</span><span><b>${st.tests}</b>tests taken</span><span><b>${st.tests?st.avg+'%':'—'}</b>avg score</span><span><b>${st.tests?st.best+'%':'—'}</b>best score</span></div></div></div>
+  <div class="card"><h3>Score over time</h3><div class="pz-range">${rng}</div>${dashLine(st.res,PZR_N)}</div>
+  <div class="card"><h3>Subject analysis</h3><div class="pz-flex">${dashRadar(comp)}
+    <div class="pz-legend">${SUBJECTS.map(s=>`<span><i class="pz-dot" style="background:${s.color}"></i>${esc(s.name)} <b>${comp[s.id].pct}%</b></span>`).join('')}</div></div>
+    ${dashSubjCards(comp,mcq,rev)}</div>
+  <div class="card"><h3>Question type analysis</h3>${dashQType(st,mcq,rev)}</div>
+  <div class="card"><h3>Performance heatmap</h3>${dashHeat(comp,mcq,rev)}</div>
+  <div class="card"><h3>Strong &amp; weak subjects</h3>${dashStrongWeak(comp,mcq,rev)}</div>`;
+}
 function clearMyData(){
   if(!confirm('Clear your unit progress and test history? Saved questions and your account stay.')) return;
   const d=DB.raw(), me=DB.skey();
-  delete d.p2[me]; delete d.r2[me]; DB.set(d); nav('/#/dashboard');
+  delete d.p2[me]; delete d.r2[me]; delete d.v2[me]; DB.set(d); nav('/#/dashboard');
 }
 
 /* ---------------- DASHBOARD ---------------- */
@@ -1347,15 +1488,7 @@ function pDash(view){
     <a href="#" onclick="logout();return false">Logout</a></div>`;
   let body;
   if(view==='progress'){
-    const P=prog(), ms=dashMilestones(st), won=ms.filter(m=>m.won).length;
-    body=`<div class="card"><h3>Overall completion — ${st.pct}%</h3>
-      <div class="bar"><i style="width:${st.pct}%"></i></div>
-      <p class="muted sm">${st.done} of ${st.total} units completed · ${st.tests} tests taken · best score ${st.best}%</p></div>
-    <div class="card"><h3>Subject progress</h3>
-      ${SUBJECTS.map(s=>{const pc=subjPct(s.id);return `<div class="sblock"><div class="srow"><b>${esc(s.name)}</b><span>${pc}%</span></div><div class="bar"><i style="width:${pc}%"></i></div>
-        <div class="units">${s.units.map(x=>{const d=P[s.id+'-'+x.no];return `<a href="/unit/${s.id}/${x.no}/study" class="${d?'done':''}">${d?'✓':'○'} U${x.no}</a>`}).join('')}</div></div>`}).join('')}</div>
-    <div class="card"><h3>Milestones — ${won}/${ms.length} unlocked</h3>
-      <div class="ms-grid">${ms.map(m=>`<div class="ms ${m.won?'won':'locked'}"><span class="ms-i">${m.icon}</span><b>${m.name}</b><span>${m.hint}</span></div>`).join('')}</div></div>`;
+    body=pDashProgress(st);
   } else if(view==='profile'){
     const initials=(u.name.trim().split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase()||'👤');
     body=`<div class="card prof">
@@ -1449,7 +1582,7 @@ function delAcc(){
   try{ SB.signOutUser(); }catch(e){}
   const d=DB.raw(); const em=DB.get().session;
   d.users=d.users.filter(x=>x.email!==em);
-  if(em){ delete d.p2[em]; delete d.r2[em]; delete d.b2[em]; }
+  if(em){ delete d.p2[em]; delete d.r2[em]; delete d.b2[em]; delete d.v2[em]; }
   d.session=null;
   try{ localStorage.setItem(DB.k,JSON.stringify(d)); }catch(e){}
   try{ sessionStorage.removeItem(DB.k+'-s'); }catch(e){}
