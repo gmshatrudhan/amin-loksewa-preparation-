@@ -293,6 +293,17 @@ section{padding:58px 0}
 .side a:hover{background:var(--soft);color:var(--primary)}
 .side a.on{background:linear-gradient(135deg,var(--primary-l),var(--primary) 60%,var(--primary-d));
   color:var(--on-primary);box-shadow:0 8px 18px -8px var(--btn-sh);font-weight:650}
+/* syllabus province quick-nav: horizontal scroll row, content full width */
+.sylnav{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 12px;margin-bottom:16px;
+  -webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.sylnav a{flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;padding:9px 16px;
+  border-radius:999px;background:var(--card);border:1px solid var(--line);
+  font-size:.88rem;font-weight:600;white-space:nowrap}
+.sylnav a:hover{border-color:var(--primary);color:var(--primary)}
+.sylnav a.on{background:linear-gradient(135deg,var(--primary-l),var(--primary) 60%,var(--primary-d));
+  color:var(--on-primary);border-color:transparent;font-weight:650;
+  box-shadow:0 8px 18px -8px var(--btn-sh)}
+.sylnav a span{display:inline-flex;align-items:center;gap:7px}
 .tabs{display:flex;gap:6px;border-bottom:2px solid var(--line);margin-bottom:24px}
 .tabs button{background:none;border:0;padding:12px 20px;font:inherit;font-weight:700;cursor:pointer;
   color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px;
