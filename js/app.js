@@ -667,10 +667,9 @@ function pSyllabus(id){
   const s = SYLLABUS.find(x=>x.id===id); if(!s) return p404();
   const rows = SUBJECTS.map((sb,i)=>{ const n=sb.units.length; return `<tr><td>${i+1}</td><td>${esc(sb.name)}</td><td>${n}</td><td>${n*5}</td><td>${n*3}</td></tr>`; }).join('');
   return head((s.label||s.title)+' Syllabus ('+(s.year||'2082')+')', s.desc, `<a href="/syllabus">Syllabus</a> / ${esc(s.label||s.title)}`, s.emoji||'')+
-  `<section><div class="wrap"><div class="split">
-    <div class="side"><a class="on" href="/syllabus/${s.id}">This Syllabus</a>
-      ${SYLLABUS.filter(x=>x.id!==s.id).map(x=>`<a href="/syllabus/${x.id}"><span>${x.emoji||''} ${esc(x.label||x.title)}</span></a>`).join('')}</div>
-    <div><div class="card prose">
+  `<section><div class="wrap">
+    <div class="sylnav">${SYLLABUS.map(x=>`<a class="${x.id===s.id?'on':''}" href="/syllabus/${x.id}"><span>${x.emoji||''} ${esc(x.label||x.title)}</span></a>`).join('')}</div>
+    <div class="card prose">
       <h3>Overview</h3><p>${esc(s.desc)}</p>
       <h3>Objectives</h3><ul>${s.objectives.map(o=>`<li>${esc(o)}</li>`).join('')}</ul>
       ${s.official?pSyllabusOfficial(s.official):''}
@@ -681,7 +680,7 @@ function pSyllabus(id){
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">
         <a class="btn" href="/subjects">Start Studying</a>
         <button class="btn ghost" onclick="window.print()">Print</button></div>
-    </div></div></div></div></section>`;
+    </div></div></section>`;
 }
 
 function pSubjects(){
