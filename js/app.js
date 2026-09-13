@@ -1,6 +1,6 @@
 /* ================= APP (design + logic). content.js + data-manifest.js load before this. ================= */
 /* Question bank: 81 per-unit files (mcq + subjective + study), lazy-loaded per page - see LAZY DATA LOADER. */
-/* ==== QUESTION BANK: 451 MCQ + 135 written total, all with explanations ==== */
+/* ==== QUESTION BANK: 744 MCQ + 135 written total, all with explanations ==== */
 
 
 /* ---- 6 SUBJECTS: sub1-sub3 x 5 units, sub4 x 3, sub5 x 5, sub6 x 4 (27 units) ---- */
