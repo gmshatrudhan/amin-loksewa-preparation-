@@ -614,12 +614,6 @@ function pHome(){
 
   <section class="cta">
     <div class="wrap"><h2 style="font-size:1.8rem">Create your free account today</h2>
-    <p style=p></div>
-    <div class="grid g2">${NOTICES.slice(0,4).map(n=>noticeCard(n)).join('')}</div>
-    <div style="text-align:center;margin-top:22px"><a class="btn ghost" href="/notice">View All Notices</a></div></div></section>
-
-  <section class="cta">
-    <div class="wrap"><h2 style="font-size:1.8rem">Create your free account today</h2>
     <p style="color:#cbd7f2;margin:8px 0 18px">Save your progress, take tests and get your results instantly.</p>
     <a class="btn accent" href="/#/auth?t=signup">Create free account</a></div></section>`;
 }
