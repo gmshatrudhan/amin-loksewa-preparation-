@@ -64,7 +64,7 @@ if(!t)t=window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matc
 document.documentElement.setAttribute('data-theme',t);
 if(t==='dark')document.head.insertAdjacentHTML('beforeend','<style>body{background:#0C1422}</style>');
 }catch(e){document.documentElement.setAttribute('data-theme','light')}})();</script>
-  <link rel="stylesheet" href="/css/style.css?v=3">
+  <link rel="stylesheet" href="/css/style.css?v=5">
 </head>
 <body>
 <div id="topbar" class="topbar"></div>
@@ -89,8 +89,8 @@ if(t==='dark')document.head.insertAdjacentHTML('beforeend','<style>body{backgrou
 <button id="toTop" class="totop" onclick="toTop()" aria-label="Back to top" title="Back to top">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.5l7 7-1.6 1.6L13 9.7V19h-2V9.7l-4.4 4.4L5 12.5z"/></svg>
 </button>
-  <script src="/js/content.js?v=3"></script>
-  <script src="/js/data-manifest.js?v=3"></script>
-  <script src="/js/app.js?v=3"></script>
-</body>
+  <script src="/js/content.js?v=5"></script>
+  <script src="/js/data-manifest.js?v=5"></script>
+  <script src="/js/app.js?v=5"></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3a52e430f8d4f3c',t:'MTc4OTI4MTgzOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
