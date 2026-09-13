@@ -16,7 +16,7 @@ window.EXTRA["Mathematics (Surveying)"].mcq = [
       {q:"1 ropani is equal to:", o:["1,000 sq m", "508.72 sq m", "338.62 sq m", "6,772.63 sq m"], a:1, e:"1 ropani = 16 aana = 508.72 sq m. It is used mainly in the hill region and the Kathmandu Valley."},
       {q:"1 bigha is equal to how many kattha?", o:["32", "16", "20", "25"], a:2, e:"1 bigha = 20 kattha, and 1 kattha = 20 dhur. 1 bigha is approximately 6,772.63 sq m and is used in the Terai region."},
       {q:"1 ropani is divided into how many aana?", o:["20", "10", "12", "16"], a:3, e:"1 ropani = 16 aana, 1 aana = 4 paisa, and 1 paisa = 4 daam."},
-      {q:"The area of a rectangular plot 40 m by 25 m is:", o:["1,000 sq m", "1,200 sq m", "800 sq m", "900 sq m"], a:0, e:"Area = length x breadth = 40 x 25 = 1,000 sq m."},
+      {q:"The area of a rectangular plot 40 m by 25 m is:", o:["1,000 sq m", "1,200 sq m", "800 sq m", "900 sq m"], a:0, e:"Area = length × breadth = 40 × 25 = 1,000 sq m."},
       {q:"The method of computing the area of an irregular figure by dividing it into an even number of equal strips is:", o:["Trapezoidal rule", "Simpson's rule", "Heron's formula", "Bowditch rule"], a:1, e:"Simpson's rule requires an even number of equal intervals (an odd number of ordinates) and assumes the boundary between successive ordinates is a parabolic arc, giving greater accuracy than the trapezoidal rule."},
       {q:"1 kattha is equal to:", o:["338.63 sq m", "508 sq m", "16.9 sq m", "676 sq m"], a:0, e:"1 kattha = 20 dhur = 338.63 sq m; 1 bigha = 20 kattha."},
       {q:"1 aana is equal to:", o:["31.8 sq m", "50.9 sq m", "8.45 sq m", "16.9 sq m"], a:0, e:"1 aana = 31.8 sq m; 1 ropani = 16 aana = 508.74 sq m."},
