@@ -193,7 +193,22 @@ window.EXTRA["Instruments & Its Maintenance"].mcq = [
       {q:"Horizontal angle नाप्ने उपयुक्त समय कुन हो ?", o:["विहान र साँझ", "दिउँसो", "राती", "जुनसुकै समयमा"], a:0, e:"विहान र साँझ"},
       {q:"Telescope को eye peace र objective peace आपसमा बदल्न सकिने level कुन हो ?", o:["cook's level", "Cushing's level", "Tilting level", "Y - level"], a:3, e:"Y - level"},
       {q:"साधारण Telescopic alidade को Multiplicative constant कति हुन्छ ?", o:["25", "50", "75", "100"], a:3, e:"100"},
-      {q:"Chain survey मा प्रयोग गर्ने optical square को दुईवटा ऐना बीच कति डिग्रीको कोण बन्छ ?", o:["25°", "30°", "45°", "90°"], a:2, e:"45°"},
+      {q:"Chain survey मा प्रयोग गर्ने optical square को दुईवटा ऐना बीच कति डिग्रीको कोण बन्छ ?", o:["25°", "30°", "45°", "90°"], a:2, e:"45°"},      {q:"Theodolite मा Left face र Right face ready किन लिइन्छ ?", o:["Collimation error हटाउन", "Collimation error घटाउन", "माथिको A र B दुबै", "माथिको कुनै होइन"], a:0, e:"Collimation error हटाउन Left face र Right face reading लिइन्छ।"},
+      {q:"Clinometer को मापन गर्नको लागि प्रयोग गरिन्छ ?", o:["उचाई", "दुरी", "कोण", "माथिका सबै"], a:2, e:"Clinometer कोण मापन गर्न प्रयोग गरिन्छ।"},
+      {q:"सामान्यतया चौथो दर्जाको Traverse को लागि कुन Theodolite प्रयोग गरिन्छ ?", o:["T2", "T2", "T0", "T16"], a:3, e:"T16"},
+      {q:"Telescopic alidade र गर्दा H value किन लिइन्छ ?", o:["Vertical correction को लागि", "Horizontal correction को लागि", "Slope correction को लागि", "Distance correction को लागि"], a:2, e:"Slope correction को लागि"},
+      {q:"Theodolite तलकामध्ये कुन कामको लागि प्रयोग गरिन्छ ?", o:["दुईवटा विन्दु बीचको दुरी नाप्न", "दुईवटा सर्मे रेखा बीचको क्षितिजीय कोण (Horizontal Angle) नाप्न", "नक्सा तयार गर्न", "माथिको कुनै होइन"], a:1, e:"दुईवटा सर्मे रेखा बीचको क्षितिजीय कोण (Horizontal Angle) नाप्न"},
+      {q:"तल दिइएका कुराहरु मध्ये कुन Permanent adjustment भित्र पर्दैन ?", o:["Setting over the station", "Levelling up", "Elimination parallax", "All of the above"], a:0, e:"Setting over the station"},
+      {q:"Levelling staff मा सबैभन्दा सानो Graduation कति हुन्छ ?", o:["1mm", "5mm", "5cm", "10cm"], a:1, e:"5mm"},
+      {q:"E.D.M को full form के हुन्छ ?", o:["Electric Distance measurement", "Electronic Distance Measurement", "Electric Distomat", "Electronic Distomat"], a:1, e:"Electronic Distance Measurement"},
+      {q:"थियोडोलाइटमा Collimation line र Axis of telescope को सम्बन्ध कस्तो हुन्छ ?", o:["एक आपसमा लम्बपरेको", "एक आपसमा खटिएको", "एक आपसमा समानान्तर भएको", "एक आपसमा सोधा कोणमा रहेको"], a:0, e:"एक आपसमा लम्बपरेको"},
+      {q:"Theodolite को graduated circle of lower plate को diameter कति हुन्छ ?", o:["2 to 5cm", "8 to 25cm", "30 to 40cm", "40 to 50cm"], a:1, e:"8 to 25cm"},
+      {q:"Total station यन्त्रलाई standardization गर्वा index error को छुटफरक कति हुन्छ ?", o:["± 1ᶜᵍ", "± 5ᶜᵍ", "± 5ᶜᶜᵍ", "± 50ᶜᶜᵍ"], a:2, e:"± 5ᶜᶜᵍ"},
+      {q:"तलका मध्ये कुन level instrument ले clinometer को पनि काम गर्न सक्दछ ?", o:["Dumpy level", "Tilting level", "Auto level", "Abney level"], a:3, e:"Abney level"},
+      {q:"Telescopic alidade बाट कुन reading लिन सकिदैन ?", o:["H - Scale", "V - Scale", "Horizontal angle", "Vertical angle"], a:2, e:"Horizontal angle"},
+      {q:"Optical square यन्त्रमा incident ray र reflected ray विचको angle कति हुन्छ ?", o:["45°", "45ᵍ", "90°", "90ᵍ"], a:2, e:"90°"},
+      {q:"Plumbob बाट तलका मध्ये कुन काम गर्न सकिदैन ?", o:["Centering गर्न", "Ranging गर्न", "Alidade check गर्न", "Orientation गर्न"], a:3, e:"Orientation गर्न"},
+
 
 
 

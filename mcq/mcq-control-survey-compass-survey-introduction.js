@@ -109,7 +109,9 @@ window.EXTRA["Compass Survey Introduction"].mcq = [
       {q:"Height समेत नाप्न सकिने compass कुन हो ?", o:["Trough compass", "Prismatic compass", "Surveyors compass", "Bronton compass"], a:3, e:"Bronton compass"},
       {q:"म्याग्नेटिक मेरिडियनसँग कुनै द्राभर्स लगेले बनाएको कोणलाई ............ भनिन्छ ।", o:["ट्रवियरिङ", "आविर्द्रीय वियरिङ", "न्याग्नेटिक वियरिङ", "ग्रिड वियरिङ"], a:2, e:"न्याग्नेटिक वियरिङ"},
       {q:"Magnetic Declination भन्नाले के बुझिन्छ ?", o:["Magnetic North र True North बीचको कोण", "Magnetic North र Grid North बीचको कोण", "Magnetic North र Survey Line बीचको कोण", "माथिको सबै"], a:0, e:"Magnetic North र True North बीचको कोण"},
-      {q:"कुनै लाइनको Fore Bearing 217° 30' 45\" भए उक्त लाइनको Back Bearing कति हुन्छ ?", o:["17° 30' 45\"", "37° 30' 45\"", "217° 30' 45\" + 180°", "217° 30' 45\" + 90°"], a:1, e:"217° 30' 45\" - 180° = 37° 30' 45\""},
+      {q:"कुनै लाइनको Fore Bearing 217° 30' 45\" भए उक्त लाइनको Back Bearing कति हुन्छ ?", o:["17° 30' 45\"", "37° 30' 45\"", "217° 30' 45\" + 180°", "217° 30' 45\" + 90°"], a:1, e:"217° 30' 45\" - 180° = 37° 30' 45\""},      {q:"Prismatic compass मा 270° कुन Direction मा label गरिएको हुन्छ ?", o:["North", "East", "South", "West"], a:2, e:"South"},
+      {q:"Trough compass मा graduation कति देखि कति सम्म हुन्छ ?", o:["0° - 5°", "0° - 90°", "0° - 180°", "0° - 360°"], a:1, e:"0° - 90°"},
+
 
 
 

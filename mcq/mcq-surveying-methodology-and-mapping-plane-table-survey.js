@@ -122,7 +122,8 @@ window.EXTRA["Plane Table Survey"].mcq = [
       {q:"Plane table लाई शुद्ध सँग centering गर्नको लागि प्रयोग गरिने उपकरणलाई के भनिन्छ ?", o:["C-fork", "P - fork", "U - fork", "V - fork"], a:0, e:"C-fork"},
       {q:"प्लेनटेबल सर्मेको लागि आवश्यकता अनुसारका अस्थायी या सहायक नियन्त्रण बिन्दुहरु खडा गर्न देहायका मध्ये कुन विधि प्रयोग गर्न सकिन्छ ?", o:["Radiation", "Intersection", "Resection", "माथिका सबै"], a:3, e:"माथिका सबै"},
       {q:"Plane table को काममा three point problem को महत्व के छ ?", o:["Plane table मा fixing निकाल्न", "Plane table मा detail plotting गर्न", "Plane table traverse गर्न", "Plane table adjust गर्न"], a:0, e:"Plane table मा fixing निकाल्न"},
-      {q:"साधारण plane table को size कति हुन्छ ?", o:["60 से.मि. × 75 से.मि.", "50 से.मि. × 60 से.मि.", "40 से.मि. × 50 से.मि.", "40 से.मि. × 60 से.मि."], a:0, e:"60 से.मि. × 75 से.मि."},
+      {q:"साधारण plane table को size कति हुन्छ ?", o:["60 से.मि. × 75 से.मि.", "50 से.मि. × 60 से.मि.", "40 से.मि. × 50 से.मि.", "40 से.मि. × 60 से.मि."], a:0, e:"60 से.मि. × 75 से.मि."},      {q:"कुन plane table मा slow motion screw को व्यवस्था गरिएको हुन्छ ?", o:["Simple plane table", "Traverse plane table", "Johnson plane table", "Coast survey plane table"], a:2, e:"Johnson plane table"},
+
 
 
 

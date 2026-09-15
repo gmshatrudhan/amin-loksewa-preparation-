@@ -132,7 +132,8 @@ window.EXTRA["Levelling"].mcq = [
       {q:"बेन्चमार्कहरु विच किन यन्त्र जोडा ठाउमा राख्नु पर्छ ?", o:["स्टाफको graduation त्रुटि हटाउन", "Refraction error हटाउन", "Curvature error हटाउन", "Collimation error हटाउन"], a:3, e:"Collimation error हटाउन"},
       {q:"डुईवटा BM बीचमा even number setup लिए के हुन्छ ?", o:["Collimation error हट्छ", "Graduation error हट्छ", "Refraction error हट्छ", "Zero error हट्छ"], a:0, e:"Collimation error हट्छ"},
       {q:"B. S. भन्दा F.S. बढी भएमा जमिन.........हुन्छ ?", o:["अग्लो", "होचो", "बराबर", "माथिका सबै"], a:1, e:"होचो"},
-      {q:"लेभलिङ्गको सिद्धान्त के हो ?", o:["To make line of sight horizontal", "To make line of sight parallel", "To make line of sight vertical", "None of the above"], a:0, e:"To make line of sight horizontal"},
+      {q:"लेभलिङ्गको सिद्धान्त के हो ?", o:["To make line of sight horizontal", "To make line of sight parallel", "To make line of sight vertical", "None of the above"], a:0, e:"To make line of sight horizontal"},      {q:"कुनै दुईवटा विन्दु विच हरिजन्टल पोजिसनको रेकर्ड नगरी उचाईको फरक मात्र निकाल्न गरिने लेभलिङलाई ....... भनिन्छ ।", o:["रेसिप्रोकल लेभलिङ", "प्रेसाइज लेभलिङ", "फ्लाई लेभलिङ", "प्रोफाइल लेभलिङ"], a:0, e:"रेसिप्रोकल लेभलिङ"},
+
 
 
 
