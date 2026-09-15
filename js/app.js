@@ -894,16 +894,23 @@ function mockStart(){
   const PF=prefsGet();
   const root=document.getElementById('quizRoot'); if(!root) return;
   QZ.sid=null; QZ.un=null; QZ.srcSU=null;
-  const pool=qzShuffle(mockPool()).slice(0,25);
+  /* determine which set from URL hash */
+  const hq=new URLSearchParams((location.hash.split('?')[1]||''));
+  const totalSets=mockTotalMcqSets();
+  const setNum=Math.max(1,Math.min(totalSets, parseInt(hq.get('set'))||1));
+  const seed=42+setNum;
+  const fullPool=seededShuffle(mockPool(),seed);
+  const start=(setNum-1)*MOCK_MCQ_SET_SIZE;
+  const pool=fullPool.slice(start, start+MOCK_MCQ_SET_SIZE);
   if(!pool.length){
     root.innerHTML=`<div class="card"><h3>Questions could not be loaded</h3>
       <p style="color:var(--muted)">Check your connection and try again.</p>
       <button class="btn" style="margin-top:12px" onclick="rerender()">Try again</button></div>`;
     return;
   }
-  QZ.mock={title:'Mixed paper \u00b7 '+pool.length+' questions', questions:pool};
-  root.innerHTML=qzStartPanel({badge:'Mock Test',title:'Mixed MCQ Paper',desc:`${pool.length} random questions from all subjects, timed like the real exam.
-        Your score is saved to Test History. Every visit gives a fresh paper.`,mins:Math.max(5,pool.length),link:'/#/tests',linkText:'All Tests'});
+  QZ.mock={title:'Set '+setNum+' \u00b7 Mixed paper \u00b7 '+pool.length+' questions', questions:pool};
+  root.innerHTML=qzStartPanel({badge:'Mock Test \u00b7 Set '+setNum,title:'Mixed MCQ Paper \u2014 Set '+setNum,desc:`${pool.length} questions for Set ${setNum} from all subjects, timed like the real exam.
+        Your score is saved to Test History. Each set has a fixed paper.`,mins:Math.max(5,pool.length),link:'/#/mock-mcq',linkText:'Choose Another Set'});
   qzMode(PF.mode||'practice');
 }
 
@@ -931,6 +938,13 @@ function qzMode(m){
   document.getElementById('m_exam').setAttribute('aria-pressed',m==='exam');
 }
 function qzShuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];} return a; }
+/* Seeded shuffle (deterministic): same seed → same order every time. Used for mock test sets. */
+function seededShuffle(a,seed){
+  a=a.slice();
+  function rng(){ seed=(seed*16807+0)%2147483647; return(seed-1)/2147483646; }
+  for(let i=a.length-1;i>0;i--){const j=(rng()*(i+1))|0;[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
 
 function qzBegin(){
   const s=QZ.mock?null:SUBJECTS.find(x=>x.id===QZ.sid), u=QZ.mock?null:s.units[QZ.un-1];
@@ -1159,20 +1173,50 @@ document.addEventListener('keydown',e=>{
   else if(k==='F') qzFlag();
 });
 
+/* ---- Mock MCQ / Subjective set helpers ---- */
+const MOCK_MCQ_SET_SIZE = 25;
+const MOCK_SUBJ_SET_SIZE = 10;
+
+function mockTotalMcqSets(){
+  return Math.ceil(mockPool().length / MOCK_MCQ_SET_SIZE);
+}
+function mockTotalSubjSets(){
+  return Math.ceil(mockSubjPool().length / MOCK_SUBJ_SET_SIZE);
+}
+function mockSetSelector(type, activeSet, totalSets){
+  /* type = 'mock-mcq' or 'mock-subjective' */
+  let btns='';
+  for(let i=1;i<=totalSets;i++){
+    btns+=`<a class="btn ${i===activeSet?'accent':'ghost'} sm" href="/#/${type}?set=${i}" style="min-width:48px">${i===activeSet?'▸ ':''}Set ${i}</a>`;
+  }
+  return `<div class="card" style="margin-bottom:16px"><h3 style="color:var(--primary);margin-bottom:10px">Choose a Set</h3>
+    <p style="color:var(--muted);font-size:.9rem;margin-bottom:12px">Each set contains a fixed set of questions. Revisit the same set any time — the questions will always be the same.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">${btns}</div></div>`;
+}
+
 function pMockMcq(){
+  const totalSets = mockTotalMcqSets();
+  const q = new URLSearchParams((location.hash.split('?')[1]||''));
+  const activeSet = Math.max(1,Math.min(totalSets, parseInt(q.get('set'))||1));
   return head('Mock Test (MCQ)','25 random questions from all subjects \u2014 timed like the real exam')+
-  `<section><div class="wrap"><div id="quizRoot"></div></div></section>`;
+  `<section><div class="wrap">${mockSetSelector('mock-mcq',activeSet,totalSets)}<div id="quizRoot"></div></div></section>`;
 }
 
 function pMockSubj(){
-  const list=qzShuffle(mockSubjPool()).slice(0,10);
+  const totalSets = mockTotalSubjSets();
+  const hq = new URLSearchParams((location.hash.split('?')[1]||''));
+  const activeSet = Math.max(1,Math.min(totalSets, parseInt(hq.get('set'))||1));
+  const seed=100+activeSet;
+  const fullPool=seededShuffle(mockSubjPool(),seed);
+  const start=(activeSet-1)*MOCK_SUBJ_SET_SIZE;
+  const list=fullPool.slice(start, start+MOCK_SUBJ_SET_SIZE);
   const tot=list.reduce((x,y)=>x+y.marks,0);
   return head('Mock Test (Subjective)','10 written questions from all subjects \u2014 write first, then compare with model answers')+
-  `<section><div class="wrap">${list.length?`
-   <div class="card"><h3 style="color:var(--primary)">Written Paper &mdash; ${tot} marks</h3>
-     <p style="color:var(--muted);font-size:.9rem">Write each answer in your copy, then open the model answer to compare. Each visit gives a fresh set.</p>
+  `<section><div class="wrap">${mockSetSelector('mock-subjective',activeSet,totalSets)}${list.length?`
+   <div class="card"><h3 style="color:var(--primary)">Written Paper &mdash; Set ${activeSet} &mdash; ${tot} marks</h3>
+     <p style="color:var(--muted);font-size:.9rem">Write each answer in your copy, then open the model answer to compare. Each set has a fixed paper.</p>
      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
-       <button class="btn accent sm" onclick="rerender()">&#8635; New set</button>
+       <a class="btn ghost sm" href="/#/mock-subjective">Choose Another Set</a>
        <a class="btn ghost sm" href="/#/tests">All Tests</a></div></div>
    <div class="card" style="margin-top:16px">${list.map((w,i)=>`<div class="wq">
       <div class="wqh"><span class="wqn">Q${i+1}</span>
