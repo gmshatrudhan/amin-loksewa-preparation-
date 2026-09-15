@@ -112,7 +112,18 @@ window.EXTRA["Plane Table Survey"].mcq = [
       {q:"The method of intersection in plane table survey is sometimes called", o:["Numerical triangulation", "Graphical triangulation", "Triangulation", "Trilateration"], a:1, e:"Graphical triangulation"},
       {q:"1:25000 मान नापको नक्सा बनाउँदा बोर्डलाई station माथि centering गर्दा स्टेशनको कति परिधि भित्र केन्द्रीत गर्नु पर्दछ ?", o:["6.25m", "6.25cm", "5.25m", "5.25cm"], a:0, e:"6.25m"},
       {q:"Resection पत्ता लगाउने trail & error method कुन method भनिन्छ ?", o:["Beaman", "Layman", "Gunter", "Lehman"], a:3, e:"Lehman"},      {q:"In setting up plane table at any station", o:["Leveling is done first", "Centering is done first", "Both leveling and centering are done simultaneously", "Orientation is done first"], a:2, e:"Both leveling and centering are done simultaneously"},
-      {q:"The 'fix' of a plane table from three known points, is good if", o:["Middle station is nearest", "Middle station is farthest", "Either the right or left station is nearest", "None of these"], a:0, e:"Middle station is nearest"},
+      {q:"The 'fix' of a plane table from three known points, is good if", o:["Middle station is nearest", "Middle station is farthest", "Either the right or left station is nearest", "None of these"], a:0, e:"Middle station is nearest"},      {q:"known stations बाट receptors तानेर टेवुलको स्थिति पत्ता लगाउने विधिलाई के भनिन्छ ?", o:["Radiation", "Intersection", "Resection", "Traversing"], a:2, e:"Resection"},
+      {q:"two point र three point problem के को लागि गरिन्छ ?", o:["Resection", "Orientation", "Traversing", "Resection and orientation"], a:1, e:"Orientation"},
+      {q:"Plane table survey मा साधारणतया details plotting कुन विधि बाट गरिन्छ ?", o:["Radiation", "Traversing", "Resection", "All of the above"], a:0, e:"Radiation"},
+      {q:"Sight vane र base of alidade को सम्बन्ध कस्तो हुन्छ ?", o:["Coincide", "Parallel", "Perpendicular", "Inclined"], a:2, e:"Perpendicular"},
+      {q:"कुन Plane table मा ball & socket को व्यवस्था गरिएको हुन्छ ?", o:["Simple plane table", "Traverse plane table", "Jhonson plane table", "Coast survey plane table"], a:2, e:"Jhonson plane table"},
+      {q:"Plane table मा compass के कार्यको लागि प्रयोग गरिन्छ ?", o:["Bearing नाप्न", "Angle नाप्न", "Centering गर्न", "Orientation गर्न"], a:3, e:"Orientation गर्न"},
+      {q:"Plane table कुन axis मा घुम्छ ?", o:["Horizontal", "Inclined", "level", "Vertical"], a:3, e:"Vertical"},
+      {q:"Plane table लाई शुद्ध सँग centering गर्नको लागि प्रयोग गरिने उपकरणलाई के भनिन्छ ?", o:["C-fork", "P - fork", "U - fork", "V - fork"], a:0, e:"C-fork"},
+      {q:"प्लेनटेबल सर्मेको लागि आवश्यकता अनुसारका अस्थायी या सहायक नियन्त्रण बिन्दुहरु खडा गर्न देहायका मध्ये कुन विधि प्रयोग गर्न सकिन्छ ?", o:["Radiation", "Intersection", "Resection", "माथिका सबै"], a:3, e:"माथिका सबै"},
+      {q:"Plane table को काममा three point problem को महत्व के छ ?", o:["Plane table मा fixing निकाल्न", "Plane table मा detail plotting गर्न", "Plane table traverse गर्न", "Plane table adjust गर्न"], a:0, e:"Plane table मा fixing निकाल्न"},
+      {q:"साधारण plane table को size कति हुन्छ ?", o:["60 से.मि. × 75 से.मि.", "50 से.मि. × 60 से.मि.", "40 से.मि. × 50 से.मि.", "40 से.मि. × 60 से.मि."], a:0, e:"60 से.मि. × 75 से.मि."},
+
 
 
 

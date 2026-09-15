@@ -95,7 +95,24 @@ window.EXTRA["Introduction of Surveying"].mcq = [
       {q:"कुनै टेप वास्तविक लम्बाई भन्दा छोटो रहेछ भने नापी गर्दा त्यसवाट आउने error लाई के भनिन्छ ?", o:["Gross Error/Blunder", "Random Error", "Systematic Error", "Compensating error"], a:2, e:"Systematic Error"},
       {q:"Compass Survey मा distance नाप Total Station प्रयोग गरियो भने कुन नापीका सिद्धान्तको विपरित हुन्छ ?", o:["Independent check", "Consistency in work", "Economy of Accuracy", "None of above"], a:1, e:"Consistency in work"},      {q:"The different between an arc distance of 18.2 km on the surface of earth and the correcting chord distance is about", o:["1cm", "10mm", "100cm", "both (A. & (B."], a:1, e:"10mm"},
       {q:"भू-मापन सर्भेक्षणलाई कुन सर्भेक्षण पनि भनिन्छ ?", o:["खगोल सर्भेक्षण", "समतल सर्भेक्षण", "नियन्त्रण बिन्दु", "माथिका सबै"], a:0, e:"खगोल सर्भेक्षण"},
-      {q:"Systematic error लाई कुन error पनि भनिन्छ ?", o:["Cumulating error", "Compensating error", "Accidental error", "Random error"], a:0, e:"Cumulating error"},      {q:"पृथ्वीको ध्रुवीय अर्धव्यास र भूमध्यरेखीय अर्धव्यासबीच कति कि.मि. फरक छ ?", o:["77 km", "76 km", "42 km", "21 km"], a:3, e:"21 km"},
+      {q:"Systematic error लाई कुन error पनि भनिन्छ ?", o:["Cumulating error", "Compensating error", "Accidental error", "Random error"], a:0, e:"Cumulating error"},      {q:"पृथ्वीको ध्रुवीय अर्धव्यास र भूमध्यरेखीय अर्धव्यासबीच कति कि.मि. फरक छ ?", o:["77 km", "76 km", "42 km", "21 km"], a:3, e:"21 km"},      {q:"plumb line सँग normal हुने line लाई के भनिन्छ ?", o:["Horizontal line", "Level line", "Datum line", "Vertical line"], a:0, e:"Horizontal line"},
+      {q:"The Random errors tend to accumulate proportionally to", o:["Numbers of operations involved", "Reciprocal of operations involved", "Square root of the number of operation involved", "Cube root of the number of operation involved"], a:2, e:"Square root of the number of operation involved"},
+      {q:"पूर्वेषण किन गरिन्छ ?", o:["D - card बनाउन", "Signal खडा गर्न", "Intervisibility check गर्न", "Monumentation गर्न"], a:2, e:"Intervisibility check गर्न"},
+      {q:"Random error, no of observation made (N) सँग .........", o:["Equal हुन्छ", "Directly proportional हुन्छ", "Inertly proportional हुन्छ", "कुनै सम्बन्ध हुँदैन"], a:2, e:"Inertly proportional हुन्छ"},
+      {q:"Redundant observation नापीको कुन सिद्धान्त अन्तर्गत पर्दछ ?", o:["Working from whole to the part", "Consistency in work", "Economy of accuracy", "Independent check"], a:3, e:"Independent check"},
+      {q:"Accidental error are proportional to", o:["n", "√n", "1/n", "1/√n"], a:1, e:"√n"},
+      {q:"तलका मध्ये कुन error को कारण measurement तिन्के धेरै हुन जान्छ ?", o:["Positive systematic error", "Negative systematic error", "Positive compensating error", "Negative compensating error"], a:0, e:"Positive systematic error"},
+      {q:"Earth को approximate shape कुन हो ?", o:["Circle", "Prolate spheroid", "Oblate spheroid", "All"], a:2, e:"Oblate spheroid"},
+      {q:"Working from whole to the part को सिद्धान्त अपनाउँदा तलको कुन भनाई गलत छ ?", o:["error हरु localized हुन्छन्", "error accumulation हुँदैन", "error adjustment हुन्छ", "error propagation हुन्छ"], a:3, e:"error propagation हुन्छ"},
+      {q:"Most probable value र observed value बिचको फरकलाई के भनिन्छ ?", o:["True error", "Residual error", "Probable error", "Random error"], a:1, e:"Residual error"},
+      {q:"Theory of probability कुन संग सम्बन्धित छ ?", o:["Mistakes", "Blunders", "Accidental error", "Systematic errors"], a:2, e:"Accidental error"},
+      {q:"कुनै यस्तो सतह जसको हरेक बिन्दुमा plumb line normal हुन्छ भने, त्यो सतहलाई के भनिन्छ ?", o:["Horizontal surface", "Level surface", "Vertical surface", "Zenithal surface"], a:1, e:"Level surface"},
+      {q:"Geodetic surveying मा प्रयोग हुने spherical triangle मा 3 वटा angle को योग 180° भन्दा बढी हुन्छ सो 180° भन्दा बढी भएको मानलाई के भनिन्छ ?", o:["Spherical angle", "Spherical access", "Plus angle", "cycle ambiguity"], a:1, e:"Spherical access"},
+      {q:"तलका मध्ये कुन odd छ ?", o:["Vertical line", "plumb line", "Line of gravity", "Level line"], a:3, e:"Level line"},
+      {q:"तलको कुन Survey नापी गर्ने क्षेत्रको प्रकृतिको आधारमा गरिएको वर्गिकरण होइन ?", o:["Land survey", "Hydrographical survey", "Military survey", "Astronomical survey"], a:3, e:"Astronomical survey"},
+      {q:"Systematic error कस्तो error हो ?", o:["Personal error", "Natural error", "Instrumental error", "All of the above"], a:3, e:"All of the above"},
+      {q:"दोस्रो दर्जाको नियन्त्रण बिन्दुको सञ्जाल स्थापना गरिसकेपछि मात्र तेस्रो दर्जाको नियन्त्रण बिन्दुको सञ्जाल स्थापना गरिने कार्यलाई सर्मेको कुन सिद्धान्त बमोजिम भएको कार्य मान्न सकिन्छ ?", o:["Working form whole to the part", "Working form part to the hole", "Minimizing error", "माथिको कुनै पनि होइन"], a:0, e:"Working form whole to the part"},
+
 
 
 

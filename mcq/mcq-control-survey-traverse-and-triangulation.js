@@ -148,7 +148,24 @@ window.EXTRA["Traverse and Triangulation"].mcq = [
       {q:"The spherical excess for a triangle of the area 100 KM² will be approximately equal to", o:["1\"", "0.5\"", "1.5\"", "2.0\""], a:1, e:"0.5\""},
       {q:"नेपालमा Laplace Station को संख्या कति छ ?", o:["Seven", "Seventeen", "Six", "Sixteen"], a:0, e:"Seven"},      {q:"The operation of making the algebraic sum of latitudes and departures of a closed traverse, each equal to zero, is known", o:["Balancing the sights", "Balancing the departures", "Balancing the latitudes", "Balancing the traverse"], a:3, e:"Balancing the traverse"},
       {q:"The co-ordinate of a point measured perpendicular to the parallel, is called", o:["Total latitude", "Meridian distance", "Total departure", "Consecutive co-ordination"], a:0, e:"Total latitude"},
-      {q:"If deflection angles are measured in a closed traverse, the difference between the sum of the right -hand and that of the left hand angles should be equal to", o:["0⁰", "90⁰", "180⁰", "360⁰"], a:0, e:"0⁰"},
+      {q:"If deflection angles are measured in a closed traverse, the difference between the sum of the right -hand and that of the left hand angles should be equal to", o:["0⁰", "90⁰", "180⁰", "360⁰"], a:0, e:"0⁰"},      {q:"तलका मध्ये कुन odd छ ?", o:["Satellite Station", "Pivot station", "False station", "Eccentric station"], a:1, e:"Pivot station"},
+      {q:"ट्राभर्समा त्रुटी पूर्वान्तरमा ΔE र उत्तरान्तरमा ΔN भए closing error (e) बराबर कति हुन्छ ?", o:["√(ΔE + ΔN)", "√(ΔE - ΔN)", "√(ΔE² - ΔN²)", "√(ΔE² + ΔN²)"], a:3, e:"√(ΔE² + ΔN²)"},
+      {q:"Pillar र Plate दुई बीचको दुरी कति हुन्छ ?", o:["10cm", "20cm", "30cm", "40cm"], a:1, e:"20cm"},
+      {q:"बन्द ट्राभर्स सर्किटको भित्रि कोणहरुको योग परीक्षण गर्ने सूत्र कुन हो ?", o:["(2n + 4) 100ᵍ", "(2n - 4) 100ᵍ", "(2n + 4) 200ᵍ", "(2n - 4) 200ᵍ"], a:1, e:"(2n - 4) 100ᵍ"},
+      {q:"Beacon लाई accurate centering गर्न कुन यन्त्र प्रयोग गरिन्छ ?", o:["Plumbob", "Plumbing fork", "Optical plummet", "Theodolite"], a:2, e:"Optical plummet"},
+      {q:"Station को co-ordinate (x,y) पत्ता लगाउन कुन नाप चाहिन्छ ?", o:["Horizontal angle", "Vertical angle", "Zenithal angle", "Included angle"], a:0, e:"Horizontal angle"},
+      {q:"Pillar गाड्दा जमीन मुनि कति तल राखिन्छ ?", o:["10 cm तल", "20 cm तल", "30 cm तल", "40 cm तल"], a:1, e:"20 cm तल"},
+      {q:"कुन त्रिकोणमितीय station मा Astronomical observation गरिन्छ ?", o:["Astronomical station", "Doppler station", "Laplace station", "All"], a:2, e:"Laplace station"},
+      {q:"Closed loop traverse मा ΔE को algebraic sum कति हुनुपर्छ ?", o:["180°", "90°", "0°", "0m"], a:3, e:"0m"},
+      {q:"Triangulation मा कोणहरुबाट side कुन तरिकाबाट निकालिन्छ ?", o:["tan formula बाट", "cos formula बाट", "sine formula बाट", "sec formula बाट"], a:2, e:"sine formula बाट"},
+      {q:"Triangulation मा कति कति मिटरको विकन प्रयोग गरिन्छ ?", o:["३ वा ६ मि", "४ वा ५ मि", "२ वा ४ मि", "३ वा ४ मि"], a:0, e:"३ वा ६ मि"},
+      {q:"Triangulation मा बढी set measurement गर्नुको कारण के हो ?", o:["Collimation error घटाउन", "Index error घटाउन", "Graduation error घटाउन", "Natural error घटाउन"], a:2, e:"Graduation error घटाउन"},
+      {q:"Traversing मा right hand deflection angle लाई positive र left hand deflection angle लाई negative मान्दा closed loop traverse मा algebraic sum of deflection angle कति हुनुपर्छ ?", o:["0°", "90°", "180°", "360°"], a:0, e:"0°"},
+      {q:"नेपालमा Triangulation को लागि कुन layout प्रयोग गरिएको छ ?", o:["Grid iron system", "Central system", "Both", "None"], a:1, e:"Central system"},
+      {q:"Alignment no 125 ले कुन order को alignment no. जनाउछ ?", o:["First order", "Second order", "Third order", "Fourth order"], a:1, e:"Second order"},
+      {q:"Open loop - Close traverse भन्नाले कस्तो Traverse लाई बुझिन्छ ?", o:["डुईवटा Known विन्दुबाट शुरु गरी अन्य डुईवटा Known विन्दुमा अन्त्य गरिएको Traverse", "डुईवटा Unknown विन्दुबाट शुरु गरी डुईवटा Known विन्दुमा अन्त्य गरिएको Traverse", "डुईवटा Unknown विन्दुबाट शुरु गरी Unknown विन्दुमा अन्त्य गरिएको Traverse", "माथिको कुनै होइन"], a:0, e:"डुईवटा Known विन्दुबाट शुरु गरी अन्य डुईवटा Known विन्दुमा अन्त्य गरिएको Traverse"},
+      {q:"Triangulation गर्दा triangle को हरेक कोण कम्तिमा कति हुनु राम्रो हुन्छ ?", o:["30°", "25°", "45°", "60°"], a:0, e:"30°"},
+
 
 
 

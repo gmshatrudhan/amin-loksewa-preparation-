@@ -96,7 +96,21 @@ window.EXTRA["Compass Survey Introduction"].mcq = [
       {q:"कुनै रेखाको WCB र QB बराबर भएमा कुन Quadrant मा पर्छ ?", o:["First", "Second", "Third", "Forth"], a:0, e:"First"},      {q:"Grid meridian र magnetic meridian विचको कोणलाई के भनिन्छ ?", o:["Grid convergence", "Magnetic Declination", "Gird Declination", "Grid Magnetic angle"], a:3, e:"Grid Magnetic angle"},
       {q:"कुनै रेखाको back bearing 25ᵍ भए fore bearing कति हुन्छ ?", o:["25ᵍ", "125ᵍ", "205⁰", "205ᵍ"], a:3, e:"205ᵍ"},
       {q:"The graduation in prismatic compass", o:["are inverted", "are from 0°-360°", "have zero at south", "all the above"], a:3, e:"all the above"},      {q:"The horizontal angle between the true meridian and magnetic meridian at a place is called", o:["azimuth", "declination", "local attraction", "magnetic bearing"], a:1, e:"declination"},      {q:"The bearing of two traverse legs AB and BC are N52° 45' E and N34° 30' E respectively. The deflection angle is", o:["18⁰ 15' E", "18⁰ 15' N", "18⁰ 15' W", "18⁰ 15' L"], a:3, e:"18⁰ 15' L"},
-      {q:"Magnetic bearing of a survey line at any place", o:["Remains constant", "Changes systematically", "Varies differently In different months of the year", "Is always greater than true bearing"], a:2, e:"Varies differently In different months of the year"},
+      {q:"Magnetic bearing of a survey line at any place", o:["Remains constant", "Changes systematically", "Varies differently In different months of the year", "Is always greater than true bearing"], a:2, e:"Varies differently In different months of the year"},      {q:"ABCD is a rectangular plot of land. If the bearing of the side AB is 75°, the bearing of DC is", o:["75°", "255°", "105°", "285°"], a:0, e:"Rectangle मा AB र DC parallel हुन्छन्, त्यसैले bearing 75° हुन्छ।"},
+      {q:"एउटै बिन्दुमा True Meridian र Grid Meridian को फरक लाई के भनिन्छ ?", o:["Convergence भनिन्छ", "Divergence भनिन्छ", "Variation भनिन्छ", "कुनै पनि होइन"], a:0, e:"Convergence भनिन्छ"},
+      {q:"स्वतन्त्र रुपमा भुण्ड्याइएको चुम्बकको longitudinal axis र चुम्बकको horizontal line बीचको कोणलाई के भनिन्छ ?", o:["Declination", "Azimuth", "Dip", "Bearing"], a:2, e:"Dip"},
+      {q:"The reduced bearing of a line is N 87° W. Its whole circle bearing is", o:["87°", "273°", "93°", "3°"], a:1, e:"WCB = 360° - 87° = 273°"},
+      {q:"कुन compass लाई mining compass पनि भनिन्छ ?", o:["Prismatic", "surveyors", "Brunton's", "सबै"], a:2, e:"Brunton's"},
+      {q:"Level यन्त्रमा bubble tube को काम के हो ?", o:["Line of sight provide गर्ने", "Line of sight लाई horizontal बनाउने", "Line of sight लाई vertical बनाउने", "All"], a:1, e:"Line of sight लाई horizontal बनाउने"},
+      {q:"Surveyor compass मा 0° mark कहाँ हुन्छ ?", o:["North", "South", "East", "North & South"], a:3, e:"North & South"},
+      {q:"कुन चाहिँ observation गर्दा survey line को bearing बढी शुद्ध निस्कन्छ ?", o:["सूर्य", "चन्द्रमा", "भू - उपग्रह", "तारा"], a:3, e:"तारा"},
+      {q:"Prismatic compass मा graduation को range कति हुन्छ ?", o:["0° - 90°", "0° - 180°", "0° - 270°", "0° - 360°"], a:3, e:"0° - 360°"},
+      {q:"Prismatic compass मा 90° कुन direction मा label गरिएको हुन्छ ?", o:["North", "East", "South", "West"], a:1, e:"East"},
+      {q:"Height समेत नाप्न सकिने compass कुन हो ?", o:["Trough compass", "Prismatic compass", "Surveyors compass", "Bronton compass"], a:3, e:"Bronton compass"},
+      {q:"म्याग्नेटिक मेरिडियनसँग कुनै द्राभर्स लगेले बनाएको कोणलाई ............ भनिन्छ ।", o:["ट्रवियरिङ", "आविर्द्रीय वियरिङ", "न्याग्नेटिक वियरिङ", "ग्रिड वियरिङ"], a:2, e:"न्याग्नेटिक वियरिङ"},
+      {q:"Magnetic Declination भन्नाले के बुझिन्छ ?", o:["Magnetic North र True North बीचको कोण", "Magnetic North र Grid North बीचको कोण", "Magnetic North र Survey Line बीचको कोण", "माथिको सबै"], a:0, e:"Magnetic North र True North बीचको कोण"},
+      {q:"कुनै लाइनको Fore Bearing 217° 30' 45\" भए उक्त लाइनको Back Bearing कति हुन्छ ?", o:["17° 30' 45\"", "37° 30' 45\"", "217° 30' 45\" + 180°", "217° 30' 45\" + 90°"], a:1, e:"217° 30' 45\" - 180° = 37° 30' 45\""},
+
 
 
 

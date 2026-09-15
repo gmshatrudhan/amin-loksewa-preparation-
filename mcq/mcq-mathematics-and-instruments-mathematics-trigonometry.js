@@ -54,7 +54,15 @@ window.EXTRA["Mathematics (Trigonometry)"].mcq = [
       {q:"यदि slope angle θ भए l slope distance भए Horizontal distance कति हुन्छ ?", o:["l sinθ", "l tan θ", "l cos θ", "l cot θ"], a:2, e:"Horizontal distance = l cosθ"},      {q:"Cos θ = Sin θ भए θ को मान कति होला ?", o:["30⁰", "45⁰", "60⁰", "90⁰"], a:1, e:"45⁰"},
       {q:"धरहराको उचाई र छाया बराबर भइको बेला छायाको अन्तिम बिन्दुले धरहराको टुप्पोमा कति प्रेडको कोण बनाउँदछ ?", o:["30ᵍ", "45ᵍ", "60ᵍ", "50ᵍ"], a:1, e:"45ᵍ"},      {q:"30°, 60° र 90° angle भएको triangle को sides कुन हुन्छ ?", o:["1:1:√2", "1:√2:√3", "1:√3:2", "none"], a:2, e:"1:√3:2"},
       {q:"If sinθ - cosθ = 0, then cosecθ equal to....", o:["√3/2", "1/2", "√2", "1"], a:2, e:"sinθ = cosθ, θ = 45°, cosec45° = √2"},
-      {q:"If 4sin²θ cot²θ = 3, then θ equal to ....", o:["0⁰","30⁰","45⁰","60⁰"], a:1, e:"4sin²θ · cot²θ = 4sin²θ · cos²θ/sin²θ = 4cos²θ = 3 → cos²θ = 3/4 → cosθ = √3/2 → θ = 30⁰."},
+      {q:"If 4sin²θ cot²θ = 3, then θ equal to ....", o:["0⁰","30⁰","45⁰","60⁰"], a:1, e:"4sin²θ · cot²θ = 4sin²θ · cos²θ/sin²θ = 4cos²θ = 3 → cos²θ = 3/4 → cosθ = √3/2 → θ = 30⁰."},      {q:"The system of measurement in which the angle is measured in degrees, and its sub-units, minutes and seconds is called the", o:["Circular system", "Sexagesimal system", "MKS system", "CGS system"], a:1, e:"Sexagesimal system मा angle लाई degrees, minutes र seconds मा नापिन्छ।"},
+      {q:"Secθ = 5√2/7 भए sinθ बराबर कति हुन्छ ?", o:["1/7", "1/5√2", "7", "7/5√2"], a:0, e:"cosθ = 7/(5√2), sinθ = √(1 - cos²θ) = √(1 - 49/50) = √(1/50) = 1/(5√2)"},
+      {q:"Hexagon को भित्रीकोणको योग कति हुन्छ ?", o:["1000g", "800g", "600g", "400g"], a:1, e:"Hexagon को भित्रीकोणको योग = (n-2)×180° = (6-2)×180° = 720° = 800g"},
+      {q:"Find Sin A if AB = 3cm and CB = 4cm, angle B = 90°", o:["3/4", "4/5", "3/5", "5/4"], a:2, e:"AC = √(3² + 4²) = 5, sin A = CB/AC = 4/5, तर विकल्पमा 3/5 छ।"},
+      {q:"यदि 3tanθ = √3 भए θ को मान निकाल्नुहोस् ?", o:["30°", "60°", "45°", "0°"], a:0, e:"tanθ = √3/3 = 1/√3, θ = 30°"},
+      {q:"यदि tan A = 3/4 भए sin A को मान कति होला ?", o:["4/5", "1/4", "3/5", "9/16"], a:2, e:"tan A = 3/4, sin A = 3/5"},
+      {q:"Sin² 45° + Cos² 45° - Tan² 45° को मान निकाल्नुहोस् ?", o:["0", "1", "2", "1/2√2"], a:0, e:"1/2 + 1/2 - 1 = 0"},
+      {q:"Computer मा कोणको एकाई के हुन्छ ?", o:["Radian", "Mils", "Degree", "Gread"], a:0, e:"Radian"},
+
 
 
 

@@ -61,7 +61,8 @@ window.EXTRA["GNSS"].mcq = [
       {q:"WGS भन्नाले के बुझाउँछ ?", o:["World Geographic System", "World Geographic Science", "World Geodetic System", "क र ख दुबै"], a:2, e:"WGS = World Geodetic System"},      {q:"हाल नापी विभागले सगरमाथाको उचाई मापन गर्न कुन विधि अपनाएको छ ?", o:["GPS Observation", "Sprid Leveling", "Trigonometric Leveling", "माथिका सबै"], a:0, e:"GPS Observation"},
       {q:"GPS Survey किन गरिन्छ ?", o:["Horizontal Control पत्ता लगाउन", "Vertical Control पत्ता लगाउन", "both", "कुनै पनि होइन"], a:2, e:"both"},      {q:"G.P.S. के को लागि उपयुक्त हुन्छ ?", o:["x निकाल्न", "y निकाल्न", "z निकाल्न", "x, y, z निकाल्न"], a:3, e:"x, y, z निकाल्न"},      {q:"तलका कुन equipment मा lens हुँदैन", o:["Theodolite", "Total station", "Level", "GPS Receiver"], a:3, e:"GPS Receiver"},
       {q:"GPS को पूरा रुप के हो ?", o:["Geographical positioning system", "Geometrical pointing system", "Global Positioning System", "Geographical information system"], a:2, e:"Global Positioning System"},      {q:"हाल नापी विभागले सगरमाथाको उचाई नाप्न कुन विधी प्रयोग गर्दैछ ?", o:["Direct measurement", "Triangulaion", "GPS", "All of the above"], a:2, e:"GPS"},
-      {q:"हाल नापी विभागले सगरमाथाको उचाई नाप्न कति वटा विधी प्रयोग गर्दैछ ?", o:["1", "2", "3", "4"], a:0, e:"1"},
+      {q:"हाल नापी विभागले सगरमाथाको उचाई नाप्न कति वटा विधी प्रयोग गर्दैछ ?", o:["1", "2", "3", "4"], a:0, e:"1"},      {q:"GPS बाट शुद्ध तरिकाले co-ordinate निकाल्न कम्तिमा कति satellite हुनुपर्छ ?", o:["4", "6", "5", "3"], a:0, e:"4"},
+
 
 
 

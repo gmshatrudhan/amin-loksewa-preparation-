@@ -116,7 +116,19 @@ window.EXTRA["Chain Survey"].mcq = [
       {q:"Chain survey is generally used for", o:["areas of small extent on open ground", "areas of large in open ground", "small area which are crowded by features", "large areas which are crowded by features"], a:0, e:"areas of small extent on open ground"},
       {q:"३:४:५ विधी कुन सिद्धान्त सँग सम्बन्धित छ ?", o:["Chain triangulation", "पाईथागोरस साध्य", "Double reflection", "समानान्तरण"], a:1, e:"पाईथागोरस साध्य"},      {q:"Measuring with a 30 M. chain, 0.01 M. too short, introduces", o:["Positive compensating error", "Negative compensating error", "Positive cumulative error", "Negative cumulative error"], a:2, e:"Positive cumulative error"},
       {q:"The additional lines which are measured to show the correctness of the chain surveying are called :", o:["Check lines", "Proof lines", "Tie lines", "All of above"], a:0, e:"Check lines"},
-      {q:"Greater accuracy in linear measurements ,is obtained by", o:["Tachometry", "Direct chaining", "Direct taping", "All of above"], a:2, e:"Direct taping"},
+      {q:"Greater accuracy in linear measurements ,is obtained by", o:["Tachometry", "Direct chaining", "Direct taping", "All of above"], a:2, e:"Direct taping"},      {q:"The temperature correction of tape is", o:["Always +ve", "always -ve", "may be -ve or +ve", "All of above"], a:2, e:"may be -ve or +ve"},
+      {q:"Chain Surveying मा check lines (or proof lines) किन आवश्यक हुन्छ ?", o:["chain line हरु plot गर्न", "offset हरु plot गर्न", "survey work को accuracy check गर्न", "माथिका सबै"], a:2, e:"survey work को accuracy check गर्न"},
+      {q:"The temperature correction of the tape", o:["is always negative", "is always positive", "may be positive or negative", "None"], a:2, e:"may be positive or negative"},
+      {q:"Telescopic alidade मा V scale को range कति हुन्छ ?", o:["0 to ± 20", "0 to ± 40", "0 to ± 50", "0 to ± 100"], a:1, e:"0 to ± 40"},
+      {q:"Ramsden's chain भन्नाले कुनलाई जनाउँछ ?", o:["Gunter's chain", "Engineer's chain", "Revenue chain", "Metric chain"], a:1, e:"Engineer's chain"},
+      {q:"Cloth tape को width कति सम्म हुन्छ ?", o:["15 mm", "50 mm", "10 m", "30m"], a:0, e:"15 mm"},
+      {q:"Chain survey मा surveyor ले कुनै एक chain को length गणना गर्न छोडेमा आउने error लाई के भनिन्छ ?", o:["Accidental error", "Systematic error", "Compensating error", "Mistake"], a:3, e:"Mistake"},
+      {q:"भिरालो ठाउँमा stepping गरेर tapping गर्दा ............ गर्नुपर्छ ?", o:["Up hill", "Up ward", "Down hill", "All"], a:0, e:"Up hill"},
+      {q:"टेपले दुरी नाप्दा टेप फोलिएर आउने error लाई ............ भनिन्छ ।", o:["Mistake", "Cumulative error", "Blunder", "Compensating error"], a:1, e:"Cumulative error"},
+      {q:"Metric Chain को लम्बाई कति हुन्छ ?", o:["20 मी.", "25 मी.", "30 मी.", "40 मी."], a:0, e:"20 मी."},
+      {q:"What is the nature of error due to bad ranging", o:["Cumulative +", "Cumulative -", "Compensating +", "Compensating -"], a:0, e:"Cumulative +"},
+      {q:"Chain survey तलका मध्ये कुन क्षेत्रको लागि उपयुक्त होला ?", o:["काठमाडौं महानगरपालिकाको टोपो नक्सा तयार गर्न", "धेरै detail हरु भएको क्षेत्रको नाप नक्सा गर्न", "थोरै detail हरु भएको क्षेत्रको नाप नक्सा गर्न", "माथिको कुनै होइन"], a:2, e:"थोरै detail हरु भएको क्षेत्रको नाप नक्सा गर्न"},
+
 
 
 
