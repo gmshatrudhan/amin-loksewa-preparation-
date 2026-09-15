@@ -1,6 +1,6 @@
 /* ================= APP (design + logic). content.js + data-manifest.js load before this. ================= */
 /* Question bank: 81 per-unit files (mcq + subjective + study), lazy-loaded per page - see LAZY DATA LOADER. */
-/* ==== QUESTION BANK: 744 MCQ + 135 written total, all with explanations ==== */
+/* ==== QUESTION BANK: 1034 MCQ + 135 written total, all with explanations ==== */
 
 
 /* ---- 6 SUBJECTS: sub1-sub3 x 5 units, sub4 x 3, sub5 x 5, sub6 x 4 (27 units) ---- */
@@ -391,7 +391,7 @@ function doSubscribe(e){
 }
 
 /* ---------------- SHELL ---------------- */
-const LOGO_SVG='<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="3"/><path d="M24 7v34M7 24h34" stroke="currentColor" stroke-width="2" opacity=".55"/><path d="M24 12l6.5 17L24 25.5 17.5 29z" fill="currentColor"/><circle cx="24" cy="24" r="3.2" fill="#F5A524"/></svg>';
+const LOGO_SVG='<svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="17.8" stroke="currentColor" stroke-width="2.8"/><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity=".62"><path d="M24 5.5v6M24 36.5v6M6.5 24h6M35.5 24h6"/></g><path d="M24 13.2 29 24H19z" fill="currentColor"/><path d="M24 34.8 19 24h10z" fill="#F2C952"/><circle cx="24" cy="24" r="2.8" fill="#F2C952"/></svg>';
 const CARET='<b class="car"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></b>';
 function socialSVG(s,cls){ return `<a${cls?' class="'+cls+'"':''} href="${s.url}" title="${s.name}" aria-label="${s.name}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="${s.icon}"/></svg></a>` }
 

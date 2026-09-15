@@ -66,5 +66,23 @@ window.EXTRA["Levelling"].mcq = [
       {q:"In levelling:", o:["Only (i) is correct", "Only (ii) is correct", "Both (i) and (ii) are correct", "(i) follows (ii)"], a:2, e:"Both statements about benchmarks are correct."},
       {q:"Choose the correct statement(s).", o:["Only (i) is correct", "Only (ii) is correct", "Both (i) and (ii) are correct", "None is correct"], a:2, e:"Both statements about curvature and refraction are correct."},
       {q:"Levels of the points can be found by:", o:["Only (i) is correct", "Only (ii) is correct", "Both (i) and (ii) are correct", "None is correct"], a:2, e:"Levels can be found by measuring pressures and boiling points."},
-      {q:"Reciprocal levelling eliminates the:", o:["1, 2 and 3", "1, 3 and 4", "2, 3 and 4", "1, 2 and 4"], a:3, e:"Reciprocal levelling eliminates errors due to curvature, refraction, and collimation."}
+      {q:"Reciprocal levelling eliminates the:", o:["1, 2 and 3", "1, 3 and 4", "2, 3 and 4", "1, 2 and 4"], a:3, e:"Reciprocal levelling eliminates errors due to curvature, refraction, and collimation."},
+
+      {q:"Levelling कार्यमा staff राख्दा ठिक vertical भएन भने त्यस्तो error लाई कुन error भनिन्छ ?", o:["Instrumental","Personnel","Natural","कुनै पनि होइन"], a:1, e:"Staff ठिक vertical नराख्नु Personnel error हो।"},
+      {q:"Levelling गर्दा सबै भन्दा पहिले reading लिने बिन्दु कुन हो ?", o:["Bench Mark","Reference surface","Unknown point","जहाँ गरेपनि हुन्छ।"], a:0, e:"Levelling कार्यमा सबैभन्दा पहिले Bench Mark (BM) मा reading लिनुपर्छ।"},
+      {q:"Levelling कार्यमा height of instrument को नाप ……………वाट लिईन्छ ?", o:["Ground","Bench Mark","Datum","All of above"], a:2, e:"Height of instrument को नाप Datum बाट लिईन्छ।"},
+      {q:"Staff को Graduation को कारणले गर्दा हुन आउने Error लाई के भनिन्छ ?", o:["Natural","Instrumental","Personal","Compensating"], a:1, e:"Staff को Graduation को कारणले हुन आउने Error Instrumental error हो।"},
+      {q:"Plus sight भन्नाले", o:["Intermediate Reading","Fore sight reading","Back sight reading","All of above"], a:1, e:"Plus sight भन्नाले Fore sight reading हो।"},
+      {q:"Level line कस्तो हुन्छ ?", o:["Horizontal","Curve","दुबै खालको","ziczack"], a:1, e:"Curve"},
+      {q:"Inverted staff लाई कस्तो अवस्थामा प्रयोग गरिन्छ ?", o:["Reciprocal leveling","ताल वा नदिमा leveling गर्दा","Building को ceiling मा leveling गर्दा","summit मा leveling गर्दा"], a:2, e:"Building को ceiling मा leveling गर्दा"},
+      {q:"तलका मध्ये कुन level को लागि bar-coded staff प्रयोग गरिन्छ ?", o:["Dumpy","Automatic","Digital","Tilting"], a:2, e:"Digital"},
+      {q:"Back sight and foresight distances are made equal for :", o:["speeding up the work","balancing the line of sight","minimizing the source of error","none of these"], a:2, e:"minimizing the source of error"},
+      {q:"Cross section र longitudinal sectioning दुइबै के मा हुन्छ ?", o:["simple leveling","profile leveling","differential leveling","check leveling"], a:1, e:"profile leveling मा हुन्छ।"},
+      {q:"If the R.L. of B.M. is 100.00m., the backsight is 1.215 m. and foresight is 1.870m, the R.L. of the forward station is", o:["99.345m.","100.345m.","100.655m.","101.870m."], a:0, e:"R.L. = 100 + 1.215 - 1.870 = 99.345m"},
+      {q:"If the staff is not held vertical at a leveling station, the reduced level calculated from the observation would be", o:["true R.L.","more than true R.L.","less than true R.L.","none"], a:2, e:"less than true R.L."},
+      {q:"Benchmark is established by", o:["hypsometry","barometric leveling","trigonometric leveling","sprite leveling"], a:3, e:"sprite leveling"},
+      {q:"Level line कस्तो हुन्छ ?", o:["Horizontal","Curve","दुबै खालको","ziczack"], a:1, e:"Curve"},
+      {q:"Inverted staff लाई कस्तो अवस्थामा प्रयोग गरिन्छ ?", o:["Reciprocal leveling","ताल वा नदिमा leveling गर्दा","Building को ceiling मा leveling गर्दा","summit मा leveling गर्दा"], a:2, e:"Building को ceiling मा leveling गर्दा"},
+      {q:"तलका मध्ये कुन level को लागि bar-coded staff प्रयोग गरिन्छ ?", o:["Dumpy","Automatic","Digital","Tilting"], a:2, e:"Digital"},
+      {q:"Leveling मा benchmark कुन कामका लागि हुन्छ ?", o:["horizontal दिशा","उचाइको आधार","क्षेत्रफल","कुनै होइन"], a:1, e:"उचाइको आधार"}
     ];

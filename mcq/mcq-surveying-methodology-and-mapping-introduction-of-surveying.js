@@ -55,5 +55,27 @@ window.EXTRA["Introduction of Surveying"].mcq = [
       {q:"Match the following types of maps with their representative fractions:", o:["(i)-A, (ii)-B, (iii)-C, (iv)-D, (v)-E", "(i)-B, (ii)-A, (iii)-C, (iv)-D, (v)-E", "(i)-C, (ii)-D, (iii)-E, (iv)-A, (v)-B", "(i)-E, (ii)-B, (iii)-D, (iv)-B, (v)-A"], a:0, e:"The standard representative fractions for geographical, topographical, location, forest, and cadastral maps are correctly matched."},
       {q:"Which of the above survey(s) does/do not follow(s) the principle of surveying—working from whole to part.", o:["(iii) only", "(ii) only", "(ii) and (iv)", "(i) and (iii)"], a:0, e:"Plane table surveying (iii) is an example of working from part to whole."},
       {q:"Mistakes are errors which arise from:", o:["only (i) is correct", "(i), (ii) are correct", "(i), (ii), (iii), (iv) all are correct", "(i), (ii), and (iii) are correct"], a:2, e:"Mistakes can arise from lack of attention, carelessness, poor judgment, and confusion."},
-      {q:"Match List I with List II and select the correct answer using the codes given below the lists:", o:["(i) A (ii) B (iii) C (iv) D", "(i) D (ii) B (iii) C (iv) A", "(i) A (ii) B (iii) D (iv) C", "(i) D (ii) C (iii) B (iv) A"], a:0, e:"Hedge (A), Wire fencing (B), Pipe fencing (C), and Wood fencing (D) symbols are correctly matched."}
+      {q:"Match List I with List II and select the correct answer using the codes given below the lists:", o:["(i) A (ii) B (iii) C (iv) D", "(i) D (ii) B (iii) C (iv) A", "(i) A (ii) B (iii) D (iv) C", "(i) D (ii) C (iii) B (iv) A"], a:0, e:"Hedge (A), Wire fencing (B), Pipe fencing (C), and Wood fencing (D) symbols are correctly matched."},
+
+      {q:"नेपालमा प्रयोग हुने प्रोजेक्सन तरिका अनुसार कुनै नियन्त्रण बिन्दु को Easting कति देखी कति मिटर सम्म हुन्छ ?", o:["500000-650000m","2900000-3400000m","350000-650000m","कुनै पनि होईन"], a:2, e:"नेपालमा Easting 350000-650000m सम्म हुन्छ।"},
+      {q:"Compass Survey मा distance नाप Total Station प्रयोग गरियो भने कुन सिद्धान्तको विपरित हुन्छ ?", o:["Independent check","Consistency in work","Economy of Accuracy","None of above"], a:1, e:"Total Station बाट distance नाप्दा Consistency in work को सिद्धान्त विपरित हुन्छ।"},
+      {q:"तलका मध्ये नेपालमा कुन Projection अपनाईएको छ ?", o:["Normal","Tangent","Secant","Conical"], a:2, e:"नेपालमा Secant Projection अपनाईएको छ।"},
+      {q:"Earth curvature लाई Neglect गरी गरिएको Survey लाई", o:["Plane Survey","Geodetic Survey","Topographical Survey","All of the above"], a:0, e:"Earth curvature लाई Neglect गरी गरिएको Survey लाई Plane Survey भनिन्छ।"},
+      {q:"Which of the following is used for angular measurement ?", o:["Theodolite","Sectant","Abney’s level","All"], a:3, e:"माथिका सबै यन्त्रहरु angular measurement का लागि प्रयोग गरिन्छ।"},
+      {q:"MUTM Projection मा scale factor कति हुन्छ ?", o:["0.9996","0.9999","1","0.1"], a:2, e:"MUTM Projection मा scale factor 1 हुन्छ।"},
+      {q:"त्रिभुजको तीनवटा कोणहरूको जोड १८०° हुन्छ भनी मानेको तथ्यलाई उपयोग गर्दा Surveying को कुन Principle हुन जान्छ ?", o:["Whole to pert","Economy of accuracy","Independent check","Consistency of work"], a:2, e:"यसलाई Independent check को Principle भनिन्छ।"},
+      {q:"Geographical coordinate system मा के लाई reference line लिइन्छ ?", o:["Grid","Gratitude","कुनै पनि हैन","दुबै"], a:1, e:"Geographical coordinate system मा Gratitude लाई reference line लिइन्छ।"},
+      {q:"Redundant observation survey को कुन principle संग सम्बन्धित हुन्छ ?", o:["Working of from whole to the part","Consistency in","Economy of accuracy","Independent check"], a:3, e:"Independent check"},
+      {q:"तलका कुन चाँहि signal को रुपमा प्रयोगमा आउँदैनन् ।", o:["Ranging pole","Arrows","विकन","Heliotrope"], a:1, e:"Arrows"},
+      {q:"In geodetic triangle, the sum of the three angle is :", o:["less than 180⁰","equal to 180⁰","greater than 180⁰","none of above"], a:2, e:"greater than 180⁰"},
+      {q:"त्रिभुजको तिनै कोणको नाप लिनु नापीको कुन सिद्धान्त संगत छ ?", o:["ठूलोवाट सानोमा काम गर्ने","शुद्धताको वचावट","काममा एकरुपता","स्वतन्त्र जाँच"], a:3, e:"स्वतन्त्र जाँच"},
+      {q:"Redundant observation survey को कुन principle संग सम्बन्धित हुन्छ ?", o:["Working of from whole to the part","Consistency in","Economy of accuracy","Independent check"], a:3, e:"Independent check"},
+      {q:"Control point station माथि Instrument लाई center मा पार्न नसक्ने Error कुन हो ?", o:["Centering","Mistake","Accidental","Systematic"], a:1, e:"Mistake"},
+      {q:"What kind of error can be discovered by repeating the measurement?", o:["Gross","Systematic","Random","Compensating"], a:0, e:"Gross"},
+      {q:"Surveying को मुख्य उदेश्य कुन हो ?", o:["जग्गाको सिमाना तोक्ने","नक्सा तयार पार्ने","क्षेत्रफल मাপ्ने","माथिका सबै"], a:0, e:"जग्गाको सिमाना तोक्ने"},
+      {q:"Geodetic survey कुनै काममा गर्नुपर्ने हुन्छ ?", o:["ठूलो क्षेत्र","सानो क्षेत्र","सडक","निर्माण"], a:0, e:"ठूलो क्षेत्र"},
+      {q:"Chain surveying मा offset कुन कामका लागि हुन्छ ?", o:["जग्गाको सिमाना","विस्तृत नाप","क्षेत्रफल","माथिका सबै"], a:1, e:"विस्तृत नाप"},
+      {q:"Surveying मा error कुनै तवरबाट हुन्छ ?", o:["मापनमा","चलाउँदा","दुवै","कुनै होइन"], a:1, e:"चलाउँदा"},
+      {q:"Tacheometry मा θ = 1.5⁰ भए cos θ को मान कति हुन्छ ?", o:["0.9666","0.6999","0.9996","0.9999"], a:2, e:"0.9996"},
+      {q:"Surveying मा instrument adjustment कुन कामका लागि हुन्छ ?", o:["जग्गाको सिमाना","नक्सा तयार पार्ने","क्षेत्रफल मापने","माथिका सबै"], a:3, e:"माथिका सबै"}
     ];

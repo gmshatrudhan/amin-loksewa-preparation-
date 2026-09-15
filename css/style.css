@@ -40,7 +40,9 @@
   --card-hover-bd:rgba(20,74,120,.28);
   --sb:#C9D4E4;
 
-  --font:"Segoe UI Variable Text","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",Arial,"Noto Sans","Noto Sans Devanagari",sans-serif;
+  --font:"Mukta","Segoe UI Variable Text","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",Arial,"Noto Sans","Noto Sans Devanagari",sans-serif;
+  /* subtle surveying contour-line texture (topo map) for dark hero bands */
+  --topo:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20760%20500'%3E%3Cg%20fill='none'%20stroke='rgba(255,255,255,.05)'%20stroke-width='1.5'%3E%3Cellipse%20cx='560'%20cy='220'%20rx='34'%20ry='26'/%3E%3Cellipse%20cx='556'%20cy='226'%20rx='64'%20ry='48'%20transform='rotate(-8%20556%20226)'/%3E%3Cellipse%20cx='550'%20cy='232'%20rx='96'%20ry='72'%20transform='rotate(6%20550%20232)'/%3E%3Cellipse%20cx='542'%20cy='240'%20rx='130'%20ry='98'%20transform='rotate(-5%20542%20240)'/%3E%3Cellipse%20cx='534'%20cy='248'%20rx='166'%20ry='126'%20transform='rotate(4%20534%20248)'/%3E%3Cellipse%20cx='524'%20cy='258'%20rx='204'%20ry='156'%20transform='rotate(-3%20524%20258)'/%3E%3C/g%3E%3C/svg%3E");
 }
 html[data-theme="dark"]{
   --primary:#66ABDF; --primary-d:#9AC9EE; --primary-l:#4C90C8;
@@ -195,6 +197,7 @@ nav.main a.lnk:hover,nav.main a.lnk.on{background:var(--soft);color:var(--primar
 .slide{position:relative;min-width:100%;height:100%;overflow:hidden}
 .sbg{position:absolute;inset:0;
   background:
+    var(--topo) right -30px center/760px no-repeat,
     radial-gradient(circle at 18% 22%,rgba(255,255,255,.14) 0 2px,transparent 2px) 0 0/46px 46px,
     linear-gradient(180deg,rgba(255,255,255,.09),transparent 34%),
     linear-gradient(118deg,var(--g1),var(--g2));
@@ -271,7 +274,9 @@ section{padding:58px 0}
 .badge.bad{background:var(--badbg);color:var(--bad)}
 
 /* ============ 8. PAGES ============ */
-.pghead{position:relative;background:linear-gradient(120deg,var(--brand-d) 0%,var(--brand) 62%,var(--brand-l) 135%);
+.pghead{position:relative;background:
+  var(--topo) right 0 center/700px no-repeat,
+  linear-gradient(120deg,var(--brand-d) 0%,var(--brand) 62%,var(--brand-l) 135%);
   color:#fff;padding:46px 0 44px;overflow:hidden}
 .pghead::before{content:"";position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(circle at 88% 10%,rgba(240,198,78,.14),transparent 46%)}
@@ -671,7 +676,9 @@ html.tswap *{transition:background-color .3s ease,color .3s ease,border-color .3
 
 /* ============ 20. SECTION & CTA BANDS ============ */
 section.alt{background:var(--card)}
-.cta{background:linear-gradient(115deg,#0D2C4E 0%,#13405F 50%,#0C3A44 100%);
+.cta{background:
+  var(--topo) right 0 center/620px no-repeat,
+  linear-gradient(115deg,#0D2C4E 0%,#13405F 50%,#0C3A44 100%);
   color:#fff;text-align:center;padding:50px 0;position:relative;overflow:hidden;
   border-top:1px solid rgba(240,198,78,.35)}
 .cta::after{content:"";position:absolute;inset:0;pointer-events:none;

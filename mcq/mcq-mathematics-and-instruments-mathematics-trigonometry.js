@@ -25,5 +25,14 @@ window.EXTRA["Mathematics (Trigonometry)"].mcq = [
       {q:"The value of sin 90° is:", o:["1/2", "√3/2", "1", "0"], a:2, e:"sin 90° = 1 and cos 90° = 0."},
       {q:"If sin θ = 3/5, then cos θ (θ acute) is:", o:["3/4", "5/3", "4/5", "5/4"], a:2, e:"cos θ = √(1 − 9/25) = 4/5 (3-4-5 triangle)."},
       {q:"The angle of depression is measured from:", o:["The object upward", "The ground upward", "The vertical downward", "The horizontal line of sight downward"], a:3, e:"Depression is measured downward from horizontal at the observer; elevation upward from horizontal."},
-      {q:"A 50 m slope at 30° to the horizontal has a vertical rise of:", o:["25√3 m", "50 m", "100 m", "25 m"], a:3, e:"Rise = 50×sin30° = 50×0.5 = 25 m."}
+      {q:"A 50 m slope at 30° to the horizontal has a vertical rise of:", o:["25√3 m", "50 m", "100 m", "25 m"], a:3, e:"Rise = 50×sin30° = 50×0.5 = 25 m."},
+
+      {q:"5 sinθ-4=0 भए tanθ को मानकति हुन्छ ?", o:["3/4","3/5","4/3","5/3"], a:2, e:"sinθ = 4/5, cosθ = 3/5, tanθ = 4/3"},
+      {q:"10 m को एउटा भ्याडले भित्तासित 60⁰ को कोण बनाउँछ भने भ्याडको अकानें छेउदेखि भित्तासम्मको दुरी कति होला ?", o:["8.6 m","17.3 m","5 m","4 m"], a:2, e:"दुरी = 10 × cos60⁰ = 10 × 0.5 = 5 m"},
+      {q:"sin 135⁰ बराबर कति ?", o:["√2/3","√3","1/2","1/√2"], a:3, e:"sin 135⁰ = sin(180-45) = sin45⁰ = 1/√2"},
+      {q:"समतल सतहमा बनेको घरको भित्तामा जमिन संग 60° को कोण बनाएर राखिएको 2√3 को लामो भ्याडबाट कति माथि सम्म चढ्न सकिन्छ ?", o:["1 m","2 m","3 m","√2 m"], a:2, e:"3 m"},
+      {q:"2cos²θ -1 = 0 भए θ को मान कति हुन्छ ?", o:["30⁰","45⁰","60⁰","90⁰"], a:1, e:"45⁰"},
+      {q:"समतल सतहमा बनेको घरको भित्तामा जमिन संग 60° को कोण बनाएर राखिएको 2√3 को लामो भ्याडबाट कति माथि सम्म चढ्न सकिन्छ ?", o:["1 m","2 m","3 m","√2 m"], a:2, e:"3 m"},
+      {q:"50 m टाढा 60⁰ को कोण बनाएर उचाइ मापेमा कति आउँछ ?", o:["28.87m","57.74m","100m","86.60m"], a:0, e:"28.87m"},
+      {q:"tan(5π/3) को मान कुनसँग बराबर हुन्छ ?", o:["tan4π/3","tanπ/2","tan2π/3","tanπ/3"], a:2, e:"tan2π/3"}
     ];

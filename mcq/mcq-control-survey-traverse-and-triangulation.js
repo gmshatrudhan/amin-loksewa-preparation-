@@ -85,5 +85,24 @@ window.EXTRA["Traverse and Triangulation"].mcq = [
       {q:"The method of computing areas by subdividing a plot into triangles is suitable for:", o:["work of small nature", "work of big nature", "road work", "canal work"], a:0, e:"It is suitable for small work."},
       {q:"Meridian distance of a survey line is the:", o:["distance of its mid-point from the meridian", "distance of its far end from the meridian", "distance of its near end from the meridian", "departure of the line"], a:0, e:"It is the distance of the mid-point from the meridian."},
       {q:"In calculating the area of a plan by a planimeter, the area of zero circle is excluded when the:", o:["anchor point is inside the area", "anchor point is outside the area", "tracing arm is inside the area", "tracing arm is outside the area"], a:1, e:"The zero circle area is excluded when the anchor point is outside."},
-      {q:"The area of an irregular plotted figure can be accurately obtained with the help of a:", o:["pentagraph", "parallax bar", "planimeter", "Any of these"], a:2, e:"A planimeter is used for this purpose."}
+      {q:"The area of an irregular plotted figure can be accurately obtained with the help of a:", o:["pentagraph", "parallax bar", "planimeter", "Any of these"], a:2, e:"A planimeter is used for this purpose."},
+
+      {q:"यदि कुनै रेखाको बेरिङ β र दुरी L भए उक्त रेखाको difference in easting निकाल्न कुन सुत्र प्रयोग गरिन्छ ?", o:["dE=L Cosβ","dE=L Sinβ","dE=L Sinβ Cosβ","dE=L Sin2β"], a:1, e:"Difference in easting (dE) = L × Sinβ हुन्छ।"},
+      {q:"ट्राभर्स सर्मै कस्तो कार्यका लागि उपयुक्त हुन्छ ?", o:["समथर क्षेत्रमा नियन्त्रण बिन्दुहरु स्थापना गर्न","सीमा स्तम्भहरुको relocation गर्न","Route survey गर्न","माथिका सबै"], a:3, e:"ट्राभर्स सर्मै माथिका सबै कार्यका लागि उपयुक्त हुन्छ।"},
+      {q:"तलका मध्ये कुन चाहिँ नमिल्दो छ ?", o:["Bowditch rule","Compass rule","Graphical rule","Transit rule"], a:3, e:"Transit rule अन्य तीनसँग मिल्दो छैन।"},
+      {q:"Triangulation का लागि सबै भन्दा उत्तम चित्र कुन हो ?", o:["central polygon","triangle","Braced quadrilateral","square"], a:2, e:"Braced quadrilateral Triangulation का लागि सबैभन्दा उत्तम चित्र हो।"},
+      {q:"Traverse survey गर्दा D sin B मा D Traverse leg को length हो भने B के हो ?", o:["Longitude","Latitude","Departure","Bearing"], a:3, e:"D sin B मा B भन्नाले Bearing जनाउँछ।"},
+      {q:"Recommended side length for third order triangulation is-", o:["3-7 km","0.2-2 km","9-15 km","20-30 km"], a:1, e:"Third order triangulation को recommended side length 0.2-2 km हो।"},
+      {q:"Fourth order triangulation को लागि कुन theodolite use गरिन्छ ?", o:["Wild T₃","Wild T₂","Wild T₁₆","None of above"], a:3, e:"Fourth order triangulation को लागि Wild T₁₆ use गरिन्छ।"},
+      {q:"Trilateration survey मा कुन observ गरिन्छ ?", o:["Side of triangles","Astronomical observation","Angles","None of above"], a:0, e:"Trilateration survey मा Side of triangles observ गरिन्छ।"},
+      {q:"Triangulation मा triangle को side हरु Calculate गर्दा कुन law use गरिन्छ ?", o:["sine law","cosine law","tangent law","All of above"], a:0, e:"Triangulation मा sine law use गरिन्छ।"},
+      {q:"The angle between the prolongation of the preceding line and the forward line of a traverse is called........angle", o:["Acute","Obtuse","Included","Deflection"], a:3, e:"Deflection"},
+      {q:"The coordinates of point A are 100 northing and 200 easting where as that of B are 100 southing and 200 easting, the length of AB is :", o:["200","282.84","244.94","400"], a:0, e:"Length = 100+100 = 200"},
+      {q:"के लाई Topographical triangulation भन्छन् ?", o:["geodetic triangulation","tertiary triangulation","primary tringulation","secondary triangulation"], a:1, e:"tertiary triangulation लाई Topographical triangulation भन्छन्।"},
+      {q:"Central polygon को centre मा नापीएका कोणहरुको जोड कति हुन्छ ?", o:["200⁰","300⁰","400⁰","None of the above"], a:3, e:"None of the above"},
+      {q:"The angle between the prolongation of the preceding line and the forward line of a traverse is called........angle", o:["Acute","Obtuse","Included","Deflection"], a:3, e:"Deflection"},
+      {q:"Traverse surveying मा closure error कुनै तवरबाट जानिन्छ ?", o:["जम्मा bearing","जम्मा distance","बन्द हुने कोण","माथिका सबै"], a:3, e:"माथिका सबै"},
+      {q:"Triangulation मा baseline कुन कामका लागि हुन्छ ?", o:["अवस्थिति","दूरीको आधार","दिशा","माथिका सबै"], a:1, e:"दूरीको आधार"},
+      {q:"Primary triangulation मा baseline को लम्बाइ कति हुन्छ ?", o:["20-30 km","30-65 km","10-20 km","200-700 m"], a:0, e:"20-30 km"},
+      {q:"Well-conditioned triangle मा सबैभन्दा सानो कोण कति हुनुपर्छ ?", o:["60⁰","75⁰","30⁰","5⁰"], a:1, e:"75⁰"}
     ];

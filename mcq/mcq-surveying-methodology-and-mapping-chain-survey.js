@@ -78,5 +78,21 @@ window.EXTRA["Chain Survey"].mcq = [
       {q:"Match the following:", o:["(i)-A, (ii)-B, (iii)-C, (iv)-D, (v)-E, (vi)-F", "(i)-C, (ii)-D, (iii)-B, (iv)-A, (v)-F, (vi)-E", "(i)-B, (ii)-A, (iii)-F, (iv)-C, (v)-E, (vi)-D", "None of the above"], a:0, e:"All the tape corrections and their formulas are correctly matched."},
       {q:"Consider the following statements regarding indirect ranging. It is resorted to:", o:["(i) and (ii) are correct", "(i), (ii) and (iii) are correct", "(iii) and (i) are correct", "(ii) and (iii) are correct"], a:3, e:"Indirect ranging is used when a hillock is encountered or in case of ravines."},
       {q:"Which of the following instruments have both horizon glass and index glass?", o:["(ii), (iii), and (iv)", "(i), (iii), and (iv)", "(i) and (iii) only", "(ii) and (iv) only"], a:2, e:"An optical square and a box sextant have both horizon and index glasses."},
-      {q:"When it is impractical to hold the chain on sloping ground, the method need to measure horizontal distance is called:", o:["Only (i) is correct", "(i) and (ii) are correct", "(ii) and (iii) are correct", "(iii) and (ii) are correct"], a:2, e:"The methods are called the broken chain method and the stepping method."}
+      {q:"When it is impractical to hold the chain on sloping ground, the method need to measure horizontal distance is called:", o:["Only (i) is correct", "(i) and (ii) are correct", "(ii) and (iii) are correct", "(iii) and (ii) are correct"], a:2, e:"The methods are called the broken chain method and the stepping method."},
+
+      {q:"कुन टेपलाई सबै भन्दा शुद्ध मानिन्छ ?", o:["steel tape","Invar tape","metallic tape","Glassfiber tape"], a:1, e:"Invar tape को तापक्रम विस्तार गुणांक न्यून हुन्छ, त्यसैले सबैभन्दा शुद्ध मानिन्छ।"},
+      {q:"कुनै टेप वास्तविक लम्बाई भन्दा लामो रहेछ भने नापी गर्दा त्यसवाट आउने error लाई के भनिन्छ ?", o:["Gross Error/Blunder","Random Error","Systematic Error","Compensating error"], a:2, e:"टेपको लम्बाईमा भएको त्रुटिले Systematic Error निम्त्याउँछ।"},
+      {q:"एक पाईला बराबर ८० से.मी. भए एक स्टाइड बराबर कति हुन्छ ?", o:["८० से.मी.","१६० से.मी.","१ मिटर","२ मिटर।"], a:1, e:"1 स्टाइड = 2 पाईला = 2 × 80 = 160 से.मी."},
+      {q:"Gunter’s chain को length कति हुन्छ ?", o:["66 feet","100 feet","20 m","33 feet"], a:0, e:"Gunter's chain को length 66 feet हुन्छ।"},
+      {q:"तलका मध्ये कुन तरिकाबाट chain survey मा ground मा कम नाप लिईन्छ ?", o:["Method of perpendicular offsets","Method of oblique offsets","Method of ties","All involve equal measurement"], a:0, e:"Method of perpendicular offsets"},
+      {q:"तलका मध्ये कुन perpendicular offset लिन प्रयोग हुँदैन ?", o:["Line ranger","Steel rape","Optical square","Cross staff"], a:0, e:"Line ranger"},
+      {q:"Invar tape के बाट बनेको हुन्छ ?", o:["Alloy","मिश्रीत धातु","Nickel 36%, steel 64%","All of the above"], a:3, e:"All of the above"},
+      {q:"The correction for sag is", o:["always additive","always subtractive","always zero","sometime additive and sometime subtractive"], a:1, e:"always subtractive"},
+      {q:"Optical square is based on the principle of :", o:["double refraction","reflection","refraction","double reflection"], a:3, e:"double reflection"},
+      {q:"For a well condition triangle, no angle should be less than", o:["20⁰","30⁰","45⁰","60⁰"], a:1, e:"30⁰"},
+      {q:"A metallic tape is made of", o:["steel","invar","linen","cloth & wires"], a:3, e:"cloth & wires"},
+      {q:"तलका मध्ये कुन तरिकाबाट chain survey मा ground मा कम नाप लिईन्छ ?", o:["Method of perpendicular offsets","Method of oblique offsets","Method of ties","All involve equal measurement"], a:0, e:"Method of perpendicular offsets"},
+      {q:"तलका मध्ये कुन perpendicular offset लिन प्रयोग हुँदैन ?", o:["Line ranger","Steel rape","Optical square","Cross staff"], a:0, e:"Line ranger"},
+      {q:"Invar tape के बाट बनेको हुन्छ ?", o:["Alloy","मिश्रीत धातु","Nickel 36%, steel 64%","All of the above"], a:3, e:"All of the above"},
+      {q:"तलका कुन चाँहि signal को रुपमा प्रयोगमा आउँदैनन् ।", o:["Ranging pole","Arrows","विकन","Heliotrope"], a:1, e:"Arrows"}
     ];

@@ -25,5 +25,26 @@ window.EXTRA["Mathematics (Algebra & Geometry)"].mcq = [
       {q:"If x² = 144, the positive value of x is:", o:["16", "72", "12", "14"], a:2, e:"x = ±12; the positive root is 12."},
       {q:"The sum of the interior angles of a quadrilateral is:", o:["540°", "180°", "360°", "270°"], a:2, e:"(n−2)×180° = 2×180° = 360° for n = 4."},
       {q:"The circumference of a circle of diameter 14 cm (taking π = 22/7) is:", o:["66 cm", "22 cm", "88 cm", "44 cm"], a:3, e:"C = πd = (22/7)×14 = 44 cm."},
-      {q:"The volume of a cube of side 5 cm is:", o:["25 cm³", "75 cm³", "100 cm³", "125 cm³"], a:3, e:"V = side³ = 5³ = 125 cm³."}
+      {q:"The volume of a cube of side 5 cm is:", o:["25 cm³", "75 cm³", "100 cm³", "125 cm³"], a:3, e:"V = side³ = 5³ = 125 cm³."},
+
+      {q:"x र y भन्ने दुई बिन्दुहरुको को-अर्डिनेट्स x (-2,1) र y (2,-2) अव स्थितिहरु बीचको दुरी कति होला ?", o:["3","4","5","6"], a:2, e:"दुरी = √[(2-(-2))² + (-2-1)²] = √(16+9) = √25 = 5"},
+      {q:"Hexagon को Interior angle को sum कति हुन्छ ?", o:["1440⁰","540⁰","720⁰","600⁰"], a:2, e:"Hexagon को Interior angle को sum = (n-2)×180 = (6-2)×180 = 720⁰"},
+      {q:"The distance between the points (3,7) and (5,7) is equal to", o:["2","4","8","5"], a:0, e:"दुरी = √[(5-3)² + (7-7)²] = √4 = 2"},
+      {q:"Right angle isosceles triangle को base 10 m छ भने त्यसको Area कति हुन्छ ?", o:["12 m²","25 m²","50 m²","100 m²"], a:1, e:"Area = 1/2 × 10 × 5 = 25 m²"},
+      {q:"Pythagoras Theorem को लागि कुन necessary condition हो ?", o:["Acute angle triangle","Obtuse angle triangle","Right angle triangle","None of the above"], a:2, e:"Pythagoras Theorem का लागि Right angle triangle आवश्यक छ।"},
+      {q:"कुनै एउटा circle को radius 'r' भएको त्यसको perimeter कति हुन्छ ?", o:["π r²","π r","2 π r","1/2 π r²"], a:2, e:"Circle को perimeter = 2πr"},
+      {q:"(√2+1)/(√2-1) + (√2-1)/(√2+1) is equal to", o:["2","√2","6","√3"], a:2, e:"6"},
+      {q:"The length of a rectangular room is two times its breadth and its perimeter is 36 m. find the area", o:["36","45","72","84"], a:2, e:"72"},
+      {q:"Find the value of x if 3ˣ⁺¹+3ˣ = 108", o:["0","1","2","3"], a:3, e:"3"},
+      {q:"√288 is equal to", o:["2√3","3√2","4√3","12√2"], a:3, e:"12√2"},
+      {q:"2cos²θ -1 = 0 भए θ को मान कति हुन्छ ?", o:["30⁰","45⁰","60⁰","90⁰"], a:1, e:"45⁰"},
+      {q:"त्रिभुज ABC मा angle A = 90⁰ र AB=AC=3cm. भए BC बराबर कति हुन्छ ?", o:["3 cm.","3√2 cm.","4 cm.","5 cm."], a:1, e:"BC = √(3²+3²) = 3√2 cm"},
+      {q:"Area = √3/4 a² is used in", o:["isosceles triangle","Equilateral triangle","Right angled triangle","Scalene triangle"], a:1, e:"Equilateral triangle को area = √3/4 a²"},
+      {q:"In geometry, cube is a regular solid figure having 6 square faces, 12 edges and", o:["8 vertices","9 vertices","6 vertices","12 vertices"], a:0, e:"8 vertices"},
+      {q:"(√2+1)/(√2-1) + (√2-1)/(√2+1) is equal to", o:["2","√2","6","√3"], a:2, e:"6"},
+      {q:"Find the value of x if 3ˣ⁺¹+3ˣ = 108", o:["0","1","2","3"], a:3, e:"3"},
+      {q:"√288 is equal to", o:["2√3","3√2","4√3","12√2"], a:3, e:"12√2"},
+      {q:"tali equation कुन हो ?", o:["x² + y²","x + y","xy","x² = y"], a:2, e:"xy"},
+      {q:"Algebra मा term मा कुन समावेश हुन्छ ?", o:["coefficient","variable","constant","माथिका सबै"], a:0, e:"coefficient"},
+      {q:"त्रिभुजको क्षेत्रफल 25m², base= a and perpendicular= 2a भए a को मान कति हुन्छ ?", o:["2","5","10","25"], a:1, e:"5"}
     ];

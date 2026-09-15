@@ -55,5 +55,25 @@ window.EXTRA["Compass Survey Introduction"].mcq = [
       {q:"Choose the incorrect statement.", o:["Diurnal variation of declination is more for the places near the equator.", "Irregular variation of declination may be of the order of 1°", "Causes of secular variation of declination are not well understood.", "Both (a) and (c)."], a:0, e:"Diurnal variation is lesser near the equator and increases towards the poles."},
       {q:"Choose the incorrect statement.", o:["An arbitrary meridian can be of any convenient direction.", "All the three faces of prism in a prismatic compass are made convex.", "Sighting and reading can be done simultaneously with a surveyor compass.", "Both (b) and (c)."], a:3, e:"Only two faces of the prism are convex, and sighting and reading cannot be done simultaneously with a surveyor compass."},
       {q:"In surveyor compass:", o:["Only (i) is correct", "Only (ii) is correct", "Both (i) and (ii) are correct", "Both (i) and (ii) are wrong"], a:1, e:"In a surveyor compass, the graduated card is attached to and rotates with the box."},
-      {q:"Choose the correct statement(s).", o:["Only (i) is correct", "Only (ii) is correct", "Both (i) and (ii) are correct", "Both (i) and (ii) are wrong"], a:2, e:"Both statements are correct: sighting and reading can be done simultaneously with a prismatic compass, and levelling is by eye judgement."}
+      {q:"Choose the correct statement(s).", o:["Only (i) is correct", "Only (ii) is correct", "Both (i) and (ii) are correct", "Both (i) and (ii) are wrong"], a:2, e:"Both statements are correct: sighting and reading can be done simultaneously with a prismatic compass, and levelling is by eye judgement."},
+
+      {q:"कुनै एउटा रेखा AB को Quadrental Bearing N10°W भए त्यो रेखाको whole circle Bearing कति हुन्छ ?", o:["10°","350°","170°","190°"], a:1, e:"N10°W को WCB = 360° - 10° = 350° हुन्छ।"},
+      {q:"True meridian र Grid Meridian बीचको angle लाई के भनिन्छ ?", o:["Declination","Convergence","true angle","True grid angle"], a:1, e:"True meridian र Grid meridian बीचको कोणलाई Convergence भनिन्छ।"},
+      {q:"Prismatic compass मा 0 degree कुन दिशामा हुन्छ ?", o:["South","North","East","West"], a:0, e:"Prismatic compass मा 0 degree South दिशामा हुन्छ।"},
+      {q:"Isogonic line means :-", o:["Line joining zero declination","Line joining equal declination","Line joining equal heights","Line joining equal Temperature"], a:1, e:"Isogonic line भन्नाले equal declination भएका बिन्दुहरु जोड्ने रेखा हो।"},
+      {q:"Whole circle bearing मा graduation गरिएको compass लाई के भनिन्छ ?", o:["Surveyors compass","Prismatic compass","क र ख दुबै","कुनैपनि हैन"], a:1, e:"Whole circle bearing मा graduation गरिएको compass लाई Prismatic compass भनिन्छ।"},
+      {q:"2 π Radiation is equal to", o:["360⁰","400⁰","270⁰","180⁰"], a:0, e:"2π Radiation = 360⁰"},
+      {q:"The vertical angle between longitudinal axis of a freely suspended magnetic needle and a horizontal line at its pivot, is known", o:["Declination","Azimuth","Dip","Bearing"], a:2, e:"यसलाई Dip भनिन्छ।"},
+      {q:"Survey is preferred with true meridians because these", o:["Coverage at pole","Do not change with time","Facilitate plotting","Are chosen arbitrarily"], a:1, e:"Do not change with time"},
+      {q:"In the fore bearing of a line AB is NβE, what will be it back bearing", o:["NβW","SβW","SβE","EβN"], a:2, e:"SβE"},
+      {q:"A(5,6) र B(4,7) भए AB line को whole circle bearing कति हुन्छ ?", o:["50ᵍ","150ᵍ","250ᵍ","350ᵍ"], a:3, e:"WCB = 350ᵍ"},
+      {q:"Meridian भन्नाले कुनलाई बुझाउँछ ?", o:["True north","Grid north","Magnetic north","all of the above"], a:3, e:"all of the above"},
+      {q:"Agate cap is fitted with a", o:["cross staff","level","chain","prismatic compass"], a:3, e:"prismatic compass"},
+      {q:"Survey is preferred with true meridians because these", o:["Coverage at pole","Do not change with time","Facilitate plotting","Are chosen arbitrarily"], a:1, e:"Do not change with time"},
+      {q:"In the fore bearing of a line AB is NβE, what will be it back bearing", o:["NβW","SβW","SβE","EβN"], a:2, e:"SβE"},
+      {q:"Magnetic bearing N30⁰E को true bearing declination 5⁰W भए कति हुन्छ ?", o:["N25⁰E","N35⁰E","S30⁰W","N30⁰W"], a:1, e:"N35⁰E"},
+      {q:"Magnetic bearing AB को back bearing western declination ø भए कति हुन्छ ?", o:["360⁰-ø","360⁰+ø","180⁰-ø","180⁰+ø"], a:2, e:"180⁰-ø"},
+      {q:"Whole circle bearing मा bearing कति देखि कति हुन्छ ?", o:["0⁰ to 360⁰","0⁰ to 180⁰","45⁰ to 315⁰","90⁰ to 270⁰"], a:0, e:"0⁰ to 360⁰"},
+      {q:"N30⁰E को back bearing कुन हुन्छ ?", o:["N30⁰W","S30⁰E","S30⁰W","S60⁰W"], a:2, e:"S30⁰W"},
+      {q:"Gonkio system मा full angle कति हुन्छ ?", o:["90⁰","24 hour","360⁰","400ᵍ"], a:3, e:"400ᵍ"}
     ];

@@ -52,5 +52,13 @@ window.EXTRA["Tachometric Survey"].mcq = [
       {q:"Which of the following represents a correct match?", o:["Only (iii) is correct", "Only (i) and (ii) are correct", "All three statements are correct", "Only (ii) and (iii) are correct"], a:2, e:"All three statements about movable hair, fixed hair, and tangential methods are correct."},
       {q:"Choose the correct statement(s).", o:["(i) is correct", "(i) and (ii) are correct", "(iii) is correct", "(iii) and (iv) are correct"], a:2, e:"An anallactic lens can be provided only in external focussing telescopes."},
       {q:"Choose the correct statement(s).", o:["Only (iv) is correct", "(i) and (ii) are correct", "(ii) and (iii) are correct", "(ii) and (iv) are correct"], a:3, e:"Telemeter and Mekometer are examples of range finders."},
-      {q:"Match List-I (Instrument) with List-II (Use):", o:["(i) B (ii) D (iii) A (iv) C", "(i) A (ii) C (iii) B (iv) D", "(i) B (ii) C (iii) A (iv) D", "(i) A (ii) D (iii) B (iv) C"], a:2, e:"Subtense bar (B), Sextant (C), Tangent clinometer (A), Range finder (D) are correctly matched."}
+      {q:"Match List-I (Instrument) with List-II (Use):", o:["(i) B (ii) D (iii) A (iv) C", "(i) A (ii) C (iii) B (iv) D", "(i) B (ii) C (iii) A (iv) D", "(i) A (ii) D (iii) B (iv) C"], a:2, e:"Subtense bar (B), Sextant (C), Tangent clinometer (A), Range finder (D) are correctly matched."},
+
+      {q:"Telescopic alidade बाट दुरी नाप्दा 1×100-I×H मा रहेको H को value कति हुन्छ ?", o:["100Cos²θ","100Sin² θ","100Sin θ Cos θ","100Sin² θ Cos θ"], a:1, e:"H = 100 Sin²θ हुन्छ।"},
+      {q:"Tacheometry को सिद्धान्त कुन त्रिभुजसंग सम्बन्धित छ ?", o:["समवाहु त्रिभुज","समद्विबाहु त्रिभुज","समकोण त्रिभुज","कुनै पनि होईन"], a:1, e:"Tacheometry समद्विबाहु त्रिभुजको सिद्धान्तमा आधारित छ।"},
+      {q:"Tachometers को additive constant कति हुन्छ ?", o:["f/i","i/f","f×d","f+d"], a:3, e:"Tachometers को additive constant = f + d हुन्छ।"},
+      {q:"For a tacheometer the additive and multiplying constants are respectively", o:["0 and 100","100 and 0","0 and 0","100 and 100"], a:0, e:"0 and 100"},
+      {q:"Tacheometry मा stadia distance कुनै तवरबाट नापिन्छ ?", o:["stadia hair","vertical circle","telescope","माथिका सबै"], a:1, e:"vertical circle"},
+      {q:"Tacheometry मा staff reading 0.0785 m भए distance कति हुन्छ ?", o:["0.0785s²m","0.0112s²m","0.0773s²m","78.5m"], a:1, e:"0.0112s²m"},
+      {q:"Tacheometry मा staff reading 1.500m, 1.300m, 1.100m भए distance कति हुन्छ ?", o:["39.2m","35.100m","43.500m","0.400m"], a:3, e:"43.500m"}
     ];

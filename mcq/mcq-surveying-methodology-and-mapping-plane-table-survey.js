@@ -45,5 +45,20 @@ window.EXTRA["Plane Table Survey"].mcq = [
       {q:"Plane table is most suitable instrument for surveying of:", o:["(i) is correct", "(ii) is correct", "(i) and (ii) both are correct", "(iii) is correct"], a:2, e:"Plane table is suitable for small and medium scale surveys."},
       {q:"Consider the following in plane table surveying: The fudicial edge is related to:", o:["(i) only", "(ii) only", "Both (i) and (ii)", "Both (i) and (iii)"], a:3, e:"The fudicial edge is related to the alidade and the Indian clinometer."},
       {q:"In plane table survey of small extent, the accuracy of the plotted work can be increased by the use of a tachometer in which of the following method?", o:["Radiation", "Traversing", "Intersection", "Resection"], a:1, e:"The traversing method can be improved with a tachometer."},
-      {q:"For survey of broken boundaries with a plane table most appropriate method will be:", o:["open traversing", "intersection", "radiation", "resection"], a:1, e:"The intersection method is best for broken boundaries."}
+      {q:"For survey of broken boundaries with a plane table most appropriate method will be:", o:["open traversing", "intersection", "radiation", "resection"], a:1, e:"The intersection method is best for broken boundaries."},
+
+      {q:"Small Scale मा Plane Tabling गर्दा यढाको detail plot गर्न कुन विधि उपयुक्त हुन्छ ?", o:["Resection","Radiation","Intersection","Traversing"], a:2, e:"Small scale मा detail plot गर्न Intersection विधि उपयुक्त हुन्छ।"},
+      {q:"सबै भन्दा सजिलै र चाँडै error पत्तालगाउने सर्मै कुन हो ?", o:["Plane Table","Chain Survey","theodolite Survey","Total Station"], a:0, e:"Plane Table Survey मा error सजिलै पत्ता लगाउन सकिन्छ।"},
+      {q:"Field work र plotting एउटै साथ field मा नै गरिने survey कुन हो ?", o:["Plane table survey","Tacheometry survey","Barometric","All of the above"], a:0, e:"Plane table survey मा Field work र plotting एउटै साथ field मा नै गरिन्छ।"},
+      {q:"Plane table survey मा occupied point को location determine गर्ने method लाई के भनिन्छ ?", o:["Radiation","Resection","Intersection","All of above"], a:1, e:"Plane table survey मा occupied point को location determine गर्ने method लाई Resection भनिन्छ।"},
+      {q:"Plane table survey को principle कुन survey सँग सम्बन्धित हुन्छ ?", o:["G.P.S.","Traversing","Photogrametry","Tacheometry"], a:2, e:"Photogrametry"},
+      {q:"Plane table survey का लागि कुन सम्बन्धित छैन ?", o:["Clinometer","Telescopic alidade","Height Indicator","optical plummet"], a:3, e:"optical plummet"},
+      {q:"तलका मध्ये कुन तरिकाबाट relief representation गरिदैन ?", o:["Contouring","Hill shading","colour tinting","Generalization"], a:3, e:"Generalization"},
+      {q:"सबै भन्दा सजिलै र चाँडै Error पत्ता लगाउने survey कुन हो ?", o:["Plane table","Chain survey","Theodolite survey","total station"], a:0, e:"Plane table"},
+      {q:"Intersection method of detail plotting is most suitable for", o:["forests","urban areas","hilly areas","plains"], a:2, e:"hilly areas"},
+      {q:"The methods used for locating the plane table stations are", o:["radiation","resection","traversing","both B and C"], a:3, e:"both B and C"},
+      {q:"Plane table survey को principle कुन survey सँग सम्बन्धित हुन्छ ?", o:["G.P.S.","Traversing","Photogrametry","Tacheometry"], a:2, e:"Photogrametry"},
+      {q:"Plane table survey का लागि कुन सम्बन्धित छैन ?", o:["Clinometer","Telescopic alidade","Height Indicator","optical plummet"], a:3, e:"optical plummet"},
+      {q:"Plane table मा alidade कुन कामका लागि हुन्छ ?", o:["कोण नाप्ने","दिशा नक्कल गर्ने","उचाइ नाप्ने","माथिका सबै"], a:2, e:"दिशा नक्कल गर्ने"},
+      {q:"Plane table survey मा कुन प्रयोग हुन्छ ?", o:["paper","alidade","sheet","माथिका सबै"], a:3, e:"माथिका सबै"}
     ];

@@ -36,5 +36,9 @@ window.EXTRA["Mathematics (Surveying)"].mcq = [
       {q:"For calculating area of a right angled triangle ABC with angle C being 90° which of the following(s) is (are) correct?", o:["Only (i) is correct", "Only (i) and (ii) are correct", "Only (i) and (iii) are correct", "All (i), (iii) and (iv) are correct"], a:1, e:"Formulas (i) and (ii) are correct."},
       {q:"The assumption that the boundaries between the extremities of three consecutive offsets is a parabolic arc whose axis is parallel to the offsets is made for:", o:["(i) and (iii) are correct", "(ii) and (iii) are correct", "Only (iii) is correct", "only (i) is correct"], a:2, e:"This assumption is made for Simpson's one-third rule."},
       {q:"In measuring area of the land surveyed the numbers of offset were 16. Which of the following rule(s) can not be used directly for estimating the area?", o:["(i)", "(i) and (ii)", "(ii) and (iii)", "(iii)"], a:3, e:"Simpson's rule requires an odd number of offsets."},
-      {q:"The area of a closed traverse is given by algebraic sum of the products of latitude of each line with its longitude. The method is known as area by:", o:["(ii) only", "(iv) only", "(i) and (iv)", "(ii) and (iii) only"], a:0, e:"This method is known as area by latitude and meridian distance."}
+      {q:"The area of a closed traverse is given by algebraic sum of the products of latitude of each line with its longitude. The method is known as area by:", o:["(ii) only", "(iv) only", "(i) and (iv)", "(ii) and (iii) only"], a:0, e:"This method is known as area by latitude and meridian distance."},
+
+      {q:"1 nautical mile बराबर कति कि.मि. हुन्छ ?", o:["1852km","18.52km","1.852km","185.2km"], a:2, e:"1 nautical mile = 1.852 km"},
+      {q:"Tacheometry को सिद्धान्त कुन त्रिभुज सँग सम्बन्धित छ ?", o:["समबाहु","समद्विबाहु","समकोण","कुनै पनि होइन"], a:1, e:"समद्विबाहु"},
+      {q:"तलका मध्ये कुनले सबै भन्दा घटी क्षेत्रफल देखाउँछ ?", o:["दाम","कट्ठा","पैसा","धुर"], a:0, e:"दाम"}
     ];
