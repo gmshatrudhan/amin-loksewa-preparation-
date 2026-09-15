@@ -878,6 +878,10 @@ function quizStart(sid,un){
 /* ================= MOCK TESTS (mixed papers from all units) ================= */
 function mockPool(){
   const pool=[];
+  /* Include custom mock set questions (e.g. Set 1 curated questions) */
+  (window.MOCK_SET_QUESTIONS||[]).forEach((q,i)=>{
+    if(q&&Array.isArray(q.o)&&q.o.length>1) pool.push({...q, topic:'Mock Set \u00b7 Q'+(i+1), _i:i, _sid:'mock', _un:1});
+  });
   SUBJECTS.forEach(s=>{(s.units||[]).forEach(u=>{(u.objective||[]).forEach((q,i)=>{
     if(q&&Array.isArray(q.o)&&q.o.length>1) pool.push({...q, topic:s.name+' \u00b7 Unit '+u.no, _i:i, _sid:s.id, _un:u.no});
   });});});
@@ -898,10 +902,18 @@ function mockStart(){
   const hq=new URLSearchParams((location.hash.split('?')[1]||''));
   const totalSets=mockTotalMcqSets();
   const setNum=Math.max(1,Math.min(totalSets, parseInt(hq.get('set'))||1));
-  const seed=42+setNum;
-  const fullPool=seededShuffle(mockPool(),seed);
-  const start=(setNum-1)*MOCK_MCQ_SET_SIZE;
-  const pool=fullPool.slice(start, start+MOCK_MCQ_SET_SIZE);
+  let pool;
+  /* Set 1 uses the curated question bank directly (if available) */
+  const curated=(window.MOCK_SET_QUESTIONS||[]);
+  if(setNum===1 && curated.length>=MOCK_MCQ_SET_SIZE){
+    pool=curated.slice(0,MOCK_MCQ_SET_SIZE).map((q,i)=>({...q, topic:'Mock Set \u00b7 Q'+(i+1), _i:i, _sid:'mock', _un:1}));
+  } else {
+    const seed=42+setNum;
+    const basePool=mockPool().filter(q=>q._sid!=='mock'); /* exclude curated from shuffle */
+    const fullPool=seededShuffle(basePool,seed);
+    const start=(setNum-1)*MOCK_MCQ_SET_SIZE;
+    pool=fullPool.slice(start, start+MOCK_MCQ_SET_SIZE);
+  }
   if(!pool.length){
     root.innerHTML=`<div class="card"><h3>Questions could not be loaded</h3>
       <p style="color:var(--muted)">Check your connection and try again.</p>
