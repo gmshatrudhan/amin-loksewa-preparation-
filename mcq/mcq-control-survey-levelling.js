@@ -66,5 +66,40 @@ window.EXTRA["Levelling"].mcq = [
       {q:"In levelling:", o:["Only (i) is correct", "Only (ii) is correct", "Both (i) and (ii) are correct", "(i) follows (ii)"], a:2, e:"Both statements about benchmarks are correct."},
       {q:"Choose the correct statement(s).", o:["Only (i) is correct", "Only (ii) is correct", "Both (i) and (ii) are correct", "None is correct"], a:2, e:"Both statements about curvature and refraction are correct."},
       {q:"Levels of the points can be found by:", o:["Only (i) is correct", "Only (ii) is correct", "Both (i) and (ii) are correct", "None is correct"], a:2, e:"Levels can be found by measuring pressures and boiling points."},
-      {q:"Reciprocal levelling eliminates the:", o:["1, 2 and 3", "1, 3 and 4", "2, 3 and 4", "1, 2 and 4"], a:3, e:"Reciprocal levelling eliminates errors due to curvature, refraction, and collimation."}
+      {q:"Reciprocal levelling eliminates the:", o:["1, 2 and 3", "1, 3 and 4", "2, 3 and 4", "1, 2 and 4"], a:3, e:"Reciprocal levelling eliminates errors due to curvature, refraction, and collimation."},
+      {q:"Levelling कार्यमा staff राख्दा ठिक vertical भएन भने त्यस्तो error लाई कुन error भनिन्छ ?", o:["Instrumental", "Personnel", "Natural", "कुनै पनि होइन"], a:1, e:"Staff ठिक vertical नराख्नु Personnel error हो।"},
+      {q:"Levelling गर्दा सबै भन्दा पहिले reading लिने बिन्दु कुन हो ?", o:["Bench Mark", "Reference surface", "Unknown point", "जहाँ गरेपनि हुन्छ।"], a:0, e:"Levelling कार्यमा सबैभन्दा पहिले Bench Mark (BM) मा reading लिनुपर्छ।"},
+      {q:"Levelling कार्यमा height of instrument को नाप ……………वाट लिईन्छ ?", o:["Ground", "Bench Mark", "Datum", "All of above"], a:2, e:"Height of instrument को नाप Datum बाट लिईन्छ।"},
+      {q:"Staff को Graduation को कारणले गर्दा हुन आउने Error लाई के भनिन्छ ?", o:["Natural", "Instrumental", "Personal", "Compensating"], a:1, e:"Staff को Graduation को कारणले हुन आउने Error Instrumental error हो।"},
+      {q:"Plus sight भन्नाले", o:["Intermediate Reading", "Fore sight reading", "Back sight reading", "All of above"], a:2, e:"Plus sight भन्नाले Back sight लाई जनाउँछ, किनभने यो RL मा जोडिन्छ। Fore sight लाई minus sight भनिन्छ किनभने त्यो घटाइन्छ।"},
+      {q:"Levelling मा height of instrument भन्नाले के बुझिन्छ ?", o:["BM देखि line of sight सम्मको उचाई", "Datum देखि line of sight सम्मको उचाई", "जमिन देखि line of sight सम्मको उचाई", "Level instrument को उचाई"], a:1, e:"Datum देखि line of sight सम्मको उचाई बुझिन्छ।"},
+      {q:"Inclined staff मा लिइएको reading वास्तविक reading भन्दा", o:["घटि हुन्छ", "बढि हुन्छ", "दुबै हुनसक्छ", "फरक पर्दैन"], a:1, e:"Inclined staff मा reading वास्तविक भन्दा बढि हुन्छ।"},
+      {q:"Positive sight भन्नाले कुन sight लाई जनाउँछ ?", o:["Back sight", "Fore sight", "Intermediate sight", "Turning sight"], a:0, e:"Positive sight भन्नाले Back sight लाई जनाउँछ।"},
+      {q:"Back sight and foresight distances are made equal for :", o:["speeding up the work", "balancing the line of sight", "minimizing the source of error", "none of these"], a:2, e:"minimizing the source of error"},
+      {q:"Cross section र longitudinal sectioning दुइबै के मा हुन्छ ?", o:["simple leveling", "profile leveling", "differential leveling", "check leveling"], a:1, e:"profile leveling मा हुन्छ।"},
+      {q:"If the R.L. of B.M. is 100.00m., the backsight is 1.215 m. and foresight is 1.870m, the R.L. of the forward station is", o:["99.345m.", "100.345m.", "100.655m.", "101.870m."], a:0, e:"R.L. = 100 + 1.215 - 1.870 = 99.345m"},
+      {q:"If the staff is not held vertical at a leveling station, the reduced level calculated from the observation would be", o:["true R.L.", "more than true R.L.", "less than true R.L.", "none"], a:2, e:"less than true R.L."},
+      {q:"With the rise of temperature, the sensitivity of a bubble tube", o:["decreases", "increases", "remains unaffected", "none of the above"], a:0, e:"decreases"},
+      {q:"Benchmark is established by", o:["hypsometry", "barometric leveling", "trigonometric leveling", "sprite leveling"], a:3, e:"sprite leveling"},
+      {q:"Level line कस्तो हुन्छ ?", o:["Horizontal", "Curve", "दुबै खालको", "ziczack"], a:1, e:"Curve"},
+      {q:"Inverted staff लाई कस्तो अवस्थामा प्रयोग गरिन्छ ?", o:["Reciprocal leveling", "ताल वा नदिमा leveling गर्दा", "Building को ceiling मा leveling गर्दा", "summit मा leveling गर्दा"], a:2, e:"Building को ceiling मा leveling गर्दा"},
+      {q:"refraction correction equals to-", o:["0.0785s²m", "0.0112s²m", "0.0773s²m", "None"], a:1, e:"0.0112s²m"},
+      {q:"Turning points means-", o:["Bench mark", "datum", "Station", "change point."], a:3, e:"change point."},
+      {q:"Staff reading over a station, whose elevation is not known is called..", o:["Back sight", "Fore Sight", "Intermediate Sight", "ख र ग दुबै"], a:3, e:"ख र ग दुबै"},
+      {q:"Levelling कार्यमा कस्तो अवस्थामा Fore staff Inverted राखिन्छ ?", o:["station horizontal line भन्दा तल भएमा ।", "station horizontal line भन्दा माथि भएमा", "station horizontal line मा भएमा ।", "Staff inverted राखिदैन ।"], a:1, e:"station horizontal line भन्दा माथि भएमा"},
+      {q:"Combine correction for curvature and refraction is given by", o:["0.0785D²", "0.06735 D²", "0.0112 D²", "All of above"], a:1, e:"Combined correction = 0.06735 D²"},
+      {q:"लेभल लाईन र प्लम्ब लाईन बीच कस्तो सम्बन्ध हुन्छ ?", o:["Parallel", "coincide", "perpendicular", "No relation between them"], a:2, e:"लेभल लाईन र प्लम्ब लाईन Perpendicular हुन्छ।"},
+      {q:"Levelling कार्यमा station भन्नाले के लाई बुझाउँछ ?", o:["Staff position", "Instrument Position", "Bench Mark", "Both क and ग"], a:3, e:"Station भन्नाले Staff position र Bench Mark दुवैलाई बुझाउँछ।"},      {q:"Which one of following is indirect method of leveling ?", o:["Trigonometric levelling", "Barometric levelling", "Hypsometric leveling", "All of above"], a:3, e:"माथिका सबै indirect method of leveling हुन्।"},      {q:"Levelling अन्तर्गत तलका कुन प्रक्रिया गरिदैन ?", o:["Centering", "Levelling", "Orientation", "A र C दुबै"], a:3, e:"Centering र Orientation Levelling अन्तर्गत पर्दैन।"},
+      {q:"कुन RL बढी शुद्ध मानिन्छ ?", o:["B.M", "Trig-Point", "दुवै बराबर", "कुनै पनि होइन"], a:0, e:"B.M (Bench Mark) बढी शुद्ध मानिन्छ।"},
+      {q:"Which of the following error is eliminated in reciprocal leveling?", o:["Zero Error", "Graduation Error", "Collimation Error", "Curvature and Refraction Error"], a:3, e:"Curvature and Refraction Error"},      {q:"Positive sight भन्नाले कुन sight लाई बुझिन्छ ?", o:["Back sight", "Foresight", "Intermediate sight", "All"], a:0, e:"Positive sight (Plus sight) भन्नाले Back sight लाई बुझिन्छ — यसलाई Height of Instrument मा जोडिन्छ। Foresight लाई Minus sight भनिन्छ किनभने त्यो घटाइन्छ।"},
+      {q:"लेभलिङ सर्मैमा कुनै known RL भएको बिन्दुमा लिइएको staff reading लाई के भनिन्छ ?", o:["Fore sight reading", "Back sight reading", "Change point reading", "All"], a:1, e:"Back sight reading"},
+      {q:"नापी विभाग खगोल तथा भू-मापन महाशाखाले प्रकाशन गरेको leveling instruction book लाई के भनिन्छ ?", o:["Blue book", "Black book", "Yellow book", "Red book"], a:0, e:"Blue book"},
+      {q:"Mean sea level को उचाई कति कायम गरिएको छ ?", o:["0 m", "100 m", "1000 m", "10000 m"], a:0, e:"0 m"},
+      {q:"Datum बाट line of sight सम्मको दुरीलाई के भनिन्छ ?", o:["Reduced level", "Height of instrument", "Height of target", "Instrument of height"], a:1, e:"Height of instrument"},
+      {q:"लेभल यन्त्रमा axis of bubble tube र vertical axis को सम्बन्ध कस्तो हुन्छ ?", o:["Concide", "Parallel", "Perpendicular", "जुनसुकै हुन सक्छ"], a:2, e:"Perpendicular"},
+
+
+
+
+
     ];

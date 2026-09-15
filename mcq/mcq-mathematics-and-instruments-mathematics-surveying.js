@@ -36,5 +36,28 @@ window.EXTRA["Mathematics (Surveying)"].mcq = [
       {q:"For calculating area of a right angled triangle ABC with angle C being 90° which of the following(s) is (are) correct?", o:["Only (i) is correct", "Only (i) and (ii) are correct", "Only (i) and (iii) are correct", "All (i), (iii) and (iv) are correct"], a:1, e:"Formulas (i) and (ii) are correct."},
       {q:"The assumption that the boundaries between the extremities of three consecutive offsets is a parabolic arc whose axis is parallel to the offsets is made for:", o:["(i) and (iii) are correct", "(ii) and (iii) are correct", "Only (iii) is correct", "only (i) is correct"], a:2, e:"This assumption is made for Simpson's one-third rule."},
       {q:"In measuring area of the land surveyed the numbers of offset were 16. Which of the following rule(s) can not be used directly for estimating the area?", o:["(i)", "(i) and (ii)", "(ii) and (iii)", "(iii)"], a:3, e:"Simpson's rule requires an odd number of offsets."},
-      {q:"The area of a closed traverse is given by algebraic sum of the products of latitude of each line with its longitude. The method is known as area by:", o:["(ii) only", "(iv) only", "(i) and (iv)", "(ii) and (iii) only"], a:0, e:"This method is known as area by latitude and meridian distance."}
+      {q:"The area of a closed traverse is given by algebraic sum of the products of latitude of each line with its longitude. The method is known as area by:", o:["(ii) only", "(iv) only", "(i) and (iv)", "(ii) and (iii) only"], a:0, e:"This method is known as area by latitude and meridian distance."},
+      {q:"1 nautical mile बराबर कति कि.मि. हुन्छ ?", o:["1852km", "18.52km", "1.852km", "185.2km"], a:2, e:"1 nautical mile = 1.852 km"},
+      {q:"Micrometer means :-", o:["10⁻³m", "10⁻⁶m", "10⁻⁹m", "10⁵m"], a:1, e:"Micrometer (µm) = 10⁻⁶ m = 0.000001 m हुन्छ। (milli = 10⁻³, micro = 10⁻⁶, nano = 10⁻⁹)"},
+      {q:"एक हेक्टरमा कति वर्गमिटर हुन्छ ?", o:["10000", "1000", "100000", "100"], a:0, e:"1 हेक्टर = 10000 वर्गमिटर"},
+      {q:"तलका मध्ये सबै भन्दा सानो एकाई कुन हो ?", o:["रोपनी", "दाम", "कट्ठा", "धुर"], a:1, e:"दाम सबैभन्दा सानो एकाई हो।"},
+      {q:"१ हलर बराबर १०० रुपैयाँ तथा १६० रुपैयाँ बराबर भार. १०० भएमा १ हलर बराबर भार. कति हुन्छ ?", o:["१००", "१६०", "६०", "६२.५"], a:3, e:"१ हलर = ६२.५ भार"},
+      {q:"तलका मध्ये कुनले सबै भन्दा घटी क्षेत्रफल देखाउँछ ?", o:["दाम", "कट्ठा", "पैसा", "धुर"], a:0, e:"दाम"},
+      {q:"nanometer means-", o:["0.000001m", "0.0000001m", "0.00000001m", "0.000000001m"], a:3, e:"0.000000001m"},
+      {q:"एउटा ७४ फिट भुजा भएको वर्गाकार जग्गाको ३७ फिट मोहडा राखी ८ आना क्षेत्रफल कित्ताकाट गर्दा लम्बाई कति राख्नु पर्छ ?", o:["७४ फिट", "३७ फिट", "१८.५ फिट", "५४ फिट"], a:0, e:"१ आना = ३४२.२५ वर्गफिट, त्यसैले ८ आना = ८ × ३४२.२५ = २७३८ वर्गफिट। लम्बाई = २७३८ ÷ ३७ = ७४ फिट।"},
+      {q:"1 फीटमा कति मिटर हुन्छ ?", o:["3.2808", "3.000", "0.3048", "3.048"], a:2, e:"0.3048"},
+      {q:"एउटा जग्गाधनीले आफुसँग भएको १ रोपनी १२ आना जग्गा मध्ये पूर्व तर्फबाट ७ आना जग्गा बेच्दा उसँग कति प्रतिशत जग्गा बाँकी रहन्छ ?", o:["२५ प्रतिशत", "७५ प्रतिशत", "४५ प्रतिशत", "५५ प्रतिशत"], a:1, e:"१ रोपनी १२ आना = २८ आना। ७ आना बेच्दा २१ आना बाँकी। प्रतिशत = 21/28 × 100 = 75%"},
+      {q:"कुनै जग्गाको १० प्रतिशत जग्गा विक्री गर्दा ४ आना हुन्छ भने विक्री भईसकेपछि वाँकी रहेको जमिनको क्षेत्रफल कति होला ?", o:["४० आना", "३६ आना", "४४ आना", "१४ आना"], a:1, e:"१०% = ४ आना, १००% = ४० आना। वाँकी = ४० - ४ = ३६ आना"},
+      {q:"कुन परिमाण सबै भन्दा बढी हुन्छ ?", o:["१३ रोपनी", "१ विगाहा", "२१० आना", "०.६८ हेक्टर"], a:1, e:"१ विगाहा = १३ रोपनी = २०८ आना = ०.६७७ हेक्टर। त्यसैले १ विगाहा सबैभन्दा बढी हो।"},
+      {q:"One Ares equal to...", o:["1 hectar", "100 m²", "1.35 Bigha", "19.65 Ropani"], a:1, e:"1 Are = 100 m²"},
+      {q:"कुनै सर्मै लाईनको शुरु र अन्तका बिन्दुहरुको coordinates A (350500,3050400) र B(350800,3050800) भए लाईन AB को दुरी कति होला ?", o:["500m", "900m", "800m", "1200m"], a:0, e:"दुरी = √[(350800-350500)² + (3050800-3050400)²] = √(300² + 400²) = √(90000+160000) = √250000 = 500m"},
+      {q:"कुनै सर्मै लाईनको शुरु र अन्तका बिन्दुहरुको coordinates A (350500,3050400) र B(350500,3050800) भए लाईन AB को Bearing कति होला ?", o:["30⁰", "0⁰", "45⁰", "None of above"], a:1, e:"Easting समान भएकोले Bearing 0° (North) हुन्छ।"},      {q:"1 Nautical Mile बराबर कति हुन्छ ?", o:["1850 m", "1851 m", "1852 m", "1853 m"], a:2, e:"1 Nautical Mile = 1852 m"},
+      {q:"एक रोपनि क्षेत्रफल भन्नाले कति क्षेत्रफल जनाउँछ ?", o:["508.74m²", "74 ft x 74ft", "338.63 m²", "क र ख दुबै"], a:3, e:"1 रोपनी = 508.74 m² = 74 ft × 74 ft"},      {q:"1 Yard बराबर कति feet हुन्छ ?", o:["1 feet", "2 feet", "3 feet", "4 feet"], a:2, e:"1 Yard = 3 feet"},      {q:"A र B बिचको भिरालो दुरी १०० मी. र उचाईको फरक २ मी. भए समतल दुरी कति मी. हुन्छ ?", o:["९९.९८", "९५.९८", "८९.९८", "९९.८९"], a:0, e:"समतल दुरी = √(१००² - २²) = √(१०००० - ४) = √९९९६ ≈ ९९.९८"},
+      {q:"बिन्दु P को rectangular coordinates (4,4) भए polar coordinates कति हुन्छ ?", o:["(4,50⁰)", "(4√2,45⁰)", "(16,45⁰)", "None"], a:1, e:"r = √(4²+4²) = 4√2, θ = tan⁻¹(4/4) = 45°"},
+      {q:"1 hectar मा कति वर्ग किलोमिटर हुन्छ ?", o:["0.001", "0.01", "0.1", "0.11"], a:1, e:"1 hectar = 0.01 km²"},
+
+
+
+
+
     ];

@@ -25,5 +25,24 @@ window.EXTRA["Land Records"].mcq = [
       {q:"Land classification in records (e.g. abbal, doyam) is based on:", o:["Distance from road", "Crop colour", "Soil productivity and irrigation facility", "Owner caste"], a:2, e:"Classes abbal/doyam/seem/chahar reflect productivity and irrigation; they determine land revenue rates per unit area."},
       {q:"Which document proves payment of annual land revenue?", o:["Field book", "Lalpurja", "Tiro (tax receipt)", "Nagarikta"], a:2, e:"The tiro/receipt proves land tax (malpot) payment; tax clearance is required for sale, mortgage and many official works."},
       {q:"Digital cadastral records in Nepal are maintained under systems such as:", o:["Foreign registers", "Paper ledgers only", "Manual indexes", "DLIS/Saexis (digital land information)"], a:3, e:"The Survey Department and Malpot offices are digitising maps and records (DLIS and related systems) for e-services and record security."},
-      {q:"Preservation of land records is important because they:", o:["Decorate offices", "Increase paper use", "Employ staff", "Prove ownership and prevent disputes"], a:3, e:"Records are legal evidence of ownership, support taxation and planning, and their loss causes disputes — hence backup and safe custody matter."}
+      {q:"Preservation of land records is important because they:", o:["Decorate offices", "Increase paper use", "Employ staff", "Prove ownership and prevent disputes"], a:3, e:"Records are legal evidence of ownership, support taxation and planning, and their loss causes disputes — hence backup and safe custody matter."},
+      {q:"नेपालमा प्रचलनमा रहेको Registration system कुन हो ?", o:["Registration of Title", "Registration of Deed", "Modified Deed", "माथिका सबै"], a:2, e:"नेपालमा Modified Deed registration system प्रचलनमा छ।"},
+      {q:"हालभूमि सुधार तथा व्यवस्था मन्त्रालय मातहतमा कतिवटा विभाग स्तरका कार्यालय छन् ?", o:["२", "३", "४", "५"], a:3, e:"हालभूमि सुधार तथा व्यवस्था मन्त्रालय मातहतमा ५ वटा विभाग स्तरका कार्यालय छन्।"},
+      {q:"लिखत पारित गरिने कित्ता जग्गामा घर, वाटो छ छैन भनि खुलाउने काम कसको हो ?", o:["नापी कार्यालय", "मालपोत कार्यालय", "स्थानिय निकाय", "जिल्ला प्रशासन कार्यालय"], a:1, e:"मालपोत कार्यालयले लिखत पारित गर्दा घर, वाटो छ छैन भनि खुलाउने काम गर्छ।"},
+      {q:"कुन registration system मा सरकार कारोवारको साक्षी हुन्छ ?", o:["informal conveyancing", "private conveyancing", "deed registration", "title registration"], a:2, e:"deed registration"},
+      {q:"तलका मध्ये कुन registration को principle होइन ?", o:["booking", "consent", "mirror", "सबै हुन्"], a:3, e:"सबै हुन्"},
+      {q:"कुन सही छ ?", o:["लिखतको रजिष्ट्रेशन गराउने कुनै म्याद हुँदैन", "लिखतको रजिष्ट्रेशन गराउनुपर्ने म्याद गुज्रेमा थामिन सक्तैन", "लिखतको रजिष्ट्रेशन गराउनुपर्ने म्याद गुज्रेमा थामिन सकिन्छ", "सबै गलत छन्"], a:1, e:"लिखतको रजिष्ट्रेशन गराउनुपर्ने म्याद गुज्रेमा थामिन सक्तैन"},
+      {q:"What do you call the cadastral record of Nepal ?", o:["fiscal cadastre", "legal cadastre", "multipurpose cadastre", "all of the above"], a:0, e:"fiscal cadastre"},
+      {q:"Cadastre is", o:["Map", "Register", "Database", "Combination of all of the above"], a:3, e:"Combination of all of the above"},
+      {q:"Which of the following statement is always true in case of a land transaction ?", o:["Map is updated", "field book is updated", "Plot register is updated", "moth/shresta is updated"], a:3, e:"moth/shresta is updated"},
+      {q:"सबभन्दा पछाडी मालपोत ऐन लागु गरिएको जिल्ला कुन हो ?", o:["इलाम", "कास्कीकोट", "डोल्पा", "जुम्ला"], a:3, e:"जुम्ला"},
+      {q:"कित्ता नापीनक्साको अध्यावधिक गर्ने निकाय कुन हो ?", o:["नापी विभाग", "मालपोत कार्यालय", "नापी कार्यालय", "कित्ता नापी महाशाखा"], a:2, e:"नापी कार्यालय"},
+      {q:"दर्ता गर्न बाँकी कित्ताहरु संकलन गरिएको लगतलाई के भनिन्छ ?", o:["मोठ", "तेरिज", "फिल्डबुक", "माथिका कुनै पनि होइन ।"], a:3, e:"माथिका कुनै पनि होइन ।"},
+      {q:"नेपालमा कित्तानापी नक्साको digitization को कार्य कुन निकायले सम्पन्न गरेको हो ?", o:["नापी कार्यालयहरुले", "नापी विभागले", "भूसुचना तथा अभिलेख विभागले", "मालपोत कार्यालयले"], a:2, e:"भूसुचना तथा अभिलेख विभागले"},
+      {q:"नापी विभागले प्रकाशित गरेको निर्देशिकामा वृहत नेपाली शब्दकोष लाई के को लागि आधार मान्ने उल्लेख छ ?", o:["वर्णानुक्रम अनुसार नाम लेख्ने", "छुट जग्गा दर्ता गर्न सम्वन्धमा", "तेरिज श्रेष्ठा र दर्ता प्रमाण पूर्जा तयार गर्ने", "क्षेत्रफल निकाल्ने तरिका"], a:0, e:"वर्णानुक्रम अनुसार नाम लेख्ने"},
+      {q:"Cadastre includes....", o:["a map", "Register", "database", "combination of all of above"], a:3, e:"combination of all of above"},
+      {q:"मालपोत कार्यालयको काम तलका मध्ये कुन पर्दैन ?", o:["जग्गा दर्ता गर्ने", "नक्सामा मसी भर्न लेखि पठाउने", "कित्ताकाट गर्न लेखि पठाउने", "नक्सामा मसी भर्ने"], a:3, e:"नक्सामा मसी भर्ने काम मालपोत कार्यालयको होइन।"},
+      {q:"मोही सम्बन्धी record राख्ने निकाय कुन हो ?", o:["Survey office", "Land Revenue office", "Land reform office", "All of the above"], a:2, e:"मोही सम्बन्धी record Land reform office ले राख्छ।"},
+
+
     ];

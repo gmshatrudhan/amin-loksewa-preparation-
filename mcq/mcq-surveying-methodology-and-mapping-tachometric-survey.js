@@ -52,5 +52,21 @@ window.EXTRA["Tachometric Survey"].mcq = [
       {q:"Which of the following represents a correct match?", o:["Only (iii) is correct", "Only (i) and (ii) are correct", "All three statements are correct", "Only (ii) and (iii) are correct"], a:2, e:"All three statements about movable hair, fixed hair, and tangential methods are correct."},
       {q:"Choose the correct statement(s).", o:["(i) is correct", "(i) and (ii) are correct", "(iii) is correct", "(iii) and (iv) are correct"], a:2, e:"An anallactic lens can be provided only in external focussing telescopes."},
       {q:"Choose the correct statement(s).", o:["Only (iv) is correct", "(i) and (ii) are correct", "(ii) and (iii) are correct", "(ii) and (iv) are correct"], a:3, e:"Telemeter and Mekometer are examples of range finders."},
-      {q:"Match List-I (Instrument) with List-II (Use):", o:["(i) B (ii) D (iii) A (iv) C", "(i) A (ii) C (iii) B (iv) D", "(i) B (ii) C (iii) A (iv) D", "(i) A (ii) D (iii) B (iv) C"], a:2, e:"Subtense bar (B), Sextant (C), Tangent clinometer (A), Range finder (D) are correctly matched."}
+      {q:"Match List-I (Instrument) with List-II (Use):", o:["(i) B (ii) D (iii) A (iv) C", "(i) A (ii) C (iii) B (iv) D", "(i) B (ii) C (iii) A (iv) D", "(i) A (ii) D (iii) B (iv) C"], a:2, e:"Subtense bar (B), Sextant (C), Tangent clinometer (A), Range finder (D) are correctly matched."},
+      {q:"Tacheometry को सिद्धान्त कुन त्रिभुजसंग सम्बन्धित छ ?", o:["समवाहु त्रिभुज", "समद्विबाहु त्रिभुज", "समकोण त्रिभुज", "कुनै पनि होईन"], a:1, e:"Tacheometry समद्विबाहु त्रिभुजको सिद्धान्तमा आधारित छ।"},
+      {q:"Tachometer को Diaphgram मा कति वटा Horizontal wires हुन्छन् ?", o:["१", "२", "३", "४"], a:2, e:"Tachometer को Diaphgram मा ३ वटा Horizontal wires हुन्छन्।"},
+      {q:"Tachometers को additive constant कति हुन्छ ?", o:["f/i", "i/f", "f×d", "f+d"], a:3, e:"Tachometers को additive constant = f + d हुन्छ।"},
+      {q:"The number of horizontal cross wires in a stadia diaphragm is", o:["one", "two", "three", "four"], a:2, e:"three"},
+      {q:"For a tacheometer the additive and multiplying constants are respectively", o:["0 and 100", "100 and 0", "0 and 0", "100 and 100"], a:0, e:"0 and 100"},
+      {q:"Tacheometry को सिद्धान्त कुन त्रिभुज सँग सम्बन्धित छ ?", o:["समबाहु", "समद्विबाहु", "समकोण", "कुनै पनि होइन"], a:1, e:"समद्विबाहु"},
+      {q:"Tachometry survey कस्तोमा उपयुक्त मानिन्छ ?", o:["Flat ground", "undulating ground", "snow terrain", "none"], a:1, e:"undulating ground"},
+      {q:"कुन telescope मा analeptic lens को प्रयोग गरिदैन ?", o:["Internal focusing telescope", "external focusing telescope.", "Both", "none."], a:0, e:"Internal focusing telescope"},
+      {q:"सानो क्षेत्रको ठूलो माननापमा कन्दुर सहितको नक्सा तयार गर्न गरिने सर्मै लाई के भनिन्छ ?", o:["Tacheometry", "Telemetry", "Tachemetry", "All of above"], a:3, e:"All of above"},
+      {q:"Tacheometry को शुरुवात जेम्सवाट ले Stadia principle प्रतिपादन गरेपछि भएको हो भने stadia principle कहिले प्रतिपादन भएको थियो ?", o:["सन 1799", "सन 1801", "सन 1999", "सन 1899"], a:0, e:"Stadia principle सन 1799 मा प्रतिपादन भएको थियो।"},      {q:"Tacheometry कस्तो survey हो ?", o:["Numerical", "Graphical", "Both of above", "None of above"], a:0, e:"Tacheometry Numerical survey हो।"},      {q:"Techco metry मा f भन्नाले objective lens को focal length र i भन्नाले stadia interval बुझाउँछ भने f/i भन्नाले के बुझाउँछ ?", o:["Additive Constant", "Multiplying Constant", "Staff Intercept", "Distance Formula"], a:1, e:"f/i = Multiplying Constant"},      {q:"Staff intercept बढेमा दुरी के हुन्छ ?", o:["स्थिर रहन्छ", "कम हुन्छ", "बढी हुन्छ", "कहिले घट्छ त कहिले बढ्छ"], a:2, e:"Staff intercept बढेमा दुरी बढी हुन्छ।"},
+      {q:"कुन Telescope मा analectic lens को प्रयोग गरिदैन ?", o:["Internal focusing telescope", "External focusing telescope", "Both", "None"], a:0, e:"Anallactic lens को प्रयोग External focusing telescope मा additive constant (f+d) शून्य बनाउन गरिन्छ। Internal focusing telescope मा additive constant पहिल्यै शून्य हुने भएकाले त्यहाँ यसको आवश्यकता पर्दैन।"},
+
+
+
+
+
     ];

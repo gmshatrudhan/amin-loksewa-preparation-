@@ -55,5 +55,35 @@ window.EXTRA["Compass Survey Introduction"].mcq = [
       {q:"Choose the incorrect statement.", o:["Diurnal variation of declination is more for the places near the equator.", "Irregular variation of declination may be of the order of 1°", "Causes of secular variation of declination are not well understood.", "Both (a) and (c)."], a:0, e:"Diurnal variation is lesser near the equator and increases towards the poles."},
       {q:"Choose the incorrect statement.", o:["An arbitrary meridian can be of any convenient direction.", "All the three faces of prism in a prismatic compass are made convex.", "Sighting and reading can be done simultaneously with a surveyor compass.", "Both (b) and (c)."], a:3, e:"Only two faces of the prism are convex, and sighting and reading cannot be done simultaneously with a surveyor compass."},
       {q:"In surveyor compass:", o:["Only (i) is correct", "Only (ii) is correct", "Both (i) and (ii) are correct", "Both (i) and (ii) are wrong"], a:1, e:"In a surveyor compass, the graduated card is attached to and rotates with the box."},
-      {q:"Choose the correct statement(s).", o:["Only (i) is correct", "Only (ii) is correct", "Both (i) and (ii) are correct", "Both (i) and (ii) are wrong"], a:2, e:"Both statements are correct: sighting and reading can be done simultaneously with a prismatic compass, and levelling is by eye judgement."}
+      {q:"Choose the correct statement(s).", o:["Only (i) is correct", "Only (ii) is correct", "Both (i) and (ii) are correct", "Both (i) and (ii) are wrong"], a:2, e:"Both statements are correct: sighting and reading can be done simultaneously with a prismatic compass, and levelling is by eye judgement."},
+      {q:"कुनै एउटा रेखा AB को Quadrental Bearing N10°W भए त्यो रेखाको whole circle Bearing कति हुन्छ ?", o:["10°", "350°", "170°", "190°"], a:1, e:"N10°W को WCB = 360° - 10° = 350° हुन्छ।"},
+      {q:"True meridian र Grid Meridian बीचको angle लाई के भनिन्छ ?", o:["Declination", "Convergence", "true angle", "True grid angle"], a:1, e:"True meridian र Grid meridian बीचको कोणलाई Convergence भनिन्छ।"},
+      {q:"Prismatic compass मा 0 degree कुन दिशामा हुन्छ ?", o:["South", "North", "East", "West"], a:0, e:"Prismatic compass मा 0 degree South दिशामा हुन्छ।"},
+      {q:"Isogonic line means :-", o:["Line joining zero declination", "Line joining equal declination", "Line joining equal heights", "Line joining equal Temperature"], a:1, e:"Isogonic line भन्नाले equal declination भएका बिन्दुहरु जोड्ने रेखा हो।"},
+      {q:"Whole circle bearing मा graduation गरिएको compass लाई के भनिन्छ ?", o:["Surveyors compass", "Prismatic compass", "क र ख दुबै", "कुनैपनि हैन"], a:1, e:"Whole circle bearing मा graduation गरिएको compass लाई Prismatic compass भनिन्छ।"},
+      {q:"The vertical angle between longitudinal axis of a freely suspended magnetic needle and a horizontal line at its pivot, is known", o:["Declination", "Azimuth", "Dip", "Bearing"], a:2, e:"यसलाई Dip भनिन्छ।"},
+      {q:"यदि कुनै line को quadrantal bearing N30⁰E छ भने WCB कति हुन्छ ?", o:["30⁰", "150⁰", "210⁰", "330⁰"], a:0, e:"N30⁰E को WCB = 30⁰ हुन्छ।"},
+      {q:"Equator मा Dip को मान कति हुन्छ ?", o:["0⁰", "45⁰", "90⁰", "100⁰"], a:0, e:"Equator मा Dip = 0⁰ हुन्छ।"},
+      {q:"तलका मध्ये कुन यन्त्र magnetic bearing नाप्न प्रयोग गरिन्छ ?", o:["Surveyors Compass", "Prismatic Compass", "Trough compass", "सबै प्रयोग गरिन्छ"], a:2, e:"Trough compass magnetic bearing नाप्न प्रयोग गरिन्छ।"},
+      {q:"ग्रिन विच मेरिडियन को देशान्तर कति हुन्छ ?", o:["0⁰", "Observers meridian सँग बराबर", "90⁰", "180⁰"], a:0, e:"ग्रिन विच मेरिडियन को देशान्तर 0⁰ हुन्छ।"},
+      {q:"Meridian भन्नाले कुनलाई बुझाउँछ ?", o:["True north", "Grid north", "Magnetic north", "all of the above"], a:3, e:"all of the above"},
+      {q:"Agate cap is fitted with a", o:["cross staff", "level", "chain", "prismatic compass"], a:3, e:"prismatic compass"},
+      {q:"In the fore bearing of a line AB is NβE, what will be it back bearing", o:["NβW", "SβW", "SβE", "EβN"], a:2, e:"SβE"},
+      {q:"Agonic lines means-", o:["line joining equal declination.", "line joining zero declination.", "line joining all magnetic fields.", "none of above."], a:1, e:"line joining zero declination."},
+      {q:"In second quadrant if ø be the R.B. of any line AB. Then what would be the WCB of that line.", o:["360⁰-ø", "360⁰+ø", "180⁰-ø", "180⁰+ø"], a:2, e:"180⁰-ø"},
+      {q:"which of the following is graduated from 0⁰ to 360⁰", o:["prismatic compass", "Surveyor’s compass", "Both", "None"], a:0, e:"prismatic compass"},
+      {q:"If the forward bearing of line AB is N30⁰E, then back bearing of that line is-", o:["W30⁰E", "E30⁰N", "S30⁰W", "S60⁰W"], a:2, e:"S30⁰W"},
+      {q:"The difference between back bearing and fore bearing is always", o:["180⁰", "200ᵍ", "πᶜ", "all of above"], a:3, e:"all of above"},
+      {q:"Equilateral triangle ABC मा line AB को Bearing 45⁰ भए AC को Bering कति हुन्छ ?", o:["45⁰", "105⁰", "185⁰", "285⁰"], a:0, e:"45⁰"},
+      {q:"Prismatic Compass ले कुन bearing measure गर्छ ?", o:["Whole Circle Bearing", "Quadrantal Bearing", "Reduced Bearing", "ख र ग दुबै"], a:0, e:"Prismatic Compass ले Whole Circle Bearing measure गर्छ।"},
+      {q:"Convergence भन्नाले", o:["Magnetic meridian र Grid meridian को फरक", "Truec meridian र Magnetic meridian को फरक", "True meridian र Grid meridian को फरक", "True-north र Grid north को फरक"], a:2, e:"Convergence भन्नाले True meridian र Grid meridian को फरक हो।"},
+      {q:"कुनै रेखाको fore bearing 225ᵍ छ भने back bearing कति हुन्छ ?", o:["225ᵍ", "25ᵍ", "45ᵍ", "50ᵍ"], a:2, e:"Back bearing = 225 - 180 = 45ᵍ"},      {q:"Whole circle bearing 110⁰ भए कुन Quadrant मा पर्दछ ?", o:["First", "Second", "Third", "Fourth"], a:1, e:"110° Second quadrant मा पर्छ।"},
+      {q:"Zero declination भएका Points जोड्ने काल्पनिक रेखालाई के भनिन्छ ?", o:["Agonic line", "Isogonic line", "Contour line", "ISO bar"], a:0, e:"Agonic line"},
+      {q:"Magnetic Declination भन्नाले के जनाउँछ ?", o:["True meridian र grid meridian बिचको कोण", "True meridian र magnetic meridian बिचको कोण", "माथिका दुवै", "कुनै पनि होइन"], a:1, e:"True meridian र magnetic meridian बिचको कोण"},      {q:"Grid bearing र True bearing को फरक लाई के भनिन्छ ?", o:["Declination", "Meridian", "Convergence", "Grid magnetic angle"], a:2, e:"Convergence"},
+      {q:"Bearing नाप्ने कार्य कस्तो Measurement हो ?", o:["Horizontal", "Vertical", "Zenithal", "कुनै पनि होइन"], a:0, e:"Horizontal"},
+      {q:"कुनै रेखाको Whole circle bearing 150⁰ भए Quadrantal bearing कति होला ?", o:["S30⁰E", "S60⁰W", "N30⁰E", "N60⁰W"], a:0, e:"WCB 150° = S30°E"},
+
+
+
+
     ];

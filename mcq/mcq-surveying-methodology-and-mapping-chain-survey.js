@@ -78,5 +78,25 @@ window.EXTRA["Chain Survey"].mcq = [
       {q:"Match the following:", o:["(i)-A, (ii)-B, (iii)-C, (iv)-D, (v)-E, (vi)-F", "(i)-C, (ii)-D, (iii)-B, (iv)-A, (v)-F, (vi)-E", "(i)-B, (ii)-A, (iii)-F, (iv)-C, (v)-E, (vi)-D", "None of the above"], a:0, e:"All the tape corrections and their formulas are correctly matched."},
       {q:"Consider the following statements regarding indirect ranging. It is resorted to:", o:["(i) and (ii) are correct", "(i), (ii) and (iii) are correct", "(iii) and (i) are correct", "(ii) and (iii) are correct"], a:3, e:"Indirect ranging is used when a hillock is encountered or in case of ravines."},
       {q:"Which of the following instruments have both horizon glass and index glass?", o:["(ii), (iii), and (iv)", "(i), (iii), and (iv)", "(i) and (iii) only", "(ii) and (iv) only"], a:2, e:"An optical square and a box sextant have both horizon and index glasses."},
-      {q:"When it is impractical to hold the chain on sloping ground, the method need to measure horizontal distance is called:", o:["Only (i) is correct", "(i) and (ii) are correct", "(ii) and (iii) are correct", "(iii) and (ii) are correct"], a:2, e:"The methods are called the broken chain method and the stepping method."}
+      {q:"When it is impractical to hold the chain on sloping ground, the method need to measure horizontal distance is called:", o:["Only (i) is correct", "(i) and (ii) are correct", "(ii) and (iii) are correct", "(iii) and (ii) are correct"], a:2, e:"The methods are called the broken chain method and the stepping method."},
+      {q:"कुन टेपलाई सबै भन्दा शुद्ध मानिन्छ ?", o:["steel tape", "Invar tape", "metallic tape", "Glassfiber tape"], a:1, e:"Invar tape को तापक्रम विस्तार गुणांक न्यून हुन्छ, त्यसैले सबैभन्दा शुद्ध मानिन्छ।"},
+      {q:"कुनै टेप वास्तविक लम्बाई भन्दा लामो रहेछ भने नापी गर्दा त्यसवाट आउने error लाई के भनिन्छ ?", o:["Gross Error/Blunder", "Random Error", "Systematic Error", "Compensating error"], a:2, e:"टेपको लम्बाईमा भएको त्रुटिले Systematic Error निम्त्याउँछ।"},
+      {q:"एक पाईला बराबर ८० से.मी. भए एक स्टाइड बराबर कति हुन्छ ?", o:["८० से.मी.", "१६० से.मी.", "१ मिटर", "२ मिटर।"], a:1, e:"1 स्टाइड = 2 पाईला = 2 × 80 = 160 से.मी."},
+      {q:"Gunter’s chain को length कति हुन्छ ?", o:["66 feet", "100 feet", "20 m", "33 feet"], a:0, e:"Gunter's chain को length 66 feet हुन्छ।"},
+      {q:"कित्ता नापी प्रयोजनका लागि प्रयोग गरिएको Chain कुन थियो ?", o:["Revenue", "Gunter’s", "Surveyors", "Metallic"], a:0, e:"कित्ता नापी प्रयोजनका लागि Revenue Chain प्रयोग गरिएको थियो।"},
+      {q:"Tape too long भए measured distance के हुन्छ ?", o:["बढि", "घटि", "बराबर", "जे सुकै हुनसक्छ"], a:1, e:"Tape too long भए measured distance घटि हुन्छ।"},
+      {q:"A metallic tape is made of", o:["steel", "invar", "linen", "cloth & wires"], a:3, e:"cloth & wires"},
+      {q:"तलका मध्ये कुन तरिकाबाट chain survey मा ground मा कम नाप लिईन्छ ?", o:["Method of perpendicular offsets", "Method of oblique offsets", "Method of ties", "All involve equal measurement"], a:0, e:"Method of perpendicular offsets"},
+      {q:"तलका मध्ये कुन perpendicular offset लिन प्रयोग हुँदैन ?", o:["Line ranger", "Steel rape", "Optical square", "Cross staff"], a:0, e:"Line ranger"},
+      {q:"Invar tape के बाट बनेको हुन्छ ?", o:["Alloy", "मिश्रीत धातु", "Nickel 36%, steel 64%", "All of the above"], a:3, e:"All of the above"},
+      {q:"Chain survey गर्दा chain को ring खुकुलो भएमा नापीएको दुरीमा कस्तो असर पर्छ ?", o:["वास्तविक भन्दा नापीएको दुरी वढी हुन्छ", "वास्तविक भन्दा नापीएको दुरी कम हुन्छ", "वास्तविक दुरी नै आउँदैन", "रिङ्ग खुकुलो हुँदैन"], a:1, e:"वास्तविक भन्दा नापीएको दुरी कम हुन्छ"},
+      {q:"कुन अवस्थामा Error Positive(+ve) र Correction Negative (-ve) हुन्छ ?", o:["Tape too short भएमा", "नाप्दा Tape Horizontal नभएमा", "नाप्दा tape मा sag भएमा", "माथिका सबै"], a:3, e:"माथिका सबै अवस्थामा Error Positive र Correction Negative हुन्छ।"},
+      {q:"Chain Survey गर्दा measurement का क्रममा Survey line मा ठूलो पोखरी पर्न गएमा त्यस्तो obstacle लाई कुन वर्गमा राखिन्छ ?", o:["Obstacle in ranging", "Obstacle in chaining", "Obstacle in ranging and chaining", "It is not considered as obstacle"], a:1, e:"ठूलो पोखरी पर्नु Obstacle in chaining हो।"},      {q:"A line joining some fixed points on the main survey line is called a", o:["Check line", "Tie line", "Main line", "Base line"], a:1, e:"Tie line"},
+      {q:"Which one of the following is used for accurate survey work ?", o:["Invar tape", "Steel tape", "Linean tape", "Cloth tape"], a:0, e:"Invar tape accurate survey work का लागि प्रयोग गरिन्छ।"},      {q:"20m chain मा tolerance limit ±5mm दिइएको छुन्छ भने 30m chain मा tolerance limit कति हुन्छ ?", o:["±5mm", "±6mm", "±8mm", "±10mm"], a:2, e:"Tolerance = 5/20 × 30 = 7.5 ≈ 8mm"},
+      {q:"Invar Tape को समिश्रण कस्तो प्रकारको हुन्छ ?", o:["64% steel and 36% nickel", "64% nickel and 36% steel", "माथिका दुवै", "अन्य कुनै धातुबाट बनेको हुन्छ"], a:0, e:"64% steel and 36% nickel"},      {q:"सबै भन्दा शुद्ध Tape कुनलाई मानिन्छ ?", o:["Cloth tape", "Metallic tape", "Steel tape", "Invar tape"], a:3, e:"Invar tape"},
+
+
+
+
+
     ];
