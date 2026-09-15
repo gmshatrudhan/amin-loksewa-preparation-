@@ -93,7 +93,40 @@ window.EXTRA["Chain Survey"].mcq = [
       {q:"कुन अवस्थामा Error Positive(+ve) र Correction Negative (-ve) हुन्छ ?", o:["Tape too short भएमा", "नाप्दा Tape Horizontal नभएमा", "नाप्दा tape मा sag भएमा", "माथिका सबै"], a:3, e:"माथिका सबै अवस्थामा Error Positive र Correction Negative हुन्छ।"},
       {q:"Chain Survey गर्दा measurement का क्रममा Survey line मा ठूलो पोखरी पर्न गएमा त्यस्तो obstacle लाई कुन वर्गमा राखिन्छ ?", o:["Obstacle in ranging", "Obstacle in chaining", "Obstacle in ranging and chaining", "It is not considered as obstacle"], a:1, e:"ठूलो पोखरी पर्नु Obstacle in chaining हो।"},      {q:"A line joining some fixed points on the main survey line is called a", o:["Check line", "Tie line", "Main line", "Base line"], a:1, e:"Tie line"},
       {q:"Which one of the following is used for accurate survey work ?", o:["Invar tape", "Steel tape", "Linean tape", "Cloth tape"], a:0, e:"Invar tape accurate survey work का लागि प्रयोग गरिन्छ।"},      {q:"20m chain मा tolerance limit ±5mm दिइएको छुन्छ भने 30m chain मा tolerance limit कति हुन्छ ?", o:["±5mm", "±6mm", "±8mm", "±10mm"], a:2, e:"Tolerance = 5/20 × 30 = 7.5 ≈ 8mm"},
-      {q:"Invar Tape को समिश्रण कस्तो प्रकारको हुन्छ ?", o:["64% steel and 36% nickel", "64% nickel and 36% steel", "माथिका दुवै", "अन्य कुनै धातुबाट बनेको हुन्छ"], a:0, e:"64% steel and 36% nickel"},      {q:"सबै भन्दा शुद्ध Tape कुनलाई मानिन्छ ?", o:["Cloth tape", "Metallic tape", "Steel tape", "Invar tape"], a:3, e:"Invar tape"},
+      {q:"Invar Tape को समिश्रण कस्तो प्रकारको हुन्छ ?", o:["64% steel and 36% nickel", "64% nickel and 36% steel", "माथिका दुवै", "अन्य कुनै धातुबाट बनेको हुन्छ"], a:0, e:"64% steel and 36% nickel"},      {q:"सबै भन्दा शुद्ध Tape कुनलाई मानिन्छ ?", o:["Cloth tape", "Metallic tape", "Steel tape", "Invar tape"], a:3, e:"Invar tape"},      {q:"In chain surveying field work is limited to", o:["linear measurements only", "angular measurements only", "both linear and angular measurements", "all the above"], a:0, e:"Chain surveying मा linear measurements मात्र गरिन्छ।"},
+      {q:"Ranging is an operation of", o:["Reconnaissance", "judging the distance", "determination of slope", "Establishing intermediate points between terminals"], a:3, e:"Establishing intermediate points between terminals"},
+      {q:"Offset को distance के मा भर पर्छ ?", o:["Scale plotting", "Degree of accuracy", "Nature of ground", "माथिका सबै"], a:3, e:"माथिका सबै"},
+      {q:"Subsidiare line is known as ?", o:["Secondary line", "Auxilliary line", "Tie line", "All"], a:3, e:"All"},
+      {q:"Gunter's chain को प्रत्येक link को लम्बाई कति हुन्छ ?", o:["0.66 ft", "1 ft", "0.5 ft", "0.75ft"], a:0, e:"0.66 ft"},
+      {q:"Short offsets are measured with", o:["An ordinary chain", "An invar tape", "A metallic tape", "A steel tape"], a:0, e:"An ordinary chain"},      {q:"Chain survey मा accuracy measurement के कुरामा depend हुँदैन ?", o:["Length of offset", "Plotting गर्ने scale", "Detail को महत्व", "Chain line को साधारण layout"], a:1, e:"Plotting गर्ने scale"},
+      {q:"Oblique offset प्रयोग कुन काम गरिन्छ ?", o:["Property line को boundary locate गर्न", "Right angle बाट लिइएको नाप चेक गर्न", "Important detail लिन", "माथिको सबै"], a:2, e:"Important detail लिन"},
+      {q:"Engineers chain को प्रत्येक link को लम्बाई कति हुन्छ ?", o:["0.66 ft", "1 ft", "0.5 ft", "0.75ft"], a:1, e:"1 ft"},
+      {q:"Length of standard arrow is ...........cm.", o:["10", "20", "30", "40"], a:3, e:"40"},      {q:"20m & 30m chain को maximum total tolerance कति हुन्छ ?", o:["+- 2mm, +- 8mm", "+- 3mm, +- 5mm", "+- 5mm, +- 8mm", "+- 8mm, +- 5mm"], a:2, e:"+- 5mm, +- 8mm"},
+      {q:"यदि दुईवटा station A & B विच नापि गर्नु पर्दा विचमा raised (hill) ground परेमा chain survey मा कुन obstacle हुन्छ ?", o:["Vision (ranging) obstructed", "Chaining obstructed", "Vision & chaining obstructed", "None"], a:0, e:"Vision (ranging) obstructed"},
+      {q:"Chain survey मा प्रयोग हुने arrows के बाट बनेका हुन्छ ?", o:["cupper", "steel", "Iron", "aluminium"], a:1, e:"steel"},      {q:"साधारणतया rough or hilley area मा chaining को permissible error कति हुन्छ ?", o:["1in 100", "1:250", "1:1000", "1 in 2000"], a:1, e:"1:250"},
+      {q:"Chain survey मा right angle set गर्ने सबैभन्दा राम्रो यन्त्र कुन हो ?", o:["Optical square", "Prism Square", "Site square", "Tape"], a:1, e:"Prism Square"},
+      {q:"Chain को शुरु र अन्तमा प्रयोग हुने handle के बाट बनेको हुन्छ ?", o:["cupper", "brass", "iron", "aluminium"], a:1, e:"brass"},
+      {q:"Invar tape मा कुन धातुको मिश्रण रहेको हुन्छ ?", o:["iron and steel", "nickel and steel", "aluminium and steel", "cupper and steel"], a:1, e:"nickel and steel"},      {q:"Chain survey मा main station भन्नाले ?", o:["मुख्य survey line जोड्ने point", "survey line को शुरु र अन्तिममा खडागरेका point", "A र B दुबै", "A मात्र"], a:2, e:"A र B दुबै"},
+      {q:"Chain survey मा प्रयोग हुने फिल्डबुकमा नोट कसरी गरिन्छ ?", o:["माथि बाट तल तिर", "तल बाट माथि तिर", "A र B दुबै", "Randomly"], a:0, e:"माथि बाट तल तिर"},
+      {q:"कुन tape लाई सबै भन्दा शुद्ध मानिन्छ ?", o:["linen tape", "invar tape", "steel tape", "metallic tape"], a:1, e:"invar tape"},      {q:"Chain survey को operation step कुन ठिक छ ?", o:["Ranging, Chaining, Offsetting", "Offsetting, Ranging, Chaining", "Chaining, Ranging, Offsetting", "All"], a:0, e:"Ranging, Chaining, Offsetting"},
+      {q:"Invar tape मा nickel र steel को प्रतिशत कति कति हुन्छ ?", o:["nickel 64% and steel 36%", "nickel 40% and steel 60%", "nickel 36% and steel 64%", "nickel 60% and steel 40%"], a:2, e:"nickel 36% and steel 64%"},      {q:"It is more difficult to obtain good results while measuring horizontal distance by stepping", o:["Up-hill", "Down-hill", "In low undulations", "In plane areas"], a:0, e:"Up-hill"},
+      {q:"Chain को लम्बाई वास्तविक लम्बाई भन्दा लामो भयो भने नापेको दुरी", o:["लामो हुन्छ", "बराबर हुन्छ", "छोटो हुन्छ", "केही असर पर्दैन"], a:2, e:"छोटो हुन्छ"},
+      {q:"Chain survey मा right ange setout गर्ने instrument कुन हुन् ?", o:["Cross staff", "Optical square", "Site square", "All of above"], a:3, e:"All of above"},
+      {q:"Offset scale को zero mark सधैं कहाँ गरिएको हुन्छ ?", o:["Middle", "End", "Middle वा end मा", "None of the above"], a:1, e:"End"},      {q:"सबैभन्दा शुद्ध measurement दिने टेप कुन हो ?", o:["Metalic tape", "Glass fyber tape", "Invar tape", "Still tape"], a:2, e:"Invar tape"},      {q:"विशेष गरी cartenary मा प्रयोग गरिने टेप कुन हो ?", o:["Linen tape", "Inver tape", "Aluminum tape", "All of the above"], a:0, e:"Linen tape"},
+      {q:"Chain survey is generally used for", o:["areas of small extent on open ground", "areas of large in open ground", "small area which are crowded by features", "large areas which are crowded by features"], a:0, e:"areas of small extent on open ground"},
+      {q:"३:४:५ विधी कुन सिद्धान्त सँग सम्बन्धित छ ?", o:["Chain triangulation", "पाईथागोरस साध्य", "Double reflection", "समानान्तरण"], a:1, e:"पाईथागोरस साध्य"},      {q:"Measuring with a 30 M. chain, 0.01 M. too short, introduces", o:["Positive compensating error", "Negative compensating error", "Positive cumulative error", "Negative cumulative error"], a:2, e:"Positive cumulative error"},
+      {q:"The additional lines which are measured to show the correctness of the chain surveying are called :", o:["Check lines", "Proof lines", "Tie lines", "All of above"], a:0, e:"Check lines"},
+      {q:"Greater accuracy in linear measurements ,is obtained by", o:["Tachometry", "Direct chaining", "Direct taping", "All of above"], a:2, e:"Direct taping"},
+
+
+
+
+
+
+
+
+
+
 
 
 

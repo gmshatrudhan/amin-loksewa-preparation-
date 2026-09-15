@@ -81,7 +81,33 @@ window.EXTRA["Compass Survey Introduction"].mcq = [
       {q:"Zero declination भएका Points जोड्ने काल्पनिक रेखालाई के भनिन्छ ?", o:["Agonic line", "Isogonic line", "Contour line", "ISO bar"], a:0, e:"Agonic line"},
       {q:"Magnetic Declination भन्नाले के जनाउँछ ?", o:["True meridian र grid meridian बिचको कोण", "True meridian र magnetic meridian बिचको कोण", "माथिका दुवै", "कुनै पनि होइन"], a:1, e:"True meridian र magnetic meridian बिचको कोण"},      {q:"Grid bearing र True bearing को फरक लाई के भनिन्छ ?", o:["Declination", "Meridian", "Convergence", "Grid magnetic angle"], a:2, e:"Convergence"},
       {q:"Bearing नाप्ने कार्य कस्तो Measurement हो ?", o:["Horizontal", "Vertical", "Zenithal", "कुनै पनि होइन"], a:0, e:"Horizontal"},
-      {q:"कुनै रेखाको Whole circle bearing 150⁰ भए Quadrantal bearing कति होला ?", o:["S30⁰E", "S60⁰W", "N30⁰E", "N60⁰W"], a:0, e:"WCB 150° = S30°E"},
+      {q:"कुनै रेखाको Whole circle bearing 150⁰ भए Quadrantal bearing कति होला ?", o:["S30⁰E", "S60⁰W", "N30⁰E", "N60⁰W"], a:0, e:"WCB 150° = S30°E"},      {q:"Back bearing of a line is equal to", o:["Fore bearing ± 90°", "Fore bearing ± 180°", "Fore bearing ± 360°", "Fore bearing ± 270°"], a:1, e:"Fore bearing ± 180°"},
+      {q:"Whole circle bearing measure गर्ने compass कुन हो ?", o:["prismatic compass", "surveyors compass", "both of above", "non of above"], a:0, e:"prismatic compass"},      {q:"Tripod नचाहिने compass कुन हो ?", o:["Surveyor", "Prismatic", "माथिका दुबै", "कुनैपनि होईन"], a:1, e:"Prismatic compass हातमा नै राखेर प्रयोग गर्न सकिन्छ (tripod आवश्यक पर्दैन)। Surveyor's compass भने tripod वा stand मा राखेर मात्र प्रयोग गरिन्छ।"},      {q:"The bearings of the lines AB and BC are 146° 30' and 68° 30'. The included angle ABC is", o:["102°", "78°", "45°", "None of these"], a:0, e:"Bearing of BA = 146°30' + 180° = 326°30'. Bearing of BC = 68°30' + 360° = 428°30'. Included angle ABC = 428°30' − 326°30' = 102°."},
+      {q:"कुन कम्पासको प्रयोग गर्दा sighting र reading संग सँगै गरिन्छ ?", o:["prismatic compass", "surveyors compass", "both of above", "non of above"], a:1, e:"surveyors compass"},      {q:"कुनै रेखाको True Bearing बराबर", o:["Magnetic Bearing ± Magnetic declination", "Magnetic Declination ± True declination", "True Meridian ± Magnetic declination", "Magnetic Declination ± Magnetic Bearing"], a:0, e:"Magnetic Bearing ± Magnetic declination"},
+      {q:"Quadrantal Bearing system मा N35⁰30' E को back ward Bearing कुन हो ?", o:["E350⁰30' N", "W35⁰30'S", "S35⁰30'N", "S35⁰30'W"], a:3, e:"S35⁰30'W"},
+      {q:"Prismatic compass is considered more accurate than a surveyor's compass, because", o:["It is provided with a better magnetic needle", "It is provided with a sliding glass in the object vane", "Its graduations are in whole circle bearings", "It is provided with a prism to facilitate reading of its graduated circle"], a:3, e:"It is provided with a prism to facilitate reading of its graduated circle"},
+      {q:"कुन compass हतमा नै राखेर प्रयोग गर्न सकिन्छ ?", o:["prismatic compass", "surveyors compass", "both of above", "non of above"], a:0, e:"prismatic compass"},      {q:"ABCD is a regular parallelogram plot of land whose angle BAD is 60°. If the bearing of the line AB is 30°, the bearing of CD, is", o:["90°", "120°", "210°", "270°"], a:2, e:"Bearing of CD = 30° + 180° = 210°"},
+      {q:"Surveyors compass ले कुन Bearing measure गर्छ ?", o:["QB", "WCB", "QB & WCB", "माथिका सबै"], a:0, e:"QB"},
+      {q:"Which of the below is not a temporary adjustment of prismatic compass?", o:["Centring", "Levelling", "Focussing prism", "Adjusting sight vane"], a:3, e:"Adjusting sight vane"},      {q:"The bearings of traverse legs AB and BC are N52°45' E and N34°30' E respectively. The deflection angle is", o:["18° 15' E", "18° 15' N", "18° 15' W", "18° 15' L"], a:3, e:"Deflection angle = 52°45' - 34°30' = 18°15' L"},
+      {q:"True meridian of different places", o:["Converge from the South Pole to the North Pole", "Converge from the North Pole to the South Pole", "Converge from the equator to the poles", "Run parallel to each other"], a:1, e:"Converge from the North Pole to the South Pole"},
+      {q:"The bearing of lines OA and OB are 16° 10' and 332° 18', the value of the included angle BOA is", o:["316° 10'", "158° 28'", "348° 08'", "43° 52'"], a:3, e:"Included angle = 360° - 332°18' + 16°10' = 43°52'"},      {q:"The true meridian of a place is the line in which earth's surface is intersected by a plane through", o:["East and west points", "Zenith and nadir points", "North and south geographical poles", "North and south magnetic poles"], a:2, e:"North and south geographical poles"},
+      {q:"The direction of a line relative to a given meridian is called:", o:["Bearing", "Declination", "Angle", "Dip"], a:0, e:"Bearing"},
+      {q:"AB रेखाको bearing 67⁰ छ र AB र BC बीचको कोण 270⁰ भए BC भुजाको bearing कति हुन्छ ?", o:["187⁰", "177⁰", "167⁰", "157⁰"], a:3, e:"Bearing of BC = 67° + 270° - 180° = 157°"},      {q:"तलको figure का आधारमा line BC को Bearing निकाल्नुहोस । यदि Bearing of line AB=200° Angle CBA =300°", o:["20°", "60°", "80°", "320°"], a:3, e:"Bearing of BC = Bearing of AB + ∠CBA − 180° = 200° + 300° − 180° = 320°. (Bearing of BA = 200° − 180° = 20°; 20° + 300° = 320°.)"},
+      {q:"कुनै रेखाको WCB र QB बराबर भएमा कुन Quadrant मा पर्छ ?", o:["First", "Second", "Third", "Forth"], a:0, e:"First"},      {q:"Grid meridian र magnetic meridian विचको कोणलाई के भनिन्छ ?", o:["Grid convergence", "Magnetic Declination", "Gird Declination", "Grid Magnetic angle"], a:3, e:"Grid Magnetic angle"},
+      {q:"कुनै रेखाको back bearing 25ᵍ भए fore bearing कति हुन्छ ?", o:["25ᵍ", "125ᵍ", "205⁰", "205ᵍ"], a:3, e:"205ᵍ"},
+      {q:"The graduation in prismatic compass", o:["are inverted", "are from 0°-360°", "have zero at south", "all the above"], a:3, e:"all the above"},      {q:"The horizontal angle between the true meridian and magnetic meridian at a place is called", o:["azimuth", "declination", "local attraction", "magnetic bearing"], a:1, e:"declination"},      {q:"The bearing of two traverse legs AB and BC are N52° 45' E and N34° 30' E respectively. The deflection angle is", o:["18⁰ 15' E", "18⁰ 15' N", "18⁰ 15' W", "18⁰ 15' L"], a:3, e:"18⁰ 15' L"},
+      {q:"Magnetic bearing of a survey line at any place", o:["Remains constant", "Changes systematically", "Varies differently In different months of the year", "Is always greater than true bearing"], a:2, e:"Varies differently In different months of the year"},
+
+
+
+
+
+
+
+
+
+
+
 
 
 

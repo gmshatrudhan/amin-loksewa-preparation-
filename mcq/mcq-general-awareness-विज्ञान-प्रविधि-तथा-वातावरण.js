@@ -27,5 +27,12 @@ window.EXTRA["विज्ञान, प्रविधि तथा वात�
       {q:"नेपालको सबैभन्दा पुरानो अस्पताल कुन हो?", o:["कान्ति बाल अस्पताल", "पाटन अस्पताल", "त्रिवि शिक्षण अस्पताल", "वीर अस्पताल"], a:3, e:"वीर शमशेरले वि.सं. १९४७ (सन् १८९०) मा स्थापना गरेको वीर अस्पताल नेपालको सबैभन्दा पुरानो अस्पताल हो।"},
       {q:"BCG खोप केका लागि दिइन्छ?", o:["पोलियो", "दादुरा", "हेपाटाइटिस", "क्षयरोग"], a:3, e:"BCG खोप बच्चा जन्मँदा क्षयरोगविरुद्ध दिइन्छ। पोलियोका लागि OPV, दादुराका लागि खोप दिइन्छ।"},
       {q:"Radar is an acronym for", o:["Radiation and ranging", "Radio detection and ranging", "Radiation and response", "Radiation and reporting"], a:1, e:"RADAR stands for RAdio Detection And Ranging."},
-      {q:"Electromagnetic spectrum is", o:["A cluster of radiation carrying energy", "The radiation of visible light", "The colour band in the visible light", "Radiation emitted by the sun"], a:0, e:"The electromagnetic spectrum is the range of all types of electromagnetic radiation."}
+      {q:"Electromagnetic spectrum is", o:["A cluster of radiation carrying energy", "The radiation of visible light", "The colour band in the visible light", "Radiation emitted by the sun"], a:0, e:"The electromagnetic spectrum is the range of all types of electromagnetic radiation."},
+      {q:"वायुमण्डलीय चाप नाप्न प्रयोग गरिने उपकरणलाई के भनिन्छ ?", o:["ब्यारोमिटर", "सोनोमिटर", "हाइड्रोमिटर", "क्यालोरीमिटर"], a:0, e:"ब्यारोमिटर"},      {q:"आकाशीय पिण्डलाई हेर्न प्रयोग गरिने उपकरण जसले उल्टो आकृति बनाउँछ, यो कुन उपकरण हो ?", o:["पेरिस्कोप", "टेलिस्कोप", "स्टेरिस्कोप", "माथिका सबै"], a:1, e:"टेलिस्कोप"},      {q:"साधारण सूसमदर्शक यन्त्रको अर्को नाम कुन हो ?", o:["Astronomical telescope", "Compound microscope", "Magnifying glass", "Binoculars"], a:0, e:"Astronomical telescope"},      {q:"Standard वायुमण्डलीय चापको मान कति हुन्छ ?", o:["760 mmHg", "780 mmHg", "700 mmHg", "750 mmHg"], a:0, e:"760 mmHg"},
+      {q:"कुन विधुत चुम्बकीय तरङ्ग होईन ?", o:["light wave", "sound wave", "radio wave", "x-ray wave"], a:1, e:"sound wave"},
+      {q:"मिराज देखिनुको कारण प्रकाशको............... हो ?", o:["Dispersion", "Diffraction", "Interference", "Total internal reflection"], a:3, e:"Total internal reflection"},
+
+
+
+
     ];

@@ -59,7 +59,12 @@ window.EXTRA["GNSS"].mcq = [
       {q:"Which of the following is incorrect about differential GPS?", o:["It reduces the effect of selective availability.", "It reduces ionospheric error.", "It reduces geometric dilution of position.", "It increases accuracy."], a:2, e:"DGPS corrects atmospheric and satellite errors, but it cannot reduce the geometric dilution of position (GDOP)."},
       {q:"The NAV STAR / GPS control segment comprises:", o:["The space segment, the user segment and the ground segment", "A ground segment and the INMARSAT geostationary satellites", "A master control station, a back-up control station and five monitoring stations", "A master control station, a back-up control station and five monitoring stations and the INMARSAT geostationary satellites"], a:3, e:"The full composition of the NAVSTAR GPS control segment includes the master station, backup, monitoring stations, and INMARSAT satellites."},
       {q:"WGS भन्नाले के बुझाउँछ ?", o:["World Geographic System", "World Geographic Science", "World Geodetic System", "क र ख दुबै"], a:2, e:"WGS = World Geodetic System"},      {q:"हाल नापी विभागले सगरमाथाको उचाई मापन गर्न कुन विधि अपनाएको छ ?", o:["GPS Observation", "Sprid Leveling", "Trigonometric Leveling", "माथिका सबै"], a:0, e:"GPS Observation"},
-      {q:"GPS Survey किन गरिन्छ ?", o:["Horizontal Control पत्ता लगाउन", "Vertical Control पत्ता लगाउन", "both", "कुनै पनि होइन"], a:2, e:"both"},
+      {q:"GPS Survey किन गरिन्छ ?", o:["Horizontal Control पत्ता लगाउन", "Vertical Control पत्ता लगाउन", "both", "कुनै पनि होइन"], a:2, e:"both"},      {q:"G.P.S. के को लागि उपयुक्त हुन्छ ?", o:["x निकाल्न", "y निकाल्न", "z निकाल्न", "x, y, z निकाल्न"], a:3, e:"x, y, z निकाल्न"},      {q:"तलका कुन equipment मा lens हुँदैन", o:["Theodolite", "Total station", "Level", "GPS Receiver"], a:3, e:"GPS Receiver"},
+      {q:"GPS को पूरा रुप के हो ?", o:["Geographical positioning system", "Geometrical pointing system", "Global Positioning System", "Geographical information system"], a:2, e:"Global Positioning System"},      {q:"हाल नापी विभागले सगरमाथाको उचाई नाप्न कुन विधी प्रयोग गर्दैछ ?", o:["Direct measurement", "Triangulaion", "GPS", "All of the above"], a:2, e:"GPS"},
+      {q:"हाल नापी विभागले सगरमाथाको उचाई नाप्न कति वटा विधी प्रयोग गर्दैछ ?", o:["1", "2", "3", "4"], a:0, e:"1"},
+
+
+
 
 
     ];

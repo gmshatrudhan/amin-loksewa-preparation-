@@ -44,7 +44,26 @@ window.EXTRA["Mathematics (Trigonometry)"].mcq = [
       {q:"5 sin-3=0 भए tan को मान कति हुन्छ ?", o:["3/4", "3/5", "4/3", "5/3"], a:0, e:"sinθ = 3/5, cosθ = 4/5, tanθ = 3/4"},
       {q:"यदि Sinθ = 0.5 छ भने Tanθ बराबर कति हुन्छ ?", o:["1/√3", "1/√2", "√3", "0.450"], a:0, e:"sinθ = 0.5, θ = 30°, tan30° = 1/√3"},      {q:"Which one of following is correct ?", o:["Cos A = (b²+c²-a²)/2bc", "Cos A = (c²+a²-b²)/2ac", "Cos A = (a²+b²-c²)/2ab", "All"], a:3, e:"Cosine rule का सबै रूप सही छन्।"},
       {q:"If the vertical angle is 50⁰ Then, zenithal angle is.", o:["50⁰", "130⁰", "40⁰", "ख र ग दुबै"], a:1, e:"Zenithal angle = 90° + 40° = 130°"},      {q:"Sin A = Cos A भए A को मान कति होला ?", o:["0⁰", "30⁰", "45⁰", "60⁰"], a:2, e:"Sin A = Cos A ⇒ tan A = 1 ⇒ A = 45°"},      {q:"कुनै रुख र रुखको छायाँको लम्बाई बराबर छ भने Angle of elevation कति हुन्छ ?", o:["३०⁰", "४५⁰", "६०⁰", "९०⁰"], a:1, e:"जब छायाँ र उचाई बराबर हुन्छ, angle of elevation 45° हुन्छ।"},
-      {q:"समकोण त्रिभुजमा tan A = 3/4 भए COS A को मान कति हुन्छ ?", o:["3/4", "3/5", "4/5", "2/5"], a:2, e:"tan A = 3/4 भए, sin A = 3/5, cos A = 4/5"},
+      {q:"समकोण त्रिभुजमा tan A = 3/4 भए COS A को मान कति हुन्छ ?", o:["3/4", "3/5", "4/5", "2/5"], a:2, e:"tan A = 3/4 भए, sin A = 3/5, cos A = 4/5"},      {q:"एउटा सिधा रुख हावाको कारणले भाँचिएर भूमिमा टुप्पोले छुदा ३०° को कोण बन्न गयो भने उक्त रुख कहाँनेर बाट भाँचिएको होला ?", o:["1/2 भागबाट", "1/3 भागबाट", "1/4 भागबाट", "2/3 भागबाट"], a:1, e:"मानौं रुख भाँचिने ठाउँको उचाई h र भाँचिएको भागको लम्बाई L। जमिनसँग ३०° को कोण बनेकोले sin३०° = h/L = 1/2, अर्थात् L = 2h। जम्मा उचाई H = h + L = 3h। त्यसैले रुख कुल उचाईको १/३ भागबाट भाँचिएको हुन्छ।"},      {q:"If the circumference of a circle is divided into 360 congruent parts, the angle subtended by one part at the center of the circle is called", o:["angle", "radian", "degree", "minute"], a:2, e:"degree"},      {q:"(secθ - tanθ)² = ?", o:["1 + sinθ/1 - sinθ", "(1 - sinθ)/(1 + sinθ)", "(1 - cosθ)/(1+cosθ)", "cosecθ"], a:1, e:"(secθ - tanθ)² = (1 - sinθ)/(1 + sinθ)"},
+      {q:"If l and r are in cms, then the unit of θ is in", o:["radians", "degrees", "cm²", "None of Above"], a:0, e:"radians"},      {q:"समतल सतहमा बनेको घरको भित्तामा जमिनसंग 60⁰ को कोण बनाएर राखिएको 2√3 m. लामो भँयाङ वाट कति माथि सम्म चढ्न सकिन्छ ?", o:["1m", "2m", "3m", "√2m"], a:2, e:"उचाई = 2√3 × sin60° = 2√3 × √3/2 = 3m"},
+      {q:"The central angle of an arc of a circle whose length is equal to the radius of the circle is called the", o:["degree", "radian", "minute", "second."], a:1, e:"radian"},      {q:"Trigonometric function मा Tangent को मान कुन quadrant मा पर्ने कोणको लागि सधैं positive हुन्छ ?", o:["I Quadrant", "II Quadrant and IV Quadrant", "III Quadrant", "I and III Quadrant"], a:3, e:"Tangent पहिलो र तेस्रो quadrant मा positive हुन्छ।"},
+      {q:"तलका मध्ये कुन सही छ ?", o:["1 grade < 1 radian < 1 degree", "1 grade < 1 degree < 1 radian", "1grade = 1 radian = 1 degree", "1radian < 1 degree < 1 grade"], a:1, e:"1 grade < 1 degree < 1 radian"},
+      {q:"1 radian =", o:["57⁰17'45\"", "1⁰", "180⁰", "180'"], a:0, e:"1 radian ≈ 57°17'45\""},      {q:"tan θ = sinθ/cosθ कुन triangle सँग सम्बन्धित छ ?", o:["समकोण त्रिभुज", "समद्विबाहु त्रिभुज", "समबाहु त्रिभुज", "विसमबाहु त्रिभुज"], a:0, e:"समकोण त्रिभुज"},
+      {q:"The system of measurement in which the angle is measured in radians called the", o:["Circular system", "Sexagesimal system", "MKS system", "CGS system"], a:0, e:"Circular system"},      {q:"tan θ = 2 sinθ भए θ मान कति Degree हुन्छ ?", o:["60⁰", "45⁰", "30⁰", "90⁰"], a:0, e:"tanθ = 2sinθ, sinθ/cosθ = 2sinθ, cosθ = 1/2, θ = 60°"},
+      {q:"A radian is the measure of the central angle of an arc of a circle whose length is equal to the", o:["half of radius of the circle", "diameter of circle", "radius of the circle", "one-third of radius of the circle"], a:2, e:"radius of the circle"},
+      {q:"यदि slope angle θ भए l slope distance भए Horizontal distance कति हुन्छ ?", o:["l sinθ", "l tan θ", "l cos θ", "l cot θ"], a:2, e:"Horizontal distance = l cosθ"},      {q:"Cos θ = Sin θ भए θ को मान कति होला ?", o:["30⁰", "45⁰", "60⁰", "90⁰"], a:1, e:"45⁰"},
+      {q:"धरहराको उचाई र छाया बराबर भइको बेला छायाको अन्तिम बिन्दुले धरहराको टुप्पोमा कति प्रेडको कोण बनाउँदछ ?", o:["30ᵍ", "45ᵍ", "60ᵍ", "50ᵍ"], a:1, e:"45ᵍ"},      {q:"30°, 60° र 90° angle भएको triangle को sides कुन हुन्छ ?", o:["1:1:√2", "1:√2:√3", "1:√3:2", "none"], a:2, e:"1:√3:2"},
+      {q:"If sinθ - cosθ = 0, then cosecθ equal to....", o:["√3/2", "1/2", "√2", "1"], a:2, e:"sinθ = cosθ, θ = 45°, cosec45° = √2"},
+      {q:"If 4sin²θ cot²θ = 3, then θ equal to ....", o:["0⁰","30⁰","45⁰","60⁰"], a:1, e:"4sin²θ · cot²θ = 4sin²θ · cos²θ/sin²θ = 4cos²θ = 3 → cos²θ = 3/4 → cosθ = √3/2 → θ = 30⁰."},
+
+
+
+
+
+
+
+
+
 
 
 

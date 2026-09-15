@@ -81,7 +81,49 @@ window.EXTRA["Plane Table Survey"].mcq = [
       {q:"The principle of plane table is", o:["Principle of parallelism", "Principle of Intersection", "Principle of perpendicularity", "All of the above"], a:0, e:"Plane table को principle Principle of parallelism हो।"},      {q:"Orientation भनेको के हो ?", o:["Plan table लाई राम्रोसँग सेट गर्नु", "कुनै उत्तर दिशा पत्ता लगाउनु", "नक्सा र जमिनको स्वरुपलाई समानान्तर पार्नु", "माथिको कुनै पनि होइन"], a:2, e:"नक्सा र जमिनको स्वरुपलाई समानान्तर पार्नु"},
       {q:"Intersection is preferred instead of radiation when", o:["The points are inaccessible", "It is not possible to measure any distance", "The points are too far and invisible", "The lengths are too short"], a:1, e:"It is not possible to measure any distance"},      {q:"कुनै ज्ञात विन्दुबाट अज्ञात बिन्दुमा bisect गरि दुरी नापी नक्सामा locate गर्ने विधिलाई के भनिन्छ ?", o:["Radiation", "Intersection", "Resection", "All"], a:0, e:"Radiation"},
       {q:"Plane table orientation गर्ने उपयुक्त method कुन हो ?", o:["Back sighting", "Three point problem", "Two point problem", "Orientation by compass"], a:0, e:"Back sighting"},
-      {q:"Plane table मा प्रयोग हुने level कुन हो ?", o:["Dumpy level", "Y level", "Sprit level", "Auto level"], a:2, e:"Sprit level"},
+      {q:"Plane table मा प्रयोग हुने level कुन हो ?", o:["Dumpy level", "Y level", "Sprit level", "Auto level"], a:2, e:"Sprit level"},      {q:"Ground को station र पेपरमा draw गरेको बिन्दु एउटै vertical axis मा पार्नु लाई के भनिन्छ ?", o:["Centering", "Leveling", "Orientation", "Non of the above"], a:0, e:"Centering"},
+      {q:"P.T. लाई कुनै स्थानमा खडागर्दा Tripod कुन अवस्थाको भएमा राम्रो मानिन्छ ?", o:["सम त्रिभुज", "चतुर्भुज", "षट्भुज", "माथिका सबै"], a:0, e:"सम त्रिभुज"},
+      {q:"कुन Plane Table मा tangent screw हुन्छ ?", o:["Johnson Table", "Coast Survey Table", "Traverse Table", "माथिका सबै"], a:0, e:"Johnson Table"},      {q:"Intersection विधिद्वारा कुनै point locate गर्दा कम्तिमा कतिवटा instrument station को आवश्यकता पर्छ ?", o:["१", "२", "३", "४"], a:1, e:"२"},
+      {q:"Hilly area को सर्मै गर्दा कस्तो Alidade प्रयोग गरिन्छ ?", o:["Telescopic", "Plane", "Simple", "माथिका सबै"], a:0, e:"Telescopic"},
+      {q:"विभिन्न किसिमका Plane Table मध्ये सबैभन्दा शुद्ध कुनलाई मानिन्छ ?", o:["Johnson Table", "Coast Survey Table", "Traverse Table", "माथिका सबै"], a:1, e:"Coast Survey Table"},      {q:"कस्तो अवस्थामा Compass बाट P.T. orientation गरिन्छ ?", o:["फिल्डमा एउटा point बाहेक अरु नभएमा", "परिशुद्धता भन्दा बढि चाँडै नक्सा चाहिएमा", "A र B दुबै", "कुनै पनि होईन"], a:2, e:"A र B दुबै"},
+      {q:"Plane table मा Sprit level को प्रयोग किन गरिन्छ ?", o:["Centering गर्न", "Leveling गर्न", "Orientation गर्न", "कुनै पनि होईन"], a:1, e:"Leveling गर्न"},
+      {q:"नेपालमा प्रयोग भई रहेका Plane Table कुन हुन् ?", o:["Johnson Table", "Coast Survey Table", "Traverse Table or simple plane table", "माथिका सबै"], a:2, e:"Traverse Table or simple plane table"},      {q:"कुन अमिल्दो छ ?", o:["Clinometer", "Height indicator", "Alidade", "Plumbob"], a:0, e:"Clinometer"},
+      {q:"Plane table को levelling गर्नु कस्तो ठाउँमा आवश्यक छ ?", o:["Hilly area मा", "Plain area मा", "A र B दुबै", "Non of the above"], a:0, e:"Hilly area मा"},
+      {q:"Small scale को नक्साको लागि र दुरी नाप नसकिने वा कठिन स्थानको लागि P.T. बाट नक्सा बनाउदा कुन विधि प्रयोग गरिन्छ ?", o:["Radiation", "Intersection", "Resection", "कुनै पनि होईन"], a:1, e:"Intersection"},
+      {q:"Plane table को प्रयोग गरी नापी कार्य गर्नु पर्दा कुन मौसममा बढी असर हुने गर्दछ ?", o:["वर्षातको बेला", "तुशारो परेको बेला", "हुरी वतास चल्दाको बेला", "माथिका सबै"], a:3, e:"माथिका सबै"},
+      {q:"Plane Table को मोटाई साधारणतया कति हुन्छ ?", o:["2 cm", "20 mm", "0.02 m", "माथिका सबै"], a:3, e:"माथिका सबै"},      {q:"P.T. गर्दा detail survey को लागि कुन विधि साधारण तथा उपयुक्त छ ?", o:["Radiation", "Intersection", "Resection", "Traversing"], a:0, e:"Radiation"},
+      {q:"तिनवटा points जोडी बने सर्कल यदि P.T. orientation गर्नलाई राखेको स्थान बाट पास हुन्छ भन्ने त्यसलाई के भनिन्छ ?", o:["Great circle", "Danger circle", "षट्भुज", "माथिका सबै"], a:1, e:"Danger circle"},
+      {q:"The instrument which is used in plane tabling for obtaining horizontal and vertical distances directly without resorting to chaining, is known as", o:["Plane alidade", "Telescopic alidade", "Clinometer", "Tacheometer"], a:1, e:"Telescopic alidade"},      {q:"plane table लाई यसको vertical axis मा घुमाएर जमिन र नक्साको corresponding line हरुलाई समानान्तर बनाउने प्रकृयालाई के भनिन्छ ?", o:["Levelling", "Centering", "Orientation", "Setting"], a:2, e:"Orientation"},
+      {q:"Graphical triangulation कसलाई भनिन्छ ?", o:["Resection", "Radiation", "Intersection", "माथिका सबै"], a:2, e:"Intersection"},
+      {q:"P.T. मा पहिलेदेखि Plotted point ग्राउण्ड point सँग Centering गरेर मिलाउन कुन Instrument प्रयोग गरिन्छ ?", o:["Plumbing fork", "U-fork", "A र B दुबै", "कुनै पनि होईन"], a:2, e:"A र B दुबै"},
+      {q:"Sight Vane लाई के पनि भनिन्छ ?", o:["Simple alidade", "Plane alidade", "Sight rule", "All of the above"], a:0, e:"Simple alidade"},      {q:"Intersection method of detailed plotting is most suitable for", o:["Forests", "Urban areas", "Hilly areas", "Plains"], a:2, e:"Hilly areas"},
+      {q:"To orient a plane table at a point with two inaccessible points, the method generally adopted, is", o:["Intersection", "Resection", "Radiation", "Two point problem"], a:3, e:"Two point problem"},
+      {q:"Plane table सामान्यतया कुन काठ बाट बनेको हुन्छ ?", o:["Pine wood", "Sisam wood", "Sal wood", "All of above"], a:0, e:"Pine wood"},
+      {q:"The instrument used for accurate centering in plane table survey is", o:["Spirit level", "Alidade", "Plumbing fork", "Trough compass"], a:2, e:"Plumbing fork"},      {q:"Telescopic alidade बाट दुरी नाप्दा I ×100- I ×H मा रहेको H को value कति हुन्छ ?", o:["100Cos²θ", "100.Sin²θ", "100SinθCosθ", "100Sin²θCosθ"], a:1, e:"100.Sin²θ"},
+      {q:"कुन Plane table survey सँग सम्बन्धित छैन ?", o:["sight vane", "spirit level", "compass", "optical plummet"], a:3, e:"optical plummet"},
+      {q:"Telescopic Alidade बाट के को नापिँदैन ?", o:["दिशा", "दुरी", "दिशा र दुरी", "वेरिङ"], a:3, e:"वेरिङ"},
+      {q:"Large Scale मा Plane Tabling गर्दा detail plot गर्न कुन विधि उपयुक्त हुन्छ ?", o:["Resection", "Radiation", "Intersection", "Traversing"], a:1, e:"Radiation"},      {q:"Telescopic Alidade मा टेलिस्कोपलाई के मा घुमाउन सकिन्छ ?", o:["Horizontal plane", "Vertical plane", "Horizontal axis मा", "(B. र (C. दुबै"], a:3, e:"(B. र (C. दुबै"},
+      {q:"Plane table Survey कुन सिद्धान्तमा आधारित छ ?", o:["Perspective", "Pythagoras", "Parallelism", "Triangulation"], a:2, e:"Parallelism"},
+      {q:"The two-point problem as compared to the three-point problem is", o:["more accurate", "quicker", "both (a) & (b)", "more laborious"], a:0, e:"more accurate"},
+      {q:"Telescope alidade बाट horizontal distance निकाल्ने सुत्र कुन हो ?", o:["I x 100-I x H", "I x (100-H)", "-I x H + I x 100", "माथिका सबै"], a:3, e:"माथिका सबै"},
+      {q:"The plane table board made of", o:["Pine or take", "well-seasoned wood", "Both (A. & (B.", "Non"], a:0, e:"Pine or take"},
+      {q:"Plane table को occupied position locate गर्ने विधिलाई के भनिन्छ ?", o:["Resection", "Radiation", "Intersection", "Traverse"], a:0, e:"Resection"},
+      {q:"Danger circle को कुन अवस्थामा बढि ध्यान दिनुपर्दछ ?", o:["Two point problem", "P.D station nearer at grate circle", "Inside resection", "Out sight resection"], a:1, e:"P.D station nearer at grate circle"},      {q:"Through compass is used in plane table for obtaining", o:["Centering", "Levelling", "Orientation", "All"], a:2, e:"Orientation"},
+      {q:"The method of intersection in plane table survey is sometimes called", o:["Numerical triangulation", "Graphical triangulation", "Triangulation", "Trilateration"], a:1, e:"Graphical triangulation"},
+      {q:"1:25000 मान नापको नक्सा बनाउँदा बोर्डलाई station माथि centering गर्दा स्टेशनको कति परिधि भित्र केन्द्रीत गर्नु पर्दछ ?", o:["6.25m", "6.25cm", "5.25m", "5.25cm"], a:0, e:"6.25m"},
+      {q:"Resection पत्ता लगाउने trail & error method कुन method भनिन्छ ?", o:["Beaman", "Layman", "Gunter", "Lehman"], a:3, e:"Lehman"},      {q:"In setting up plane table at any station", o:["Leveling is done first", "Centering is done first", "Both leveling and centering are done simultaneously", "Orientation is done first"], a:2, e:"Both leveling and centering are done simultaneously"},
+      {q:"The 'fix' of a plane table from three known points, is good if", o:["Middle station is nearest", "Middle station is farthest", "Either the right or left station is nearest", "None of these"], a:0, e:"Middle station is nearest"},
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -104,7 +104,7 @@ window.EXTRA["Instruments & Its Maintenance"].mcq = [
       {q:"The colour of silicagel is", o:["White", "Pink", "Blue", "Red"], a:2, e:"Silicagel को colour Blue हुन्छ।"},
       {q:"Theodolite को प्रयोग गर्दा centering भयो कि भएन भनेर के ले हेरिन्छ ?", o:["Telescope", "Optical plummet", "Optical squre", "Bubble"], a:1, e:"Optical plummet ले centering भयो कि भएन हेरिन्छ।"},
       {q:"कुन Area computation गर्ने यन्त्र हो ?", o:["टायल", "Computing scale", "Planimeter", "All"], a:3, e:"माथिका सबै Area computation गर्ने यन्त्र हुन्।"},
-      {q:"Optical square मा दुईवटा mirror को surface बिचको कोण कति हुन्छ ?", o:["45⁰", "50⁰", "90⁰", "90⁰"], a:0, e:"Optical square मा 45⁰ कोण हुन्छ।"},
+      {q:"Optical square मा दुईवटा mirror को surface बिचको कोण कति हुन्छ ?", o:["45⁰", "50⁰", "90⁰", "120⁰"], a:0, e:"Optical square मा 45⁰ कोण हुन्छ।"},
       {q:"तलका मध्ये कुन यन्त्र कोण नाप प्रयोग गरिदैन ?", o:["Surveyors compass", "Theodolite", "EDM", "Total station"], a:2, e:"EDM कोण नाप प्रयोग गरिदैन।"},
       {q:"Mine survey मा प्रयोग हुने theodolite कुन हो ?", o:["Mining theodolite", "Gyro theodolite", "Pentax theodolite", "Wild theodolite"], a:1, e:"Mine survey मा Gyro theodolite प्रयोग हुन्छ।"},
       {q:"Subtense bar ले नाप्ने दुरी कस्तो हुन्छ ?", o:["Horizontal", "Vertical", "Slope", "None"], a:0, e:"Subtense bar ले Horizontal दुरी नाप्छ।"},
@@ -132,7 +132,48 @@ window.EXTRA["Instruments & Its Maintenance"].mcq = [
       {q:"Clinometer कुन प्रयोजनका लागि प्रयोग गरिन्छ ?", o:["Horizontal angle measure गर्न", "Vertical angle measure गर्न", "माथिका दुवै", "Distance Measure गर्न"], a:1, e:"Vertical angle measure गर्न"},
       {q:"EDM सर्वप्रथम कहिले आविष्कार भयो ?", o:["1910", "1920", "1940", "1950"], a:2, e:"EDM सर्वप्रथम 1940 मा आविष्कार भयो।"},
       {q:"Line of collimation भन्नाले के बुझिन्छ ?", o:["Optical र eye piece को centre जोड्ने रेखा", "Eye piece को centre र diaphragm को cross-wire जोड्ने रेखा", "Objective को centre र diaphragm को cross-wire जोड्ने रेखा", "None of the above"], a:2, e:"Objective को centre र diaphragm को cross-wire जोड्ने रेखा"},      {q:"Vertical axis मा Theodolite लाई Horizontal plane मा घुमाउने कार्यलाई के भनिन्छ ?", o:["Traversing", "Swinging", "Transiting", "Centering"], a:1, e:"Swinging"},
-      {q:"Clinometer को reading कुन value हो ?", o:["cot", "tan", "sine", "cos"], a:1, e:"tan"},
+      {q:"Clinometer को reading कुन value हो ?", o:["cot", "tan", "sine", "cos"], a:1, e:"tan"},      {q:"डिजिटल प्रविधिबाट नाप नक्सा हुने क्षेत्रमा टोटल स्टेसनमा संकलन हुने डाटालाई कुन format मा set गरिन्छ ?", o:["Easting, Northing, Elevation, Remark", "Northing, Easting, Elevation, Remark", "Northing, Easting, Remark, Elevation", "जुन गरेपनि हुन्छ"], a:0, e:"Easting, Northing, Elevation, Remark"},
+      {q:"Theodolite मा धेरै सेट पढ्दा कुन त्रुटी कम हुन्छ ?", o:["collimation error", "Index error", "graduation error", "माथिका सबै error"], a:2, e:"graduation error"},
+      {q:"A clinometer is used for", o:["Measuring angle of slope", "Correcting line of collimation", "Setting out right angles", "Defining natural features"], a:0, e:"Measuring angle of slope"},      {q:"Pick up the correct statement from the following :", o:["Box sextant is used for the measurement of horizontal angles", "Gradiometer is used for setting out any required gradient", "Line ranger is used for locating intermediate stations on a survey line", "All the above"], a:3, e:"All the above"},
+      {q:"The bubble tube is nearly filled with", o:["Alcohol or chloroform", "A liquid which is very mobile", "A liquid having low freezing point", "All the above"], a:3, e:"All the above"},
+      {q:"Theodolite मा line of collimation र Horizontal axis को सम्बन्ध कस्तो हुन्छ ?", o:["एक आपसमा Perpendicular", "एक आपसमा parellel", "एक आपसमा coincide", "एक आपसमा सम्बन्ध हुँदैन"], a:0, e:"एक आपसमा Perpendicular"},
+      {q:"Cross hairs in surveying telescopes, are fitted", o:["In the objective glass", "At the centre of the telescope", "At the optical centre of the eye piece", "In front of the eye piece"], a:3, e:"In front of the eye piece"},
+      {q:"EDM को accuracy कति हुन्छ ?", o:["per part million", "part per million", "part per thousand", "per part thousand"], a:1, e:"part per million"},
+      {q:"Clinometers कुन value पढ्न प्रयोग गरिन्छ ?", o:["Sin", "Cos", "Tangent", "Cot"], a:2, e:"Tangent"},      {q:"Theodolite मा line of collimation र altitude level axis को सम्बन्ध कस्तो हुन्छ ?", o:["एक आपसमा Perpendicular", "एक आपसमा parellel", "एक आपसमा coincide", "एक आपसमा सम्बन्ध हुँदैन"], a:0, e:"एक आपसमा Perpendicular"},
+      {q:"The construction of optical square is based, on the principle of optical", o:["Reflection", "Refraction", "Double refraction", "Double reflection"], a:3, e:"Double reflection"},
+      {q:"लेन्सको सामर्थ्यको dioptre एकाइमा नापिन्छ भने Focal length लाई कुन एकाइमा नापिन्छ ?", o:["मिटर", "सेन्टिमिटर", "मिलिमिटर", "माइक्रोमिटर"], a:0, e:"मिटर"},
+      {q:"The angle between two plane mirrors of optical square, is", o:["20°", "45°", "50ᵍ", "both (b) and (c)"], a:1, e:"45°"},      {q:"Theodolite मा left face र right face किन लिइन्छ ?", o:["collimation error हटाउन", "collimation error घटाउन", "collimation error बढाउन", "collimation error नै हुँदैन"], a:0, e:"collimation error हटाउन"},
+      {q:"Theodolite मा plate level axis र vertical axis को सम्बन्ध कस्तो हुन्छ ?", o:["एक आपसमा perpendicular", "एक आपसमा parellel", "एक आपसमा coincide", "एक आपसमा सम्बन्ध हुँदैन"], a:0, e:"एक आपसमा perpendicular"},
+      {q:"While rotating the theodolite in the horizontal plane, the bubble of the bubble tube takes up the same position in its tube, it indicates", o:["The rotation axis is vertical", "The trunnion axis is horizontal", "The line of collimation is perpendicular to vertical axis", "None of the above"], a:0, e:"The rotation axis is vertical"},
+      {q:"Subtense bar is used to measure:", o:["Slope distance", "Horizontal distance", "Vertical distance", "None of the above"], a:1, e:"Horizontal distance"},
+      {q:"लामो दुरी नाप्ने EDM मा कुन signal प्रयोग गरिन्छ ?", o:["Infrared", "Microwave", "Visible light", "All"], a:1, e:"Microwave"},      {q:"Axis of telescopic भन्नाले", o:["Object glass optical centre र cross wire जोड्ने रेखा", "Objective glass र eye piece को optical centre लाई जोड्ने रेखा", "Eye piece को centre र cross wire सम्म जोड्ने रेखा", "eye- piece को center र हरेक object सम्म जोड्ने रेखा"], a:0, e:"Object glass optical centre र cross wire जोड्ने रेखा"},
+      {q:"In optical reading instruments", o:["The vertical circle is usually continuous from 0° to 359°", "The readings increase when the telescope is elevated in the face left position", "The readings decrease when the telescope is elevated in the face right position", "All the above"], a:3, e:"All the above"},
+      {q:"The imaginary line passing through the intersection of cross hairs and the optical centre of the objective, is known as", o:["Line of sight", "Line of collimation", "Axis of the telescope", "None of these"], a:1, e:"Line of collimation"},
+      {q:"Wild T₃ theodolite को Horizontal circle को diameter कति हुन्छ ?", o:["135mm", "135cm", "135dm", "None"], a:0, e:"135mm"},      {q:"Substance bar बाट दुरी निकाल्ने शुत्र के हो ?", o:["s/ (tanθ₂ - tanθ₁)", "Ks sinθ - c sinθ", "D = S/2 cot θ/2", "माथिका सबै"], a:2, e:"D = S/2 cot θ/2"},
+      {q:"The ratio of the angles subtended at the eye, by the virtual image and the object, is known as telescopes", o:["Resolving power", "Brightness", "Field of view", "Magnification"], a:3, e:"Magnification"},
+      {q:"A theodolite can measure", o:["Difference in level", "Bearing of line", "Zenith angle", "All of the above"], a:3, e:"All of the above"},
+      {q:"Wild theodolite को shortest focusing distance कति हुन्छ ?", o:["०.० मीटर", "१.१ मीटर", "२.२ मीटर", "३.३ मीटर"], a:1, e:"१.१ मीटर"},
+      {q:"French cross staff बाट कति angle setout हुन्छ ?", o:["45⁰", "90⁰", "both A & B", "nither A nor B"], a:2, e:"both A & B"},
+      {q:"Right angle set गर्न telescope भएको equipment कुन हो ?", o:["Prism square", "Site square", "Optical square", "Line ranger"], a:1, e:"Site square"},      {q:"The real image of an object formed by the objective must lie", o:["In the plane of cross hairs", "At the centre of the telescope", "At the optical centre of the eye-piece", "Anywhere inside the telescope"], a:0, e:"In the plane of cross hairs"},
+      {q:"Line of collimanetion भन्नाले", o:["Cross wire को intersection र objective glass को optical centre बाट जाने काल्पनिक रेखा", "Eye-piece देखि cross wire जोड्ने काल्पनिक रेखा", "Eye-piece देखि object glass सम्म जोड्ने काल्पनिक रेखा", "माथिको सबै रेखाहरु"], a:0, e:"Cross wire को intersection र objective glass को optical centre बाट जाने काल्पनिक रेखा"},
+      {q:"यान्त्रिक अनुलम्ब सूचकले theodolite के गर्नलाई सहयोग गर्छ ?", o:["Centering", "Levelling", "Orientation", "All of the above"], a:0, e:"Centering"},
+      {q:"The longitudinal section of the surface of bubble tube is", o:["Straight", "Circular", "parabolic", "Elliptic"], a:1, e:"Circular"},      {q:"Sub-tense bar बाट कस्तो दुरी प्राप्त हुन्छ ?", o:["Slope distance", "vertical distance", "Horizontal distance", "All"], a:2, e:"Horizontal distance"},
+      {q:"Theodolite कुन कार्यमा प्रयोग हुने यन्त्र हो ?", o:["Horizontal angle नाप्न", "vertical angle नाप्न", "Bearing नाप्न", "माथिका सबै"], a:3, e:"माथिका सबै"},
+      {q:"Which are the fundamental lines of a Theodolite?", o:["3", "4", "5", "6"], a:1, e:"4"},      {q:"The sensitivity of a bubble tube can be increased by", o:["increasing the diameter of the tube", "decreasing the length of bubble", "increasing the viscosity of liquid", "decreasing the radius of curvature of tube"], a:0, e:"increasing the diameter of the tube"},
+      {q:"Turnion axis ले कुन axis लाई बुझाउँछ ?", o:["horizontal axis", "vertical axis", "axis of telescope", "axis bubble tube"], a:0, e:"horizontal axis"},
+      {q:"नेपालले दुरी नाप्न कुन धनबखम प्रयोग गर्दछ ?", o:["visible", "infrared", "micro wave", "all of above"], a:0, e:"visible"},
+      {q:"Theodolite मा index error को मान कतिको सम्मलाई बजअभुत गर्न सकिन्छ ?", o:["5ᵍ", "2ᶜᵍ", "200ᶜᵍ", "1ᶜᵍ"], a:0, e:"5ᵍ"},      {q:"A clinometers is used for", o:["Measuring angle of slope", "Correcting line of collimation", "Setting out right angles", "Defining natural features"], a:0, e:"Measuring angle of slope"},
+      {q:"Removal of parallax, may be achieved by focusing", o:["The objective", "The eye- piece", "The objective and the eye- piece", "None of these"], a:2, e:"The objective and the eye- piece"},
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -72,7 +72,59 @@ window.EXTRA["Mathematics (Algebra & Geometry)"].mcq = [
       {q:"एउटा चतुर्भुजको एक साइडको लम्बाई ४० मी. अर्को साइडको लम्बाई ३८ मी. र चौडाई १० मी. भए क्षेत्रफल कति हुन्छ ?", o:["३९० व.मी.", "४९० व.मी.", "३९५ व.मी.", "३८० व.मी."], a:0, e:"क्षेत्रफल = ३९ × १० = ३९० व.मी."},
       {q:"A(3,-2) र B(6,4) भए AB को दुरी कति हुन्छ ?", o:["√85", "√79", "√33", "3√5"], a:3, e:"दुरी = √[(6-3)² + (4-(-2))²] = √(9+36) = √45 = 3√5"},
       {q:"√6×√15×√10 को मान कति हुन्छ ?", o:["30", "2√30", "40", "20√3"], a:0, e:"√(6×15×10) = √900 = 30"},
-      {q:"कुनै वर्गको परिमिति 4x भए क्षेत्रफल कति हाेला ?", o:["x m²", "x²m²", "x³ m²", "x⁴m²"], a:1, e:"परिमिति = 4a = 4x, a = x, क्षेत्रफल = x² m²"},
+      {q:"कुनै वर्गको परिमिति 4x भए क्षेत्रफल कति हाेला ?", o:["x m²", "x²m²", "x³ m²", "x⁴m²"], a:1, e:"परिमिति = 4a = 4x, a = x, क्षेत्रफल = x² m²"},      {q:"x⁰ को मान कति हुन्छ ?", o:["x⁰", "nˣ", "0", "1"], a:3, e:"कुनै पनि संख्याको घात 0 भएमा त्यसको मान 1 हुन्छ।"},
+      {q:"x + y = 8 र x - y = 2 भए x र y को मान कति हुन्छ ?", o:["x=5, y=3", "x=6, y=2", "x=4, y=4", "x=3, y=1"], a:0, e:"जोड्दा 2x = 10, x = 5, y = 3"},
+      {q:"The equation of the circle, whose centre is (0,0) and radius is 'r' is", o:["(x-1)² + (y-1)² = r²", "x² + y² = r²", "x² - y² = r²", "(x+1)² + (y+1)² = r²"], a:1, e:"केन्द्र (0,0) र त्रिज्या r भएको वृत्तको समीकरण x² + y² = r² हुन्छ।"},
+      {q:"समकोणी त्रिभुजका दुईवटा कोणको मान (x + 8)⁰ र (x + 12)⁰ भए x⁰ को मान कति होला ?", o:["30⁰", "35⁰", "70⁰", "None of the above"], a:1, e:"(x+8) + (x+12) = 90, 2x + 20 = 90, 2x = 70, x = 35"},
+      {q:"लम्बाई चौडाई भन्दा २ मि. बढी भएको आयतको परिमिती २० मि. भए लम्बाई कति मिटर होला ?", o:["६ से.मि.", "४ मि.", "६ मि.", "९ मि."], a:2, e:"2(l + b) = 20, l + b = 10, l = b + 2, b + 2 + b = 10, 2b = 8, b = 4, l = 6"},
+      {q:"x² - 16 = 0 भए x को मान कति होला ?", o:["-4", "+4", "माथिका दुबै", "कुनैपनि होईन"], a:2, e:"x² = 16, x = ±4"},
+      {q:"तलका मध्ये कुन Three dimension figure होइन ?", o:["Prism", "Sphere", "Cylinder", "Circle"], a:3, e:"Circle एक Two-dimensional figure हो।"},
+      {q:"If ΔABC, if AB = AC and < A = 40⁰, then <B equal to", o:["40⁰", "50⁰", "60⁰", "70⁰"], a:3, e:"AB = AC भए <B = <C, <A + <B + <C = 180, 40 + 2<B = 180, <B = 70⁰"},      {q:"कुनै एउटा solid sphere को volume कति हुन्छ ?", o:["3/4 π r²", "3/4 π r³", "4/3 π r³", "π r²"], a:2, e:"Volume of sphere = 4/3 π r³"},
+      {q:"An equilateral triangle has the same internal angles of value", o:["80ᵍ", "66ᵍ", "60⁰", "66⁰"], a:2, e:"Equilateral triangle को प्रत्येक internal angle 60° हुन्छ।"},
+      {q:"What is the value of the diagonal of a square, if 'a' is its side", o:["2a", "a√2", "√2a", "√a"], a:1, e:"Diagonal = a√2"},
+      {q:"Value of b² - 4ac determines nature of roots, for real and different roots, b² - 4ac is:", o:["lesser than 0", "equal to 0", "greater than 0", "None of above"], a:2, e:"b² - 4ac > 0 हुनुपर्छ।"},
+      {q:"Coordinates of midpoint of line joining two points (1, 2) and (4, 8) are:", o:["(2.5, 10)", "(5, 5)", "(5, 10)", "(2.5, 5)"], a:3, e:"Midpoint = ((1+4)/2, (2+8)/2) = (2.5, 5)"},      {q:"If the centre of two circles coincide, these circles are called", o:["Concentric", "Eccentric", "Centric", "Diametric"], a:0, e:"Concentric"},
+      {q:"What is the equation of a line parallel with the x-axis?", o:["x = y", "x = 5", "y = 5", "All of the above"], a:2, e:"y = 5"},
+      {q:"What is the slope of a line having coordinates (1,1) & (5,5).", o:["1/5", "5/1", "90⁰", "45⁰"], a:1, e:"Slope = (5-1)/(5-1) = 4/4 = 1"},
+      {q:"20 = 3x + 8; x = ?", o:["2", "3", "4", "5"], a:2, e:"3x = 12, x = 4"},
+      {q:"Value of b² - 4ac determines nature of roots, for real and equal roots, b² - 4ac is:", o:["lesser than 0", "greater than 0", "equal to 0", "None of above"], a:2, e:"b² - 4ac = 0"},
+      {q:"Coordinates of midpoint of line joining two points (16, 4) and (36, 6) are:", o:["(26, 5)", "(5,26)", "(10, 1)", "(1, 10)"], a:0, e:"Midpoint = ((16+36)/2, (4+6)/2) = (26, 5)"},      {q:"If m1 and m2 be slope of two line, what is condition of parallel between them.", o:["m1 x m2 =1", "m1 = m2", "m1/m2 = 1", "m1 x m2 =0"], a:1, e:"m1 = m2"},
+      {q:"If y = 3x + 12 and y = 5,what is x ?", o:["7/3", "3/7", "-7", "-7/3"], a:3, e:"5 = 3x + 12, 3x = -7, x = -7/3"},
+      {q:"Value of b² - 4ac determines nature of roots, for not-real roots, b² - 4ac is:", o:["lesser than 0", "equal to 0", "greater than 0", "one of above"], a:0, e:"lesser than 0"},
+      {q:"Consider a line passing through (1, 2) and (4, 8), gradient of this line is equal to:", o:["1 / 2", "-1 / 2", "2", "-2"], a:2, e:"Gradient = (8-2)/(4-1) = 6/3 = 2"},
+      {q:"Equilateral triangle को area 16√3 cm² भएमा यसको perimeter कति हुन्छ ?", o:["8", "16", "24", "64"], a:2, e:"Area = √3/4 a² = 16√3, a² = 64, a = 8, Perimeter = 24"},
+      {q:"36m लामो र 30m चौडाई भएको आयताकार जग्गाको बाहिर चारैतिर 3m चौडाई भएको बाटो खोल्दा बाटोले कति क्षेत्रफल ओगट्दा ?", o:["1080m²", "990m²", "432m²", "234m²"], a:2, e:"बाटो जग्गाको बाहिर भएकोले बाहिरी आयत (३६+६) × (३०+६) = ४२ × ३६ = १५१२ m²। जग्गा = ३६ × ३० = १०८० m²। बाटोको क्षेत्रफल = १५१२ − १०८० = ४३२ m²।"},      {q:"दुई बिन्दु बीचको Slope पत्ता लगाउन प्रयोग गरिने सुत्र कुन होला ?", o:["√((x₂ - x₁)² + (y₂ - y₁)²)", "(y₂ - y₁)/(x₂ - x₁)", "(x₂ + x₁)/(y₁ + y₂)", "(x₂ - x₁)/(y₂ - y₁)"], a:1, e:"Slope = (y₂ - y₁)/(x₂ - x₁)"},
+      {q:"Simplify 5/2 ÷ 1/x", o:["5x / 2", "5 / 2x", "2 / 5x", "2x / 5"], a:0, e:"5/2 × x/1 = 5x/2"},
+      {q:"Sum of roots of a quadratic equation is equal to:", o:["-b / 2a", "-2b / a", "-b / a", "b / a"], a:2, e:"-b / a"},
+      {q:"(3⁰·⁶)⁵/³ =", o:["0", "1", "2", "3"], a:3, e:"(3^0.6)^(5/3) = 3^(0.6 × 5/3) = 3^1 = 3"},
+      {q:"Find the distance between (17,12) and (9,6)", o:["3√2", "√18", "Both", "None"], a:3, e:"दुरी = √[(17−9)² + (12−6)²] = √(64+36) = √100 = 10। ३√२ = √१८ ≈ ४.२४ मात्र हुने भएकोले दुवै मिल्दैन — सही विकल्प छैन।"},
+      {q:"The union of two non-collinear rays which have a common endpoint is called the", o:["angle", "radian", "degree", "minute"], a:0, e:"angle"},
+      {q:"Ellipse को major axis बराबर कुन हुन्छ ?", o:["a", "b", "2a", "2b"], a:2, e:"2a"},      {q:"Simplify a(c - b) - b(a - c)", o:["ac - 2ab - bc", "ac - 2ab + bc", "ac + 2ab + bc", "ac + bc"], a:1, e:"a(c - b) - b(a - c) = ac - ab - ab + bc = ac - 2ab + bc"},
+      {q:"कुनै वर्गको परिमिति 4x मी. भए क्षेत्रफल कति हुन्छ ?", o:["4x²m.sq.", "x²m.", "x²m.sq.", "4xm.sq."], a:2, e:"परिमिति = 4a = 4x, a = x, क्षेत्रफल = x² m²"},
+      {q:"x + 1/x = 2 भए x² + 1/x² को मान कति हुन्छ ?", o:["2", "4", "6", "8"], a:0, e:"x² + 1/x² = (x + 1/x)² - 2 = 4 - 2 = 2"},
+      {q:"आसन्न कोणहरु (adjacent angles) को योग (sum) कति हुन्छ ?", o:["90⁰", "180⁰", "270⁰", "360⁰"], a:1, e:"आसन्न कोणहरुको योग 180° हुन्छ।"},
+      {q:"Consider a line passing through (16, 4) and (36, 6), gradient of this line is equal to:", o:["-0.1", "0.1", "-10", "10"], a:1, e:"Gradient = (6-4)/(36-16) = 2/20 = 0.1"},
+      {q:"³√64 =", o:["1", "2", "3", "4"], a:3, e:"³√64 = 4"},
+      {q:"यदि कुनै rectangular कोठाको लम्बाई चौडाई भन्दा दुईगुणा बढि छ र उक्त कोठाको perimeter 36 m भएमा कोठाको क्षेत्रफल कति होला ?", o:["36 sqm.", "64 sqm.", "72 sqm.", "84 sqm."], a:2, e:"2(l + b) = 36, l + b = 18, l = 2b, 2b + b = 18, b = 6, l = 12, Area = 72 sqm"},
+      {q:"The angles of a triangle are in the ratio of 2:3:5, the smallest angle is", o:["35⁰", "45⁰", "36⁰", "72⁰"], a:2, e:"2x + 3x + 5x = 180, 10x = 180, x = 18, smallest = 2x = 36°"},      {q:"Triangle का भुजाहरु 9m, 12m, 15m भएको त्रिभुजको क्षे.फ. कति होला ?", o:["581 m²", "54 m²", "5.4 m²", "54 cm²"], a:1, e:"Area = 1/2 × 9 × 12 = 54 m²"},
+      {q:"The vertex of an angle in standard form is at", o:["(1,0)", "(0,1)", "(1,1)", "(0,0)"], a:3, e:"(0,0)"},
+      {q:"For a geometrical figure, if the sum of interior angle is 900⁰ then how many sides are there", o:["5","6","7","8"], a:2, e:"Sum of interior angles = (n − 2) × 180° = 900° → n − 2 = 5 → n = 7 sides."},
+      {q:"What type of equation is x² = 4", o:["Linear", "Rational", "Radical", "Quadratic"], a:3, e:"Quadratic"},
+      {q:"यदि 4²ˣ⁻³ = 1/32 भए x बराबर कति होला ?", o:["1/2", "1/3", "1/4", "1/5"], a:0, e:"4²ˣ⁻³ = 2⁻⁵, 2²⁽²ˣ⁻³⁾ = 2⁻⁵, 4x - 6 = -5, 4x = 1, x = 1/4"},      {q:"Pythagoras theorem कुन त्रिकोणसँग सम्बन्धित छन् ?", o:["Isosceles triangle", "Acute angle triangles", "Equilateral triangle", "all the above"], a:3, e:"all the above"},
+      {q:"Area of triangle = √(s(s-a)(s-b)(s-c)) भए s ले के जनाउँदछ ?", o:["Semi major perimeter", "Semi perimeter", "Sextant perimeter", "Spherical access"], a:1, e:"Semi perimeter"},      {q:"Two paths 2 m. wide are on across the middle of a rectangular garden of length 20m. and breadth 15 m. then the area of path is...", o:["70m²", "68m²", "66m²", "60m²"], a:2, e:"Area = 20×2 + 15×2 - 2×2 = 40 + 30 - 4 = 66 m²"},
+      {q:"The total surface of area of cube is 96m² then its volume is.....", o:["16m³", "32m³", "64m³", "96m³"], a:2, e:"6a² = 96, a² = 16, a = 4, Volume = 64 m³"},
+      {q:"(3⁰·⁶)⁵/³ Equal to.......", o:["3", "3¹", "1/3⁻¹", "All"], a:3, e:"All"},
+      {q:"A (6,0) र B (0,12) तथा P (8,10) र Q (4,8) भएर जाने रेखाहरु विचमा के सम्बन्ध हुन्छ ?", o:["Parallel", "Perpendicular", "Coincide", "No relation"], a:0, e:"Parallel"},
+      {q:"Isosceles right triangle मा sides को ratio तलका मध्ये कुन हुन्छ ?", o:["1:1: √2", "1: √2 : √3", "1: √3 : 2", "None"], a:0, e:"1:1: √2"},
+
+
+
+
+
+
+
+
+
 
 
 

@@ -96,7 +96,36 @@ window.EXTRA["Levelling"].mcq = [
       {q:"नापी विभाग खगोल तथा भू-मापन महाशाखाले प्रकाशन गरेको leveling instruction book लाई के भनिन्छ ?", o:["Blue book", "Black book", "Yellow book", "Red book"], a:0, e:"Blue book"},
       {q:"Mean sea level को उचाई कति कायम गरिएको छ ?", o:["0 m", "100 m", "1000 m", "10000 m"], a:0, e:"0 m"},
       {q:"Datum बाट line of sight सम्मको दुरीलाई के भनिन्छ ?", o:["Reduced level", "Height of instrument", "Height of target", "Instrument of height"], a:1, e:"Height of instrument"},
-      {q:"लेभल यन्त्रमा axis of bubble tube र vertical axis को सम्बन्ध कस्तो हुन्छ ?", o:["Concide", "Parallel", "Perpendicular", "जुनसुकै हुन सक्छ"], a:2, e:"Perpendicular"},
+      {q:"लेभल यन्त्रमा axis of bubble tube र vertical axis को सम्बन्ध कस्तो हुन्छ ?", o:["Concide", "Parallel", "Perpendicular", "जुनसुकै हुन सक्छ"], a:2, e:"Perpendicular"},      {q:"Leveling मा दुईय staff को विचमा Instrument किन राखिन्छ ?", o:["collimation error हटाउन", "collimation error घटाउन", "collimation error बढाउन", "collimation error नै हुँदैन"], a:0, e:"collimation error हटाउन"},      {q:"During levelling if back sight is more than foresight", o:["The forward staff is at lower point", "The back staff is at lower point", "The difference in level, cannot be ascertained", "None of these"], a:1, e:"The back staff is at lower point"},      {q:"Determining the difference in elevation between two points on the surface of the earth, is known as", o:["Levelling", "Simple leveling", "Differential leveling", "Longitudinal levelling"], a:2, e:"Differential leveling"},
+      {q:"तलका मध्ये शुद्ध leveling कुन हो ?", o:["Trigonometric leveling", "Barometric leveling", "Sprit leveling", "Hypsometric leveling"], a:2, e:"Sprit leveling"},
+      {q:"Level instrument मा telescope किन राखिन्छ ?", o:["Line of sight horizontal बनाउन", "line of sight provide गर्न", "bubble लाई centre मा ल्याउन", "माथिका सबै कार्य गर्न"], a:1, e:"line of sight provide गर्न"},      {q:"A relatively fixed point of known elevation above datum, is called", o:["Bench mark", "Datum point", "Reduced level", "Reference point"], a:0, e:"Bench mark"},
+      {q:"The surface of zero elevation around the earth, which is slightly irregular and curved, is known as", o:["Mean sea level", "Geoid surface", "Level surface", "Horizontal surface"], a:0, e:"Mean sea level"},
+      {q:"बक्रता र आवर्तनको संसोधनको शुत्र के हो ?", o:["0.67D²", "0.067 D²", "0.0673 D²", "0.007 D²"], a:2, e:"0.0673 D²"},
+      {q:"Vertical axis सँग Bubble tube को Axis के हुनु पर्दछ ?", o:["समकोण", "समानान्तर", "सिधा", "माथिको सबै हुनुपर्छ"], a:0, e:"समकोण"},      {q:"Levelling मा zero error कम्मो error हो ?", o:["Instrumental", "Personal", "Natural", "All of the above"], a:0, e:"Instrumental"},
+      {q:"कुनको RL बढी शुद्ध मानिन्छ ?", o:["B.M.", "Trig-Point", "Clinometer बाट आएको R.L.", "Spot hight को R.L."], a:0, e:"B.M."},
+      {q:"लेभलिङ्ग गर्दा सबभन्दा पहिले लिइने reading कुन हो ?", o:["Back sight reading", "Fore sight reading", "B.M. reading", "माथिको कुनै पनि होइन"], a:0, e:"Back sight reading"},
+      {q:"When the bubble of the level tube of a level, remains central", o:["Line of sight is horizontal", "Axis of the telescope is horizontal", "Line of collimation is horizontal", "Geometrical axis of the telescope is horizontal"], a:2, e:"Line of collimation is horizontal"},
+      {q:"The line normal to the plumb line is known as", o:["Horizontal line", "Level line", "Datum line", "Vertical line"], a:0, e:"Horizontal line"},      {q:"Levelling गर्दा Level Instrument लाई दुई स्टाफको बीचमा राखेर reading गर्दा कुन error हट्छ ?", o:["Graduation", "Collimation", "refraction", "Natural"], a:1, e:"Collimation"},
+      {q:"Levelling कार्यमा staff राख्दा observer तिर ढल्किएमा आउने error लाई कुन error भनिन्छ ?", o:["Instrumental", "Personel", "Natural", "कुनैपनि होईन"], a:1, e:"Personel"},
+      {q:"पृथ्वीको spherical surface (MSL) सँग Parallel रहेको सतहलाई के भनिन्छ ?", o:["Horizontal surface", "Verticalsurace", "Level surface", "Geoid surface"], a:2, e:"Level surface"},
+      {q:"Levelling मा Back र fore staff reading दुबै reading लिने बिन्दुलाई के भनिन्छ ?", o:["Change point", "Turning point", "माथिका दुबै", "Known point"], a:2, e:"माथिका दुबै"},
+      {q:"Levelling कार्यमा instrument राखिएको ठाउँलाई के भनिन्छ ?", o:["station", "change point", "observation station", "माथिका कुनै पनि होइन"], a:0, e:"station"},
+      {q:"कुनै पनि ताल (पोखरी) मा रहेको स्थिर पानीको सतहले के लाई जनाउँछ ?", o:["Vertical Surface", "Horizontal surface", "level surface", "Oblique surface"], a:2, e:"level surface"},
+      {q:"Indirect method या levelling भन्नाले कुन levelling लाई बुझाउँछ ?", o:["triciac levelling", "Trigonometric levelling", "spirit levelling", "All of above"], a:1, e:"Trigonometric levelling"},
+      {q:"कुनै एउटा leveling कार्यमा बिन्दु A को staff Reading 1.432m र बिन्दु B को staff reading 0.541m रहेछ , यदि बिन्दु B को उचाई 1550m भए A को उचाई कति होला ?", o:["1551.432m", "1550.541m", "1550.891m", "1549.109m"], a:2, e:"A को उचाई = 1550 + 0.541 - 1.432 = 1549.109m"},
+      {q:"Levelling मा नाप लिने कार्य कुन सतहमा गरिन्छ ?", o:["Horizontal plane", "Vertical Plane", "Both of above", "Slope Plane"], a:0, e:"Horizontal plane"},      {q:"Leveling को सन्दर्भमा कुन कथन सही हो ?", o:["Station भन्नाले Level set गरेको ठाउँ हो ।", "Station भन्नाले Stadia rod राखेको ठाउँ हो ।", "Station भन्नाल computer बसेको ठाउँ हो ।", "माथिका कुनै पनि होइन ।"], a:0, e:"Station भन्नाले Level set गरेको ठाउँ हो ।"},
+      {q:"खगोल तथा भूमापन महाशाखाले leveling instruction book मा दिए अनुसार उच्च परिशुद्धताको लेभलिङ्ग मा permissible error कति छ ?", o:["1.1√K mm", "2.0√K mm", "5.0√K mm", "All"], a:0, e:"1.1√K mm"},
+      {q:"Levelling मा कुन error हुँदैन ?", o:["Natural", "Personal", "Instrumental", "Centering"], a:3, e:"Centering"},
+      {q:"नदिका दुई किनारामा पर्ने बिन्दुहरुको levelling कुन विधि उत्तम छ ?", o:["Differential levelling", "Fly levelling", "Check levelling", "Reciprocal levelling"], a:3, e:"Reciprocal levelling"},      {q:"Height of instrument method of levelling is", o:["more accurate than rise and fall method", "less accurate than rise and fall method", "quicker & less tedious for large number of I.S.", "none of the above"], a:2, e:"quicker & less tedious for large number of I.S."},      {q:"In reciprocal leveling, the error which is not completely eliminated, is due to", o:["Earth's curvature", "Non-adjustment of line of collimation", "Refraction", "Non-adjustment of the bubble tube"], a:3, e:"Non-adjustment of the bubble tube"},
+
+
+
+
+
+
+
+
+
 
 
 

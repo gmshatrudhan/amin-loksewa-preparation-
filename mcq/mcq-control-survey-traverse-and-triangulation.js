@@ -129,7 +129,37 @@ window.EXTRA["Traverse and Triangulation"].mcq = [
       {q:"८९७ नं. भएको स्टेशन कुन दर्जाको नियन्त्रण बिन्दु हो ?", o:["प्रथम", "दोश्रो", "तेश्रो", "चौथो"], a:2, e:"तेश्रो"},
       {q:"ट्राभर्समा के measurement गरिन्छ ?", o:["Distance", "Angle", "Angle and distance", "कुनै पनि होइन"], a:2, e:"Angle and distance"},
       {q:"The meathod of control survey in which the sides of inter connecting triangles are observed is -", o:["Triangulation", "Trilateration", "Traverse", "None"], a:1, e:"Trilateration"},
-      {q:"Triangulation survey मा कस्तो figure लाई राम्रो मानिन्छ ?", o:["Central polygon", "Braced quadrilateral", "Triangle", "None"], a:1, e:"Braced quadrilateral"},
+      {q:"Triangulation survey मा कस्तो figure लाई राम्रो मानिन्छ ?", o:["Central polygon", "Braced quadrilateral", "Triangle", "None"], a:1, e:"Braced quadrilateral"},      {q:"नेपालको primary triangulation को layout कुन हो ?", o:["grind iron system", "central system", "both", "none"], a:1, e:"central system"},
+      {q:"Total latitude of a point is positive if it lies", o:["North of the reference parallel", "South of the reference parallel", "East of the reference parallel", "West of the reference parallel"], a:0, e:"North of the reference parallel"},
+      {q:"Under ordinary conditions, the precision of a theodolite traverse is affected by", o:["Systematic angular errors", "Accidental linear errors", "Systematic linear errors", "Accidental angular errors"], a:3, e:"Accidental angular errors"},
+      {q:"पहाडको खोच जुन ठाउँमा नियन्त्रण बिन्दु देखिदैन Fixing गर्न गाह्रो छ भने त्यस अवस्थामा कुन विधि अपनाएर नियन्त्रण बिन्दु स्थापना गरी सर्मै गर्न सकिन्छ ?", o:["P.T. Traverse", "Chain traverse", "Intersection", "माथिका सबै"], a:3, e:"माथिका सबै"},      {q:"शहरी क्षेत्रमा control point स्थापना गर्न कुन तरीका अपनाइन्छ ?", o:["Traverse", "Triangulation", "Trilateration", "माथिका सबै"], a:0, e:"Traverse"},
+      {q:"triangulation मा तलका मध्ये कुन अमिल्दो छ ?", o:["Primary Triangulation", "Geodetic triangulation", "Zero order triangulation", "Topographical triangulation"], a:2, e:"Zero order triangulation"},
+      {q:"An angle of deflection right, may be directly obtained by setting the instrument to read", o:["Zero on back station", "180° on back station", "90°", "270° on back station"], a:0, e:"Zero on back station"},      {q:"If the angular measurements of a traverse are more precise than its linear measurements, balancing of the traverse, is done by", o:["Bowditch's rule", "Transit rule", "Empirical rule", "all of the above"], a:1, e:"Transit rule"},
+      {q:"Single chain of Triangles को figure मा एउटा station बाट बढीमा कति वटा station sighting गर्न सकिन्छ ?", o:["3", "4", "5", "जति पनि"], a:0, e:"3"},
+      {q:"The most accurate method for the measurement of the base line is", o:["Invar tape method", "Tacheometric method", "EDM instrument method", "Substance bar method"], a:0, e:"Invar tape method"},      {q:"The angle between the prolongation of the preceding line and the forward line of a traverse is called", o:["Deflection angle", "Included angle", "Direct angle", "None of the above"], a:0, e:"Deflection angle"},
+      {q:"Centered polygon को figure मा interior station लाई कम्तिमा कति वटा side ले घेरेको हुन्छ ?", o:["2 वटा", "3 वटा", "4 वटा", "5 वटा"], a:1, e:"3 वटा"},      {q:"Triangulation मा सबै भन्दा राम्रो triangle कुनलाई मानिन्छ ?", o:["Simple triangle", "Isosceles trangle", "Equilateral triangle", "Right angled triangle"], a:2, e:"Equilateral triangle"},      {q:"Rough triangulation के लाई मानिन्छ ?", o:["Planning", "Reconnaissance", "Signaling", "Observation"], a:1, e:"Reconnaissance"},
+      {q:"Back bone line भन्नाले ?", o:["Longest line", "Base line", "Frame work को बिचमा X गरी तानिएको रेखा", "माथिका सबै"], a:1, e:"Base line"},
+      {q:"सुरु भएको बिन्दुमा अन्त हुने ट्राभर्स कुन हो ?", o:["Open traverse", "Look traverse", "Link traverse", "All of above"], a:1, e:"Look traverse"},      {q:"A traverse deflection angle is", o:["less than 90°", "more than 90° but less than 180°", "the difference between the included angle and 180°", "the difference between 360° and the included angle"], a:2, e:"the difference between the included angle and 180°"},
+      {q:"Phase error के सँग सम्बन्धित छ ?", o:["Planning", "Monumentation", "Signaling", "Computation"], a:2, e:"Signaling"},      {q:"नापी विभाग खगोल तथा भू-मापन महाशाखाले प्रकाशन गरेको astronomical observation instruction book लाई के भनिन्छ ?", o:["Black book", "Blue book", "Red book", "Yellow book"], a:0, e:"Black book"},
+      {q:"Close Circuit traverse मा n number of sides भए clockwise angle को योग कति हुन्छ ?", o:["(2n+4)×100ᵍ", "(2n-4)×100ᵍ", "(2n+4)×100⁰", "माथिका सबै"], a:1, e:"(2n-4)×100ᵍ"},      {q:"Forth order को triangulation मा recommended side length कति तोकेको छ ?", o:["200-2000m", "0.2-2m", "0.02-20km", "all"], a:0, e:"200-2000m"},
+      {q:"The sum of the interior angles of a closed traverse of 'n' side equal to", o:["(n-1)×180⁰", "(n-2)×180⁰", "(n-4)×180⁰", "(n+2)×180⁰"], a:1, e:"(n-2)×180⁰"},
+      {q:"The open traverse is not suitable for", o:["Road", "Canal", "Coast line", "Woods"], a:3, e:"Woods"},      {q:"If the angular and linear measurements of a traverse are of same accuracy, balancing of the traverse, is done by", o:["Bowditch's rule", "Transit rule", "Empirical rule", "all of the above"], a:0, e:"Bowditch's rule"},
+      {q:"पुर्वेक्षण गर्दा निश्चित गरिएका ट्राभर्स स्टेशनहरु पछि observation गर्दा सजिलो होस् भन्नका लागि कागजमा उतारे तयार गरिएको चित्रलाई के भनिन्छ ?", o:["Line chart", "Field specific chart", "Traverse chart", "All of the above"], a:2, e:"Traverse chart"},
+      {q:"The spherical excess for a triangle of the area 100 KM² will be approximately equal to", o:["1\"", "0.5\"", "1.5\"", "2.0\""], a:1, e:"0.5\""},
+      {q:"नेपालमा Laplace Station को संख्या कति छ ?", o:["Seven", "Seventeen", "Six", "Sixteen"], a:0, e:"Seven"},      {q:"The operation of making the algebraic sum of latitudes and departures of a closed traverse, each equal to zero, is known", o:["Balancing the sights", "Balancing the departures", "Balancing the latitudes", "Balancing the traverse"], a:3, e:"Balancing the traverse"},
+      {q:"The co-ordinate of a point measured perpendicular to the parallel, is called", o:["Total latitude", "Meridian distance", "Total departure", "Consecutive co-ordination"], a:0, e:"Total latitude"},
+      {q:"If deflection angles are measured in a closed traverse, the difference between the sum of the right -hand and that of the left hand angles should be equal to", o:["0⁰", "90⁰", "180⁰", "360⁰"], a:0, e:"0⁰"},
+
+
+
+
+
+
+
+
+
+
+
 
 
 
