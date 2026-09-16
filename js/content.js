@@ -1704,12 +1704,35 @@ const SYLLABUS = [
 ];
 
 const NOTICES = [
-  { id:1, cat:"Exam",      date:"2026-09-05", title:"First Terminal Examination Routine Published", body:"The routine for the first terminal examination has been published. Examinations begin from 2026-09-20 and run until 2026-09-30. Students must be present 15 minutes before the examination starts and must carry their admit card. Mobile phones are strictly not allowed inside the examination hall." },
-  { id:2, cat:"Result",    date:"2026-09-02", title:"Unit Test Results of Mathematics and Science", body:"Results of the unit tests for Mathematics and Science are now available in your dashboard under Test History. Students scoring below 40% are requested to attend the remedial classes starting next Sunday." },
-  { id:3, cat:"Admission", date:"2026-08-28", title:"Admission Open for the New Batch", body:"Admissions for the new batch are now open. Interested students may create a free account on this website and fill in the online enquiry form. Limited seats are available for the scholarship category." },
-  { id:4, cat:"Event",     date:"2026-08-20", title:"Inter-Class Quiz Competition", body:"An inter-class quiz competition based on the General Knowledge syllabus will be held in the main hall. Register your team of three members with your class teacher before 2026-09-10." },
-  { id:5, cat:"Exam",      date:"2026-08-12", title:"Model Question Sets Uploaded", body:"Model question sets for all six subjects have been uploaded under Syllabus → Model Question & Past Paper Syllabus. Students are advised to solve at least three sets under timed conditions." },
-  { id:6, cat:"Result",    date:"2026-07-30", title:"Scholarship Test Result", body:"The scholarship test result has been published. Selected students should contact the administration office within seven days to confirm their scholarship." }
+  { id:1, cat:"Directive", date:"2026-09-03", bs:"२०८३-०५-१८",
+    title:"सरकारी, सार्वजनिक र सामुदायिक जग्गा नाप जाँच सम्बन्धी निर्देशिका, २०८३",
+    body:"नापी विभागले सरकारी, सार्वजनिक र सामुदायिक जग्गा नाप जाँच सम्बन्धी निर्देशिका, २०८३ जारी गरेको छ। Department of Survey has issued Directive 2083 on the survey of government, public and community land. अमिनको दैनिक कामसँग प्रत्यक्ष सरोकार राख्ने भएकाले यो निर्देशिका अनिवार्य अध्ययन गर्नुहोस्।",
+    src:"https://dos.gov.np/content/117/guidelines-for-government--public-and-community-land/", srcName:"नापी विभाग — dos.gov.np", verified:"2026-09-16" },
+
+  { id:2, cat:"Info", date:"2026-09-11", bs:"२०८३-०५-२६",
+    title:"सरुवाको लागि निवेदन पेश गर्ने सम्बन्धी सूचना (नापी विभाग)",
+    body:"नापी विभाग र अन्तर्गतका निकायहरुमा कार्यरत, सरुवा हुन न्यूनतम सेवा अवधि पूरा भएका कर्मचारीहरुले अनलाइन प्रणालीबाट मात्र मिति २०८३।०५।२५ भित्र सरुवा निवेदन पेश गर्नुपर्नेछ। Staff of the Survey Department and its offices must submit transfer applications online only, by 2083-05-25.",
+    src:"https://dos.gov.np/content/118/notice-regarding-submission-of-application-for-transfer-/", srcName:"नापी विभाग — dos.gov.np", verified:"2026-09-16" },
+
+  { id:3, cat:"Exam", date:"2026-07-31", bs:"२०८३-०४-१५",
+    title:"रा.प.अनं. द्वितीय श्रेणी (प्राविधिक), खरिदार पदको परीक्षा कार्यक्रम संशोधन",
+    body:"आयोग अन्तर्गतका कार्यालयहरुबाट सञ्चालन हुने राजपत्र अनंकित द्वितीय श्रेणी (प्राविधिक), खरिदार पदको परीक्षा कार्यक्रम संशोधन गरिएको सूचना। अमिन पद यही श्रेणी र तह (प्राविधिक) मा पर्छ। Notice revising the written-exam schedule for non-gazetted second class (technical) Kharidar posts — the same class and level as Amin.",
+    src:"https://www.psc.gov.np/site_uploads/files/-554010420.pdf", srcName:"लोक सेवा आयोग — psc.gov.np (PDF)", verified:"2026-09-16" },
+
+  { id:4, cat:"Vacancy", date:"2026-04-08", bs:"२०८२-१२-२५",
+    title:"रा.प.अनं. द्वितीय श्रेणी, खरिदार वा सो सरह (प्राविधिक) पदको विज्ञापन",
+    body:"रा.प.अनं. द्वितीय श्रेणी, खरिदार वा सो सरह (प्राविधिक) र स्वास्थ्य सेवाको चौथो तहका पदहरुको बढुवा, आ.प्र. र खुला तथा समावेशी पदको विज्ञापन प्रकाशित भएको छ। Advertisement for non-gazetted second class (technical) Kharidar posts — promotion, internal and open/inclusive. अमिन तयारी गर्नेहरूले प्राविधिक खण्ड हेर्नुहोस्।",
+    src:"https://www.psc.gov.np/site_uploads/files/%E0%A4%B5%E0%A4%BF%E0%A4%9C%E0%A5%8D%E0%A4%9E%E0%A4%BE%E0%A4%AA%E0%A4%A8_2082-12-251.pdf", srcName:"लोक सेवा आयोग — psc.gov.np (PDF)", verified:"2026-09-16" },
+
+  { id:5, cat:"Exam", date:"2026-07-17", bs:"२०८३-०४-०१",
+    title:"आ.व. २०८३/०८४ को पदपूर्ति सम्बन्धी वार्षिक कार्यतालिका",
+    body:"लोक सेवा आयोगले आर्थिक वर्ष २०८३/०८४ को पदपूर्ति सम्बन्धी वार्षिक कार्यतालिका प्रकाशित गरेको छ, जसमा वर्षभरि कुन पदको विज्ञापन, लिखित परीक्षा र नतिजा कहिले हुने भन्ने तालिका छ। The PSC annual recruitment calendar for FY 2083/84 shows when each post is advertised, examined and declared — plan your attempt around it.",
+    src:"https://www.psc.gov.np/file/annual-year", srcName:"लोक सेवा आयोग — psc.gov.np", verified:"2026-09-16" },
+
+  { id:6, cat:"Info", date:"2026-09-16", bs:"",
+    title:"अमिन पदको विज्ञापन कहाँ हेर्ने — Where Amin Vacancies Are Published",
+    body:"अहिले अमिन पदका लागि मात्र कुनै खुला विज्ञापन प्रकाशित छैन। No Amin-only vacancy is open at present. अमिन पद लोक सेवा आयोगमार्फत राजपत्र अनंकित द्वितीय श्रेणी (प्राविधिक), सर्भे समूहमा र नापी विभागमार्फत करार सेवामा विज्ञापन हुन्छ। Amin posts are advertised by the PSC (non-gazetted 2nd class, technical, survey group) and on contract by the Department of Survey — check psc.gov.np and dos.gov.np regularly.",
+    src:"https://www.psc.gov.np/", srcName:"लोक सेवा आयोग — psc.gov.np", verified:"2026-09-16" }
 ];
 
 const FAQS = [

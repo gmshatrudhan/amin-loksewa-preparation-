@@ -1,6 +1,6 @@
 /* ================= APP (design + logic). content.js + data-manifest.js load before this. ================= */
 /* Question bank: 81 per-unit files (mcq + subjective + study), lazy-loaded per page - see LAZY DATA LOADER. */
-/* ==== QUESTION BANK: 2,082 MCQ + 135 written total, all with explanations ==== */
+/* ==== QUESTION BANK: 744 MCQ + 135 written total, all with explanations ==== */
 
 
 /* ---- 6 SUBJECTS: sub1-sub3 x 5 units, sub4 x 3, sub5 x 5, sub6 x 4 (27 units) ---- */
@@ -818,7 +818,7 @@ function noticeCard(n){
     <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
       <span class="badge">${esc(n.cat)}</span>${isNew?'<span class="badge new">New</span>':''}
       <span style="margin-left:auto;font-size:.8rem;color:var(--muted)">${fdate(n.date)}</span></div>
-    <h3>${esc(n.title)}</h3><p>${esc(n.body.slice(0,120))}…</p></a>`;
+    <h3>${esc(n.title)}</h3><p>${esc(n.body.slice(0,120))}…</p>${n.src?`<span style="font-size:.78rem;color:var(--brand)">\u2714 \u0906\u0927\u093f\u0915\u093e\u0930\u093f\u0915 \u0938\u094d\u0930\u094b\u0924 / Official</span>`:''}</a>`;
 }
 
 function pSyllabusList(){
@@ -1301,7 +1301,7 @@ function pTests(){
 
 function pNotices(cat){
   const list = (cat&&cat!=='All') ? NOTICES.filter(n=>n.cat===cat) : NOTICES;
-  const cats=['All','Exam','Result','Admission','Event'];
+  const cats=['All','Vacancy','Exam','Result','Directive','Info'];
   return head('Notice Board','Exam routines, results, admissions and events')+
   `<section><div class="wrap">
     <div class="filters">${cats.map(c=>`<button class="${(cat||'All')===c?'on':''}" onclick="goPage('/notice?cat='+'${c}')">${c}</button>`).join('')}</div>
@@ -1313,7 +1313,9 @@ function pNotice(id){
   return head(n.title, fdate(n.date)+' · '+n.cat, `<a href="/notice">Notice</a> / ${esc(n.title)}`)+
   `<section><div class="wrap"><div class="card prose" style="max-width:820px;margin:0 auto">
     <span class="badge">${esc(n.cat)}</span><span style="margin-left:8px;color:var(--muted);font-size:.85rem">${fdate(n.date)}</span>
-    <h3>${esc(n.title)}</h3><p>${esc(n.body)}</p>
+    <h3>${esc(n.title)}</h3>${n.bs?`<p style="color:var(--muted);font-size:.85rem">\u092e\u093f\u0924\u093f / Published: ${esc(n.bs)} B.S.</p>`:''}<p>${esc(n.body)}</p>
+    ${n.src?`<p style="margin-top:14px;padding:12px;border-left:3px solid var(--brand);background:var(--soft);border-radius:0 6px 6px 0"><b>\u0906\u0927\u093f\u0915\u093e\u0930\u093f\u0915 \u0938\u094d\u0930\u094b\u0924 / Official source:</b><br><a href="${esc(n.src)}" target="_blank" rel="noopener">${esc(n.srcName||n.src)}</a></p>`:''}
+    ${n.verified?`<p style="font-size:.82rem;color:var(--muted);margin-top:10px">\u0938\u094d\u0930\u094b\u0924 \u092a\u0941\u0937\u094d\u091f\u093f \u092e\u093f\u0924\u093f: ${esc(n.verified)} \u0964 \u0938\u0930\u0915\u093e\u0930\u0940 \u0938\u0942\u091a\u0928\u093e \u092a\u0930\u093f\u0935\u0930\u094d\u0924\u0928 \u0939\u0941\u0928 \u0938\u0915\u094d\u091b \u2014 \u0915\u0941\u0928\u0948 \u092a\u0928\u093f \u0915\u0926\u092e \u091a\u093e\u0932\u094d\u0928\u0941\u0905\u092f\u093f \u0906\u0927\u093f\u0915\u093e\u0930\u093f\u0915 \u0935\u0947\u092c\u0938\u093e\u0887\u091f\u092e\u093e \u092a\u0941\u0937\u094d\u091f\u093f \u0917\u0930\u094d\u0928\u0941\u0939\u094b\u0938\u094d \u0964 Source verified on ${esc(n.verified)}. Government notices can change \u2014 always confirm on the official site before acting.</p>`:''}
     <p>For further information please contact the office at ${esc(SITE.phone)} or email ${esc(SITE.email)}.</p>
     <div style="margin-top:16px"><a class="btn ghost" href="/notice">&larr; All Notices</a>
     <button class="btn" onclick="window.print()">Print</button></div>
