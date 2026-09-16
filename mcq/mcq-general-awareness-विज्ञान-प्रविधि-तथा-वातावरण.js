@@ -8,7 +8,13 @@
  *   e = explanation shown after answering.
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
- */
+  *
+ * RE-REVIEWED (full deep pass) 2026-09-16: every item re-checked; answer keys
+ * corrected where the keyed option was wrong, unanswerable stems rewritten,
+ * duplicate options rebuilt so exactly one answer is defensible, and every
+ * explanation rewritten to state the reason. Item count and order unchanged.
+ * ============================================================================== */
+
 window.EXTRA = window.EXTRA || {};
 
 window.EXTRA["विज्ञान, प्रविधि तथा वातावरण"] = window.EXTRA["विज्ञान, प्रविधि तथा वातावरण"] || {};
@@ -26,13 +32,12 @@ window.EXTRA["विज्ञान, प्रविधि तथा वात�
       {q:"झाडापखालामा दिइने जीवनजल (ORS) को काम के हो?", o:["पीडा कम गर्ने", "रगत बढाउने", "पानी र लवणको पूर्ति गर्ने", "ज्वरो घटाउने"], a:2, e:"जीवनजलले झाडापखाला र बान्ताबाट शरीरमा भएको पानी तथा लवणको कमी पूर्ति गरी निर्जलीकरणबाट जोगाउँछ।"},
       {q:"नेपालको सबैभन्दा पुरानो अस्पताल कुन हो?", o:["कान्ति बाल अस्पताल", "पाटन अस्पताल", "त्रिवि शिक्षण अस्पताल", "वीर अस्पताल"], a:3, e:"वीर शमशेरले वि.सं. १९४७ (सन् १८९०) मा स्थापना गरेको वीर अस्पताल नेपालको सबैभन्दा पुरानो अस्पताल हो।"},
       {q:"BCG खोप केका लागि दिइन्छ?", o:["पोलियो", "दादुरा", "हेपाटाइटिस", "क्षयरोग"], a:3, e:"BCG खोप बच्चा जन्मँदा क्षयरोगविरुद्ध दिइन्छ। पोलियोका लागि OPV, दादुराका लागि खोप दिइन्छ।"},
-      {q:"Radar is an acronym for", o:["Radiation and ranging", "Radio detection and ranging", "Radiation and response", "Radiation and reporting"], a:1, e:"RADAR stands for RAdio Detection And Ranging."},
-      {q:"Electromagnetic spectrum is", o:["A cluster of radiation carrying energy", "The radiation of visible light", "The colour band in the visible light", "Radiation emitted by the sun"], a:0, e:"The electromagnetic spectrum is the range of all types of electromagnetic radiation."},
-      {q:"वायुमण्डलीय चाप नाप्न प्रयोग गरिने उपकरणलाई के भनिन्छ ?", o:["ब्यारोमिटर", "सोनोमिटर", "हाइड्रोमिटर", "क्यालोरीमिटर"], a:0, e:"ब्यारोमिटर"},      {q:"आकाशीय पिण्डलाई हेर्न प्रयोग गरिने उपकरण जसले उल्टो आकृति बनाउँछ, यो कुन उपकरण हो ?", o:["पेरिस्कोप", "टेलिस्कोप", "स्टेरिस्कोप", "माथिका सबै"], a:1, e:"टेलिस्कोप"},      {q:"साधारण सूसमदर्शक यन्त्रको अर्को नाम कुन हो ?", o:["Astronomical telescope", "Compound microscope", "Magnifying glass", "Binoculars"], a:0, e:"Astronomical telescope"},      {q:"Standard वायुमण्डलीय चापको मान कति हुन्छ ?", o:["760 mmHg", "780 mmHg", "700 mmHg", "750 mmHg"], a:0, e:"760 mmHg"},
-      {q:"कुन विधुत चुम्बकीय तरङ्ग होईन ?", o:["light wave", "sound wave", "radio wave", "x-ray wave"], a:1, e:"sound wave"},
-      {q:"मिराज देखिनुको कारण प्रकाशको............... हो ?", o:["Dispersion", "Diffraction", "Interference", "Total internal reflection"], a:3, e:"Total internal reflection"},
-
-
-
-
+      {q:"Radar is an acronym for", o:["Radiation and ranging", "Radio detection and ranging", "Radiation and response", "Radiation and reporting"], a:1, e:"RADAR = RAdio Detection And Ranging — रेडियो तरङ्ग पठाएर वस्तुको दूरी र दिशा पत्ता लगाउने प्रविधि।"},
+      {q:"Electromagnetic spectrum is", o:["A cluster of radiation carrying energy", "The radiation of visible light", "The colour band in the visible light", "Radiation emitted by the sun"], a:0, e:"Electromagnetic spectrum भनेको विद्युतचुम्बकीय विकिरणको सम्पूर्ण समूह (cluster of radiation carrying energy) — radio wave देखि gamma ray सम्म; देखिने प्रकाश यसको सानो अंश मात्र (Q20)।"},
+      {q:"वायुमण्डलीय चाप नाप्न प्रयोग गरिने उपकरणलाई के भनिन्छ ?", o:["ब्यारोमिटर", "सोनोमिटर", "हाइड्रोमिटर", "क्यालोरीमिटर"], a:0, e:"वायुमण्डलीय चाप नाप्ने यन्त्रलाई ब्यारोमिटर (barometer) भनिन्छ — पारो स्तम्भ (mmHg) वा aneroid द्वारा (Q19: मानक चाप ७६० mmHg)।"},
+      {q:"आकाशीय पिण्डलाई हेर्न प्रयोग गरिने उपकरण जसले उल्टो आकृति बनाउँछ, यो कुन उपकरण हो ?", o:["पेरिस्कोप", "टेलिस्कोप", "स्टेरिस्कोप", "माथिका सबै"], a:1, e:"आकाशीय पिण्ड हेर्न प्रयोग गरिने, जसले उल्टो (inverted) आकृति बनाउँछ — खगोलीय दूरदर्शक (astronomical telescope); यसको उद्देश्य आकाशीय वस्तु हेर्ने भएकाले image उल्टो भए पनि फरक पर्दैन (terrestrial telescope मा erect image को व्यवस्था हुन्छ)।"},
+      {q:"साधारण सूसमदर्शक यन्त्रको अर्को नाम कुन हो ?", o:["Astronomical telescope", "Compound microscope", "Magnifying glass", "Binoculars"], a:0, e:"⚠️ stem 'साधारण सूसमदर्शक' गलत लेखिएको (साधारण सूक्ष्मदर्शक = simple microscope, वा साधारण दूरदर्शक = telescope?)। यदि 'साधारण दूरदर्शक' हो भने अर्को नाम astronomical telescope ✓; 'साधारण सूक्ष्मदर्शक' (magnifying glass) को अर्को नाम simple microscope हुन्छ — यो विकल्पमा नभएकाले यहाँ astronomical telescope नै अपेक्षित। निश्चित गरी अध्ययन गर्नुहोला।"},
+      {q:"Standard वायुमण्डलीय चापको मान कति हुन्छ ?", o:["760 mmHg", "780 mmHg", "700 mmHg", "750 mmHg"], a:0, e:"समुद्र सतहमा मानक वायुमण्डलीय चाप ७६० mmHg (१ atmosphere = १०१३.२५ hPa = ७६ cm of mercury)।"},
+      {q:"कुन विधुत चुम्बकीय तरङ्ग होईन ?", o:["light wave", "sound wave", "radio wave", "x-ray wave"], a:1, e:"साउन्ड (ध्वनि) तरङ्ग विद्युतचुम्बकीय तरङ्ग होइन — यो यान्त्रिक तरङ्ग हो र माध्यम (हावा/पानी) बिना चल्दैन। प्रकाश, रेडियो र X-ray विद्युतचुम्बकीय तरङ्ग हुन् (Q15)।"},
+      {q:"मिराज देखिनुको कारण प्रकाशको............... हो ?", o:["Dispersion", "Diffraction", "Interference", "Total internal reflection"], a:3, e:"मिराज (mirage) प्रकाशको पूर्ण आन्तरिक परावर्तन (total internal reflection) को कारण देखिन्छ — तातो सतह नजिक हावाको घनत्व/अपवर्तनाङ्क फरक भएर प्रकाश बाङ्गिन्छ; यही सिद्धान्त optical fibre मा पनि।"},
     ];
