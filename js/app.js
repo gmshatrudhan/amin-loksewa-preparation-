@@ -669,6 +669,99 @@ const subjectCard=(s,showTests)=>{ const pc=subjPct(s.id);
 const sylCard=x=>`<a class="card syl" href="/syllabus/${x.id}">
       <h3><span class="sylemo">${x.emoji||''}</span> ${esc(x.label||x.title)} Syllabus (${esc(x.year||'2082')})</h3>
       <span class="mini">View or download &rarr;</span></a>`;
+/* ================= GLOBE HERO BACKGROUND =================
+   The home slider uses the supplied animated globe as its background.  The
+   map is loaded from images/world-low.svg so the animation remains self-contained
+   when the site is deployed to GitHub Pages. */
+function globeSatelliteSvg(n){
+  if(n===1) return `<svg viewBox="0 0 78 32" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gb1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f8fafc"/><stop offset="100%" stop-color="#94a3b8"/></linearGradient><linearGradient id="gp1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0f2847"/><stop offset="100%" stop-color="#0a1e3a"/></linearGradient></defs><rect x="2" y="6" width="18" height="20" rx="1.2" fill="url(#gp1)" stroke="#C9A227" stroke-width="0.9"/><g stroke="rgba(201,162,39,0.45)" stroke-width="0.5"><line x1="2" y1="11" x2="20" y2="11"/><line x1="2" y1="16" x2="20" y2="16"/><line x1="8" y1="6" x2="8" y2="26"/><line x1="14" y1="6" x2="14" y2="26"/></g><line x1="20" y1="16" x2="26" y2="16" stroke="#cbd5e1" stroke-width="1.1"/><rect x="26" y="8" width="26" height="16" rx="2" fill="url(#gb1)" stroke="#f1f5f9" stroke-width="0.8"/><ellipse cx="32" cy="11" rx="4.2" ry="3" fill="#e2e8f0" stroke="#64748b" stroke-width="0.6"/><line x1="39" y1="8" x2="39" y2="3.5" stroke="#e2e8f0" stroke-width="0.9"/><circle cx="39" cy="2.5" r="1.6" fill="#ef4444" stroke="#fff" stroke-width="0.5"/><rect x="54" y="6" width="18" height="20" rx="1.2" fill="url(#gp1)" stroke="#C9A227" stroke-width="0.9"/><g stroke="rgba(201,162,39,0.45)" stroke-width="0.5"><line x1="54" y1="11" x2="72" y2="11"/><line x1="54" y1="16" x2="72" y2="16"/><line x1="60" y1="6" x2="60" y2="26"/><line x1="66" y1="6" x2="66" y2="26"/></g><line x1="52" y1="16" x2="54" y2="16" stroke="#cbd5e1" stroke-width="1.1"/></svg>`;
+  if(n===2) return `<svg viewBox="0 0 78 32" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gb2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f8fafc"/><stop offset="100%" stop-color="#94a3b8"/></linearGradient><linearGradient id="gp2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0f2847"/><stop offset="100%" stop-color="#0a1e3a"/></linearGradient></defs><rect x="2" y="7" width="18" height="18" rx="1.2" fill="url(#gp2)" stroke="#C9A227" stroke-width="0.9"/><line x1="20" y1="16" x2="26" y2="16" stroke="#cbd5e1" stroke-width="1.1"/><rect x="26" y="9" width="26" height="14" rx="2" fill="url(#gb2)" stroke="#f1f5f9" stroke-width="0.8"/><rect x="44" y="11" width="7" height="7" rx="1" fill="#0f172a" stroke="#334155"/><circle cx="47.5" cy="14.5" r="2.2" fill="#0ea5e9" stroke="#C9A227" stroke-width="0.5"/><circle cx="47.5" cy="14.5" r="0.9" fill="#7dd3fc"/><rect x="54" y="7" width="18" height="18" rx="1.2" fill="url(#gp2)" stroke="#C9A227" stroke-width="0.9"/><line x1="52" y1="16" x2="54" y2="16" stroke="#cbd5e1" stroke-width="1.1"/><line x1="39" y1="9" x2="39" y2="4" stroke="#e2e8f0" stroke-width="0.9"/><circle cx="39" cy="2.8" r="1.4" fill="#ef4444" stroke="#fff" stroke-width="0.5"/></svg>`;
+  if(n===3) return `<svg viewBox="0 0 78 32" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="6" width="18" height="20" rx="1.2" fill="#0b1e3a" stroke="#C9A227" stroke-width="0.9"/><g stroke="rgba(201,162,39,0.35)" stroke-width="0.5"><line x1="8" y1="6" x2="8" y2="26"/><line x1="14" y1="6" x2="14" y2="26"/><line x1="2" y1="11" x2="20" y2="11"/><line x1="2" y1="16" x2="20" y2="16"/></g><line x1="20" y1="16" x2="26" y2="16" stroke="#cbd5e1" stroke-width="1.1"/><rect x="26" y="8" width="26" height="16" rx="2" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="0.8"/><ellipse cx="34" cy="12" rx="5" ry="4.5" fill="none" stroke="#94a3b8" stroke-width="0.7"/><ellipse cx="34" cy="12" rx="3" ry="2.7" fill="#e2e8f0" stroke="#64748b"/><rect x="54" y="6" width="18" height="20" rx="1.2" fill="#0b1e3a" stroke="#C9A227" stroke-width="0.9"/><line x1="52" y1="16" x2="54" y2="16" stroke="#cbd5e1" stroke-width="1.1"/><circle cx="39" cy="2.6" r="1.4" fill="#22c55e" stroke="#fff" stroke-width="0.5"/></svg>`;
+  return `<svg viewBox="0 0 78 32" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="6" width="18" height="20" rx="1.2" fill="#0b1e3a" stroke="#C9A227" stroke-width="0.9"/><line x1="20" y1="16" x2="26" y2="16" stroke="#cbd5e1" stroke-width="1.1"/><rect x="26" y="9" width="26" height="14" rx="2" fill="#f1f5f9" stroke="#cbd5e1"/><circle cx="33" cy="16" r="3.2" fill="none" stroke="#0ea5e9" stroke-width="0.7" stroke-dasharray="1.2 1"/><circle cx="33" cy="16" r="1.8" fill="#0ea5e9"/><rect x="54" y="6" width="18" height="20" rx="1.2" fill="#0b1e3a" stroke="#C9A227" stroke-width="0.9"/><line x1="52" y1="16" x2="54" y2="16" stroke="#cbd5e1" stroke-width="1.1"/><line x1="39" y1="9" x2="39" y2="3" stroke="#e2e8f0" stroke-width="0.8"/><circle cx="39" cy="1.8" r="1.3" fill="#a78bfa" stroke="#fff" stroke-width="0.5"/></svg>`;
+}
+function globeBackgroundMarkup(){
+  return `<div class="globe-bg" id="globe-bg" aria-hidden="true">
+    <canvas id="globe-stars"></canvas>
+    <div class="globe-box" id="globe-box">
+      <div class="globe-glow"></div>
+      <div class="globe-orbit"><svg viewBox="0 0 380 380"><ellipse class="globe-path-bg" cx="190" cy="190" rx="172" ry="58" transform="rotate(-14 190 190)"/><ellipse class="globe-path" cx="190" cy="190" rx="172" ry="58" transform="rotate(-14 190 190)"/></svg></div>
+      <div class="globe-orb">
+        <div class="globe-shade"></div><div class="globe-highlight"></div>
+        <div class="globe-map-wrap"><div class="globe-map-track">
+          <svg viewBox="0 0 950 620" preserveAspectRatio="xMidYMid slice"><rect width="950" height="620" fill="#0a2e53"/><g id="globe-countries-1"></g></svg>
+          <svg viewBox="0 0 950 620" preserveAspectRatio="xMidYMid slice"><rect width="950" height="620" fill="#0a2e53"/><g id="globe-countries-2"></g></svg>
+        </div></div>
+      </div>
+      <div class="globe-sat" id="globe-s1">${globeSatelliteSvg(1)}</div>
+      <div class="globe-sat" id="globe-s2">${globeSatelliteSvg(2)}</div>
+      <div class="globe-sat" id="globe-s3">${globeSatelliteSvg(3)}</div>
+      <div class="globe-sat" id="globe-s4">${globeSatelliteSvg(4)}</div>
+    </div>
+  </div>`;
+}
+let globeFrame=0, globeResizeHandler=null, globeToken=0;
+function stopGlobeBackground(){
+  globeToken++;
+  if(globeFrame) cancelAnimationFrame(globeFrame);
+  globeFrame=0;
+  if(globeResizeHandler){ window.removeEventListener('resize',globeResizeHandler); globeResizeHandler=null; }
+}
+function initGlobeBackground(){
+  stopGlobeBackground();
+  const host=document.getElementById('globe-bg'), canvas=document.getElementById('globe-stars'), box=document.getElementById('globe-box');
+  if(!host||!canvas||!box) return;
+  const token=globeToken, ctx=canvas.getContext('2d');
+  if(!ctx) return;
+  let cw=0,ch=0,dpr=1;
+  const resize=()=>{
+    const r=host.getBoundingClientRect(); cw=r.width; ch=r.height;
+    dpr=Math.min(window.devicePixelRatio||1,2);
+    canvas.width=Math.max(1,Math.round(cw*dpr)); canvas.height=Math.max(1,Math.round(ch*dpr));
+    canvas.style.width=cw+'px'; canvas.style.height=ch+'px'; ctx.setTransform(dpr,0,0,dpr,0,0);
+  };
+  globeResizeHandler=resize; resize(); window.addEventListener('resize',resize,{passive:true});
+  const stars=Array.from({length:82},(_,i)=>({
+    x:(Math.sin(i*12.7)*.5+.5), y:(Math.cos(i*8.3)*.5+.5), r:.45+(i%4)*.16, phase:i*.73
+  }));
+  const sats=[1,2,3,4].map(n=>document.getElementById('globe-s'+n));
+  let angles=[0,90,180,270], last=performance.now(), lastSize=0, reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const draw=(now)=>{
+    const time=now*.001; ctx.clearRect(0,0,cw,ch);
+    stars.forEach((s,i)=>{
+      const px=(s.x*cw + ((time*.7+s.phase)%30))%cw, py=s.y*ch;
+      ctx.globalAlpha=.2+((Math.sin(time*1.4+s.phase)+1)*.13); ctx.beginPath(); ctx.arc(px,py,s.r,0,Math.PI*2); ctx.fillStyle='#7dd3fc'; ctx.fill();
+    });
+    ctx.globalAlpha=1;
+  };
+  const tick=(now)=>{
+    if(token!==globeToken) return;
+    const dt=Math.min(.05,Math.max(0,(now-last)/1000)); last=now;
+    if(lastSize!==box.offsetWidth){ lastSize=box.offsetWidth; }
+    if(!reduce) for(let i=0;i<angles.length;i++) angles[i]+=28*dt;
+    draw(now);
+    const size=box.getBoundingClientRect().width||380, cx=size/2, cy=size/2, rx=size*(172/380), ry=size*(58/380), rot=-14*Math.PI/180, cr=Math.cos(rot), sr=Math.sin(rot);
+    sats.forEach((el,i)=>{
+      if(!el) return;
+      const rad=angles[i]*Math.PI/180, x0=rx*Math.cos(rad), y0=ry*Math.sin(rad), px=cx+x0*cr-y0*sr, py=cy+x0*sr+y0*cr;
+      const depth=(py-cy)/(ry||1), behind=depth<.12&&Math.hypot(px-cx,py-cy)<size*.37;
+      el.style.left=px+'px'; el.style.top=py+'px'; el.style.transform=`translate(-50%,-50%) scale(${behind?.68:.92})`; el.style.opacity=behind?.3:.98; el.style.zIndex=behind?2:10;
+    });
+    if(!reduce) globeFrame=requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+  fetch('/images/world-low.svg').then(r=>r.ok?r.text():Promise.reject()).then(txt=>{
+    if(token!==globeToken) return;
+    const paths=Array.from(txt.matchAll(/<path\b[^>]*\bd="[^"]*"[^>]*\/?>/gi)).map(m=>m[0]);
+    if(!paths.length) return;
+    const joined=paths.join('');
+    ['globe-countries-1','globe-countries-2'].forEach(id=>{
+      const g=document.getElementById(id); if(!g) return;
+      g.innerHTML=joined;
+      g.querySelectorAll('path').forEach(path=>{ path.setAttribute('fill','#d9e8c2'); path.setAttribute('stroke','#a8c49a'); path.setAttribute('stroke-width','0.35'); });
+    });
+  }).catch(()=>{});
+}
+
 function pHome(){
   const slides = SLIDES.map(x=>`<div class="slide" style="--g1:${x.g1};--g2:${x.g2}">
       <div class="sbg"></div><div class="sov"></div>
@@ -680,6 +773,7 @@ function pHome(){
         <a class="btn ghost sm wht" href="${x.href2}">${esc(x.btn2)}</a></div></div></div>`).join('');
   return `<h1 class="vh">Amin Loksewa Preparation \u2014 Learn. Practice. Pass.</h1><div class="hero">
       <div class="slider" id="slider">
+        ${globeBackgroundMarkup()}
         <button class="sarr l" onclick="go(-1)" aria-label="Previous">&#8249;</button>
         <div class="slides" id="slides">${slides}</div>
         <button class="sarr r" onclick="go(1)" aria-label="Next">&#8250;</button>
@@ -1859,7 +1953,8 @@ function routeFromLocation(){
 async function router(){
   const my=++NAV_SEQ;
   clearInterval(QZ.tid); QZ.run=false; /* stop any running quiz clock when navigating */
-  clearInterval(timer);                 /* stop the hero slider when leaving home */
+  stopGlobeBackground();                 /* stop the hero animation when leaving home */
+  clearInterval(timer);                  /* stop the hero slider when leaving home */
   document.onkeydown=null;              /* release the slider arrow-key handler */
   let loc=routeFromLocation();
   let p=loc.path.split('/').filter(Boolean);
@@ -1921,7 +2016,7 @@ async function router(){
   document.body.classList.remove('navopen');
   closeMenus();
   window.scrollTo(0,0);
-  if(p[0]===undefined) initSlider();
+  if(p[0]===undefined){ initSlider(); initGlobeBackground(); }
   if(p[0]==='unit'&&p[3]==='test'){ clearInterval(QZ.tid); quizStart(p[1],+p[2]); }
   if(p[0]==='mock-mcq'){ clearInterval(QZ.tid); mockStart(); }
   /* keep the canonical URL in sync with the visible clean URL (SEO) */
