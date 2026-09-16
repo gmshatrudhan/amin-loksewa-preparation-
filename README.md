@@ -15,7 +15,7 @@ Note: pages use clean URLs (`/syllabus`, `/subject/…`), so local preview needs
 | `js/data-manifest.js` | **Map**: every unit → its 3 files (auto-generated, do not hand-edit) | Never — keep file/folder names unchanged so the map stays valid |
 | `subjective/subjective-<subject>-<unit>.js` (27 files) | **Written questions**, one file per unit | Add / fix subjective questions |
 | `study/study-<subject>-<unit>.js` (27 files) | **Study material**, one file per unit | Write real notes per unit |
-| `images/` | `profile.jpg` (contact/owner photo), `team-*.jpg` (team members) | Replace photos (keep the same file names!) |
+| `images/` | `profile.jpg` (contact/owner photo), `team-*.jpg` (team members), `world-low.svg` (animated globe map) | Replace photos (keep the same file names!) |
 | `manifest.json` | Phone "add to home screen" info | Rarely |
 | `404.html` | Copy of index.html — makes clean URLs + refresh work on GitHub Pages | Never (must stay identical to index.html) |
 | `sitemap.xml` | Page list for Google | After adding/removing pages |
@@ -80,6 +80,7 @@ To update the site later, just upload/commit the changed files again.
 
 ## 💡 Notes
 
+- The home-page hero uses the animated globe background. Its local map asset (`images/world-low.svg`) is adapted from the Marked-Up SVG World Map by Ben Hodgson, based on Al MacDonald's Low Resolution World Map, under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
 - Keep file names and folder structure exactly as they are — `js/data-manifest.js` refers to them by path.
 - Each unit page loads ONLY its own 3 files (fast); the search page loads all 81 once.
 - Preview locally with a server: `cd amin-website && python3 -m http.server`, then open http://localhost:8000 (double-click won't work: clean URLs need a server).

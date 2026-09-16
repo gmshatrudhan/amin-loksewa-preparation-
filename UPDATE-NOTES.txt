@@ -1,0 +1,14 @@
+Globe animation update
+======================
+
+Copy these files into the matching locations in the repository:
+
+  css/style.css
+  js/app.js
+  images/world-low.svg
+  index.html
+  404.html
+  README.md (documentation/attribution update; optional for functionality)
+
+The functional files are css/style.css, js/app.js, and images/world-low.svg.
+index.html and 404.html only bump the cache version to v=11 so browsers load the new files.
