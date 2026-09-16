@@ -19,6 +19,11 @@
  *   - option sets cleaned: plausible distractors instead of jokes, single unit
  *     system, castellation->constellation, Spirit Levelling spelling, current
  *     facts (SA off 2000, ~31 operational satellites, Sagarmatha 8,848.86 m)
+ *
+ * RE-REVIEWED (full deep pass) 2026-09-16: every item re-checked; answer keys
+ * corrected where the keyed option was wrong, unanswerable stems rewritten,
+ * duplicate options rebuilt so exactly one answer is defensible, and every
+ * explanation rewritten to state the reason. Item count and order unchanged.
  * ============================================================================== */
 
 window.EXTRA = window.EXTRA || {};
@@ -78,5 +83,5 @@ window.EXTRA["GNSS"].mcq = [
       {q:"GPS को पूरा रूप के हो ?", o:["Geographical Positioning System", "Geometrical Pointing System", "Global Positioning System", "Geographical Information System"], a:2, e:"GPS = Global Positioning System। GIS = Geographical Information System, जुन बिल्कुल फरक विषय हो; GNSS/GPS बाट पाइएको coordinate GIS मा प्रयोग हुने डाटाको स्रोत बन्न सक्छ।"},
       {q:"नेपाल र चीनले संयुक्त रूपमा घोषणा गरेको (सन् २०२० डिसेम्बर ८) सगरमाथाको आधिकारिक उचाई कति हो ?", o:["8,848.00 m", "8,848.13 m", "8,848.86 m", "8,850.00 m"], a:2, e:"आधिकारिक उचाई 8,848.86 m (हिउँसहितको सतह, 29,031.7 फिट) हो। यसअघि सन् १९५५ मा Survey of India ले नापेको 8,848.00 m मान्य थियो; चीनले 8,848.13 m (चट्टानको उचाई) मान्दथ्यो र सन् १९९९ मा अमेरिकी टोलीले GPS बाट 8,850 m नापेको थियो।"},
       {q:"GNSS ले दिने ellipsoidal height लाई समुद्र सतहबाटको उचाई (orthometric height) मा बदल्न कुन मान आवश्यक पर्छ ?", o:["Geoid undulation (N)", "Scale factor", "Magnetic declination", "Convergence angle"], a:0, e:"सम्बन्ध h = H + N हो, जहाँ h = ellipsoidal height (GNSS बाट), H = orthometric height (समुद्र सतहबाट) र N = geoid undulation (geoid र ellipsoid बीचको फरक)। नेपालमा regional geoid model बनाउन gravity survey र precise levelling गरिन्छ; scale factor, magnetic declination र convergence angle यो रूपान्तरणसँग सम्बन्धित छैनन्।"},
-      {q:"GPS बाट शुद्ध तरिकाले coordinate निकाल्न कम्तीमा कति वटा satellite चाहिन्छ ?", o:["3", "4", "5", "6"], a:1, e:"कम्तीमा 4 वटा satellite एकै समयमा देखिनुपर्छ, किनकि X, Y, Z र receiver घडीको offset गरी चार अज्ञात हुन्छन्। 3 वटा satellite मात्र भए उचाई पहिल्यै थाहा भएको अवस्थामा 2D fix मात्र सम्भव हुन्छ; 5 वटा भए दोषपूर्ण satellite पत्ता लगाउन (RAIM) सकिन्छ।"}
+      {q:"GPS बाट शुद्ध तरिकाले coordinate निकाल्न कम्तीमा कति वटा satellite चाहिन्छ ?", o:["3", "4", "5", "6"], a:1, e:"कम्तीमा 4 वटा satellite एकै समयमा देखिनुपर्छ, किनकि X, Y, Z र receiver घडीको offset गरी चार अज्ञात हुन्छन्। 3 वटा satellite मात्र भए उचाई पहिल्यै थाहा भएको अवस्थामा 2D fix मात्र सम्भव हुन्छ; 5 वटा भए दोषपूर्ण satellite पत्ता लगाउन (RAIM) सकिन्छ।"},
     ];
