@@ -1,34 +1,6 @@
 /* ================= MCQ QUESTIONS - Control Survey - Unit 2: Levelling =================
  * One unit per file: the app loads ONLY this unit's 3 files (mcq + subjective
  * + study) when you open the unit - see js/data-manifest.js.
- *
- * HOW TO ADD A QUESTION: copy one {q, o, a, e} block, paste it after the last
- * one (with a comma between blocks), and edit the text.
- *   q = question,  o = 4 options,  a = correct option NUMBER (0, 1, 2 or 3),
- *   e = explanation shown after answering.
- * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
- * questions by matching it exactly.
- *
- * CONTENT REVIEWED 2026-09-16 - 134 items, nothing deleted or reordered:
- *   - several answer keys corrected: item 19 (collimation error 0.060 m, not
- *     0.015 m), item 50 (sensitivity: both statements are correct), item 94
- *     (geoid surface, not mean sea level), item 116 (refraction, not the bubble
- *     tube), item 77 (station = instrument position, consistent with items
- *     106/111/119), item 73/120 option labels repaired
- *   - 8 impossible items repaired (47, 48, 49, 50, 51, 52, 53, 54): the option
- *     lists referred to "(i)", "(ii)", "1, 2 and 3" but the statements were
- *     missing from the stem - the statements are now written into the stem
- *   - contradictory items fixed (17: an inverted staff reading must be a fore
- *     sight, not a back sight; 31 vs 116: refraction is the error that
- *     reciprocal levelling does not completely remove; 109: the options gave a
- *     different answer from the given solution; 40/38/42: the key and the
- *     explanation now agree)
- *   - every one of the 134 explanations rewritten: each states the reason, not
- *     just the key (originally 65 items had explanations under 40 characters,
- *     e.g. "Collimation", "B.M.", "1/200")
- *   - spelling and terminology fixed: Sprite/Sprile -> Spirit, triciac ->
- *     trigonometrical, Personel -> Personal, "12 seconds" -> mm x sqrt(K),
- *     "Cross section र longitudinal sectioning" option made grammatical
  * ============================================================================== */
 window.EXTRA = window.EXTRA || {};
 
