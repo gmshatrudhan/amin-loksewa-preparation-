@@ -9,21 +9,7 @@
  * IMPORTANT: do NOT rename the unit title in square brackets - the app finds
  * questions by matching it exactly.
  *
- * CONTENT REVIEWED 2026-09-16 - 14 items, nothing added, deleted or reordered:
- *   - 1 answer key corrected: item 14 (which district is NOT a backward area)
- *     -> मुस्ताङ, not जाजरकोट. The classic list of backward districts is
- *     Dolpa, Jumla, Humla, Achham, Kalikot, Jajarkot, Bajhang, Bajura and Mugu,
- *     so Kalikot / Jajarkot / Mugu are all in it and Mustang is the odd one out.
- *   - all 14 explanations rewritten: each now states the reason, the legal
- *     provision or the figure behind the answer (originally the file had one
- *     explanation that was just the word "जाजरकोट")
- *   - figures brought up to date from official sources: NRB sector shares for
- *     FY 2081/82 (services 62.01%, agriculture 25.16%, industry 12.83%),
- *     remittance Rs 1,723.27 billion in FY 2081/82 with the trade deficit
- *     Rs 1,527.09 billion, Constitution Art. 119(3) for the Jestha 15 budget,
- *     VAT introduced in 2054 BS (1997), first cooperative registered on
- *     20 Chaitra 2013 BS at Bakhanpur (Chitwan), NEPSE trading from
- *     13 January 1994 (29 Poush 2050)
+
  * ============================================================================== */
 window.EXTRA = window.EXTRA || {};
 
