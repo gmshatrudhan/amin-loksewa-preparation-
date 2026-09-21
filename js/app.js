@@ -258,6 +258,24 @@ async function needAll(){
   return r.every(Boolean);
 }
 
+/* ---------------- MOBILE LOADING HINT ----------------
+   On 4G the per-unit data files can take a few seconds to download;
+   without feedback a tapped link looks dead. Shown only when files
+   are genuinely not loaded yet (no flash on cached pages). */
+let LOAD_TIP=null;
+function loadTipShow(){ if(LOAD_TIP||document.getElementById('ldtip')) return;
+  const el=document.createElement('div'); el.id='ldtip'; el.className='ldtip';
+  el.setAttribute('role','status');
+  el.innerHTML='<span class="ldspin" aria-hidden="true"></span>Loading…';
+  document.body.appendChild(el); LOAD_TIP=el; }
+function loadTipHide(){ if(LOAD_TIP){ try{ LOAD_TIP.remove(); }catch(e){} LOAD_TIP=null; } }
+function unitFilesPending(sid,un){ return unitFiles(sid,un).some(f=>!DATA_LOADED.has(f)); }
+function subjectFilesPending(sid){ const d=window.DATA_FILES,s=d&&d[sid]; if(!s) return false;
+  return Object.keys(s).some(k=>[s[k].mcq,s[k].sub,s[k].study].some(f=>!DATA_LOADED.has(f))); }
+function allFilesPending(){ const d=window.DATA_FILES||{};
+  return Object.keys(d).some(sid=>Object.keys(d[sid]).some(k=>
+    [d[sid][k].mcq,d[sid][k].sub,d[sid][k].study].some(f=>!DATA_LOADED.has(f)))); }
+
 /* ---------------- SEARCH ---------------- */
 let SEARCH_IX=null;
 function searchIndex(){
@@ -513,9 +531,9 @@ const SB={
         /* OAuth / recovery landing: tokens are in the URL; the client above
            consumes them — poll briefly until the session appears. */
         SB._recover=/type=recovery/.test(h);
-        for(let i=0;i<25&&!su;i++){
+        for(let i=0;i<50&&!su;i++){
           try{ const r=await SB.client.auth.getSession(); su=r.data&&r.data.session; }catch(e){}
-          if(!su) await new Promise(r=>setTimeout(r,200));
+          if(!su) await new Promise(r=>setTimeout(r,250));
         }
       }else{
         try{ const r=await SB.client.auth.getSession(); su=r.data&&r.data.session; }catch(e){}
@@ -1174,7 +1192,7 @@ function qzPick(j){
   if(QZ.mode==='practice' && QZ.ans[QZ.i]!==null) return;
   QZ.ans[QZ.i]=j; qzCard(); qzGrid(); qzProg();
 }
-function qzGo(i){ if(i<0||i>=QZ.deck.length) return; QZ.i=i; qzCard(); qzGrid(); const qc=document.getElementById('qzcard'); if(qc) window.scrollTo({top:qc.offsetTop-90,behavior:'smooth'}); }
+function qzGo(i){ if(i<0||i>=QZ.deck.length) return; QZ.i=i; qzCard(); qzGrid(); const qc=document.getElementById('qzcard'); if(qc) window.scrollTo({top:qc.getBoundingClientRect().top+window.scrollY-84,behavior:'smooth'}); }
 function qzFlag(){ QZ.flag[QZ.i]=!QZ.flag[QZ.i]; qzCard(); qzGrid(); }
 function qzSrc(i){ return QZ.retry ? QZ.srcIdx[i] : i; }
 function qzSrcSU(i){ return QZ.srcSU ? QZ.srcSU[i] : {sid:QZ.sid, un:QZ.un}; }
@@ -1976,11 +1994,16 @@ async function router(){
   /* lazy data: fetch ONLY this page's unit files before rendering (the old page
      stays visible meanwhile, so there is no flash). Unknown ids = no-op. */
   try{
+    const pend=(p[0]==='unit'&&p[1])?unitFilesPending(p[1],+p[2])
+      :(p[0]==='subject'&&p[1])?subjectFilesPending(p[1])
+      :(p[0]==='search'||p[0]==='mock-mcq'||p[0]==='mock-subjective')?allFilesPending():false;
+    if(pend) loadTipShow();
     if(p[0]==='unit'&&p[1]) await needUnit(p[1],+p[2]);
     else if(p[0]==='subject'&&p[1]) await needSubject(p[1]);
     else if(p[0]==='search') await needAll();
     else if(p[0]==='mock-mcq'||p[0]==='mock-subjective') await needAll();
   }catch(e){/* fail soft: pages render with whatever data is already present */}
+  loadTipHide();
   if(my!==NAV_SEQ) return; /* user already navigated onward - drop this render */
   shell();
 
