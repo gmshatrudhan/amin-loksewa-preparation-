@@ -72,7 +72,10 @@ if(!t)t=window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matc
 document.documentElement.setAttribute('data-theme',t);
 if(t==='dark')document.head.insertAdjacentHTML('beforeend','<style>body{background:#0C1422}</style>');
 }catch(e){document.documentElement.setAttribute('data-theme','light')}})();</script>
-  <link rel="stylesheet" href="/css/style.css?v=12">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Plus+Jakarta+Sans:wght@500..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css?v=13">
 </head>
 <body>
 <div id="topbar" class="topbar"></div>
@@ -100,5 +103,5 @@ if(t==='dark')document.head.insertAdjacentHTML('beforeend','<style>body{backgrou
   <script src="/js/content.js?v=12"></script>
   <script src="/js/data-manifest.js?v=12"></script>
   <script src="/js/app.js?v=12"></script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3e53525fc52cf60',t:'MTc4OTk1MzIwOQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
