@@ -7,7 +7,7 @@ SYLLABUS.push(
   "tag": "Federal",
   "title": "Federal Level",
   "emoji": "<svg class=\"npflag\" viewBox=\"0 0 73 81\" aria-label=\"Nepal\"><path d=\"M3 78V3l52 41H27l30 30H3z\" fill=\"#DC143C\" stroke=\"#003893\" stroke-width=\"5\" stroke-linejoin=\"round\"/><path d=\"M20 21a9 9 0 009 9 9 9 0 11-9-9z\" fill=\"#fff\"/><circle cx=\"25\" cy=\"56\" r=\"8\" fill=\"#fff\"/></svg>",
-  "label": "Federaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaal Level",
+  "label": "Federal Level",
   "year": "2080",
   "desc": "Syllabus and vacancy pattern for the Federal Public Service Commission (Lok Sewa Aayog) Amin examination.",
   "g1": "#092741",
@@ -23,7 +23,7 @@ SYLLABUS.push(
       [
         "प्रथम चरण",
         "लिखित परीक्षा (Written Examination)",
-        "२००"
+        "२०00000०"
       ],
       [
         "द्वितीय चरण",
