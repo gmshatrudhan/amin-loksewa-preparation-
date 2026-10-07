@@ -11,6 +11,8 @@ Note: pages use clean URLs (`/syllabus`, `/subject/…`), so local preview needs
 | `css/style.css` | All design & colours (`:root` variables at top) | Change colours, fonts, sizes |
 | `js/app.js` | App logic (menus, quiz, login, pages) | Change how things work |
 | `js/content.js` | **Site texts**: name, phone, email, address, notices, FAQs, team, home slides, legal pages | Update any text / notice / member |
+| `js/syllabus.js` | Syllabus registry used by the app; it collects the eight track files | Usually leave unchanged; edit a track file instead |
+| `js/syllabus/<track>.js` (8 files) | One editable file each for Federal, Koshi, Madhesh, Bagmati, Gandaki, Lumbini, Karnali and Sudurpashchim | Update that track’s syllabus and exam content |
 | `mcq/mcq-<subject>-<unit>.js` (27 files) | **MCQ questions**, one file per unit | Add / fix objective questions |
 | `js/data-manifest.js` | **Map**: every unit → its 3 files (auto-generated, do not hand-edit) | Never — keep file/folder names unchanged so the map stays valid |
 | `subjective/subjective-<subject>-<unit>.js` (27 files) | **Written questions**, one file per unit | Add / fix subjective questions |
@@ -19,6 +21,8 @@ Note: pages use clean URLs (`/syllabus`, `/subject/…`), so local preview needs
 | `manifest.json` | Phone "add to home screen" info | Rarely |
 | `404.html` | Copy of index.html — makes clean URLs + refresh work on GitHub Pages | Never (must stay identical to index.html) |
 | `sitemap.xml` | Page list for Google | After adding/removing pages |
+
+To edit a syllabus, open its individual file in `js/syllabus/` (for example, `js/syllabus/federal.js`). Keep the track ID unchanged because it is used in the page URL. The eight files are loaded by `index.html` and `404.html` before `js/app.js`; normally, you do not need to edit `js/syllabus.js`.
 
 Subjects: sub1 General Awareness · sub2 Public Management · sub3 Surveying Methodology and Mapping ·
 sub4 Land Administration, Cadastral Survey and Land Records · sub5 Mathematics and Instruments · sub6 Control Survey.
