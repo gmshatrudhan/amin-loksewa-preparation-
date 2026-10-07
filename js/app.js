@@ -1,4 +1,4 @@
-/* ================= APP (design + logic). content.js + data-manifest.js load before this. ================= */
+/* ================= APP (design + logic). content.js, the syllabus registry + tracks, and data-manifest.js load before this. ================= */
 /* Question bank: 81 per-unit files (mcq + subjective + study), lazy-loaded per page - see LAZY DATA LOADER. */
 /* ==== QUESTION BANK: 744 MCQ + 135 written total, all with explanations ==== */
 
